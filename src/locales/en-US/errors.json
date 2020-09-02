@@ -1,0 +1,18 @@
+{
+    "permissions": "You do not have permission to {{ permissions }}.",
+    "clientPermissions":"I do not have permission to {{ clientPermissions }}",
+    "devolperOnly": "this command is restricted to developers only!",
+    "noPlace": "inform me the place you want to want to make the upgrade!",
+    "locked": "you have not unlocked this yet!",
+    "commandError": "An unexpected error has occurred!",
+    "userBot": "use this command only on users!",
+    "notPhrase": "Without description.",
+    "notGuild": "guild not found!",
+    "notOwner": "you don't owner the guild!",
+    "notAction": "type the action correctly for the command to execute! ``[add, remove]``",
+    "invalidAction": "This action is invalid!",
+    "noUser": "mention or type the user id!",
+    "guildPermission": "You do not have permission in this guild for this.",
+    "requireDatabase": "Could not create database connection, so this command is not available.",
+    "notFound": "Not found"
+}

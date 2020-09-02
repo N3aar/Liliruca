@@ -1,0 +1,6 @@
+{
+    "execMap": {
+        "js": "node -r dotenv/config -r module-alias/register"
+    },
+    "watch": "src/Client"
+}

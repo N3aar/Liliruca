@@ -1,0 +1,2 @@
+# DIA 1
+- [ ] REMOVER CONTEXT.JS

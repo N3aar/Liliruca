@@ -1,0 +1,18 @@
+{
+    "userPermissions": "você não possui permissão de {{ userPermissions }}",
+    "clientPermissions":"Não possuo permissão de {{ clientPermissions }}",
+    "devolperOnly": "este comando é restrito apenas aos desenvolvedores!",
+    "noPlace": "me informe o local correto que você quer fazer esta melhoria!",
+    "locked": "você ainda não desbloqueou isso!",
+    "commandError": "Ocorreu um erro inesperado!",
+    "userBot": "utilize esse comando somente em usúarios!",
+    "notPhrase": "Sem descrição.",
+    "notGuild": "guilda não encontrada!",
+    "notOwner": "você não é dono desta Guilda!",
+    "notAction": "digite a ação corretamente para o comando ser executado! ``[add, remove]``",
+    "invalidAction": "esta ação é inválida!",
+    "noUser": "mencione ou digite o id do usuário!",
+    "guildPermission": "você não possui permissão nesta Guilda para isto.",
+    "requireDatabase": "Não foi possível criar uma conexão com banco de dados, portanto este comando não está disponivel.",
+    "notFound": "Não encontrei"
+}

@@ -1,0 +1,5 @@
+{
+  "noGuild": "Você precisa ter uma Guilda para executar esse comando!",
+  "notOwner": "Você precisa ser o dono da sua Guilda para executar esse comando!",
+  "minMoney": "Você não tem dinheiro suficiente para isso!\n**requisito**: ${{ money }}\n**seu dinheiro**: ${{ current }}"
+}

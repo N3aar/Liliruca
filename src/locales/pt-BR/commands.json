@@ -1,0 +1,392 @@
+{
+  "setlanguage": {
+    "description": "Altere o idioma dos comandos, assim ficará mais simples para seus membros interagirem comigo!",
+    "usage": "<nova linguagem>",
+    "args": {
+      "language": {
+        "retry": "me informe uma lingua correta! opções: {{ languages }}",
+        "ended": "lingua invalida, olhe minhas opções e tente executar o comando novamente!"
+      }
+    },
+    "resetLanguage": "\\💬 Linguagem resetada com sucesso para `{{ language }}`!",
+    "changedLanguage": "\\💬 Linguagem alterada com sucesso para `{{ language }}`!"
+  },
+    "setprefix": {
+        "description": "Coloque um prefixo personalizado para os comandos em seu servidor, mas não esqueça de avisar os membros sobre este novo prefixo! 😉",
+        "usage": "<novo prefixo>",
+        "prefixIsLoongMuch": "este prefixo é muito grande, excedendo o limite de **[{{ max }}]** caracteristicas.",
+        "already": "Meu prefixo já está definido como `{{- prefix }}` neste servidor!",
+        "changedPrefix": "\\✏ Prefixo alterado com sucesso para `{{- prefix }}`!",
+        "resetPrefix": "\\✏ Prefixo **resetado** com sucesso!"
+    },
+    "timer": {
+        "description": "Os hórarios são muito diferentes em vários locais do mundo, para isso existe este comando, você poderá alterar o horário de seu servidor, isso influenciará somente na estética dos locais, deixando os com períodos de dia e noite!",
+        "usage": "<hora atual>",
+        "error": "digite a hora corretamente!",
+        "information": "\\📌 `Formato 24h:` **5 | 13**\n\\📌 `Formato 12h:` **5am | 1pm**\n",
+        "success": "\\⏰ Horário deste servidor atualizado com sucesso!"
+    },
+    "botinfo": {
+        "description": "Veja muitas informações sobre mim!",
+        "version": "Versão",
+        "language": "Linguagem",
+        "commands": "Comandos",
+        "users": "Usuários",
+        "guilds": "Servidores",
+        "channels": "Canais",
+        "shards": "Shards",
+        "library": "Biblioteca",
+        "uptime": "Tempo Online",
+        "links": "Links",
+        "inviteMe": "Convite",
+        "supportGuild": "Suporte",
+        "donate": "Doar",
+        "vote": "Votar",
+        "success": "\\📋 Informações do bot!"
+    },
+    "help": {
+        "usage": "<Categoria | Número | Comando | All>",
+        "notFind": "categoria ou comando não foi encontrado!",
+        "success": "\\📚 Páginas de ajuda!",
+        "all": "\\📚 Todos os Comandos!",
+        "category": "\\{{- emoji }} Categoria `{{- category }}`!",
+        "command": "\\{{- emoji }} Comando `{{- command }}`!"
+    },
+    "hour": {
+        "description": "Veja qual a hora atual seguindo a configuração deste servidor!"
+    },
+    "ping": {
+        "description": "Dados de conexão do bot com os servidores.",
+        "calc": "Calculando ping...",
+        "latency": "Latência",
+        "ping": "Ping",
+        "apiLatency": "Latencia da API",
+        "heartbeat": "Heartbeat",
+        "success": "\\🔌 Dados de conexão do Bot!"
+    },
+    "team": {
+        "description": "Equipe que desenvolve o bot, e o torna cada vez mais incrivel!",
+        "success": "\\🔑 Equipe de desenvolvimento!",
+        "team": [
+            { "name": "Near", "desc": "**\\👑 Criador | \\📘 Back-end | \\🎨 Designer\n\\📅 Entrou em: 23/02/2019**" },
+            { "name": "Ichi", "desc": "**\\📖 Front-end\n\\📅 Entrou em: 31/03/2019**" },
+            { "name": "Tsugami", "desc": "**\\📕 Back-end\n\\📅 Entrou em: 08/04/2019**" },
+            { "name": "Derpy", "desc": "**\\📗 Back-end\n\\📅 Entrou em: 16/08/2019**" }
+        ]
+    },
+    "collect": {
+        "description": "Para coletar todos os seus recursos produzidos",
+        "information": "\\📌 `Tempo:` **1 hora**",
+        "first": "Primeira coleta!",
+        "last": "Última coleta: {{- time }} atrás.",
+        "success": "\\📬 Coletado com sucesso!",
+        "err": "sua produção ainda não esta pronta, aguarde {{ min }} minutos para coletar novamente.",
+        "attacked": "**Sua plantação foi atacada por aves e animais selvagens!\nSua perda foi de ``{{- attack }}%``!**",
+        "noStorage": "algum de seus armazenamentos está cheio! esvazie para coletar seus novos recursos."
+    },
+    "list": {
+        "description": "Lista de produtos que você pode comprar no mercado!",
+        "scarecrow": [
+            "<:srccw:621221807336194048> Espantalho",
+            "Um espantalho de pano que irá proteger sua plantação de ataques de aves!\n**ID: ``SF``\nPreço: ``$300``\nDuração: ``2 dias``\nRequer: ``Fazenda Level 4``**"
+        ],
+        "fence": [
+            "<:fence:621221807927590943> Cerca",
+            "Uma cerca de madeira que impede a entrada de animais selvagens em sua plantação!\n**ID: ``FF``\nPreço: ``$300``\nDuração: ``2 dias``\nRequer: ``Fazenda Level 4``**"
+        ],
+        "fertilizer": [
+            "<:fertilizer_1:621906529775517706> Fertilizante Básico",
+            "<:fertilizer_2:621906572657819648> Fertilizante Médio",
+            "<:fertilizer_3:621906604442255361> Fertilizante Prêmio",
+            "Um Fertilizante mais básico para ajudar em sua colheita, garante um aumento de ``5%`` a ``25%``!\n**ID: ``BF``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Fazenda Level 2``**",
+            "Um Fertilizante médio que garante aumento rázoavel de ``15%`` a ``35%`` em sua colheita!\n**ID: ``MF``\nPreço: ``4 Lilistars``\nDuração: ``5 usos``\nRequer: ``Fazenda Level 3``**",
+            "O melhor dos Fertilizantes, garante um aumento de ``25%`` a ``50%`` em sua colheita!\n**ID: ``PF``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Fazenda Level 3``**"
+        ],
+        "baits": [
+            "<:baits_1:621906636906430500> Iscas Básico",
+            "<:baits_2:621906661388320771> Iscas Médio",
+            "<:baits_3:621906687707709451> Iscas Prêmio",
+            "Uma caixa de pesca básica com algumas iscas, garante melhoria de ``5%`` a ``10%`` em sua pesca!\n**ID: ``BB``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Pescaria Level 2``**",
+            "Uma caixa de pesca com iscas razoáveis, garante melhoria de ``10%`` a ``20%`` em sua pesca!\n**ID: ``MB``\nPreço: ``4 Lilistars``\nDuração: ``4 usos``\nRequer: ``Pescaria Level 3``**",
+            "As melhores iscas para se atrair os peixes, garante melhoria de ``15%`` a ``30%`` em sua pesca!\n**ID: ``PB``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Pescaria Level 3``**"
+        ],
+        "energetic": [
+            "<:energetic_1:621908867193896980> Energético Básico",
+            "<:energetic_2:621908872638234635> Energético Médio",
+            "<:energetic_3:621908875829968897> Energético Prêmio",
+            "Um energético simples, te ajudará em sua mineração garantindo desempenho de ``5%`` a ``10%``!\n**ID: ``BE``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Mineração Level 2``**",
+            "Um energético melhorado que aumenta seu desempenho em ``10%`` a ``15%``!\n**ID: ``ME``\nPreço: ``4 Lilistars``\nDuração: ``4 usos``\nRequer: ``Mineração Level 3``**",
+            "O energético poderoso que trará muita energia para suas explorações, garante melhoria de ``15%`` a ``25%``!\n**ID: ``PE``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Mineração Level 3``**"
+        ]
+    },
+    "market": {
+        "description": "Compre alguns produtos especiais neste mercado!",
+        "error": "digite corretamente o ID produto que deseja comprar!",
+        "information": "\\📌 `Lista de Produtos:` **{{ prefix }}list**",
+        "noMoney": "você não possui valor nescessário para esta compra!",
+        "success": "\\🏪 Comprado com sucesso!"
+    },
+    "sell": {
+        "description": "Venda o que foi produzido para ganhar dinheiro",
+        "information": "\\📌 `Preço:` **{{ prefix }}table**",
+        "noStorage": "você não possui recursos para venda!",
+        "success": "\\💰 Vendido com sucesso!"
+    },
+    "storage": {
+        "description": "Para atualizar o level de um armazenamento",
+        "usage": "<local>",
+        "information": "\\📌 `Locais:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**\n\\📌 `Preço:` **{{ prefix }}table**"
+    },
+    "table": {
+        "description": "Visualizar uma tabela completa dos preços de recursos e melhorias",
+        "division": "Quantidade dividida por",
+        "multi": "Quantia multiplicada por",
+        "storage": "Level atual multiplicado por",
+        "desblock": {
+            "fishing": "Desbloqueado no level `5` da Fazenda",
+            "mining": "Desbloqueado no level `5` da Pescaria"
+        }
+    },
+    "upgrade": {
+        "description": "Para atualizar o level de um local",
+        "usage": "<local>",
+        "information": "\\📌 `Locais:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**\n\\📌 `Preço:` **{{ prefix }}table**",
+        "placeNoExist": "informe o local correto que você quer fazer esta melhoria!",
+        "maxLevel": "você já esta no level máximo neste local",
+        "noMoney": "você não tem dinheiro suficiente para fazer esta melhoria! Lhe falta: ${{- remainder }}.",
+        "success": "⚙ Level {{- level }}, melhorado com sucesso!",
+        "protection": "\\🌳 Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``market``, os preços estão no comando ``list``",
+        "job": "\\💼 Parábens sua economia está crescendo bem, agora você poderá se expecializar em uma profissão, e assim ganhar bêneficios dela!\n\nUse comando ``job`` para ajustar sua profissão, os trabalhos e detalhes use ``job list``",
+        "unlock": {
+            "fishing": "Parabéns, você desbloqueou um novo local! Agora pegue sua vara de pesca e vamos pescar! \\⛵",
+            "mining": "Parabéns, você desbloqueou um novo local! Agora pegue sua picareta e vamos minerar! \\⛏"
+        }
+    },
+    "box": {
+        "description": "Comprar caixas para abrir e ganhar prêmios!",
+        "usage": "<nome da caixa>",
+        "error": "digite a caixa que deseja comprar!",
+        "information": "\\📌 `Caixas`: **Common | Rare | Epic | Legendary**",
+        "noMoney": "você não possui dinheiro suficiente para esta compra!",
+        "success": "{{- emoji }} Comprado com sucesso!"
+    },
+    "daily": {
+        "description": "Uma lilistar que poderá pegar a cada 20 horas! Poderá comprar coisas especiais com estas lilistars",
+        "cooldownMessage": "bônus diário já foi resgatado! aguarde `{{ time }}` para pegar novamente.",
+        "information": "\\📌 `Tempo:` **20 horas**",
+        "success": "\\⭐ {{ count }} Lilistar diário resgatado com sucesso!",
+        "success_plural": "\\⭐ {{ count }} Lilistars diários resgatados com sucesso!"
+    },
+    "vote": {
+        "description": "Ganhe lilistars votando no bot! Essas lilistars poderão ser gastos comprando produtos ou boosters no mercado!",
+        "cooldownMessage": "lilistars por voto já foi resgatado! aguarde `{{ time }}` para pegar novamente.",
+        "information": "\\📌 `Tempo:` **13 horas**",
+        "noVoted": "\\💖 vote em mim e digite novamente este comando, você ganhará lilistars para gastar no comando ``market``, mais detalhes dos produtos use o comando ``list``, você pode ganhar essa recompensa a cada 13 horas!\nhttps://botsparadiscord.xyz/bots/548862902078275605/votar",
+        "success": "\\👍 votado com sucesso, obrigado pelo seu apoio!"
+    },
+    "blazon": {
+        "description": "Adicione um brasão a sua Guilda",
+        "usage": "<imagem ou url>",
+        "error": "digite corretamente a url da imagem do seu brasão",
+        "information": "\\📌 `Formato:` **png, jpg**",
+        "fileType": "formato do arquivo não aceito, envie em ``png`` ou ``jpg`` (png animado também não é aceito)!",
+        "inVerifc": "brasão enviado anteriormente ainda esta em verificação, por favor aguarde antes de enviar outro.",
+        "success": "\\📷 sua imagem foi enviada para aprovação, em breve irá aparecer no perfil de sua Guilda!"
+    },
+    "delete": {
+        "description": "Deletar sua Guilda (ao executar você confirma que deseja isso, esta ação é irreversível!)",
+        "success": "\\💥 Guilda deletada com sucesso!"
+    },
+    "description": {
+        "description": "Altere a descrição de sua Guilda",
+        "usage": "<nova descrição>",
+        "error": "digite a descrição para sua Guilda!",
+        "limit": "sua descrição excede o limite de caracteres. **[60]**",
+        "success": "\\📨 Descrição alterada com sucesso!"
+    },
+    "invite": {
+        "description": "Crie ou remova um convite em sua Guilda!",
+        "usage": "<ação> <@usuário | id do usuário>",
+        "information": "\\📌 `Ações:` **[create, delete, list]**",
+        "notPrivate": "este comando é destinado a Guildas privadas, outros usuários atualmente podem entrar sem convite em sua Guilda!",
+        "already": "este usuário já foi convidado anteriormente para esta Guilda!",
+        "limit": "limite de convites nesta Guilda foi atingido, limpe-os para criar outro!",
+        "noInvited": "convite não foi encontrado ou já foi removido anteriormente!",
+        "requireMention": "Mencione o usuário que quer convidar ou remover da lista!",
+        "added": "\\📧 Convite adicionado com sucesso! usuário poderá entrar em sua Guilda usando o comando ``join``",
+        "removed": "\\📧 Convite removido com sucesso!",
+        "noInvites": "Nenhum convite criado!",
+        "noList": "Esse usuário não está na sua lista de convidados!",
+        "notAction": "digite a ação corretamente para o comando ser executado! `[create, delete, list]`"
+    },
+    "kick": {
+        "description": "Expulse um membro de sua Guilda!",
+        "usage": "<id do usuário>",
+        "error": "digite o id do usuário corretamente, para expulsa-lo de sua Guilda",
+        "self": "você não pode expulsar a si mesmo, caso queira sair de sua Guilda, use o comando ``leave``",
+        "owner": "você não pode expulsar o dono desta Guilda",
+        "mod": "você não pode expulsar outros moderadores",
+        "member": "membro não encontrado em sua Guilda!",
+        "success": "\\❌ Membro foi expulso com sucesso de sua Guilda!"
+    },
+    "levelup": {
+        "description": "Evolua o nível de sua Guilda",
+        "noMoney": "sua Guilda não possui a quantia de dinheiro necessária para aumentar o level!",
+        "success": "\\🏰 Level {{- level }}, aumentado com sucesso!"
+    },
+    "moderator": {
+        "description": "Adicione ou remova o cargo de moderador de um Membro!",
+        "usage": "<add | remove> <@usuário | id do usuário>",
+        "userInGuild": "usuário precisa ser membro de sua Guilda!",
+        "already": "este usuário já é moderador desta Guilda!",
+        "limit": "sua Guilda já atingiu o máximo de moderadores!",
+        "notMod": "Esse usuário não é um moderador!",
+        "added": "\\🎩 Moderador adicionado com sucesso!",
+        "removed": "\\🎩 Moderador removido com sucesso!"
+    },
+    "name": {
+        "description": "Altere o Nome de sua Guilda",
+        "usage": "<novo Nome>",
+        "success": "\\📝 Nome definido com sucesso!"
+    },
+    "private": {
+        "description": "Torne sua Guilda privada ou pública",
+        "true": "\\🔐 Agora sua Guilda é privada, somente membros que você convidar poderam entrar!",
+        "false": "\\🔓 Agora sua Guilda é pública, qualquer usuário poderá entrar!"
+    },
+    "view": {
+        "description": "Liste os dados de sua Guilda",
+        "usage": "<invites | moderators | members>",
+        "error": "digite uma categoria correta! ``[invites, moderators, members]``",
+        "information": "\\📌 `Opções:` **invites | moderators | members**",
+        "success": "\\📑 Todos os {{- category }}!"
+    },
+    "collaboration": {
+        "description": "Ranking de usuários que mais contribuíram na Guilda com dinheiro!",
+        "usage": "[id da Guilda]",
+        "success": "\\🏆 Ranking de Colaboradores!"
+    },
+    "contribute": {
+        "description": "Contribua para Guilda doando dinheiro",
+        "usage": "<valor>",
+        "error": "digite o valor corretamente para fazer esta contribuição",
+        "noMoney": "você não possui esse valor, digite um valor válido para sua contribuição",
+        "success": "\\💰 Você acabou de contribuir **${{ value }}**!\n`total de contribuição: ${{ total }}`"
+    },
+    "createguild": {
+        "description": "Crie uma Guilda, a evolua, chame membros e ganhe muitos beneficios!",
+        "usage": "<nome da Guilda>",
+        "error": "digite o nome para sua nova Guilda",
+        "already": "você já esta em uma Guilda, saia primeiro para criar uma!",
+        "enoughMoney": "você não possui dinheiro suficiente para criar a Guilda",
+        "limit": "este nome é muito grande, excedendo o limite. **[25]**",
+        "reserved": "este nome é reservado pelo Bot, porfavor utilize outro!",
+        "success": "\\🏰 Sua Guilda foi criada com sucesso!"
+    },
+    "guild": {
+        "description": "Veja dos dados de uma Guilda!",
+        "usage": "[@usuário]",
+        "notDesc": "Não possui descrição!",
+        "success": "\\🏰 Informações da Guilda!",
+        "name": "Nome",
+        "owner": "Dono",
+        "members": "Members",
+        "guild": "Guilda",
+        "createdAt": "Criado em"
+    },
+    "join": {
+        "description": "Torne-se membro de uma Guilda e evolua junto a ela!",
+        "usage": "<id da Guilda>",
+        "error": "digite corretamente o ID da Guilda que deseja entrar!",
+        "already": "você já esta em uma Guilda, saia primeiro para se juntar em uma nova Guilda!",
+        "private": "essa Guilda é privada, para entrar você precisa ser convidado!",
+        "limit": "limite de membros na Guilda foi já foi atingido!",
+        "success": "{{- user }}, \\🎓 Bem vindo a Guilda **{{- name }}**!"
+    },
+    "leave": {
+        "description": "Abandone a sua Guilda atual",
+        "noMembers": "sua Guilda não possui outros membros, delete para sair!",
+        "success": "\\🎒 Saiu com sucesso da Guilda!"
+    },
+    "months": {
+        "description": "Veja a duração das estações e os efeitos que ela causa em sua produção.",
+        "title": "__**ESTAÇÕES DO ANO**__",
+        "duration": "Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são ``fictícias``, feitas para serem usadas dentro do Bot.",
+        "increase": "aumentará {{- num }}% em sua produção.",
+        "decrease": "diminuirá {{- num }}% em sua produção.",
+        "season": "Para ver a estação atual, use {{- prefix }}season",
+        "success": "\\☁ Todas as durações e efeitos das estações!"
+    },
+    "season": {
+        "description": "Mostra a Estação atual.",
+        "current": "Estação atual",
+        "next": "Próxima Estação"
+    },
+    "farm": {
+        "description": "Veja o mapa de sua fazenda ou de outro usuário.",
+        "usage": "[@usuário]",
+        "success": "\\🌳 Fazenda de {{- name }}"
+    },
+    "fishing": {
+        "description": "Veja o mapa de sua pescaria ou de outro usuário.",
+        "usage": "[@usuário]",
+        "success": "\\⛵ Pescaria de {{- name }}"
+    },
+    "give": {
+        "description": "Dê dinheiro a outros usuários ou amigos!",
+        "usage": "<valor> <@usuário>",
+        "error": "digite o valor e mencione o usuário a quem deseja dar o dinheiro!",
+        "noValue": "digite um valor correto, acima de ${{ min }}!",
+        "noUser": "mencione o usuário a que quer dar o dinheiro!",
+        "overhalf": "você não pode dar mais da metade do que possui a outro usúario!",
+        "cooldownMessage": "você já deu dinheiro a um usúario, aguarde `{{ time }}` para fazer isto novamente!",
+        "success": "{{- Rname }}, {{- Gname }} lhe deu ``${{ money }}``!\n**Taxa: `{{ tax }}%`**\n**Total recebido: `${{ received }}`**"
+    },
+    "info": {
+        "description": "Defina uma frase que irá aparecer em seus perfis dentro do bot.",
+        "usage": "<frase>",
+        "error": "digite a frase que deseja que apareça em seu perfil!",
+        "information": "\\📌 `Limite:` **45 caracteres.**",
+        "limit": "sua frase excede o limite de caracteres. ``[45]``",
+        "success": "Sua frase foi definida com sucesso!"
+    },
+    "leaderboard": {
+        "description": "Classificação dos 10 usuários que mais possuem o recurso!",
+        "error": "digite o recurso corretamente!",
+        "usage": "<recurso | armazenamento>",
+        "information": "\\📌 `Recursos:` **\\💰 Money | \\⭐ Lilistar**\n\\📌 `Armazenamentos:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**",
+        "noPage": "não foi possível encontrar usuários suficientes para criar esta página!",
+        "success": "\\🏆 Top 10 em {{ resource }}!"
+    },
+    "job": {
+        "error": "digite uma profissão válida! ``[Farmer, Fisher ou Miner]``",
+        "information": "\\📌 `:` ****",
+        "noMoney": "não possui dinheiro suficiente para mudar sua profissão!",
+        "already": "esta já é sua profissão!",
+        "farmer": "**Nome: ``Farmer``\nBenefícios: ``Espantalho, Cerca e Fertilizante Básico são ilimitados!``**",
+        "fisher": "**Nome: ``Fisher``\nBenefícios: ``Iscas Básico é ilimitado``**",
+        "miner": "**Nome: ``Miner``\nBenefícios: ``Energético Básico é ilimitado``**",
+        "list": "\\🧤 Todas as profissões e seus benefícios!",
+        "success": "\\🧤 Profissão alterada com sucesso! Agora você é {{- job }}!"
+    },
+    "mining": {
+        "description": "Veja o mapa de sua mineração ou de outro usuário.",
+        "usage": "[@usuário]",
+        "success": "\\⛏ Mineração de {{- name }}"
+    },
+    "profile": {
+        "description": "Perfil com as informações de um usuário.",
+        "usage": "[@usuário]",
+        "noPhrase": "Não possui descrição. use comando ``info`` para definir esta informação.",
+        "success": "\\⭐ Perfil de {{- name }}!"
+    },
+    "stats": {
+        "description": "Visualize como estão seus recursos.",
+        "usage": "[local] [@usuário]",
+        "information": "\\📌 `Locais:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**",
+        "noPlace": "digite um local correto para visualizar os recursos!",
+        "place": "Para ver sua {{- place }} use {{- command }}",
+        "production": "{{- generation }}/hr, máximo {{- max }} horas",
+        "success": "\\📊 Recursos de {{- name }}!"
+    }
+  }
