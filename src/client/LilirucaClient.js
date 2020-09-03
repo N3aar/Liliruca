@@ -64,10 +64,9 @@ class LilirucaClient extends AkairoClient {
       inhibitorHandler: this.inhibitorHandler
     })
 
-
-    for (const type of ['command', 'listener', 'inhibit']) {
-      this[`${type}Handler`].loadAll()
-    }
+    this.commandHandler.loadAll()
+    this.listenerHandler.loadAll()
+    this.inhibitHandler.loadAll()
 
     return this
   }

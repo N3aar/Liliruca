@@ -1,11 +1,9 @@
-const QuickLRU = require('quick-lru')
-
 class LilirucaCollection {
   /**
    * @param {number} maxSize Quantidade máxima de entidades que será armazenada em cache.
    */
   constructor (maxSize = 100) {
-    this.items = new QuickLRU({ maxSize })
+    this.items = new Map()
   }
 
   /**

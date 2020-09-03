@@ -12,13 +12,13 @@ const TEAM_MEMBER_TAGS = {
 
 const SEASONS_EFFECT = {
   DECREASE: 'decrease',
-  INCREASE: 'increase',
+  INCREASE: 'increase'
 }
 
 const PLACE_NAMES = {
   FARM: 'farm',
   FISHING: 'fishing',
-  MINING: 'mining',
+  MINING: 'mining'
 }
 
 const SEASON_NAMES = {
@@ -55,13 +55,13 @@ module.exports = {
     },
     { name: 'Ichi', tags: [TEAM_MEMBER_TAGS.FRONT_END], joined: 1553990400000, status: TEAM_MEMBER_STATUS.ACTIVE },
     { name: 'Tsugami', tags: [TEAM_MEMBER_TAGS.BACK_END], joined: 1557273600000, status: TEAM_MEMBER_STATUS.ACTIVE },
-    { name: 'Derpy', tags: [TEAM_MEMBER_TAGS.BACK_END], joined: 1586995200000, status:  TEAM_MEMBER_STATUS.ACTIVE }
+    { name: 'Derpy', tags: [TEAM_MEMBER_TAGS.BACK_END], joined: 1586995200000, status: TEAM_MEMBER_STATUS.ACTIVE }
   ],
   SEASONS_EFFECTS: {
     [SEASON_NAMES.SPRING]: {
       [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.DECREASE, num: 10 },
       [PLACE_NAMES.FISHING]: { eff: SEASONS_EFFECT.DECREASE, num: 15 },
-      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.INCREASE, num: 5 },
+      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.INCREASE, num: 5 }
     },
     [SEASON_NAMES.SUMMER]: {
       [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.INCREASE, num: 15 },
@@ -71,12 +71,12 @@ module.exports = {
     [SEASON_NAMES.AUTUMN]: {
       [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.INCREASE, num: 20 },
       [PLACE_NAMES.FISHING]: { eff: SEASONS_EFFECT.INCREASE, num: 15 },
-      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.DECREASE, num: 15 },
+      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.DECREASE, num: 15 }
     },
     [SEASON_NAMES.WINTER]: {
       [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.DECREASE, num: 25 },
       [PLACE_NAMES.FISHING]: { eff: SEASONS_EFFECT.DECREASE, num: 20 },
-      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.INCREASE, num: 30 },
+      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.INCREASE, num: 30 }
     }
   },
   EMBED_COLORS: {
@@ -93,23 +93,23 @@ module.exports = {
     [PLACE_NAMES.FARM]: {
       [BOOSTER_TYPES.BASIC]: { min: 5, max: 25 },
       [BOOSTER_TYPES.MEDIUM]: { min: 15, max: 35 },
-      [BOOSTER_TYPES.PREMIUM]: { min: 25, max: 50 },
+      [BOOSTER_TYPES.PREMIUM]: { min: 25, max: 50 }
     },
     [PLACE_NAMES.FISHING]: {
       [BOOSTER_TYPES.BASIC]: { min: 5, max: 10 },
       [BOOSTER_TYPES.MEDIUM]: { min: 10, max: 20 },
-      [BOOSTER_TYPES.PREMIUM]: { min: 15, max: 30 },
+      [BOOSTER_TYPES.PREMIUM]: { min: 15, max: 30 }
     },
     [PLACE_NAMES.MINING]: {
       [BOOSTER_TYPES.BASIC]: { min: 5, max: 10 },
       [BOOSTER_TYPES.MEDIUM]: { min: 10, max: 15 },
-      [BOOSTER_TYPES.PREMIUM]: { min: 15, max: 25 },
+      [BOOSTER_TYPES.PREMIUM]: { min: 15, max: 25 }
     }
   },
   PRODUCTION_LIMIT_BY_LEVEL: {
-    [PLACE_NAMES.FARM]: [, 8, 10, 12, 15, 17, 19, 21, 23, 25, 28],
-    [PLACE_NAMES.FISHING]: [, 7, 9, 11, 14, 16, 18, 20, 22, 24, 27],
-    [PLACE_NAMES.MINING]: [, 6, 8, 10, 13, 15, 17, 19, 21, 23, 26]
+    [PLACE_NAMES.FARM]: [0, 8, 10, 12, 15, 17, 19, 21, 23, 25, 28],
+    [PLACE_NAMES.FISHING]: [0, 7, 9, 11, 14, 16, 18, 20, 22, 24, 27],
+    [PLACE_NAMES.MINING]: [0, 6, 8, 10, 13, 15, 17, 19, 21, 23, 26]
   },
   STORAGE_PRICES: {
     [PLACE_NAMES.FARM]: 150,
@@ -131,6 +131,6 @@ module.exports = {
     SEASON_NAMES.SPRING,
     SEASON_NAMES.SUMMER,
     SEASON_NAMES.AUTUMN,
-    SEASON_NAMES.WINTER,
+    SEASON_NAMES.WINTER
   ]
 }

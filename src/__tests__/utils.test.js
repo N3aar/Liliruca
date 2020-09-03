@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 const Util = require('../utils/util')
 
 describe('Test Season of Months', () => {
