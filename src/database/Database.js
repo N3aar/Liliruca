@@ -9,7 +9,7 @@ class MongoDatabase {
     this.guilds = new BDCollection(GuildModel)
   }
 
-  async connect (uri = process.env.DATABASE_STRING) {
+  async connect (uri = process.env.MONGO_URI) {
     await connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true
