@@ -48,7 +48,7 @@ module.exports = {
   TEAM: [
     {
       name: 'Near',
-      tags: [TEAM_MEMBER_TAGS.OWNER, TEAM_MEMBER_TAGS.DESIGNER, TEAM_MEMBER_TAGS.BACK_END],
+      tags: [TEAM_MEMBER_TAGS.OWNER, TEAM_MEMBER_TAGS.BACK_END],
       joined: 1550880000000,
       status: TEAM_MEMBER_STATUS.ACTIVE
     },
@@ -119,6 +119,28 @@ module.exports = {
     [PLACE_NAMES.FARM]: 480,
     [PLACE_NAMES.FISHING]: 90,
     [PLACE_NAMES.MINING]: 120
+  },
+  SEASONS_PERCENTAGE: {
+    [SEASON_NAMES.SPRING]: {
+      [PLACE_NAMES.FARM]: 0.9,
+      [PLACE_NAMES.FISHING]: 0.85,
+      [PLACE_NAMES.MINING]: 1.05
+    },
+    [SEASON_NAMES.SUMMER]: {
+      [PLACE_NAMES.FARM]: 1.15,
+      [PLACE_NAMES.FISHING]: 1.2,
+      [PLACE_NAMES.MINING]: 0.8
+    },
+    [SEASON_NAMES.AUTUMN]: {
+      [PLACE_NAMES.FARM]: 1.2,
+      [PLACE_NAMES.FISHING]: 1.15,
+      [PLACE_NAMES.MINING]: 0.85
+    },
+    [SEASON_NAMES.WINTER]: {
+      [PLACE_NAMES.FARM]: 0.75,
+      [PLACE_NAMES.FISHING]: 0.8,
+      [PLACE_NAMES.MINING]: 1.3
+    }
   },
   SEASONS_COLORS: {
     [SEASON_NAMES.SPRING]: '#fe8afa',

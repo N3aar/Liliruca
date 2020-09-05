@@ -10,21 +10,15 @@ class DBCollection extends LilirucaCollection {
     if (this.items.has(_id)) {
       return this.items.get(_id)
     }
-
-    let data = await this.model.findById(_id, projection)
-    if (!data) data = await this.model.create({ _id })
-
+    const data = await this.model.findById(_id, projection) || await this.model.create({ _id })
     this.items.set(_id, data)
     return data
   }
 
   async setValues (data, newData) {
-    if (typeof data === 'string') data = await this.get(data)
-
     for (const index in newData) {
       data[index] = newData[index]
     }
-
     data.save()
   }
 

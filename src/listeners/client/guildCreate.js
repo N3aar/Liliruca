@@ -11,9 +11,8 @@ class GuildCreateListener extends Listener {
 
   exec (guild) {
     const guildsWeebhook = new WebhookClient(process.env.WK_GUILDS_ID, process.env.WK_GUILDS_TOKEN)
-
-    if (!guildsWeebhook) return
-    const embed = new RichEmbed()
+    if (guildsWeebhook) {
+      const embed = new RichEmbed()
         .setColor('#47d350')
         .setThumbnail(guild.iconURL)
         .addField('Name', guild.name, true)
@@ -24,6 +23,7 @@ class GuildCreateListener extends Listener {
         .setTimestamp(guild.createdAt)
 
       guildsWeebhook.send(this.guilds.size, embed)
+    }
   }
 }
 

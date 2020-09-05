@@ -66,7 +66,7 @@ class LilirucaClient extends AkairoClient {
 
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
-    this.inhibitHandler.loadAll()
+    this.inhibitorHandler.loadAll()
 
     return this
   }
