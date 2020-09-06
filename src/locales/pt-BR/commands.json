@@ -60,7 +60,7 @@
         "calc": "Calculando ping...",
         "latency": "Latência",
         "ping": "Ping",
-        "apiLatency": "Latencia da API",
+        "apiLatency": "Latência da API",
         "heartbeat": "Heartbeat",
         "success": "\\🔌 Dados de conexão do Bot!"
     },

@@ -51,18 +51,57 @@ module.exports = {
     spring: '🌺',
     summer: '☀️',
     autumn: '🍂',
-    winter: '❄️'
+    winter: '❄️',
+    key: '🔑',
+    antenna: '📡',
+    lamp: '💡',
+    beatingHeart: '💓',
+    scarecrow: '<:scarecrow:698353463716741182>',
+    fence: '<:fence:698353484017303603>',
+    fertilizer: [
+      '<:fertilizer_1:698353399871176704>',
+      '<:fertilizer_2:698353438001594418>',
+      '<:fertilizer_3:698353438093869076>'
+    ],
+    worms: [
+      '<:worms_1:698353333672607744>',
+      '<:worms_2:698353363971997756>',
+      '<:worms_3:698353379599974480>'
+    ],
+    energitc: [
+      '<:energetic_1:698353310062870590>',
+      '<:energetic_2:698353310071259207>',
+      '<:energetic_3:698353310289100903>'
+    ]
   },
   TEAM: [
     {
       name: 'Near',
+      emoji: '<:near:699049733238554675>',
       tags: [TEAM_MEMBER_TAGS.OWNER, TEAM_MEMBER_TAGS.BACK_END],
       joined: 1550880000000,
       status: TEAM_MEMBER_STATUS.ACTIVE
     },
-    { name: 'Ichi', tags: [TEAM_MEMBER_TAGS.FRONT_END], joined: 1553990400000, status: TEAM_MEMBER_STATUS.ACTIVE },
-    { name: 'Tsugami', tags: [TEAM_MEMBER_TAGS.BACK_END], joined: 1557273600000, status: TEAM_MEMBER_STATUS.ACTIVE },
-    { name: 'Derpy', tags: [TEAM_MEMBER_TAGS.BACK_END], joined: 1586995200000, status: TEAM_MEMBER_STATUS.ACTIVE }
+    {
+      name: 'Ichi',
+      emoji: '<:ichi:699049751038918748>',
+      tags: [TEAM_MEMBER_TAGS.FRONT_END],
+      joined: 1553990400000,
+      status: TEAM_MEMBER_STATUS.ACTIVE
+    },
+    {
+      name: 'Tsugami',
+      emoji: '<:tsugami:699049764234461304>',
+      tags: [TEAM_MEMBER_TAGS.BACK_END],
+      joined: 1557273600000,
+      status: TEAM_MEMBER_STATUS.ACTIVE
+    },
+    {
+      name: 'Derpy',
+      tags: [TEAM_MEMBER_TAGS.BACK_END],
+      joined: 1586995200000,
+      status: TEAM_MEMBER_STATUS.ACTIVE
+    }
   ],
   SEASONS_EFFECTS: {
     [SEASON_NAMES.SPRING]: {
