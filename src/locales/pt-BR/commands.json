@@ -55,6 +55,14 @@
     "hour": {
         "description": "Veja qual a hora atual seguindo a configuração deste servidor!"
     },
+    "calculate": {
+        "description": "Calcule o preço para melhorar seu armazenamento!",
+        "usage": "<local> <primeiro valor> <segundo valor>",
+        "value": "\\🧪 Valor",
+        "result": "\\✔️ Resultado",
+        "invalidPlace": "Digite um local válido!",
+        "success": "\\🧮 Cálculo concluído com sucesso!"
+    },
     "ping": {
         "description": "Dados de conexão do bot com os servidores.",
         "calc": "Calculando ping...",
@@ -66,13 +74,7 @@
     },
     "team": {
         "description": "Equipe que desenvolve o bot, e o torna cada vez mais incrivel!",
-        "success": "\\🔑 Equipe de desenvolvimento!",
-        "team": [
-            { "name": "Near", "desc": "**\\👑 Criador | \\📘 Back-end | \\🎨 Designer\n\\📅 Entrou em: 23/02/2019**" },
-            { "name": "Ichi", "desc": "**\\📖 Front-end\n\\📅 Entrou em: 31/03/2019**" },
-            { "name": "Tsugami", "desc": "**\\📕 Back-end\n\\📅 Entrou em: 08/04/2019**" },
-            { "name": "Derpy", "desc": "**\\📗 Back-end\n\\📅 Entrou em: 16/08/2019**" }
-        ]
+        "success": "\\🔑 Equipe de desenvolvimento!"
     },
     "collect": {
         "description": "Para coletar todos os seus recursos produzidos",

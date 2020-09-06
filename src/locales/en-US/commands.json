@@ -52,6 +52,14 @@
     "hour": {
         "description": "Look the current time following the configuration of this guild!"
     },
+    "calculate": {
+        "description": "Calculate price to upgrade your storage!",
+        "usage": "<place> <first value> <second value>",
+        "value": "\\🧪 Value",
+        "result": "\\✔️ Result",
+        "invalidPlace": "Type a valid place!",
+        "success": "\\🧮 Calculation completed successfully!"
+    },
     "ping": {
         "description": "Bot connection data with the servers.",
         "calc": "Calculating ping...",

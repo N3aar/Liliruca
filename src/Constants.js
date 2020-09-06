@@ -56,6 +56,7 @@ module.exports = {
     antenna: '📡',
     lamp: '💡',
     beatingHeart: '💓',
+    abacus: '🧮',
     scarecrow: '<:scarecrow:698353463716741182>',
     fence: '<:fence:698353484017303603>',
     fertilizer: [
