@@ -62,6 +62,7 @@
         "legendary": "Lendária"
     },
     "seasons": {
+       "current": "Estação Atual",
        "spring": "Primavera",
        "summer": "Verão",
        "autumn": "Outono",

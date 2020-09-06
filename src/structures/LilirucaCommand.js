@@ -12,7 +12,9 @@ class LilirucaCommand extends Command {
   constructor (id, options) {
     options.aliases = [...(options.aliases || []), id]
 
-    if (!options.emoji) throw new Error(`${id} command: Emoji não foi definido.`)
+    if (!options.emoji) {
+      throw new Error(`${id} command: Emoji não foi definido.`)
+    }
 
     super(id, options)
 

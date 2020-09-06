@@ -45,6 +45,13 @@ module.exports = {
   DEFAULT_LANGUAGE: 'pt-BR',
   DEFAULT_PREFIX: process.env.BOT_PREFIX || '>',
   PREFIX_MAX_LIMIT: 5,
+  EMOJIS: {
+    month: '📅',
+    spring: '🌺',
+    summer: '☀️',
+    autumn: '🍂',
+    winter: '❄️'
+  },
   TEAM: [
     {
       name: 'Near',

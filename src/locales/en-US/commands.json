@@ -306,10 +306,9 @@
     "months": {
         "description": "Look duration of the seasons and the effects it has on your production.",
         "duration": "January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, made to be used inside the Bot.",
-        "increase": "will increase {{- num }}% in your production.",
-        "decrease": "will decrease {{- num }}% in your production.",
-        "success": "\\☁ All season durations and effects!",
-        "season": "To view the current season, use {{- prefix }}season"
+        "increase": "will increase {{- value }}% in your production.",
+        "decrease": "will decrease {{- value }}% in your production.",
+        "success": "\\☁ All season durations and effects!"
     },
     "season": {
         "description": "Show the current season",

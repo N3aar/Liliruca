@@ -312,9 +312,8 @@
         "description": "Veja a duração das estações e os efeitos que ela causa em sua produção.",
         "title": "__**ESTAÇÕES DO ANO**__",
         "duration": "Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são ``fictícias``, feitas para serem usadas dentro do Bot.",
-        "increase": "aumentará {{- num }}% em sua produção.",
-        "decrease": "diminuirá {{- num }}% em sua produção.",
-        "season": "Para ver a estação atual, use {{- prefix }}season",
+        "increase": "aumentará {{- value }}% em sua produção.",
+        "decrease": "diminuirá {{- value }}% em sua produção.",
         "success": "\\☁ Todas as durações e efeitos das estações!"
     },
     "season": {

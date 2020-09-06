@@ -82,7 +82,9 @@ class LilirucaClient extends AkairoClient {
 
   addTypes () {
     this.commandHandler.resolver.addType('place', (m, phrase) => {
-      if (!phrase) return null
+      if (!phrase) {
+        return null
+      }
       const resolved = phrase.toLowerCase()
       if (['farm', 'fm', 'fazenda'].includes(resolved)) return 'farm'
       if (['fishing', 'fs', 'pescaria'].includes(resolved)) return 'fishing'
