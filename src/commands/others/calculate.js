@@ -1,4 +1,5 @@
-const { LilirucaCommand, LilirucaEmbed } = require('@structures')
+const LilirucaCommand = require('@structures/LilirucaCommand')
+const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { STORAGE_PRICES, EMOJIS } = require('@constants')
 const { Argument } = require('discord-akairo')
 

@@ -57,6 +57,7 @@ module.exports = {
     lamp: '💡',
     beatingHeart: '💓',
     abacus: '🧮',
+    wrench: '🔧',
     scarecrow: '<:scarecrow:698353463716741182>',
     fence: '<:fence:698353484017303603>',
     fertilizer: [
@@ -128,6 +129,7 @@ module.exports = {
   },
   EMBED_COLORS: {
     default: process.env.EMBED_COLOR_DEFAULT || '#ff9900',
+    success: process.env.EMBED_COLOR_SUCCESS || '#0aa329',
     error: process.env.EMBED_COLOR_ERROR || '#db3939',
     warn: process.env.EMBED_COLOR_WARN || '#ebe728'
   },

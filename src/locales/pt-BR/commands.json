@@ -1,16 +1,16 @@
 {
-  "setlanguage": {
-    "description": "Altere o idioma dos comandos, assim ficará mais simples para seus membros interagirem comigo!",
-    "usage": "<nova linguagem>",
-    "args": {
-      "language": {
-        "retry": "me informe uma lingua correta! opções: {{ languages }}",
-        "ended": "lingua invalida, olhe minhas opções e tente executar o comando novamente!"
-      }
+    "setlanguage": {
+        "description": "Altere o idioma dos comandos, assim ficará mais simples para seus membros interagirem comigo!",
+        "usage": "<nova linguagem>",
+        "args": {
+        "language": {
+            "retry": "me informe uma lingua correta! opções: {{ languages }}",
+            "ended": "lingua invalida, olhe minhas opções e tente executar o comando novamente!"
+        }
+        },
+        "resetLanguage": "\\💬 Linguagem resetada com sucesso para `{{ language }}`!",
+        "changedLanguage": "\\💬 Linguagem alterada com sucesso para `{{ language }}`!"
     },
-    "resetLanguage": "\\💬 Linguagem resetada com sucesso para `{{ language }}`!",
-    "changedLanguage": "\\💬 Linguagem alterada com sucesso para `{{ language }}`!"
-  },
     "setprefix": {
         "description": "Coloque um prefixo personalizado para os comandos em seu servidor, mas não esqueça de avisar os membros sobre este novo prefixo! 😉",
         "usage": "<novo prefixo>",
@@ -25,6 +25,9 @@
         "error": "digite a hora corretamente!",
         "information": "\\📌 `Formato 24h:` **5 | 13**\n\\📌 `Formato 12h:` **5am | 1pm**\n",
         "success": "\\⏰ Horário deste servidor atualizado com sucesso!"
+    },
+    "eval": {
+        "description": "Comando restrito a desenvolvedores!"
     },
     "botinfo": {
         "description": "Veja muitas informações sobre mim!",
