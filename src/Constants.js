@@ -47,6 +47,7 @@ module.exports = {
   PREFIX_MAX_LIMIT: 5,
   EMOJIS: {
     month: '📅',
+    cloud: '☁️',
     spring: '🌺',
     summer: '☀️',
     autumn: '🍂',
