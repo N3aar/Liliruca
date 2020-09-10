@@ -54,6 +54,8 @@
     "privacy": "Privacidade",
     "noMap": "Quer criar seu próprio mapa da {{- map }}? visite: -Em Breve-",
     "uses": "{{- value }} usos",
+    "scarecrow": "Espantalho",
+    "fence": "Cerca de Madeira",
     "boxes": {
         "boxes": "Caixas",
         "common": "Comum",
@@ -74,6 +76,23 @@
         "hours": "hora(s)",
         "minutes": "minuto(s)",
         "seconds": "segundo(s)"
+    },
+    "boosters": {
+        "fertilizer": {
+            "basic": "Fertilizante Básico",
+            "medium": "Fertilizante Médio",
+            "premium": "Fertilizante Prêmio"
+        },
+        "worms": {
+            "basic": "Iscas Básico",
+            "mediuem": "Iscas Médio",
+            "premium": "Iscas Prêmio"
+        },
+        "energetic": {
+            "basic": "Energético Básico",
+            "medium": "Energético Médio",
+            "premium": "Energético Prêmio"
+        }
     },
     "longTime": "Longo tempo",
     "exemples": "Exemplos",

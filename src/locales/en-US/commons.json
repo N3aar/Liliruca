@@ -53,6 +53,8 @@
     "privacy": "Privacy",
     "noMap": "Want to create your own {{- map }} map? visit: -Coming Soon-",
     "uses": "{{- value }} uses",
+    "scarecrow": "Scarecrow",
+    "fence": "Wooden Fence",
     "boxes": {
         "boxes": "Boxes",
         "common": "Common",
@@ -72,6 +74,23 @@
         "hours": "hour(s)",
         "minutes": "minute(s)",
         "seconds": "second(s)"
+    },
+    "boosters": {
+        "fertilizer": {
+            "basic": "Basic Fertilizer",
+            "medium": "Medium Fertilizer",
+            "premium": "Premium Fertilizer"
+        },
+        "worms": {
+            "basic": "Basic Baits",
+            "mediuem": "Medium Baits",
+            "premium": "Iscas Prêmio"
+        },
+        "energetic": {
+            "basic": "Basic Energetic",
+            "medium": "Medium Energetic",
+            "premium": "Premium Energetic"
+        }
     },
     "longTime": "Long time",
     "examples": "Examples",

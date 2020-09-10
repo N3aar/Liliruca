@@ -23,6 +23,18 @@ const SEASON_NAMES = {
   WINTER: 'winter'
 }
 
+const RESOURCE_NAMES = {
+  FOOD: 'food',
+  FISH: 'fish',
+  METAL: 'metal'
+}
+
+const BOOSTER_NAMES = {
+  FERTILIZER: 'fertilizer',
+  WORMS: 'worms',
+  ENERGETIC: 'energetic'
+}
+
 const BOOSTER_TYPES = {
   BASIC: 'basic',
   MEDIUM: 'medium',
@@ -37,6 +49,17 @@ module.exports = {
     [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
     [PLACE_NAMES.MINING]: ['mining', 'mn', 'mineradora']
   },
+  PLACES_RESOURCES: {
+    [PLACE_NAMES.FARM]: RESOURCE_NAMES.FOOD,
+    [PLACE_NAMES.FISHING]: RESOURCE_NAMES.FISH,
+    [PLACE_NAMES.MINING]: RESOURCE_NAMES.METAL
+  },
+  PLACES_BOOSTERS: {
+    [PLACE_NAMES.FARM]: BOOSTER_NAMES.FERTILIZER,
+    [PLACE_NAMES.FISHING]: BOOSTER_NAMES.WORMS,
+    [PLACE_NAMES.MINING]: BOOSTER_NAMES.ENERGETIC
+  },
+  RESOURCE_NAMES,
   OWNER_IDS: ['158001949415833600', '281561868844269569', '616410427794128909'],
   PLACES: Object.values(PLACE_NAMES),
   PLACE_START_LEVEL: 1,
@@ -46,6 +69,8 @@ module.exports = {
   DEFAULT_PREFIX: process.env.BOT_PREFIX || '>',
   PREFIX_MAX_LIMIT: 5,
   EMOJIS: {
+    money: '💰',
+    start: '⭐',
     month: '📅',
     cloud: '☁️',
     spring: '🌺',
@@ -53,34 +78,38 @@ module.exports = {
     autumn: '🍂',
     winter: '❄️',
     key: '🔑',
+    graph: '📊',
     antenna: '📡',
     lamp: '💡',
     beatingHeart: '💓',
     abacus: '🧮',
     wrench: '🔧',
-    FARM: '🌳',
-    FISHING: '⛵',
-    MINING: '⛏',
-    FOOD: ['🥕', '🌽', '🍅', '🍍', '🍆', '🥔', '🥒', '🥦'],
-    FISH: ['🐟', '🐠', '🦐', '🐡', '🦀', '🦑', '🐙'],
-    METAL: ['💎'],
+    farm: '🌳',
+    fishing: '⛵',
+    mining: '⛏',
+    food: ['🥕', '🌽', '🍅', '🍍', '🍆', '🥔', '🥒', '🥦'],
+    fish: ['🐟', '🐠', '🦐', '🐡', '🦀', '🦑', '🐙'],
+    metal: ['💎'],
+    storage: '📥',
+    production: '🏭',
+    produced: '📬',
     scarecrow: '<:scarecrow:698353463716741182>',
     fence: '<:fence:698353484017303603>',
-    fertilizer: [
-      '<:fertilizer_1:698353399871176704>',
-      '<:fertilizer_2:698353438001594418>',
-      '<:fertilizer_3:698353438093869076>'
-    ],
-    worms: [
-      '<:worms_1:698353333672607744>',
-      '<:worms_2:698353363971997756>',
-      '<:worms_3:698353379599974480>'
-    ],
-    energitc: [
-      '<:energetic_1:698353310062870590>',
-      '<:energetic_2:698353310071259207>',
-      '<:energetic_3:698353310289100903>'
-    ]
+    fertilizer: {
+      basic: '<:fertilizer_1:698353399871176704>',
+      medium: '<:fertilizer_2:698353438001594418>',
+      premium: '<:fertilizer_3:698353438093869076>'
+    },
+    worms: {
+      basic: '<:worms_1:698353333672607744>',
+      medium: '<:worms_2:698353363971997756>',
+      premium: '<:worms_3:698353379599974480>'
+    },
+    energetic: {
+      basic: '<:energetic_1:698353310062870590>',
+      medium: '<:energetic_2:698353310071259207>',
+      premium: '<:energetic_3:698353310289100903>'
+    }
   },
   TEAM: [
     {
@@ -112,12 +141,12 @@ module.exports = {
     }
   ],
   EMBED_COLORS: {
-    default: process.env.EMBED_COLOR_DEFAULT || '#ff9900',
-    success: process.env.EMBED_COLOR_SUCCESS || '#0aa329',
-    error: process.env.EMBED_COLOR_ERROR || '#db3939',
-    warn: process.env.EMBED_COLOR_WARN || '#ebe728'
+    default: '#ff9900',
+    success: '#0aa329',
+    error: '#db3939',
+    warn: '#ebe728'
   },
-  GENERATE: {
+  PLACE_GENERATE: {
     [PLACE_NAMES.FARM]: 80,
     [PLACE_NAMES.FISHING]: 15,
     [PLACE_NAMES.MINING]: 20
@@ -149,7 +178,7 @@ module.exports = {
     [PLACE_NAMES.FISHING]: 350,
     [PLACE_NAMES.MINING]: 550
   },
-  STORAGES: {
+  STORAGES_SIZE: {
     [PLACE_NAMES.FARM]: 480,
     [PLACE_NAMES.FISHING]: 90,
     [PLACE_NAMES.MINING]: 120

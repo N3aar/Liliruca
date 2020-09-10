@@ -71,13 +71,7 @@
     },
     "team": {
         "description": "Team that develops the bot, and makes it increasingly amazing!",
-        "success": "\\🔑 Development team!",
-        "team": [
-            { "name": "Near", "desc": "**\\👑 Creator | \\📘 Back-end | \\🎨 Designer\n\\📅 Joined at: 02/23/2019**" },
-            { "name": "Ichi", "desc": "**\\📖 Front-end\n\\📅 Joined at: 03/31/2019**" },
-            { "name": "Tsugami", "desc": "**\\📕 Back-end\n\\📅 Joined at: 04/08/2019**" },
-            { "name": "Derpy", "desc": "**\\📗 Back-end\n\\📅 Joined at: 08/16/2019**" }
-        ]
+        "success": "\\🔑 Development team!"
     },
     "collect": {
         "description": "To collect all your resources produced",
@@ -92,33 +86,22 @@
     "list": {
         "description": "List of products you can buy in the market!",
         "scarecrow": [
-            "<:srccw:621221807336194048> Scarecrow",
             "A cloth scarecrow that will protect your plantation from bird attacks!\n**ID: ``SF``\nPrice: ``$300``\nDuration: ``2 days``\nRequires: ``Farm Level 4``**"
         ],
         "fence": [
-            "<:fence:621221807927590943> Wood Fence",
             "A wooden fence that prevents wildlife from entering your plantation!\n**ID: ``FF``\nPrice: ``$300``\nDuration: ``2 days``\nRequires: ``Farm Level 4``**"
         ],
         "fertilizer": [
-            "<:fertilizer_1:621906529775517706> Basic Fertilizer",
-            "<:fertilizer_2:621906572657819648> Medium Fertilizer",
-            "<:fertilizer_3:621906604442255361> Premium Fertilizer",
             "A more basic fertilizer to help with your crop, ensures an increase of ``5%`` to ``25%``!\n**ID: ``BF``\nPrice: ``2 Lilistars``\nDuration: ``5 uses``\nRequires: ``Farm Level 2``**",
             "A medium fertilizer that ensures a reasonable increase of  ``15%`` to ``35%`` on your farm!\n**ID: ``MF``\nPrice: ``4 Lilistars``\nDuration: ``5 uses``\nRequires: ``Farm Level 3``**",
             "The best of Fertilizers, ensures a increase of ``25%`` to ``50%`` in your crop!\n**ID: ``PF``\nPrice: ``6 Lilistars``\nDuration: ``4 uses``\nRequires: ``Farm Level 3``**"
         ],
         "baits": [
-            "<:baits_1:621906636906430500> Basic Baits",
-            "<:baits_2:621906661388320771> Medium Baits",
-            "<:baits_3:621906687707709451> Premium Baits",
             "A basic fishing box with some baits, ensures improved of ``5%`` to ``10%`` in your fishing!\n**ID: ``BB``\nPrice: ``2 Lilistars``\nDuration: ``5 uses``\nRequires: ``Fishing Level 2``**",
             "A fishing box with reasonable baits, ensures improved of ``10%`` to ``20%`` in your fishing!\n**ID: ``MB``\nPrice: ``4 Lilistars``\nDuration: ``4 uses``\nRequires: ``Fishing Level 3``**",
             "The best baits for attracting fish, ensures improved of ``15%`` to ``30%`` in your fishing!\n**ID: ``PB``\nPrice: ``6 Lilistars``\nDuration: ``4 uses``\nRequires: ``Fishing Level 3``**"
         ],
         "energetic": [
-            "<:energetic_1:621908867193896980> Basic Energetic",
-            "<:energetic_2:621908872638234635> Medium Energetic",
-            "<:energetic_3:621908875829968897> Premium Energetic",
             "A simple energetic will help you in your mining, ensuring performance of ``5%`` to ``10%``!\n**ID: ``BE``\nPrice: ``2 Lilistars``\nDuration: ``5 uses``\nRequires: ``Mining Level 2``**",
             "A energetic improved that increase your performance in ``10%`` to ``15%``!\n**ID: ``ME``\nPrice: ``4 Lilistars``\nDuration: ``4 uses``\nRequires: ``Mining Level 3``**",
             "The energetic powerful that will bring a lot of energy to your explorations, ensures improved ``15%`` to ``25%``!\n**ID: ``PE``\nPrice: ``6 Lilistars``\nDuration: ``4 uses``\nRequires: ``Mining Level 3``**"

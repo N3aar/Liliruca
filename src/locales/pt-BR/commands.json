@@ -92,33 +92,22 @@
     "list": {
         "description": "Lista de produtos que você pode comprar no mercado!",
         "scarecrow": [
-            "<:srccw:621221807336194048> Espantalho",
             "Um espantalho de pano que irá proteger sua plantação de ataques de aves!\n**ID: ``SF``\nPreço: ``$300``\nDuração: ``2 dias``\nRequer: ``Fazenda Level 4``**"
         ],
         "fence": [
-            "<:fence:621221807927590943> Cerca",
             "Uma cerca de madeira que impede a entrada de animais selvagens em sua plantação!\n**ID: ``FF``\nPreço: ``$300``\nDuração: ``2 dias``\nRequer: ``Fazenda Level 4``**"
         ],
         "fertilizer": [
-            "<:fertilizer_1:621906529775517706> Fertilizante Básico",
-            "<:fertilizer_2:621906572657819648> Fertilizante Médio",
-            "<:fertilizer_3:621906604442255361> Fertilizante Prêmio",
             "Um Fertilizante mais básico para ajudar em sua colheita, garante um aumento de ``5%`` a ``25%``!\n**ID: ``BF``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Fazenda Level 2``**",
             "Um Fertilizante médio que garante aumento rázoavel de ``15%`` a ``35%`` em sua colheita!\n**ID: ``MF``\nPreço: ``4 Lilistars``\nDuração: ``5 usos``\nRequer: ``Fazenda Level 3``**",
             "O melhor dos Fertilizantes, garante um aumento de ``25%`` a ``50%`` em sua colheita!\n**ID: ``PF``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Fazenda Level 3``**"
         ],
         "baits": [
-            "<:baits_1:621906636906430500> Iscas Básico",
-            "<:baits_2:621906661388320771> Iscas Médio",
-            "<:baits_3:621906687707709451> Iscas Prêmio",
             "Uma caixa de pesca básica com algumas iscas, garante melhoria de ``5%`` a ``10%`` em sua pesca!\n**ID: ``BB``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Pescaria Level 2``**",
             "Uma caixa de pesca com iscas razoáveis, garante melhoria de ``10%`` a ``20%`` em sua pesca!\n**ID: ``MB``\nPreço: ``4 Lilistars``\nDuração: ``4 usos``\nRequer: ``Pescaria Level 3``**",
             "As melhores iscas para se atrair os peixes, garante melhoria de ``15%`` a ``30%`` em sua pesca!\n**ID: ``PB``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Pescaria Level 3``**"
         ],
         "energetic": [
-            "<:energetic_1:621908867193896980> Energético Básico",
-            "<:energetic_2:621908872638234635> Energético Médio",
-            "<:energetic_3:621908875829968897> Energético Prêmio",
             "Um energético simples, te ajudará em sua mineração garantindo desempenho de ``5%`` a ``10%``!\n**ID: ``BE``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Mineração Level 2``**",
             "Um energético melhorado que aumenta seu desempenho em ``10%`` a ``15%``!\n**ID: ``ME``\nPreço: ``4 Lilistars``\nDuração: ``4 usos``\nRequer: ``Mineração Level 3``**",
             "O energético poderoso que trará muita energia para suas explorações, garante melhoria de ``15%`` a ``25%``!\n**ID: ``PE``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Mineração Level 3``**"
