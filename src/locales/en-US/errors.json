@@ -3,7 +3,7 @@
     "clientPermissions":"I do not have permission to {{ clientPermissions }}",
     "devolperOnly": "this command is restricted to developers only!",
     "noPlace": "inform me the place you want to want to make the upgrade!",
-    "locked": "you have not unlocked this yet!",
+    "locked": "You have not unlocked this yet!",
     "commandError": "An unexpected error has occurred!",
     "userBot": "use this command only on users!",
     "notPhrase": "Without description.",

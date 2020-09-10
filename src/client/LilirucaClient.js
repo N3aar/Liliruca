@@ -1,6 +1,6 @@
 const { logger, locales } = require('../utils')
 const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo')
-const { OWNER_IDS, DEFAULT_PREFIX, PLACES_ALIASES, PLACE_NAMES } = require('../Constants')
+const { OWNER_IDS, DEFAULT_PREFIX, PLACES_ALIASES, PLACES } = require('../Constants')
 const { join } = require('path')
 const Database = require('@database/Database')
 const { LilirucaCommand } = require('@structures')
@@ -87,7 +87,7 @@ class LilirucaClient extends AkairoClient {
       }
 
       const resolved = phrase.toLowerCase()
-      for (const place of PLACE_NAMES) {
+      for (const place of PLACES) {
         if (PLACES_ALIASES[place].includes(resolved)) {
           return place
         }

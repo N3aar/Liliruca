@@ -3,7 +3,7 @@
     "clientPermissions":"Não possuo permissão de {{ clientPermissions }}",
     "devolperOnly": "este comando é restrito apenas aos desenvolvedores!",
     "noPlace": "me informe o local correto que você quer fazer esta melhoria!",
-    "locked": "você ainda não desbloqueou isso!",
+    "locked": "Você ainda não desbloqueou isso!",
     "commandError": "Ocorreu um erro inesperado!",
     "userBot": "utilize esse comando somente em usúarios!",
     "notPhrase": "Sem descrição.",

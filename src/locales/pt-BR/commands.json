@@ -376,9 +376,6 @@
     "stats": {
         "description": "Visualize como estão seus recursos.",
         "usage": "[local] [@usuário]",
-        "information": "\\📌 `Locais:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**",
-        "noPlace": "digite um local correto para visualizar os recursos!",
-        "place": "Para ver sua {{- place }} use {{- command }}",
         "production": "{{- generation }}/hr, máximo {{- max }} horas",
         "success": "\\📊 Recursos de {{- name }}!"
     }

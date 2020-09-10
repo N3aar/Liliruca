@@ -31,7 +31,7 @@ class Stats extends LilirucaCommand {
     const dataPlace = data[place]
 
     if (!dataPlace.level) {
-      return util.send()
+      return util.send(t('errors:locked'))
     }
 
     const amount = dataPlace.amount

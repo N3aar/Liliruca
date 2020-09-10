@@ -367,9 +367,6 @@
     "stats": {
         "description": "View how your resources are doing",
         "usage": "[place] [@user]",
-        "information": "\\📌 `Places:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**",
-        "noPlace": "type a correct place to view resources!",
-        "place": "To view your {{- place }} use {{- command }}",
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
         "success": "\\📊 Resources of {{- name }}"
     }
