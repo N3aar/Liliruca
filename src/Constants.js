@@ -5,14 +5,9 @@ const TEAM_MEMBER_STATUS = {
 
 const TEAM_MEMBER_TAGS = {
   OWNER: '👑 Owner',
-  DESIGNER: '🎨 Designer',
   BACK_END: '📕 Back-end',
-  FRONT_END: '📘 Front-end'
-}
-
-const SEASONS_EFFECT = {
-  DECREASE: 'decrease',
-  INCREASE: 'increase'
+  FRONT_END: '📘 Front-end',
+  DESIGNER: '🎨 Designer'
 }
 
 const PLACE_NAMES = {
@@ -37,6 +32,11 @@ const BOOSTER_TYPES = {
 module.exports = {
   SEASON_NAMES,
   PLACE_NAMES,
+  PLACES_ALIASES: {
+    [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],
+    [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
+    [PLACE_NAMES.MINING]: ['mining', 'mn', 'mineradora']
+  },
   OWNER_IDS: ['158001949415833600', '281561868844269569', '616410427794128909'],
   PLACES: Object.values(PLACE_NAMES),
   PLACE_START_LEVEL: 1,
@@ -58,6 +58,12 @@ module.exports = {
     beatingHeart: '💓',
     abacus: '🧮',
     wrench: '🔧',
+    FARM: '🌳',
+    FISHING: '⛵',
+    MINING: '⛏',
+    FOOD: ['🥕', '🌽', '🍅', '🍍', '🍆', '🥔', '🥒', '🥦'],
+    FISH: ['🐟', '🐠', '🦐', '🐡', '🦀', '🦑', '🐙'],
+    METAL: ['💎'],
     scarecrow: '<:scarecrow:698353463716741182>',
     fence: '<:fence:698353484017303603>',
     fertilizer: [
@@ -105,28 +111,6 @@ module.exports = {
       status: TEAM_MEMBER_STATUS.ACTIVE
     }
   ],
-  SEASONS_EFFECTS: {
-    [SEASON_NAMES.SPRING]: {
-      [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.DECREASE, num: 10 },
-      [PLACE_NAMES.FISHING]: { eff: SEASONS_EFFECT.DECREASE, num: 15 },
-      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.INCREASE, num: 5 }
-    },
-    [SEASON_NAMES.SUMMER]: {
-      [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.INCREASE, num: 15 },
-      [PLACE_NAMES.FISHING]: { eff: SEASONS_EFFECT.INCREASE, num: 20 },
-      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.DECREASE, num: 20 }
-    },
-    [SEASON_NAMES.AUTUMN]: {
-      [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.INCREASE, num: 20 },
-      [PLACE_NAMES.FISHING]: { eff: SEASONS_EFFECT.INCREASE, num: 15 },
-      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.DECREASE, num: 15 }
-    },
-    [SEASON_NAMES.WINTER]: {
-      [PLACE_NAMES.FARM]: { eff: SEASONS_EFFECT.DECREASE, num: 25 },
-      [PLACE_NAMES.FISHING]: { eff: SEASONS_EFFECT.DECREASE, num: 20 },
-      [PLACE_NAMES.MINING]: { eff: SEASONS_EFFECT.INCREASE, num: 30 }
-    }
-  },
   EMBED_COLORS: {
     default: process.env.EMBED_COLOR_DEFAULT || '#ff9900',
     success: process.env.EMBED_COLOR_SUCCESS || '#0aa329',

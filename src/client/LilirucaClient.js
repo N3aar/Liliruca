@@ -1,6 +1,6 @@
 const { logger, locales } = require('../utils')
 const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo')
-const { OWNER_IDS, DEFAULT_PREFIX } = require('@constants')
+const { OWNER_IDS, DEFAULT_PREFIX, PLACES_ALIASES, PLACE_NAMES } = require('../Constants')
 const { join } = require('path')
 const Database = require('@database/Database')
 const { LilirucaCommand } = require('@structures')
@@ -53,7 +53,7 @@ class LilirucaClient extends AkairoClient {
     await this.locales.loadAll()
     await this.db.connect()
 
-    this.addTypes()
+    this.loadCustomArgumentTypes()
 
     this.commandHandler.useListenerHandler(this.listenerHandler)
     this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
@@ -80,15 +80,33 @@ class LilirucaClient extends AkairoClient {
     return this.commandHandler.modules
   }
 
-  addTypes () {
-    this.commandHandler.resolver.addType('place', (m, phrase) => {
+  loadCustomArgumentTypes () {
+    this.commandHandler.resolver.addType('place', (message, phrase) => {
       if (!phrase) {
         return null
       }
+
       const resolved = phrase.toLowerCase()
-      if (['farm', 'fm', 'fazenda'].includes(resolved)) return 'farm'
-      if (['fishing', 'fs', 'pescaria'].includes(resolved)) return 'fishing'
-      if (['mining', 'mn', 'mineradora'].includes(resolved)) return 'mining'
+      for (const place of PLACE_NAMES) {
+        if (PLACES_ALIASES[place].includes(resolved)) {
+          return place
+        }
+      }
+
+      return null
+    })
+
+    this.commandHandler.resolver.addType('realMember', (message, phrase) => {
+      if (!phrase) {
+        return null
+      }
+
+      const memberType = this.commandHandler.resolver.type('member')
+      const member = memberType(message, phrase)
+      if (member && !member.user.bot) {
+        return member
+      }
+
       return null
     })
   }

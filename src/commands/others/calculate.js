@@ -1,6 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { STORAGE_PRICES, EMOJIS } = require('@constants')
+const { getStoragePrice } = require('@utils/util')
 const { Argument } = require('discord-akairo')
 
 const bold = string => `**${string}**`
@@ -15,7 +16,7 @@ class Calculate extends LilirucaCommand {
         {
           id: 'place',
           type: 'place',
-          otherwise: m => m.ct('invalidPlace')
+          otherwise: message => message.ct('invalidPlace')
         },
         {
           id: 'firstValue',
@@ -32,11 +33,11 @@ class Calculate extends LilirucaCommand {
   }
 
   exec ({ util, t, ct }, { place, firstValue, secondValue }) {
-    const calc = (firstValue + secondValue) * (secondValue - firstValue + 1) / 2
     const storage = STORAGE_PRICES[place]
+    const price = getStoragePrice(storage, firstValue, secondValue)
 
     const value = bold(`${firstValue} \\➡ ${secondValue}`)
-    const result = bold(calc * storage)
+    const result = bold(price)
     const storageName = t(`commons:${place}_storage`)
 
     const embed = new LilirucaEmbed()

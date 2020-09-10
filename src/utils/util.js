@@ -10,7 +10,14 @@ function getPercentageFromSeason (value, place, month) {
   return value * SEASONS_PERCENTAGE[season][place]
 }
 
+function getStoragePrice (storage, firstValue, secondValue) {
+  const second = secondValue - 1
+  const calc = (firstValue + second) * (second - firstValue + 1) / 2
+  return calc * storage
+}
+
 module.exports = {
   getSeasonByMonth,
-  getPercentageFromSeason
+  getPercentageFromSeason,
+  getStoragePrice
 }
