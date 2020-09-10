@@ -29,23 +29,23 @@ describe('Test Season of Months', () => {
 
 describe('Test getPercentageFromSeason function', () => {
   test('the spring season on all places', () => {
-    expect(Util.getPercentageFromSeason(1, 'farm', 1)).toBe(0.9)
-    expect(Util.getPercentageFromSeason(1, 'mining', 1)).toBe(1.05)
-    expect(Util.getPercentageFromSeason(1, 'fishing', 1)).toBe(0.85)
+    expect(Util.getPercentageFromSeason(10, 'farm', 1)).toBe(9)
+    expect(Util.getPercentageFromSeason(10, 'mining', 1)).toBe(10)
+    expect(Util.getPercentageFromSeason(10, 'fishing', 1)).toBe(8)
   })
   test('the summer season on all places', () => {
-    expect(Util.getPercentageFromSeason(1, 'farm', 2)).toBe(1.15)
-    expect(Util.getPercentageFromSeason(1, 'mining', 2)).toBe(0.8)
-    expect(Util.getPercentageFromSeason(1, 'fishing', 2)).toBe(1.2)
+    expect(Util.getPercentageFromSeason(10, 'farm', 2)).toBe(11)
+    expect(Util.getPercentageFromSeason(10, 'mining', 2)).toBe(8)
+    expect(Util.getPercentageFromSeason(10, 'fishing', 2)).toBe(12)
   })
   test('the autumn season on all places', () => {
-    expect(Util.getPercentageFromSeason(1, 'farm', 3)).toBe(1.2)
-    expect(Util.getPercentageFromSeason(1, 'mining', 3)).toBe(0.85)
-    expect(Util.getPercentageFromSeason(1, 'fishing', 3)).toBe(1.15)
+    expect(Util.getPercentageFromSeason(10, 'farm', 3)).toBe(12)
+    expect(Util.getPercentageFromSeason(10, 'mining', 3)).toBe(8)
+    expect(Util.getPercentageFromSeason(10, 'fishing', 3)).toBe(11)
   })
   test('the winter season on all places', () => {
-    expect(Util.getPercentageFromSeason(1, 'farm', 4)).toBe(0.75)
-    expect(Util.getPercentageFromSeason(1, 'mining', 4)).toBe(1.3)
-    expect(Util.getPercentageFromSeason(1, 'fishing', 4)).toBe(0.8)
+    expect(Util.getPercentageFromSeason(10, 'farm', 4)).toBe(7)
+    expect(Util.getPercentageFromSeason(10, 'mining', 4)).toBe(13)
+    expect(Util.getPercentageFromSeason(10, 'fishing', 4)).toBe(8)
   })
 })
