@@ -8,7 +8,11 @@ class Season extends LilirucaCommand {
     super('season', {
       aliases: ['sn'],
       emoji: EMOJIS.cloud,
-      editable: true
+      editable: true,
+      clientPermissions: [
+        'EMBED_LINKS',
+        'SEND_MESSAGES'
+      ]
     })
   }
 

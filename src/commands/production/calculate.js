@@ -12,6 +12,10 @@ class Calculate extends LilirucaCommand {
       aliases: ['calc', 'cl'],
       emoji: EMOJIS.abacus,
       editable: true,
+      clientPermissions: [
+        'EMBED_LINKS',
+        'SEND_MESSAGES'
+      ],
       args: [
         {
           id: 'place',

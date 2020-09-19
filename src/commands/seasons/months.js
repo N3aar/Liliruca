@@ -10,7 +10,11 @@ class Months extends LilirucaCommand {
     super('months', {
       aliases: ['mh'],
       emoji: EMOJIS.month,
-      editable: true
+      editable: true,
+      clientPermissions: [
+        'EMBED_LINKS',
+        'SEND_MESSAGES'
+      ]
     })
   }
 
