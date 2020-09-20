@@ -205,6 +205,7 @@ module.exports = {
     winter: '❄️',
     key: '🔑',
     pencil: '✏️',
+    books: '📚',
     graph: '📊',
     antenna: '📡',
     lamp: '💡',

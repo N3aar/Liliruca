@@ -2,12 +2,7 @@
     "setlanguage": {
         "description": "Altere o idioma dos comandos, assim ficará mais simples para seus membros interagirem comigo!",
         "usage": "<nova linguagem>",
-        "args": {
-        "language": {
-            "retry": "me informe uma lingua correta! opções: {{ languages }}",
-            "ended": "lingua invalida, olhe minhas opções e tente executar o comando novamente!"
-        }
-        },
+        "error": "me informe uma lingua correta! opções: {{ languages }}",
         "resetLanguage": "\\💬 Linguagem resetada com sucesso para `{{ language }}`!",
         "changedLanguage": "\\💬 Linguagem alterada com sucesso para `{{ language }}`!"
     },
