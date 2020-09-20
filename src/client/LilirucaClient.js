@@ -1,83 +1,49 @@
-const { logger, locales } = require('../utils')
-const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo')
-const { OWNER_IDS, DEFAULT_PREFIX, PLACES_ALIASES, PLACES } = require('../Constants')
 const { join } = require('path')
+const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo')
 const Database = require('@database/Database')
 const { LilirucaCommand } = require('@structures')
+const { logger, locales } = require('@utils')
+const { OWNER_IDS, DEFAULT_PREFIX, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
+
+const joinPath = path => join(__dirname, '..', path)
 
 class LilirucaClient extends AkairoClient {
   constructor () {
-    super({
-      ownerID: OWNER_IDS
-    }, {
-      disableMentions: 'everyone',
-      messageCacheMaxSize: 100
-    })
+    super(
+      {
+        ownerID: OWNER_IDS
+      }, {
+        disableMentions: 'everyone',
+        messageCacheMaxSize: 100
+      }
+    )
+
+    const getPrefix = async ({ guild }) => {
+      const guildData = guild && await this.db.guilds.get(guild.id)
+      const prefix = guildData && guildData.prefix
+      return prefix || DEFAULT_PREFIX
+    }
+
+    const commandOptions = {
+      classToHandle: LilirucaCommand,
+      directory: joinPath('commands'),
+      prefix: getPrefix,
+      automateCategories: true,
+      allowMention: true,
+      commandUtil: true,
+      handleEdits: true,
+      blockBots: true
+    }
+
+    const listenerOptions = {
+      directory: joinPath('listeners')
+    }
 
     this.db = Database
     this.logger = logger
     this.locales = locales
-
-    this.commandHandler = new CommandHandler(this, {
-      directory: join(__dirname, '..', 'commands'),
-      automateCategories: true,
-      classToHandle: LilirucaCommand,
-      commandUtil: true,
-      handleEdits: true,
-      prefix: async (message) => {
-        const guildData = message.guild && await this.db.guilds.get(message.guild.id)
-        return guildData ? guildData.prefix || DEFAULT_PREFIX : DEFAULT_PREFIX
-      },
-      argumentDefaults: {
-        prompt: {
-          retries: 0,
-          timeout: (m) => m.t('commons:defaultTimeout'),
-          ended: (m) => m.t('commons:defaultEnded'),
-          cancel: (m) => m.t('commons:defaultCancel'),
-          modifyRetry: (m, text) => `${m.author.toString()}, ${text}\n\n${m.t('commons:cancelMessage')}`,
-          modifyStart: (m, text) => `${m.author.toString()}, ${text}\n\n${m.t('commons:cancelMessage')}`
-        }
-      }
-    })
-
-    this.listenerHandler = new ListenerHandler(this, {
-      directory: join(__dirname, '..', 'listeners')
-    })
-
-    this.inhibitorHandler = new InhibitorHandler(this, {
-      directory: join(__dirname, '..', 'inhibitors')
-    })
-  }
-
-  async init () {
-    await this.locales.loadAll()
-    await this.db.connect()
-
-    this.loadCustomArgumentTypes()
-
-    this.commandHandler.useListenerHandler(this.listenerHandler)
-    this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
-
-    this.listenerHandler.setEmitters({
-      commandHandler: this.commandHandler,
-      listenerHandler: this.listenerHandler,
-      inhibitorHandler: this.inhibitorHandler
-    })
-
-    this.commandHandler.loadAll()
-    this.listenerHandler.loadAll()
-    this.inhibitorHandler.loadAll()
-
-    return this
-  }
-
-  async login (token) {
-    await this.init()
-    return super.login(token)
-  }
-
-  get commands () {
-    return this.commandHandler.modules
+    this.commandHandler = new CommandHandler(this, commandOptions)
+    this.listenerHandler = new ListenerHandler(this, listenerOptions)
   }
 
   loadCustomArgumentTypes () {
@@ -111,20 +77,38 @@ class LilirucaClient extends AkairoClient {
     })
   }
 
-  get categories () {
-    const order = [
-      'production',
-      'user',
-      'rewards',
-      'seasons',
-      'ranking',
-      'rpguild',
-      'rpguild_admin',
-      'administration',
-      'others'
-    ]
+  async init () {
+    await this.locales.loadAll()
+    await this.db.connect()
 
-    return this.commandHandler.categories.sort((a, b) => order.indexOf(a) - order.indexOf(b))
+    this.loadCustomArgumentTypes()
+    this.commandHandler.useListenerHandler(this.listenerHandler)
+    this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
+
+    this.listenerHandler.setEmitters({
+      commandHandler: this.commandHandler,
+      listenerHandler: this.listenerHandler,
+      inhibitorHandler: this.inhibitorHandler
+    })
+
+    this.commandHandler.loadAll()
+    this.listenerHandler.loadAll()
+    this.inhibitorHandler.loadAll()
+
+    return this
+  }
+
+  async login (token = process.env.DISCORD_TOKEN) {
+    await this.init()
+    return super.login(token)
+  }
+
+  get commands () {
+    return this.commandHandler.modules
+  }
+
+  get categories () {
+    return this.commandHandler.categories.sort((a, b) => CATEGORIES.indexOf(a) - CATEGORIES.indexOf(b))
   }
 }
 

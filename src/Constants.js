@@ -42,75 +42,21 @@ const BOOSTER_TYPES = {
 }
 
 module.exports = {
-  SEASON_NAMES,
-  PLACE_NAMES,
-  PLACES_ALIASES: {
-    [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],
-    [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
-    [PLACE_NAMES.MINING]: ['mining', 'mn', 'mineradora']
-  },
-  PLACES_RESOURCES: {
-    [PLACE_NAMES.FARM]: RESOURCE_NAMES.FOOD,
-    [PLACE_NAMES.FISHING]: RESOURCE_NAMES.FISH,
-    [PLACE_NAMES.MINING]: RESOURCE_NAMES.METAL
-  },
-  PLACES_BOOSTERS: {
-    [PLACE_NAMES.FARM]: BOOSTER_NAMES.FERTILIZER,
-    [PLACE_NAMES.FISHING]: BOOSTER_NAMES.WORMS,
-    [PLACE_NAMES.MINING]: BOOSTER_NAMES.ENERGETIC
-  },
-  RESOURCE_NAMES,
-  OWNER_IDS: ['158001949415833600', '281561868844269569', '616410427794128909'],
-  PLACES: Object.values(PLACE_NAMES),
-  PLACE_START_LEVEL: 1,
-  PLACE_MAX_LEVEL: 10,
-  PLACE_MIN_LEVEL: 1,
-  DEFAULT_LANGUAGE: 'pt-BR',
-  DEFAULT_PREFIX: process.env.BOT_PREFIX || '>',
+  DEFAULT_PREFIX: '>',
   PREFIX_MAX_LIMIT: 5,
-  EMOJIS: {
-    money: '💰',
-    start: '⭐',
-    month: '📅',
-    cloud: '☁️',
-    spring: '🌺',
-    summer: '☀️',
-    autumn: '🍂',
-    winter: '❄️',
-    key: '🔑',
-    graph: '📊',
-    antenna: '📡',
-    lamp: '💡',
-    beatingHeart: '💓',
-    abacus: '🧮',
-    wrench: '🔧',
-    farm: '🌳',
-    fishing: '⛵',
-    mining: '⛏',
-    food: ['🥕', '🌽', '🍅', '🍍', '🍆', '🥔', '🥒', '🥦'],
-    fish: ['🐟', '🐠', '🦐', '🐡', '🦀', '🦑', '🐙'],
-    metal: ['💎'],
-    storage: '📥',
-    production: '🏭',
-    produced: '📬',
-    scarecrow: '<:scarecrow:698353463716741182>',
-    fence: '<:fence:698353484017303603>',
-    fertilizer: {
-      basic: '<:fertilizer_1:698353399871176704>',
-      medium: '<:fertilizer_2:698353438001594418>',
-      premium: '<:fertilizer_3:698353438093869076>'
-    },
-    worms: {
-      basic: '<:worms_1:698353333672607744>',
-      medium: '<:worms_2:698353363971997756>',
-      premium: '<:worms_3:698353379599974480>'
-    },
-    energetic: {
-      basic: '<:energetic_1:698353310062870590>',
-      medium: '<:energetic_2:698353310071259207>',
-      premium: '<:energetic_3:698353310289100903>'
-    }
+  DEFAULT_LANGUAGE: 'pt-BR',
+  EMBED_COLORS: {
+    default: '#ff9900',
+    success: '#0aa329',
+    error: '#db3939',
+    warn: '#ebe728'
   },
+  OWNER_IDS: [
+    '158001949415833600',
+    '281561868844269569',
+    '616410427794128909',
+    '332581129704177664'
+  ],
   TEAM: [
     {
       name: 'Near',
@@ -138,14 +84,45 @@ module.exports = {
       tags: [TEAM_MEMBER_TAGS.BACK_END],
       joined: 1586995200000,
       status: TEAM_MEMBER_STATUS.ACTIVE
+    },
+    {
+      name: 'Psyka',
+      tags: [TEAM_MEMBER_TAGS.BACK_END],
+      joined: 1599419160000,
+      status: TEAM_MEMBER_STATUS.ACTIVE
     }
   ],
-  EMBED_COLORS: {
-    default: '#ff9900',
-    success: '#0aa329',
-    error: '#db3939',
-    warn: '#ebe728'
+  CATEGORIES: [
+    'production',
+    'user',
+    'rewards',
+    'seasons',
+    'ranking',
+    'administration',
+    'others'
+  ],
+  SEASON_NAMES,
+  PLACE_NAMES,
+  PLACES_ALIASES: {
+    [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],
+    [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
+    [PLACE_NAMES.MINING]: ['mining', 'mn', 'mineradora']
   },
+  PLACES_RESOURCES: {
+    [PLACE_NAMES.FARM]: RESOURCE_NAMES.FOOD,
+    [PLACE_NAMES.FISHING]: RESOURCE_NAMES.FISH,
+    [PLACE_NAMES.MINING]: RESOURCE_NAMES.METAL
+  },
+  PLACES_BOOSTERS: {
+    [PLACE_NAMES.FARM]: BOOSTER_NAMES.FERTILIZER,
+    [PLACE_NAMES.FISHING]: BOOSTER_NAMES.WORMS,
+    [PLACE_NAMES.MINING]: BOOSTER_NAMES.ENERGETIC
+  },
+  RESOURCE_NAMES,
+  PLACES: Object.values(PLACE_NAMES),
+  PLACE_START_LEVEL: 1,
+  PLACE_MAX_LEVEL: 10,
+  PLACE_MIN_LEVEL: 1,
   PLACE_GENERATE: {
     [PLACE_NAMES.FARM]: 80,
     [PLACE_NAMES.FISHING]: 15,
@@ -216,5 +193,48 @@ module.exports = {
     SEASON_NAMES.SUMMER,
     SEASON_NAMES.AUTUMN,
     SEASON_NAMES.WINTER
-  ]
+  ],
+  EMOJIS: {
+    money: '💰',
+    start: '⭐',
+    month: '📅',
+    cloud: '☁️',
+    spring: '🌺',
+    summer: '☀️',
+    autumn: '🍂',
+    winter: '❄️',
+    key: '🔑',
+    graph: '📊',
+    antenna: '📡',
+    lamp: '💡',
+    beatingHeart: '💓',
+    abacus: '🧮',
+    wrench: '🔧',
+    farm: '🌳',
+    fishing: '⛵',
+    mining: '⛏',
+    food: ['🥕', '🌽', '🍅', '🍍', '🍆', '🥔', '🥒', '🥦'],
+    fish: ['🐟', '🐠', '🦐', '🐡', '🦀', '🦑', '🐙'],
+    metal: ['💎'],
+    storage: '📥',
+    production: '🏭',
+    produced: '📬',
+    scarecrow: '<:scarecrow:698353463716741182>',
+    fence: '<:fence:698353484017303603>',
+    fertilizer: {
+      basic: '<:fertilizer_1:698353399871176704>',
+      medium: '<:fertilizer_2:698353438001594418>',
+      premium: '<:fertilizer_3:698353438093869076>'
+    },
+    worms: {
+      basic: '<:worms_1:698353333672607744>',
+      medium: '<:worms_2:698353363971997756>',
+      premium: '<:worms_3:698353379599974480>'
+    },
+    energetic: {
+      basic: '<:energetic_1:698353310062870590>',
+      medium: '<:energetic_2:698353310071259207>',
+      premium: '<:energetic_3:698353310289100903>'
+    }
+  }
 }
