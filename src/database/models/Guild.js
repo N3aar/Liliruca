@@ -6,7 +6,8 @@ const GuildSchema = new Schema({
   hour: { type: Number, default: 0 },
   language: { type: String, lowercase: true }
 }, {
-  timestamps: true
+  timestamps: true,
+  minimize: false
 })
 
 module.exports = model('guilds', GuildSchema)

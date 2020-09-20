@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   collectedAt: Number,
   dailyAt: Number,
   givedAt: Number,
-  lilistars: Number,
+  lilistars: { type: Number, default: 0 },
   images: {
     farm: Array,
     fishing: Array,
@@ -30,7 +30,8 @@ const UserSchema = new Schema({
   },
   items: { type: Object, default: {} }
 }, {
-  timestamps: true
+  timestamps: true,
+  minimize: false
 })
 
 module.exports = model('users', UserSchema)

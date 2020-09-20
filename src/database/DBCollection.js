@@ -6,20 +6,36 @@ class DBCollection extends LilirucaCollection {
     this.model = model
   }
 
-  async get (_id, projection) {
-    if (this.items.has(_id)) {
-      return this.items.get(_id)
+  async get (id, projection) {
+    if (this.items.has(id)) {
+      return this.items.get(id)
     }
-    const data = await this.model.findById(_id, projection) || await this.model.create({ _id })
-    this.items.set(_id, data)
+
+    const data = await this.model.findById(id, projection) || await this.model.create({ id })
+    this.items.set(id, data)
+
     return data
   }
 
-  async setValues (data, newData) {
-    for (const index in newData) {
-      data[index] = newData[index]
+  async set (id, value, key) {
+    const data = await this.get(id)
+
+    data[key] = value
+    data.markModified(key)
+    this.items.set(id, data)
+
+    return data.save()
+  }
+
+  sets (data, values) {
+    for (const key in values) {
+      data[key] = values[key]
+      data.markModified(key)
     }
-    data.save()
+
+    this.items.set(data.id, data)
+
+    return data.save()
   }
 
   async delete (id) {
