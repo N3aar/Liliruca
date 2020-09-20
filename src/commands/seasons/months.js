@@ -11,10 +11,7 @@ class Months extends LilirucaCommand {
       aliases: ['mh'],
       emoji: EMOJIS.month,
       editable: true,
-      clientPermissions: [
-        'EMBED_LINKS',
-        'SEND_MESSAGES'
-      ]
+      clientPermissions: 'EMBED_LINKS'
     })
   }
 

@@ -11,10 +11,7 @@ class Stats extends LilirucaCommand {
       aliases: ['st'],
       emoji: EMOJIS.graph,
       editable: true,
-      clientPermissions: [
-        'EMBED_LINKS',
-        'SEND_MESSAGES'
-      ],
+      clientPermissions: 'EMBED_LINKS',
       args: [
         {
           id: 'place',

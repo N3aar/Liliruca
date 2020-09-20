@@ -13,8 +13,7 @@ class Team extends LilirucaCommand {
       editable: true,
       clientPermissions: [
         'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS',
-        'SEND_MESSAGES'
+        'USE_EXTERNAL_EMOJIS'
       ]
     })
   }

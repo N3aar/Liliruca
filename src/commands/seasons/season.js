@@ -9,10 +9,7 @@ class Season extends LilirucaCommand {
       aliases: ['sn'],
       emoji: EMOJIS.cloud,
       editable: true,
-      clientPermissions: [
-        'EMBED_LINKS',
-        'SEND_MESSAGES'
-      ]
+      clientPermissions: 'EMBED_LINKS'
     })
   }
 

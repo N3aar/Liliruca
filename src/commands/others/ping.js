@@ -8,10 +8,7 @@ class Ping extends LilirucaCommand {
       aliases: ['pg'],
       emoji: antenna,
       editable: true,
-      clientPermissions: [
-        'EMBED_LINKS',
-        'SEND_MESSAGES'
-      ]
+      clientPermissions: 'EMBED_LINKS'
     })
   }
 

@@ -12,10 +12,7 @@ class Eval extends LilirucaCommand {
       emoji: EMOJIS.wrench,
       editable: true,
       ownerOnly: true,
-      clientPermissions: [
-        'EMBED_LINKS',
-        'SEND_MESSAGES'
-      ],
+      clientPermissions: 'EMBED_LINKS',
       args: [
         {
           id: 'code',
