@@ -1,7 +1,7 @@
 const { join } = require('path')
-const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo')
+const { AkairoClient, ListenerHandler } = require('discord-akairo')
 const Database = require('@database/Database')
-const { LilirucaCommand } = require('@structures')
+const { LilirucaCommand, CustomCommandHandler } = require('@structures')
 const { logger, locales } = require('@utils')
 const { OWNER_IDS, DEFAULT_PREFIX, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
 
@@ -42,7 +42,7 @@ class LilirucaClient extends AkairoClient {
     this.db = Database
     this.logger = logger
     this.locales = locales
-    this.commandHandler = new CommandHandler(this, commandOptions)
+    this.commandHandler = new CustomCommandHandler(this, commandOptions)
     this.listenerHandler = new ListenerHandler(this, listenerOptions)
   }
 
@@ -82,18 +82,11 @@ class LilirucaClient extends AkairoClient {
     await this.db.connect()
 
     this.loadCustomArgumentTypes()
-    this.commandHandler.useListenerHandler(this.listenerHandler)
-    this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
 
-    this.listenerHandler.setEmitters({
-      commandHandler: this.commandHandler,
-      listenerHandler: this.listenerHandler,
-      inhibitorHandler: this.inhibitorHandler
-    })
+    this.commandHandler.useListenerHandler(this.listenerHandler)
 
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
-    this.inhibitorHandler.loadAll()
 
     return this
   }
