@@ -1,5 +1,5 @@
 {
-    "language": {
+    "setlanguage": {
         "description": "Change the language of the commands, thus simpler for your members to interact with me!",
         "usage": "<new language>",
         "error": "Inform me correct language! options: {{- languages }}",
@@ -7,7 +7,7 @@
         "changed": "\\💬 Language changed successfully to `{{ language }}`!",
         "already": "My language is already set to `{{ language }}` on this server!"
     },
-    "prefix": {
+    "setprefix": {
         "description": "Place a custom prefix for the commands on your server, but be sure to notify your server members about this new prefix! 😉",
         "usage": "<new prefix>",
         "information": "\\📌 `Limit:` **4 characters.**",
@@ -17,7 +17,7 @@
         "removed": "\\✏ Prefix removed successfully!",
         "error": "type the prefix to be changed!"
     },
-    "timer": {
+    "settimer": {
         "description": "Hours are very different in various places in the world, for this there is this command, you can change the time of your server, this will only influence the aesthetics of the places, leaving them with periods of day and night!",
         "usage": "<current hour>",
         "error": "type the hour correctly!",

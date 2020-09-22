@@ -14,7 +14,7 @@
         "changedPrefix": "\\✏ Prefixo alterado com sucesso para `{{- prefix }}`!",
         "resetPrefix": "\\✏ Prefixo **resetado** com sucesso!"
     },
-    "timer": {
+    "settimer": {
         "description": "Os hórarios são muito diferentes em vários locais do mundo, para isso existe este comando, você poderá alterar o horário de seu servidor, isso influenciará somente na estética dos locais, deixando os com períodos de dia e noite!",
         "usage": "<hora atual>",
         "error": "digite a hora corretamente!",

@@ -11,7 +11,7 @@ class DBCollection extends LilirucaCollection {
       return this.items.get(id)
     }
 
-    const data = await this.model.findById(id, projection) || await this.model.create({ id })
+    const data = await this.model.findById(id, projection) || await this.model.create({ _id: id })
     this.items.set(id, data)
 
     return data
@@ -40,7 +40,7 @@ class DBCollection extends LilirucaCollection {
 
   async delete (id) {
     await this.items.delete(id)
-    await this.model.deleteOne({ id })
+    await this.model.deleteOne({ _id: id })
   }
 }
 

@@ -78,22 +78,14 @@ class LilirucaClient extends AkairoClient {
   }
 
   async init () {
-    await this.locales.loadAll()
     await this.db.connect()
+    await this.locales.loadAll()
 
     this.loadCustomArgumentTypes()
     this.commandHandler.useListenerHandler(this.listenerHandler)
-    this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
-
-    this.listenerHandler.setEmitters({
-      commandHandler: this.commandHandler,
-      listenerHandler: this.listenerHandler,
-      inhibitorHandler: this.inhibitorHandler
-    })
 
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
-    this.inhibitorHandler.loadAll()
 
     return this
   }
