@@ -4,10 +4,10 @@ const TEAM_MEMBER_STATUS = {
 }
 
 const TEAM_MEMBER_TAGS = {
-  OWNER: '👑 Owner',
-  BACK_END: '📕 Back-end',
-  FRONT_END: '📘 Front-end',
-  DESIGNER: '🎨 Designer'
+  OWNER: '\\👑 Owner',
+  BACK_END: '\\📕 Back-end',
+  FRONT_END: '\\📘 Front-end',
+  DESIGNER: '\\🎨 Designer'
 }
 
 const PLACE_NAMES = {
@@ -44,7 +44,7 @@ const BOOSTER_TYPES = {
 module.exports = {
   DEFAULT_PREFIX: '>',
   PREFIX_MAX_LIMIT: 5,
-  DEFAULT_LANGUAGE: 'pt-BR',
+  DEFAULT_LANGUAGE: 'pt-br',
   EMBED_COLORS: {
     default: '#ff9900',
     success: '#0aa329',
@@ -67,26 +67,28 @@ module.exports = {
     },
     {
       name: 'Ichi',
-      emoji: '<:ichi:699049751038918748>',
+      emoji: '<:ichi:758089072148348948>',
       tags: [TEAM_MEMBER_TAGS.FRONT_END],
       joined: 1553990400000,
       status: TEAM_MEMBER_STATUS.ACTIVE
     },
     {
       name: 'Tsugami',
-      emoji: '<:tsugami:699049764234461304>',
+      emoji: '<:tsugami:758075414869442684>',
       tags: [TEAM_MEMBER_TAGS.BACK_END],
       joined: 1557273600000,
       status: TEAM_MEMBER_STATUS.ACTIVE
     },
     {
       name: 'Derpy',
+      emoji: '<:derpy:758089742054326382>',
       tags: [TEAM_MEMBER_TAGS.BACK_END],
       joined: 1586995200000,
       status: TEAM_MEMBER_STATUS.ACTIVE
     },
     {
       name: 'Psyka',
+      emoji: '<:psyka:758075415607640124>',
       tags: [TEAM_MEMBER_TAGS.BACK_END],
       joined: 1599419160000,
       status: TEAM_MEMBER_STATUS.ACTIVE
@@ -101,6 +103,7 @@ module.exports = {
     'administration',
     'others'
   ],
+  DAILY_COOLDOWN: 72000000,
   SEASON_NAMES,
   PLACE_NAMES,
   PLACES_ALIASES: {
@@ -196,7 +199,7 @@ module.exports = {
   ],
   EMOJIS: {
     money: '💰',
-    start: '⭐',
+    star: '⭐',
     month: '📅',
     cloud: '☁️',
     spring: '🌺',

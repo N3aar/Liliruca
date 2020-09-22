@@ -1,31 +1,34 @@
-const moment = require('moment')
-const { getT } = require('./locales')
+const dayjs = require('dayjs')
 
-function parseDate (timestamp, language = 'pt-BR') {
-  moment.locale(language)
-  return moment(timestamp).format('LL')
+// Locales
+require('dayjs/locale/en')
+require('dayjs/locale/pt-br')
+
+// Plugins
+function loadAllPlugins () {
+  const plugins = [
+    'duration',
+    'relativeTime',
+    'localizedFormat'
+  ]
+
+  for (const name of plugins) {
+    const plugin = require(`dayjs/plugin/${name}`)
+    dayjs.extend(plugin)
+  }
 }
 
-function parseDuration (timestamp, t = 'pt-BR') {
-  if (typeof t === 'string') t = getT(t)
-
-  const monthTimestamp = 86400000 * 31
-  if (timestamp > monthTimestamp) return t('common:longTime')
-
-  const date = new Date(timestamp)
-  const days = date.getDate() - 1
-  const hours = date.getHours()
-  const minutes = date.getMinutes()
-
-  let dateString = ''
-  if (days) dateString += `${days} ${t('common:date.days')} `
-  if (hours) dateString += `${hours} ${t('common:date.hours')} `
-  if (minutes) dateString += `${minutes} ${t('common:date.minutes')} `
-
-  return dateString
+function parseDuration (time, language) {
+  return dayjs.duration(time).locale(language).humanize()
 }
+
+function displayDate (time, language) {
+  return dayjs(time).locale(language).format('L')
+}
+
+loadAllPlugins()
 
 module.exports = {
-  parseDate,
-  parseDuration
+  parseDuration,
+  displayDate
 }

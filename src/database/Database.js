@@ -2,6 +2,7 @@ const { connect } = require('mongoose')
 const GuildModel = require('./models/Guild')
 const UserModel = require('./models/User')
 const BDCollection = require('./DBCollection')
+const logger = require('@utils/logger')
 
 class MongoDatabase {
   constructor () {
@@ -14,6 +15,7 @@ class MongoDatabase {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
+    logger.success('Database connected successfully!')
   }
 }
 
