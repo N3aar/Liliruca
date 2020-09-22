@@ -1,17 +1,16 @@
 const i18n = require('i18next')
-const logger = require('@utils/logger')
-const { readdirSync } = require('fs')
 const Backend = require('i18next-node-fs-backend')
+const { readdirSync } = require('fs')
+const logger = require('@utils/logger')
+const { DEFAULT_LANGUAGE } = require('@constants')
 
 class Locales {
-/**
- * Carrega todas as traduções.
- */
   static loadAll () {
     return i18n.use(Backend).init({
       ns: ['commands', 'errors', 'commons', 'categories', 'permissions', 'parameters'],
       preload: readdirSync('src/locales'),
-      fallbackLng: 'pt-BR',
+      fallbackLng: DEFAULT_LANGUAGE,
+      lowerCaseLng: true,
       defaultNS: 'commands',
       backend: {
         loadPath: 'src/locales/{{lng}}/{{ns}}.json'
@@ -25,10 +24,6 @@ class Locales {
     })
   }
 
-  /**
-   * @param {string} language A lingua que você quer as traduções.
-   * @param {string} [ns] Namespace pra facilitar as buscas.
-   */
   static getT (language, ns) {
     return i18n.getFixedT(language, ns)
   }
