@@ -1,6 +1,6 @@
-const moment = require('moment')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
+const { displayDate } = require('@utils/date')
 const { EMOJIS, TEAM } = require('@constants')
 
 const bold = string => `**${string}**`
@@ -18,12 +18,10 @@ class Team extends LilirucaCommand {
     })
   }
 
-  exec ({ t, ct, util, guild }) {
-    const { me: bot } = guild
-
+  exec ({ t, ct, util, language }) {
     const team = TEAM.map(user => {
       const tags = user.tags.join(' | ')
-      const joined = moment(user.joined).format('L')
+      const joined = displayDate(user.joined, language)
       const status = t(`commons:${user.status}`)
 
       const name = `${user.emoji} ${user.name}`
@@ -33,7 +31,6 @@ class Team extends LilirucaCommand {
     })
 
     const embed = new LilirucaEmbed()
-      .setFooter(bot.displayName, bot.user.displayAvatarURL())
       .addFields(team)
       .setTimestamp()
 

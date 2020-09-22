@@ -160,10 +160,9 @@
     },
     "daily": {
         "description": "One lilistar you can catch every 20 hours! You can buy special things with these Lilistars.",
-        "cooldownMessage": "daily bonus has already been redeemed! wait `{{- time }}` to take again.",
+        "cooldownMessage": "Daily bonus has already been redeemed! wait `{{- time }}` to take again.",
         "information": "\\📌 `Time:` **20 hours**",
-        "success": "\\⭐ {{ count }} daily Lilistar rescued successfully!",
-        "success_plural": "\\⭐ {{ count }} daily Lilistars rescued successfully"
+        "success": "\\⭐ {{ count }} daily Lilistars rescued successfully!"
     },
     "vote": {
         "description": "Earn Lilistars by voting for the bot! These Lilistars can be spent buying products or boosters in the market!",
