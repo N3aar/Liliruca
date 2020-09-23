@@ -29,8 +29,7 @@ class Storage extends LilirucaCommand {
     const dataPlace = data[place]
 
     if (!dataPlace.level) {
-      const locked = t('errors:locked')
-      return util.send(locked)
+      return util.send(t('errors:locked'))
     }
 
     const storage = STORAGE_PRICES[place]
@@ -39,8 +38,7 @@ class Storage extends LilirucaCommand {
 
     if (data.money < price) {
       const remainder = price - data.money
-      const noMoney = ct('noMoney', { remainder })
-      return util.send(noMoney)
+      return util.send(ct('noMoney', { remainder }))
     }
 
     data[place].storage += levels

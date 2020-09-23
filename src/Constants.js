@@ -124,7 +124,7 @@ module.exports = {
   RESOURCE_NAMES,
   PLACES: Object.values(PLACE_NAMES),
   PLACE_START_LEVEL: 1,
-  PLACE_MAX_LEVEL: 10,
+  PLACE_MAX_LEVEL: 50,
   PLACE_MIN_LEVEL: 1,
   PLACE_GENERATE: {
     [PLACE_NAMES.FARM]: 80,
@@ -148,10 +148,15 @@ module.exports = {
       [BOOSTER_TYPES.PREMIUM]: { min: 15, max: 25 }
     }
   },
-  PRODUCTION_LIMIT_BY_LEVEL: {
-    [PLACE_NAMES.FARM]: [0, 8, 10, 12, 15, 17, 19, 21, 23, 25, 28],
-    [PLACE_NAMES.FISHING]: [0, 7, 9, 11, 14, 16, 18, 20, 22, 24, 27],
-    [PLACE_NAMES.MINING]: [0, 6, 8, 10, 13, 15, 17, 19, 21, 23, 26]
+  UPGRADE_PRICE: {
+    [PLACE_NAMES.FARM]: 500,
+    [PLACE_NAMES.FISHING]: 2000,
+    [PLACE_NAMES.MINING]: 3500
+  },
+  PRODUCTION_LIMIT: {
+    [PLACE_NAMES.FARM]: 6,
+    [PLACE_NAMES.FISHING]: 5,
+    [PLACE_NAMES.MINING]: 4
   },
   STORAGE_PRICES: {
     [PLACE_NAMES.FARM]: 150,
@@ -216,6 +221,7 @@ module.exports = {
     beatingHeart: '💓',
     abacus: '🧮',
     wrench: '🔧',
+    gear: '⚙️',
     farm: '🌳',
     fishing: '⛵',
     mining: '⛏',

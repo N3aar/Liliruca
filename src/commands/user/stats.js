@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
-const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT_BY_LEVEL, EMOJIS } = require('@constants')
+const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, EMOJIS } = require('@constants')
 
 const bold = string => `**${string}**`
 
@@ -42,7 +42,7 @@ class Stats extends LilirucaCommand {
     const generation = getPercentageFromSeason(generate, place)
     const produced = calculateProduction(data.collectedAt, dataPlace.level, generation, place)
 
-    const limit = PRODUCTION_LIMIT_BY_LEVEL[place][dataPlace.level]
+    const limit = PRODUCTION_LIMIT[place] + (dataPlace.level * 2)
     const limitProduction = getPercentageFromSeason(generation * limit, place)
     const percentage = Math.floor((produced / limitProduction) * 100)
 
