@@ -124,6 +124,8 @@
     "storage": {
         "description": "Para atualizar o level de um armazenamento",
         "usage": "<local>",
+        "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! Faltando: `${{- remainder }}`.",
+        "success": "\\⚙️ Armazenamento melhorado para `level {{- level }}`!",
         "information": "\\📌 `Locais:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**\n\\📌 `Preço:` **{{ prefix }}table**"
     },
     "table": {
@@ -141,9 +143,9 @@
         "usage": "<local>",
         "information": "\\📌 `Locais:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**\n\\📌 `Preço:` **{{ prefix }}table**",
         "placeNoExist": "informe o local correto que você quer fazer esta melhoria!",
-        "maxLevel": "você já esta no level máximo neste local",
-        "noMoney": "você não tem dinheiro suficiente para fazer esta melhoria! Lhe falta: ${{- remainder }}.",
-        "success": "⚙ Level {{- level }}, melhorado com sucesso!",
+        "maxLevel": "Você já esta no level máximo neste local",
+        "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! Ainda falta: ${{- remainder }}.",
+        "success": "\\⚙️ Level {{- level }}, melhorado com sucesso!",
         "protection": "\\🌳 Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``market``, os preços estão no comando ``list``",
         "job": "\\💼 Parábens sua economia está crescendo bem, agora você poderá se expecializar em uma profissão, e assim ganhar bêneficios dela!\n\nUse comando ``job`` para ajustar sua profissão, os trabalhos e detalhes use ``job list``",
         "unlock": {

@@ -123,6 +123,8 @@
     "storage": {
         "description": "To upgrade the level of a storage",
         "usage": "<place>",
+        "noMoney": "You enough money to buy this upgrade! Missing: `{{- remainder }}`.",
+        "success": "\\⚙️ Storage upgraded to `level {{- level}}`!",
         "information": "\\📌 `Places:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**\n\\📌 `Price:` **{{ prefix }}table**"
     },
     "table":{
@@ -142,7 +144,7 @@
         "placeNoExist": "inform the correct place you want to make this upgrade!",
         "maxLevel": "You already at the maximum level at this place",
         "noMoney": "you enough money to buy this upgrade! Missing: {{- remainder }}",
-        "success": "Level {{- level}}, upgraded successfully!",
+        "success": "\\⚙️ Level {{- level}}, upgraded successfully!",
         "protection": "\\🌳 Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``market``, prices are in command ``list``",
         "job": "\\💼 Congratulations, your economy is growing well, so now you can specialize in a profession, and get benefits from it!\n\nUse the ``job`` command to adjust your profession, jobs and more details to use ``job list``",
         "unlock": {

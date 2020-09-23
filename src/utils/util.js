@@ -7,7 +7,8 @@ function getSeasonByMonth (month) {
 
 function getPercentageFromSeason (value, place, month) {
   const season = getSeasonByMonth(month)
-  return Math.floor(value * SEASONS_PERCENTAGE[season][place])
+  const porcentage = SEASONS_PERCENTAGE[season][place]
+  return Math.floor(value * porcentage)
 }
 
 function getStoragePrice (storage, firstValue, secondValue) {
@@ -32,7 +33,9 @@ function calculateProduction (collectedAt, level, generate, place) {
   const timeMt = timeHr + Number(`0.${minutes}`) <= productionLimit ? minutes : 0
   const calcMt = (generate / 60) * timeMt
 
-  return Math.floor(getPercentageFromSeason(calcHr + calcMt, place))
+  const producedSeason = getPercentageFromSeason(calcHr + calcMt, place)
+
+  return Math.floor(producedSeason)
 }
 
 module.exports = {
