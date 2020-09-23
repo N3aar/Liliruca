@@ -367,7 +367,7 @@
         "description": "Perfil com as informações de um usuário.",
         "usage": "[@usuário]",
         "noPhrase": "Não possui descrição. use comando ``info`` para definir esta informação.",
-        "success": "\\⭐ Perfil de {{- name }}!"
+        "success": "\\🖼️ Perfil de {{- name }}!"
     },
     "stats": {
         "description": "Visualize como estão seus recursos.",

@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LIlirucaEmbed = require('@structures/LilirucaEmbed')
-const { EMOJIS, PLACES, SEASONS_PERCENTAGE, SEQUENCE_OF_SESSIONS } = require('@constants')
 const { getSeasonByMonth } = require('@utils/util')
+const { PLACES, SEASONS_PERCENTAGE, SEQUENCE_OF_SESSIONS, EMOJIS } = require('@constants')
 
 const bold = string => `**${string}**`
 

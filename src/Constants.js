@@ -208,6 +208,7 @@ module.exports = {
     winter: '❄️',
     key: '🔑',
     pencil: '✏️',
+    picture: '🖼️',
     books: '📚',
     graph: '📊',
     antenna: '📡',

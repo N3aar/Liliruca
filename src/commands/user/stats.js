@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
-const { EMOJIS, PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT_BY_LEVEL } = require('@constants')
+const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT_BY_LEVEL, EMOJIS } = require('@constants')
 
 const bold = string => `**${string}**`
 

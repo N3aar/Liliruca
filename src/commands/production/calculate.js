@@ -1,8 +1,8 @@
+const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { STORAGE_PRICES, EMOJIS } = require('@constants')
 const { getStoragePrice } = require('@utils/util')
-const { Argument } = require('discord-akairo')
+const { STORAGE_PRICES, EMOJIS: { abacus } } = require('@constants')
 
 const bold = string => `**${string}**`
 
@@ -10,7 +10,7 @@ class Calculate extends LilirucaCommand {
   constructor () {
     super('calculate', {
       aliases: ['calc', 'cl'],
-      emoji: EMOJIS.abacus,
+      emoji: abacus,
       editable: true,
       clientPermissions: 'EMBED_LINKS',
       args: [

@@ -7,8 +7,8 @@ function getSeasonByMonth (month) {
 
 function getPercentageFromSeason (value, place, month) {
   const season = getSeasonByMonth(month)
-  const porcentage = SEASONS_PERCENTAGE[season][place]
-  return Math.floor(value * porcentage)
+  const percentage = SEASONS_PERCENTAGE[season][place]
+  return Math.floor(value * percentage)
 }
 
 function getStoragePrice (storage, firstValue, secondValue) {

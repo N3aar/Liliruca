@@ -1,7 +1,7 @@
-const LilirucaCommand = require('@structures/LilirucaCommand')
-const { EMOJIS, SEASONS_COLORS } = require('@constants')
-const { getSeasonByMonth } = require('@utils/util')
 const { MessageEmbed } = require('discord.js')
+const LilirucaCommand = require('@structures/LilirucaCommand')
+const { getSeasonByMonth } = require('@utils/util')
+const { EMOJIS, SEASONS_COLORS } = require('@constants')
 
 class Season extends LilirucaCommand {
   constructor () {

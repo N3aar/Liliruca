@@ -1,12 +1,14 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { getStoragePrice } = require('@utils/util')
-const { EMOJIS, STORAGE_PRICES } = require('@constants')
+const { STORAGE_PRICES, EMOJIS: { storage } } = require('@constants')
 
 class Storage extends LilirucaCommand {
   constructor () {
     super('storage', {
-      emoji: EMOJIS.storage,
+      aliases: ['sg'],
+      emoji: storage,
+      editable: true,
       args: [
         {
           id: 'place',

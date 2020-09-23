@@ -1,12 +1,12 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { languages } = require('@utils/locales')
-const { EMOJIS, DEFAULT_LANGUAGE } = require('@constants')
+const { DEFAULT_LANGUAGE, EMOJIS: { books } } = require('@constants')
 
 class SetLanguage extends LilirucaCommand {
   constructor () {
     super('setlanguage', {
       aliases: ['language', 'lang', 'setlang'],
-      emoji: EMOJIS.books,
+      emoji: books,
       userPermissions: 'MANAGE_GUILD',
       editable: true,
       args: [

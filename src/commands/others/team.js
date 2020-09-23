@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { displayDate } = require('@utils/date')
-const { EMOJIS, TEAM } = require('@constants')
+const { TEAM, EMOJIS: { key } } = require('@constants')
 
 const bold = string => `**${string}**`
 
@@ -9,7 +9,7 @@ class Team extends LilirucaCommand {
   constructor () {
     super('team', {
       aliases: ['tm'],
-      emoji: EMOJIS.key,
+      emoji: key,
       editable: true,
       clientPermissions: [
         'EMBED_LINKS',

@@ -1,12 +1,12 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { parseDuration } = require('@utils/date')
-const { EMOJIS, DAILY_COOLDOWN } = require('@constants')
+const { DAILY_COOLDOWN, EMOJIS: { star } } = require('@constants')
 
 class Daily extends LilirucaCommand {
   constructor () {
     super('daily', {
-      aliases: ['d'],
-      emoji: EMOJIS.star,
+      aliases: ['dl'],
+      emoji: star,
       editable: true
     })
   }

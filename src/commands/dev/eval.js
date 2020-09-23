@@ -2,14 +2,14 @@
 const { inspect } = require('util')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { EMOJIS, EMBED_COLORS } = require('@constants')
+const { EMBED_COLORS, EMOJIS: { wrench } } = require('@constants')
 
 const codeBlock = (code, language) => `\`\`\`${language}\n${code}\n\`\`\``
 
 class Eval extends LilirucaCommand {
   constructor () {
     super('eval', {
-      emoji: EMOJIS.wrench,
+      emoji: wrench,
       editable: true,
       ownerOnly: true,
       clientPermissions: 'EMBED_LINKS',

@@ -363,7 +363,7 @@
         "description": "Profile with information from a user",
         "usage": "[@user]",
         "noPhrase": "It has no description. use ``info`` command to set this information.",
-        "success": "\\⭐ Profile of {{- name }}!"
+        "success": "\\🖼️ Profile of {{- name }}!"
     },
     "stats": {
         "description": "View how your resources are doing",
