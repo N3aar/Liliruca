@@ -40,7 +40,7 @@ class Upgrade extends LilirucaCommand {
     data[place].level++
 
     const values = {
-      money: data.money -= price
+      money: data.money - price
     }
 
     await util.send(ct('success', { level: dataPlace.level }))

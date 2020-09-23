@@ -1,4 +1,4 @@
-const { SEQUENCE_OF_SESSIONS, SEASONS_PERCENTAGE, PRODUCTION_LIMIT_BY_LEVEL } = require('../Constants')
+const { SEQUENCE_OF_SESSIONS, SEASONS_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES } = require('../Constants')
 
 function getSeasonByMonth (month) {
   const parsed = month ? Math.min(Math.max(month, 1), 12) : (new Date().getMonth() + 1)
@@ -17,6 +17,15 @@ function getStoragePrice (storage, firstValue, secondValue) {
   return calc * storage
 }
 
+function getPriceResource (resource, amount) {
+  const products = {
+    [RESOURCE_NAMES.FOOD]: amount / 5,
+    [RESOURCE_NAMES.FISH]: amount * 2,
+    [RESOURCE_NAMES.METAL]: amount * 3
+  }
+  return products[resource]
+}
+
 function calculateProduction (collectedAt, level, generate, place) {
   if (!collectedAt || !level) {
     return 0
@@ -26,7 +35,7 @@ function calculateProduction (collectedAt, level, generate, place) {
   const hours = (ms / (60000 * 60)) % 24
   const minutes = (ms / (1000 * 60)) % 60
 
-  const productionLimit = PRODUCTION_LIMIT_BY_LEVEL[place][level]
+  const productionLimit = PRODUCTION_LIMIT[place] + (level * 2)
   const timeHr = hours < productionLimit ? hours : productionLimit
   const calcHr = generate * timeHr
 
@@ -42,5 +51,6 @@ module.exports = {
   getSeasonByMonth,
   getPercentageFromSeason,
   getStoragePrice,
+  getPriceResource,
   calculateProduction
 }

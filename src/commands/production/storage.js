@@ -44,7 +44,7 @@ class Storage extends LilirucaCommand {
     data[place].storage += levels
 
     const values = {
-      money: data.money -= price
+      money: data.money - price
     }
 
     db.users.sets(data, values)

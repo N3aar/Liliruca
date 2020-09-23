@@ -118,7 +118,7 @@
     "sell": {
         "description": "Venda o que foi produzido para ganhar dinheiro",
         "information": "\\📌 `Preço:` **{{ prefix }}table**",
-        "noStorage": "você não possui recursos para venda!",
+        "noStorage": "Você não possui recursos para venda!",
         "success": "\\💰 Vendido com sucesso!"
     },
     "storage": {

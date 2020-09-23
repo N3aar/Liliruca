@@ -117,7 +117,7 @@
     "sell": {
         "description": "Sale what was produced to make money",
         "information": "\\📌 `Price:` **{{ prefix }}table**",
-        "noStorage": "you not have resources for sale!",
+        "noStorage": "You not have resources for sale!",
         "success": "\\💰 Sold successfully!"
     },
     "storage": {

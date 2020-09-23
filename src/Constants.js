@@ -106,6 +106,7 @@ module.exports = {
   DAILY_COOLDOWN: 72000000,
   SEASON_NAMES,
   PLACE_NAMES,
+  RESOURCE_NAMES,
   PLACES_ALIASES: {
     [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],
     [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
@@ -121,7 +122,7 @@ module.exports = {
     [PLACE_NAMES.FISHING]: BOOSTER_NAMES.WORMS,
     [PLACE_NAMES.MINING]: BOOSTER_NAMES.ENERGETIC
   },
-  RESOURCE_NAMES,
+  RESOURCES: Object.values(RESOURCE_NAMES),
   PLACES: Object.values(PLACE_NAMES),
   PLACE_START_LEVEL: 1,
   PLACE_MAX_LEVEL: 50,

@@ -23,7 +23,7 @@ class Daily extends LilirucaCommand {
 
     const values = {
       dailyAt: Date.now(),
-      lilistars: data.lilistars++
+      lilistars: data.lilistars + 10
     }
 
     db.users.sets(data, values)
