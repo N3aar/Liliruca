@@ -80,9 +80,9 @@
         "first": "Primeira coleta!",
         "last": "Última coleta: {{- time }} atrás.",
         "success": "\\📬 Coletado com sucesso!",
-        "err": "sua produção ainda não esta pronta, aguarde {{ min }} minutos para coletar novamente.",
+        "cooldown": "Sua produção ainda não esta pronta, aguarde `{{ min }} minutos` para coletar novamente.",
         "attacked": "**Sua plantação foi atacada por aves e animais selvagens!\nSua perda foi de ``{{- attack }}%``!**",
-        "noStorage": "algum de seus armazenamentos está cheio! esvazie para coletar seus novos recursos."
+        "full": "Algum de seus armazenamentos está cheio! Esvazie para coletar seus novos recursos."
     },
     "list": {
         "description": "Lista de produtos que você pode comprar no mercado!",

@@ -26,9 +26,19 @@ function displayDate (time, language) {
   return dayjs(time).locale(language).format('L')
 }
 
+function getDuration (timestamp) {
+  const date = dayjs.duration(timestamp)
+  return {
+    days: date.days(),
+    hours: date.hours(),
+    minutes: date.minutes()
+  }
+}
+
 loadAllPlugins()
 
 module.exports = {
   parseDuration,
-  displayDate
+  displayDate,
+  getDuration
 }

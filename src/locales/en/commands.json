@@ -79,9 +79,9 @@
         "first": "First collected!",
         "last": "Last collected: {{- time }} ago.",
         "success": "\\📬 Collected successfully!",
-        "err": "your production is not ready yet, wait {{ min }} minutes to collect again.",
+        "cooldown": "Your production is not ready yet, wait `{{ min }} minutes` to collect again.",
         "attacked": "**Your plantation has been attacked by birds and wildlife!\nHis loss was ``{{- attack }}%``!**",
-        "noStorage": "Some of your stores are full! empty to collect your new resources.!"
+        "full": "Some of your storages are full! Empty to collect your new resources."
     },
     "list": {
         "description": "List of products you can buy in the market!",

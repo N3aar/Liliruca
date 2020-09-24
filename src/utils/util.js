@@ -1,3 +1,4 @@
+const { getDuration } = require('./date')
 const { SEQUENCE_OF_SESSIONS, SEASONS_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES } = require('../Constants')
 
 function getSeasonByMonth (month) {
@@ -32,14 +33,18 @@ function calculateProduction (collectedAt, level, generate, place) {
   }
 
   const ms = Date.now() - collectedAt
-  const hours = (ms / (60000 * 60)) % 24
-  const minutes = (ms / (1000 * 60)) % 60
+  const time = getDuration(ms)
+
+  if (time.days) {
+    time.hours += time.days * 24
+  }
 
   const productionLimit = PRODUCTION_LIMIT[place] + (level * 2)
-  const timeHr = hours < productionLimit ? hours : productionLimit
+
+  const timeHr = time.hours < productionLimit ? time.hours : productionLimit
   const calcHr = generate * timeHr
 
-  const timeMt = timeHr + Number(`0.${minutes}`) <= productionLimit ? minutes : 0
+  const timeMt = timeHr + Number(`0.${time.minutes}`) <= productionLimit ? time.minutes : 0
   const calcMt = (generate / 60) * timeMt
 
   const producedSeason = getPercentageFromSeason(calcHr + calcMt, place)
