@@ -162,10 +162,10 @@
         "success": "{{- emoji }} Comprado com sucesso!"
     },
     "daily": {
-        "description": "Uma lilistar que poderá pegar a cada 20 horas! Poderá comprar coisas especiais com estas lilistars",
-        "cooldownMessage": "Bônus diário já foi resgatado! aguarde `{{ time }}` para pegar novamente.",
+        "description": "Lilistars que poderá pegar a cada 20 horas! Poderá comprar coisas especiais com estas lilistars",
+        "cooldown": "Bônus diário já foi resgatado! aguarde `{{ time }}` para pegar novamente.",
         "information": "\\📌 `Tempo:` **20 horas**",
-        "success": "\\⭐ {{ count }} Lilistars diário resgatado com sucesso!"
+        "success": "\\⭐ {{ count }} Lilistars diários resgatados com sucesso!"
     },
     "vote": {
         "description": "Ganhe lilistars votando no bot! Essas lilistars poderão ser gastos comprando produtos ou boosters no mercado!",
@@ -324,12 +324,12 @@
     "give": {
         "description": "Dê dinheiro a outros usuários ou amigos!",
         "usage": "<valor> <@usuário>",
-        "error": "digite o valor e mencione o usuário a quem deseja dar o dinheiro!",
-        "noValue": "digite um valor correto, acima de ${{ min }}!",
-        "noUser": "mencione o usuário a que quer dar o dinheiro!",
-        "overhalf": "você não pode dar mais da metade do que possui a outro usúario!",
-        "cooldownMessage": "você já deu dinheiro a um usúario, aguarde `{{ time }}` para fazer isto novamente!",
-        "success": "{{- Rname }}, {{- Gname }} lhe deu ``${{ money }}``!\n**Taxa: `{{ tax }}%`**\n**Total recebido: `${{ received }}`**"
+        "noValue": "Digite um valor correto, acima de `${{- min }}`!",
+        "noUser": "Mencione o usuário a que quer dar o dinheiro!",
+        "noMoney": "Você não possui esta quantia de dinheiro!",
+        "yourself": "Você não pode doar a si mesmo.",
+        "cooldown": "Você já efetuou uma doação a um usúario, aguarde `{{ time }}` para fazer isto novamente!",
+        "success": "\\🤝 {{- receiver }} você recebeu dinheiro de {{- giver }}!"
     },
     "info": {
         "description": "Defina uma frase que irá aparecer em seus perfis dentro do bot.",

@@ -161,8 +161,8 @@
         "success": "{{- emoji }} Purchased successfully!"
     },
     "daily": {
-        "description": "One lilistar you can catch every 20 hours! You can buy special things with these Lilistars.",
-        "cooldownMessage": "Daily bonus has already been redeemed! wait `{{- time }}` to take again.",
+        "description": "Lilistars you can catch every 20 hours! You can buy special things with these Lilistars.",
+        "cooldown": "Daily bonus has already been redeemed! wait `{{- time }}` to take again.",
         "information": "\\📌 `Time:` **20 hours**",
         "success": "\\⭐ {{ count }} daily Lilistars rescued successfully!"
     },
@@ -319,19 +319,17 @@
     },
     "give": {
         "description": "Give money to other users or friends!",
-        "usage": "<value> <@user>",
-        "error": "type the amount and mention the user to whom you want to give the money!",
-        "noValue": "type the value correctly, above of $30!",
-        "noUser": "mention the user you want to give the money to!",
-        "overhalf": "you cannot give more than half of what you own to another user!",
-        "cooldownMessage": "you already gave money to a user, wait `{{ time }}` to do it again!",
-        "success": "{{- Rname }}, {{- Gname }} gave you ``${{ money }}``!\n**Tax: `{{ tax }}%`**\n**Total received: `${{ total }}`**"
+        "noValue": "Type the value correctly, above of `${{- min }}`!",
+        "noUser": "Mention the user you want to give the money to!",
+        "noMoney": "You don't have that amount of money!",
+        "yourself": "You cannot donate yourself.",
+        "cooldown": "You already gave money to a user, wait `{{ time }}` to do it again!",
+        "success": "\\🤝 {{- receiver }} you received money from {{- giver }}!"
     },
     "info": {
         "description": "Define a phrase that will appear in your profiles within the bot.",
         "usage": "<phrase>",
         "error": "type the phrase you want to appear in your profile!",
-        "information": "\\📌 `Limit:` **45 characters.**",
         "limit": "your phrase exceeds the character limit. **[45]**",
         "success": "Your phrase was successfully defined!"
     },

@@ -105,6 +105,9 @@ module.exports = {
     'others'
   ],
   DAILY_COOLDOWN: 72000000,
+  GIVE_COOLDOWN: 18000000,
+  GIVE_TAX: 0.95,
+  GIVE_MIN: 50,
   SEASON_NAMES,
   PLACE_NAMES,
   RESOURCE_NAMES,
@@ -218,6 +221,8 @@ module.exports = {
     picture: '🖼️',
     books: '📚',
     graph: '📊',
+    handshake: '🤝',
+    bank: '🏦',
     antenna: '📡',
     lamp: '💡',
     beatingHeart: '💓',

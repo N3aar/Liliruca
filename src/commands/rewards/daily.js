@@ -18,7 +18,7 @@ class Daily extends LilirucaCommand {
     if (timestamp < DAILY_COOLDOWN && data.dailyAt) {
       const remaining = DAILY_COOLDOWN - timestamp
       const time = parseDuration(remaining, language)
-      return util.send(ct('cooldownMessage', { time }))
+      return util.send(ct('cooldown', { time }))
     }
 
     const values = {
