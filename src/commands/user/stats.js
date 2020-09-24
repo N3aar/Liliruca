@@ -1,9 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
+const { getPercentageFromSeason, calculateProduction, bold } = require('@utils/util')
 const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, EMOJIS } = require('@constants')
-
-const bold = string => `**${string}**`
 
 class Stats extends LilirucaCommand {
   constructor () {

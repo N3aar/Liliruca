@@ -1,5 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
+const { bold } = require('@utils/util')
 const { EMOJIS: { antenna, lamp, beatingHeart } } = require('@constants')
 
 class Ping extends LilirucaCommand {
@@ -19,10 +20,26 @@ class Ping extends LilirucaCommand {
     const sent = await util.send(ct('calc'))
     const latency = Math.round(sent.createdTimestamp - createdTimestamp)
 
+    const ping = [
+      {
+        name: ct('latency'),
+        value: bold(`\\${lamp} ${latency}ms`),
+        inline: true
+      },
+      {
+        name: ct('heartbeat'),
+        value: bold(`\\${beatingHeart} ${hearbeat}ms`),
+        inline: true
+      },
+      {
+        name: ct('apiLatency'),
+        value: bold(`\\${antenna} ${APIlatency}ms`),
+        inline: true
+      }
+    ]
+
     const embed = new LilirucaEmbed()
-      .addField(ct('latency'), `**\\${lamp} ${latency}ms**`, true)
-      .addField(ct('heartbeat'), `**\\${beatingHeart} ${hearbeat}ms**`, true)
-      .addField(ct('apiLatency'), `**\\${antenna} ${APIlatency}ms**`, true)
+      .addFields(ping)
 
     sent.edit(ct('success'), embed)
   }

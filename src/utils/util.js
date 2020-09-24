@@ -52,10 +52,15 @@ function calculateProduction (collectedAt, level, generate, place) {
   return Math.floor(producedSeason)
 }
 
+function bold (string) {
+  return `**${string}**`
+}
+
 module.exports = {
   getSeasonByMonth,
   getPercentageFromSeason,
   getStoragePrice,
   getPriceResource,
-  calculateProduction
+  calculateProduction,
+  bold
 }

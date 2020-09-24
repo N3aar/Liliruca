@@ -1,9 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { displayDate } = require('@utils/date')
+const { bold } = require('@utils/util')
 const { TEAM, EMOJIS: { key } } = require('@constants')
-
-const bold = string => `**${string}**`
 
 class Team extends LilirucaCommand {
   constructor () {

@@ -1,10 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { calculateProduction } = require('@utils/util')
+const { calculateProduction, bold } = require('@utils/util')
 const { STORAGES_SIZE, PLACE_GENERATE, PLACES, EMOJIS } = require('@constants')
-
-const bold = string => `**${string}**`
 
 class Collect extends LilirucaCommand {
   constructor () {

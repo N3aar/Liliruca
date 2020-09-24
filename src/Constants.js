@@ -42,6 +42,7 @@ const BOOSTER_TYPES = {
 }
 
 module.exports = {
+  SUPPORT_GUILD: 'https://discord.com/invite/8RbHNfr',
   DEFAULT_PREFIX: '>',
   PREFIX_MAX_LIMIT: 5,
   DEFAULT_LANGUAGE: 'pt-br',
@@ -221,6 +222,7 @@ module.exports = {
     lamp: '💡',
     beatingHeart: '💓',
     abacus: '🧮',
+    bookmark: '🔖',
     wrench: '🔧',
     gear: '⚙️',
     farm: '🌳',

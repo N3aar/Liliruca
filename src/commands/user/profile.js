@@ -1,8 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
+const { bold } = require('@utils/util')
 const { EMOJIS: { picture, money, star } } = require('@constants')
-
-const bold = string => `**${string}**`
 
 class Profile extends LilirucaCommand {
   constructor () {
