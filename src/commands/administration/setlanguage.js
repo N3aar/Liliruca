@@ -25,7 +25,7 @@ class SetLanguage extends LilirucaCommand {
     await db.guilds.set(guild.id, lang, 'language')
 
     const t = locales.getT(lang)
-    const success = `commands:setlanguage.${language ? 'changedLanguage' : 'resetLanguage'}`
+    const success = 'commands:setlanguage.changedLanguage'
 
     util.send(t(success, { language: lang }))
   }

@@ -8,7 +8,7 @@ const { SUPPORT_GUILD, EMOJIS: { bookmark } } = require('@constants')
 class Botinfo extends LilirucaCommand {
   constructor () {
     super('botinfo', {
-      aliases: ['bot', 'info'],
+      aliases: ['info'],
       emoji: bookmark,
       editable: true,
       clientPermissions: 'EMBED_LINKS'
