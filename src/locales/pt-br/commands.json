@@ -125,13 +125,21 @@
         "success": "\\⚙️ Armazenamento melhorado para `level {{- level }}`!"
     },
     "table": {
-        "description": "Visualizar uma tabela completa dos preços de recursos e melhorias",
-        "division": "Quantidade dividida por",
-        "multi": "Quantia multiplicada por",
-        "storage": "Level atual multiplicado por",
-        "desblock": {
-            "fishing": "Desbloqueado no level `5` da Fazenda",
-            "mining": "Desbloqueado no level `5` da Pescaria"
+        "description": "Visualizar uma tabela dos preços de recursos e melhorias",
+        "usage": "<local> [--storage]",
+        "noPlace": "Digite um local válido!",
+        "maxUpgrade": "Level máximo: {{- max }}",
+        "formula": "Level multiplicado por **${{- price }}**",
+        "sell": "**__Fórmula__**: Quantidade {{- operation }} por {{- value }}\n**__Exemplo__**: {{- emoji }} = {{- amount }} 💰 = {{- money }}",
+        "division": "dividida",
+        "multiply": "multiplicada",
+        "calculate": "Para saber o preço de varios levels, use:\n**{{- prefix }}calculate <level inicial> <level final>**",
+        "storage": "\\📋 Preços do armazenamento da {{- place }}!",
+        "table": "\\📋 Preços da {{- place }}!",
+        "upgrade": {
+            "farm": "Level 1: **$0**\n{{- prices }}\n...",
+            "fishing": "Level 1: Desbloqueado no level `10` da Fazenda\n{{- prices }}\n...",
+            "mining": "Level 1: Desbloqueado no level `10` da Pescaria\n{{- prices }}\n..."
         }
     },
     "upgrade": {

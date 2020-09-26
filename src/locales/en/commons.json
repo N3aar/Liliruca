@@ -54,6 +54,8 @@
     "members": "Members",
     "invites": "Invites",
     "privacy": "Privacy",
+    "formula": "Formula",
+    "tip": "Tip",
     "noMap": "Want to create your own {{- map }} map? visit: -Coming Soon-",
     "uses": "{{- value }} uses",
     "scarecrow": "Scarecrow",
@@ -101,8 +103,6 @@
     "aliases": "Shortcuts",
     "table": "Table",
     "marketList": "Product list",
-    "disivion": "Amount divided by ",
-    "multi": "Amount multiplied by ",
     "FARM": { "storage": "Storage of Farm" },
     "FISHING": { "storage": "Storage of Fishing" },
     "MINING": { "storage": "Storage of Mining" }

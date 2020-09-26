@@ -121,14 +121,22 @@
         "noMoney": "You enough money to buy this upgrade! Missing: `{{- remainder }}`.",
         "success": "\\⚙️ Storage upgraded to `level {{- level}}`!"
     },
-    "table":{
+    "table": {
         "description": "View a complete table of resource prices and upgrades",
-        "division": "Amount divided by",
-        "multi": "Amount multiplied by",
-        "storage": "Current level multiplied by",
-        "desblock": {
-            "fishing": "Unlocked at level `5` of Farm",
-            "mining": "Unlocked at level `5` of Fishing"
+        "usage": "<place>",
+        "noPlace": "Type valid place!",
+        "maxUpgrade": "Maximum level: {{- max }}",
+        "formula": "Level multiplied by **${{- price }}**",
+        "sell": "**__Formula__**: Amount {{- operation }} by {{- value }}\n**__Example__**: {{- emoji }} = {{- amount }} 💰 = {{- money }}",
+        "division": "divided",
+        "multiply": "multiplied",
+        "calculate": "To know the price of several levels, use:\n**{{- prefix }}calculate <initial level> <final level>**",
+        "storage": "\\📋 {{- place }} storage prices!",
+        "table": "\\📋 {{- place }} prices!",
+        "upgrade": {
+            "farm": "Level 1: **$0**\n{{- prices }}\n...",
+            "fishing": "Level 1: Unlocked at level `10` of Farm\n{{- prices }}\n...",
+            "mining": "Level 1: Unlocked at level `10` of Fishing\n{{- prices }}\n..."
         }
     },
     "upgrade": {

@@ -55,6 +55,8 @@
     "members": "Membros",
     "invites": "Convites",
     "privacy": "Privacidade",
+    "formula": "Fórmula",
+    "tip": "Dica",
     "noMap": "Quer criar seu próprio mapa da {{- map }}? visite: -Em Breve-",
     "uses": "{{- value }} usos",
     "scarecrow": "Espantalho",
@@ -103,8 +105,6 @@
     "aliases": "Atalhos",
     "table": "Tabela",
     "marketList": "Lista de Produtos",
-    "division": "Quantidade dividida por ",
-    "multi": "Quantidade multiplicada por ",
     "farm_storage": "Armazenamento da Fazenda" ,
     "fishing_storage": "Armazenamento da Pescaria",
     "mining_storage": "Armazenamento da Mineração"
