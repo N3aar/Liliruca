@@ -1,9 +1,0 @@
-{
-  "invalidNumber": "This is not a valid number!",
-  "needSmallerString": "The maximum limit is {{ max }} characters!",
-  "minLength": "The minimum limit is {{ min }} characters!",
-  "needBiggerNumber": "{{ max }} is maximum value!",
-  "needSmallerNumber": "{{ min }} is minimum value!",
-  "sameUser": "The user cannot be you!",
-  "canBinvalidUserBoteBot": "The user cannot be a bot!"
-}

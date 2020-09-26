@@ -4,15 +4,6 @@
     "devolperOnly": "Este comando é restrito apenas aos desenvolvedores!",
     "noPlace": "Me informe o local correto que você quer fazer esta melhoria!",
     "locked": "Você ainda não desbloqueou isso!",
-    "commandError": "Ocorreu um erro inesperado!",
-    "userBot": "Utilize esse comando somente em usúarios!",
-    "notPhrase": "Sem descrição.",
-    "notGuild": "Guilda não encontrada!",
-    "notOwner": "Você não é dono desta Guilda!",
-    "notAction": "Digite a ação corretamente para o comando ser executado! ``[add, remove]``",
-    "invalidAction": "Esta ação é inválida!",
-    "noUser": "Mencione ou digite o id do usuário!",
     "guildPermission": "Você não possui permissão nesta Guilda para isto.",
-    "requireDatabase": "Não foi possível criar uma conexão com banco de dados, portanto este comando não está disponivel.",
     "notFound": "Não encontrei"
 }
