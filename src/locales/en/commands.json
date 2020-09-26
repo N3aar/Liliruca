@@ -1,27 +1,24 @@
 {
     "setlanguage": {
         "description": "Change the language of the commands, thus simpler for your members to interact with me!",
-        "usage": "<new language>",
+        "usage": "<language>",
         "error": "Inform me correct language! options: {{- languages }}",
-        "information": "\\📌 `Options`: **pt-BR, en-US**",
         "changed": "\\💬 Language changed successfully to `{{ language }}`!",
         "already": "My language is already set to `{{ language }}` on this server!"
     },
     "setprefix": {
         "description": "Place a custom prefix for the commands on your server, but be sure to notify your server members about this new prefix! 😉",
-        "usage": "<new prefix>",
-        "information": "\\📌 `Limit:` **4 characters.**",
-        "limit": "this prefix is ​​too large, exceeding the limit. **[{{ limit }}]**",
+        "usage": "<prefix>",
+        "limit": "This prefix is ​​too large, exceeding the limit. **[{{ limit }}]**",
         "already": "My prefix is already set to `{{- prefix }}` on this server!",
         "success": "\\✏ Prefix changed successfully to `{{- prefix }}`!",
         "removed": "\\✏ Prefix removed successfully!",
-        "error": "type the prefix to be changed!"
+        "error": "Type the prefix to be changed!"
     },
     "settimer": {
         "description": "Hours are very different in various places in the world, for this there is this command, you can change the time of your server, this will only influence the aesthetics of the places, leaving them with periods of day and night!",
         "usage": "<current hour>",
         "error": "type the hour correctly!",
-        "information": "\\📌 `Format 24h:` **5 | 13**\n\\📌 `Format 12h:` **5am | 1pm**\n",
         "success": "\\⏰ Guild time has been updated successfully!"
     },
     "botinfo": {
@@ -42,23 +39,13 @@
         "success": "\\📋 Bot information!"
     },
     "help": {
-        "usage": "<Category | Number | Command | All>",
+        "description": "All information about the Commands!",
+        "usage": "<command | category | number | --all>",
         "notFind": "category or command was not found!",
         "success": "\\📚 Pages of help!",
         "all": "\\📚 All commands!",
         "category": "\\{{- emoji }}  `{{- category }}` Category!",
         "command": "\\{{- emoji }} Command `{{- command }}`!"
-    },
-    "hour": {
-        "description": "Look the current time following the configuration of this guild!"
-    },
-    "calculate": {
-        "description": "Calculate price to upgrade your storage!",
-        "usage": "<place> <first value> <second value>",
-        "value": "\\🧪 Value",
-        "result": "\\✔️ Result",
-        "invalidPlace": "Type a valid place!",
-        "success": "\\🧮 Calculation completed successfully!"
     },
     "ping": {
         "description": "Bot connection data with the servers.",
@@ -69,13 +56,23 @@
         "heartbeat": "Heartbeat",
         "success": "\\🔌 Bot connection data!"
     },
+    "hour": {
+        "description": "Look the current time following the configuration of this guild!"
+    },
     "team": {
         "description": "Team that develops the bot, and makes it increasingly amazing!",
         "success": "\\🔑 Development team!"
     },
+    "calculate": {
+        "description": "Calculate price to upgrade your storage!",
+        "usage": "<place> [value] [value]",
+        "value": "\\🧪 Value",
+        "result": "\\✔️ Result",
+        "invalidPlace": "Type a valid place!",
+        "success": "\\🧮 Calculation completed successfully!"
+    },
     "collect": {
         "description": "To collect all your resources produced",
-        "information": "\\📌 `Time:` **1 hour**",
         "first": "First collected!",
         "last": "Last collected: {{- time }} ago.",
         "success": "\\📬 Collected successfully!",
@@ -110,22 +107,19 @@
     "market": {
         "description": "Buy some special products in this market!",
         "error": "type correctly the product ID you wish to purchase! To see the products use the command ``list``",
-        "information": "\\📌 `Product list:` **{{ prefix }}list**",
         "noMoney": "You no have value needed for this purchase!",
         "success": "\\🏪 Purchased successfully!"
     },
     "sell": {
         "description": "Sale what was produced to make money",
-        "information": "\\📌 `Price:` **{{ prefix }}table**",
         "noStorage": "You not have resources for sale!",
         "success": "\\💰 Sold successfully!"
     },
     "storage": {
-        "description": "To upgrade the level of a storage",
-        "usage": "<place>",
+        "description": "Increase the levels of a storage",
+        "usage": "<place> [levels]",
         "noMoney": "You enough money to buy this upgrade! Missing: `{{- remainder }}`.",
-        "success": "\\⚙️ Storage upgraded to `level {{- level}}`!",
-        "information": "\\📌 `Places:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**\n\\📌 `Price:` **{{ prefix }}table**"
+        "success": "\\⚙️ Storage upgraded to `level {{- level}}`!"
     },
     "table":{
         "description": "View a complete table of resource prices and upgrades",
@@ -140,13 +134,10 @@
     "upgrade": {
         "description": "To upgrade the level of a place",
         "usage": "<place>",
-        "information": "\\📌 `Places:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**\n\\📌 `Price:` **{{ prefix }}table**",
-        "placeNoExist": "inform the correct place you want to make this upgrade!",
         "maxLevel": "You already at the maximum level at this place",
         "noMoney": "you enough money to buy this upgrade! Missing: {{- remainder }}",
         "success": "\\⚙️ Level {{- level}}, upgraded successfully!",
         "protection": "\\🌳 Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``market``, prices are in command ``list``",
-        "job": "\\💼 Congratulations, your economy is growing well, so now you can specialize in a profession, and get benefits from it!\n\nUse the ``job`` command to adjust your profession, jobs and more details to use ``job list``",
         "unlock": {
             "fishing": "Congratulations, you have unlocked a new location! Now get your fishing rod and let's go fishing! \\⛵",
             "mining": "Congratulations, you have unlocked a new location! Now get your pick and let's go mining! \\⛏"
@@ -156,144 +147,19 @@
         "description": "Buy boxes to open and win prizes!",
         "usage": "<box name>",
         "error": "type the box you want to buy!",
-        "information": "\\📌 `Boxes`: **Common | Rare | Epic | Legendary**",
         "noMoney": "you do not have enough money for this purchase!",
         "success": "{{- emoji }} Purchased successfully!"
     },
     "daily": {
         "description": "Lilistars you can catch every 20 hours! You can buy special things with these Lilistars.",
         "cooldown": "Daily bonus has already been redeemed! wait `{{- time }}` to take again.",
-        "information": "\\📌 `Time:` **20 hours**",
         "success": "\\⭐ {{ count }} daily Lilistars rescued successfully!"
     },
     "vote": {
         "description": "Earn Lilistars by voting for the bot! These Lilistars can be spent buying products or boosters in the market!",
         "cooldownMessage": "lilistars per vote has already been redeemed! wait `{{- time }}` to take again.",
-        "information": "\\📌 `Time:` **13 hours**",
         "noVoted": "\\💖 vote for me and retype this command, you will earn Lilistars to spend on the ``market`` command, more product details use the ``list`` command, you can earn this reward every 13 hours!\nhttps://botsparadiscord.xyz/bots/548862902078275605/votar",
         "success": "\\👍 successfully voted, thanks for your support!"
-    },
-    "blazon": {
-        "description": "Add a blazon to your guild",
-        "usage": "<image or url>",
-        "error": "correctly type a url or send this command along with the image!",
-        "information": "\\📌 `Formats:` **png, jpg**",
-        "fileType": "file format is not accepted, send in ``png`` or ``jpg`` (animated png also not accepted)!",
-        "inVerifc": "previously sent coat of arms is still under verification, please wait before sending another.",
-        "success": "\\📷 Your image has been submitted to arrive, it will soon appear on your Guild profile!"
-    },
-    "delete": {
-        "description": "Delete your Guild (by executing you confirm that you want this, this action is irreversible!)",
-        "success": "\\💥 Guild successfully deleted!"
-    },
-    "description": {
-        "description": "Change your Guild description",
-        "usage": "<new description>",
-        "error": "type the description for your guild!",
-        "limit": "your description exceeds the character limit. **[60]**",
-        "success": "\\📨 Description changed successfully!"
-    },
-    "invite": {
-        "description": "Create or remove an invite in your Guild!",
-        "usage": "<create | delete | list> <@user | user id>",
-        "information": "\\📌 `Actions:` **[create, delete, list]**",
-        "notPrivate": "This command is intended for private guilds, other users can currently join without invitation in your guild!",
-        "already": "This user has previously been invited to this Guild!",
-        "limit": "invitation limit in this guild has been reached, clear them to create another!",
-        "noInvited": "invitation not found or previously removed!",
-        "requireMention": "Mention the user you want to invite or remove from list!",
-        "added": "\\📧 Invitation successfully added! user can enter your guild using the command ``join``",
-        "removed": "\\📧 Invitation successfully removed!",
-        "noInvites": "No invitations created!",
-        "noList": "This user is not in your guest list!",
-        "notAction": "type the action correctly for the command to execute! `[create, delete, list]`"
-    },
-    "kick": {
-        "description": "Kick a member of your Guild!",
-        "usage": "<user id>",
-        "error": "type the user id correctly to kick him out of his guild",
-        "self": "you can't expel yourself, if you want to leave your guild, use the command ``leave``",
-        "owner": "you can't kick the guild owner",
-        "mod": "you can't kick out other moderators",
-        "member": "member not found in your guild!",
-        "success": "\\❌ Member was successfully kicked out of his Guild!"
-    },
-    "levelup": {
-        "description": "Level up your Guild",
-        "noMoney": "your Guild does not have the amount of money needed to level up!",
-        "success": "\\🏰 Level {{- level }}, successfully increased!"
-    },
-    "moderator": {
-        "description": "Add or remove the role of moderator of a Member!",
-        "usage": "<add | remove> <@user | user id>",
-        "userInGuild": "user must be a member of your guild!",
-        "already": "This user is already a moderator of this Guild!",
-        "limit": "Your Guild has already reached the maximum of Moderators!",
-        "notMod": "This user is not a moderator!",
-        "added": "\\🎩 Moderator successfully added!!",
-        "removed": "\\🎩 Moderator successfully removed!"
-    },
-    "name": {
-        "description": "Change your Guild name",
-        "usage": "<new name>",
-        "success": "\\📝 Successfully defined name!"
-    },
-    "private": {
-        "description": "Make your guild private or public",
-        "true": "\\🔐 Your guild is now private, only members you invite can join!",
-        "false": "\\🔓 Now your guild is public, any user can join!"
-    },
-    "view": {
-        "description": "List your guild data",
-        "usage": "<invites | moderators | members>",
-        "error": "type a correct category! ``[invites, moderators, members]``",
-        "information": "\\📌 `Options:` **invites | moderators | members**",
-        "success": "\\📑 All the {{- category }}!"
-    },
-    "collaboration": {
-        "description": "Ranking of users who contributed the most to the guild with money!",
-        "usage": "[Guild id]",
-        "success": "\\🏆 Ranking of Contributors!"
-    },
-    "contribute": {
-        "description": "Contribute to Guild by donating money",
-        "usage": "<value>",
-        "error": "type the value correctly to make this contribution",
-        "noMoney": "you don't have this value, enter a valid value for your contribution",
-        "success": "\\💰 You just contributed **${{ value }}!\n`total contribution: ${{ total }}`"
-    },
-    "createguild": {
-        "description": "Create a Guild, evolve it, call members and earn many benefits!",
-        "usage": "<Guild name>",
-        "error": "type the name for your new guild",
-        "already": "you are already in a guild, leave first to create one!",
-        "noMoney": "you don't have enough money to create the Guild!",
-        "limit": "This name is too long, exceeding the limit. **[25]**",
-        "reserved": "This name is reserved by Bot, please use another!",
-        "success": "\\🏰 Your guild was successfully created!"
-    },
-    "guild": {
-        "description": "See data from a Guild!",
-        "usage": "[@user]",
-        "notDesc": "It has no description!",
-        "success": "\\🏰 Guild Info!",
-        "userNoGuild": "This user has not Guild.",
-        "guildNoExist": "This guild does not exist.",
-        "yourNoGuild": "You have no guild."
-    },
-    "join": {
-        "description": "Become a member of a Guild and evolve with it!",
-        "usage": "<Guild id>",
-        "error": "type correctly the id of Guild you want to enter!",
-        "already": "you are already in a guild, get out first to join a new guild!",
-        "private": "This guild is private, to enter you need to be invited!",
-        "limit": "Guild member limit has already been reached!",
-        "success": "{{- user }}, \\🎓 Welcome to Guild **{{- name }}**!"
-    },
-    "leave": {
-        "description": "Leave your current guild",
-        "noMembers": "Your Guild has no other members, delete to leave!",
-        "success": "\\🎒 Successfully left guild!"
     },
     "months": {
         "description": "Look duration of the seasons and the effects it has on your production.",
@@ -309,16 +175,22 @@
     },
     "farm": {
         "description": "View the map of your farm or other user.",
-        "usage": "[@user]",
+        "usage": ["[@user]"],
         "success": "\\🌳 Farm of {{- name }}"
     },
     "fishing": {
         "description": "View the map of your fishing or other user.",
-        "usage": "[@user]",
+        "usage": ["[@user]"],
         "success": "\\⛵ Fishing of {{- name }}"
     },
+    "mining": {
+        "description": "View the map of your mining or other user.",
+        "usage": "[@user]",
+        "success": "\\⛏ Mining of {{- name }}"
+    },
     "give": {
-        "description": "Give money to other users or friends!",
+        "description": "Give money to other users!",
+        "usage": "<member> <value>",
         "noValue": "Type the value correctly, above of `${{- min }}`!",
         "noUser": "Mention the user you want to give the money to!",
         "noMoney": "You don't have that amount of money!",
@@ -326,46 +198,21 @@
         "cooldown": "You already gave money to a user, wait `{{ time }}` to do it again!",
         "success": "\\🤝 {{- receiver }} you received money from {{- giver }}!"
     },
-    "info": {
-        "description": "Define a phrase that will appear in your profiles within the bot.",
-        "usage": "<phrase>",
-        "error": "type the phrase you want to appear in your profile!",
-        "limit": "your phrase exceeds the character limit. **[45]**",
-        "success": "Your phrase was successfully defined!"
-    },
     "leaderboard": {
         "description": "Ranking of 10 users who more own the resource!",
         "error": "type the resource correctly!",
         "usage": "<resource | storage>",
-        "information": "\\📌 `Resources:` **\\💰 Money | \\⭐ Lilistar**\n\\📌 `Storages:` **\\🌳 Farm | \\⛵ Fishing | \\⛏ Mining**",
         "noPage": "could not find enough users to create this page!",
         "sucess": "\\🏆 Top 10 in {{ resource }}!"
     },
-    "job": {
-        "error": "type a valid job! ``[Farmer, Fisher ou Miner]``",
-        "information": "\\📌 `:` ****",
-        "noMoney": "don't have enough money to change your job!",
-        "already": "This is already your job!",
-        "farmer": "**Name: ``Farmer``\nBenefits: ``Scarecrow, Fence and Basic Fertilizer are unlimited!``**",
-        "fisher": "**Name: ``Fisher``\nBenefits: ``Basic baits it's unlimited``**",
-        "miner": "**Name: ``Miner``\nBenefits: ``Basic energetic it's unlimited``**",
-        "list": "\\🧤 All professions and their benefits!",
-        "success": "\\🧤 Job successfully changed! You are now {{- job }}!"
-    },
-    "mining": {
-        "description": "View the map of your mining or other user.",
-        "usage": "[@user]",
-        "success": "\\⛏ Mining of {{- name }}"
-    },
     "profile": {
         "description": "Profile with information from a user",
-        "usage": "[@user]",
-        "noPhrase": "It has no description. use ``info`` command to set this information.",
+        "usage": "[member]",
         "success": "\\🖼️ Profile of {{- name }}!"
     },
     "stats": {
         "description": "View how your resources are doing",
-        "usage": "[place] [@user]",
+        "usage": "[place] [member]",
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
         "success": "\\📊 Resources of {{- name }}"
     }

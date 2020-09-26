@@ -1,11 +1,6 @@
 {
-  "invalidNumber": "Isso não é um número valido!",
-  "needSmallerString": "O limite máximo é de {{ number }} caracteres!",
-  "needBiggerNumber": "{{ max }} é o valor máximo!",
-  "needSmallerNumber": "{{ number }} é o valor mínimo!",
-  "sameUser": "O usuário não pode ser você!",
-  "invalidUserBot": "O usuário não pode ser um bot!",
-  "invalidUser": "Usuário invalido",
-  "authorHasNoGuild": "Você não tem Guilda",
-  "userHasNoGuild": "Esse usuário não tem Guilda"
+  "member": "Membro",
+  "string": "Texto",
+  "Number": "Número",
+  "place": "Local"
 }

@@ -39,11 +39,11 @@ class LilirucaClient extends AkairoClient {
       directory: joinPath('listeners')
     }
 
+    this.commandHandler = new CommandHandler(this, commandOptions)
+    this.listenerHandler = new ListenerHandler(this, listenerOptions)
     this.db = Database
     this.logger = logger
     this.locales = locales
-    this.commandHandler = new CommandHandler(this, commandOptions)
-    this.listenerHandler = new ListenerHandler(this, listenerOptions)
   }
 
   loadCustomArgumentTypes () {
@@ -77,15 +77,23 @@ class LilirucaClient extends AkairoClient {
     })
   }
 
+  loadCategories () {
+    this.categories = this.commandHandler.categories
+      .filter(category => category.id !== 'dev')
+      .sorted((a, b) => CATEGORIES.indexOf(a.id) - CATEGORIES.indexOf(b.id))
+  }
+
   async init () {
     await this.db.connect()
     await this.locales.loadAll()
 
-    this.loadCustomArgumentTypes()
     this.commandHandler.useListenerHandler(this.listenerHandler)
 
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
+
+    this.loadCustomArgumentTypes()
+    this.loadCategories()
 
     return this
   }
@@ -97,10 +105,6 @@ class LilirucaClient extends AkairoClient {
 
   get commands () {
     return this.commandHandler.modules
-  }
-
-  get categories () {
-    return this.commandHandler.categories.sort((a, b) => CATEGORIES.indexOf(a) - CATEGORIES.indexOf(b))
   }
 }
 

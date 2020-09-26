@@ -20,21 +20,12 @@ class LilirucaCommand extends Command {
 
     super(id, options)
 
+    this.channel = 'guild'
     this.emoji = options.emoji
-    this.logger = logger.scope(this.constructor.name)
+    this.usage = !!options.args
 
-    if (locales.exists(`commands:${id}.description`)) {
-      this.description = `commands:${id}.description`
-    } else {
-      this.logger.warn('not found description.')
-    }
-
-    if (this.args) {
-      if (locales.exists(`commands:${id}.usage`)) {
-        this.usage = `commands:${id}.usage`
-      } else {
-        this.logger.warn('not found usage.')
-      }
+    if (!locales.exists(`commands:${id}.description`)) {
+      logger.scope(this.constructor.name).warn('not found description.')
     }
   }
 

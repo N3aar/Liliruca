@@ -4,7 +4,9 @@
 
     "botMention": "{{ - author }} use ``{{- prefix }}help`` to see my functions!",
     "usage": "Use: ",
+    "description": "Description",
     "noDescription": "Without Description!",
+    "howUse": "How to use",
     "current": "Current",
     "options": "Options",
     "format": "Format",

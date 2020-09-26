@@ -27,6 +27,33 @@ function getPriceResource (resource, amount) {
   return products[resource]
 }
 
+function findCategory ({ client, t }, phrase) {
+  if (!phrase) {
+    return null
+  }
+
+  let i = 1
+  const number = Number(phrase)
+
+  return client.categories.find(category => {
+    if (number === i) {
+      return true
+    }
+
+    if (category.id === phrase) {
+      return true
+    }
+
+    const categoryName = t(`categories:${category.id}`).toLowerCase()
+    if (categoryName === phrase) {
+      return true
+    }
+
+    i++
+    return false
+  })
+}
+
 function calculateProduction (collectedAt, level, generate, place) {
   if (!collectedAt || !level) {
     return 0
@@ -62,5 +89,6 @@ module.exports = {
   getStoragePrice,
   getPriceResource,
   calculateProduction,
+  findCategory,
   bold
 }
