@@ -53,7 +53,7 @@ class Sell extends LilirucaCommand {
       money: current
     }
 
-    db.users.sets(data, values)
+    db.users.update(data, values)
 
     util.send(ct('success'), embed)
   }

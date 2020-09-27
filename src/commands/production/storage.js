@@ -47,7 +47,7 @@ class Storage extends LilirucaCommand {
       money: data.money - price
     }
 
-    db.users.sets(data, values)
+    db.users.update(data, values)
 
     util.send(ct('success', { level: dataPlace.storage }))
   }

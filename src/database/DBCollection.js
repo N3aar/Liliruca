@@ -17,7 +17,7 @@ class DBCollection extends LilirucaCollection {
     return data
   }
 
-  async set (id, value, key) {
+  async upgradeOne (id, value, key) {
     const data = await this.get(id)
 
     data[key] = value
@@ -27,7 +27,7 @@ class DBCollection extends LilirucaCollection {
     return data.save()
   }
 
-  sets (data, values) {
+  update (data, values) {
     for (const key in values) {
       data[key] = values[key]
       data.markModified(key)

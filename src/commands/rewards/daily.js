@@ -26,7 +26,7 @@ class Daily extends LilirucaCommand {
       lilistars: data.lilistars + 10
     }
 
-    db.users.sets(data, values)
+    db.users.update(data, values)
 
     util.send(ct('success', { count: 10 }))
   }

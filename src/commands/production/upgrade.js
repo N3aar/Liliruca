@@ -47,7 +47,7 @@ class Upgrade extends LilirucaCommand {
 
     this.checkUnlocked({ ct, author, data, place, channel })
 
-    db.users.sets(data, values)
+    db.users.update(data, values)
   }
 
   checkUnlocked ({ ct, author, data, place, channel }) {

@@ -20,7 +20,7 @@ class SetPrefix extends LilirucaCommand {
   }
 
   async exec ({ util, guild, db, ct }, { prefix }) {
-    await db.guilds.set(guild.id, prefix, 'prefix')
+    await db.guilds.updateOne(guild.id, prefix, 'prefix')
     const success = prefix ? 'changedPrefix' : 'resetPrefix'
     util.send(ct(success, { prefix }))
   }

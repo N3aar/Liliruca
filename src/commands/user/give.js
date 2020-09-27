@@ -71,8 +71,8 @@ class Give extends LilirucaCommand {
       money: receiverData.money + donate
     }
 
-    db.users.sets(data, giveValues)
-    db.users.sets(receiverData, receiverValues)
+    db.users.update(data, giveValues)
+    db.users.update(receiverData, receiverValues)
 
     const embed = new LilirucaEmbed()
       .addFields(profile)
