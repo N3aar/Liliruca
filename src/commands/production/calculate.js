@@ -37,7 +37,7 @@ class Calculate extends LilirucaCommand {
 
     const value = bold(`${firstValue} \\➡ ${secondValue}`)
     const result = bold(`$${price}`)
-    const storageName = t(`commons:${place}_storage`)
+    const storageName = t(`commons:storage.${place}`)
 
     const embed = new LilirucaEmbed()
       .addField(ct('value'), value, true)

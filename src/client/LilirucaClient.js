@@ -1,4 +1,6 @@
 const { join } = require('path')
+const { readdirSync } = require('fs')
+const { registerFont } = require('canvas')
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo')
 const Database = require('@database/Database')
 const { LilirucaCommand } = require('@structures')
@@ -77,6 +79,16 @@ class LilirucaClient extends AkairoClient {
     })
   }
 
+  loadAllFonts () {
+    const folder = 'src/assets/fonts/'
+    const fonts = readdirSync(folder)
+
+    for (const font of fonts) {
+      const family = font.split('.')[0]
+      registerFont(folder + font, { family })
+    }
+  }
+
   loadCategories () {
     this.categories = this.commandHandler.categories
       .filter(category => category.id !== 'dev')
@@ -94,6 +106,7 @@ class LilirucaClient extends AkairoClient {
 
     this.loadCustomArgumentTypes()
     this.loadCategories()
+    this.loadAllFonts()
 
     return this
   }

@@ -3,17 +3,13 @@
         "description": "Change the language of the commands, thus simpler for your members to interact with me!",
         "usage": "<language>",
         "error": "Inform me correct language! options: {{- languages }}",
-        "changed": "\\💬 Language changed successfully to `{{ language }}`!",
-        "already": "My language is already set to `{{ language }}` on this server!"
+        "success": "\\💬 Language changed successfully to `{{ language }}`!"
     },
     "setprefix": {
         "description": "Place a custom prefix for the commands on your server, but be sure to notify your server members about this new prefix! 😉",
         "usage": "<prefix>",
-        "limit": "This prefix is ​​too large, exceeding the limit. **[{{ limit }}]**",
-        "already": "My prefix is already set to `{{- prefix }}` on this server!",
-        "success": "\\✏ Prefix changed successfully to `{{- prefix }}`!",
-        "removed": "\\✏ Prefix removed successfully!",
-        "error": "Type the prefix to be changed!"
+        "error": "Type a valid prefix! **[{{max}}]** character limit.",
+        "success": "\\✏ Prefix changed successfully to `{{- prefix }}`!"
     },
     "settimer": {
         "description": "Hours are very different in various places in the world, for this there is this command, you can change the time of your server, this will only influence the aesthetics of the places, leaving them with periods of day and night!",
@@ -207,11 +203,18 @@
         "success": "\\🤝 {{- receiver }} you received money from {{- giver }}!"
     },
     "leaderboard": {
-        "description": "Ranking of 10 users who more own the resource!",
+        "description": "Leaderboard from the best users!",
         "error": "type the resource correctly!",
-        "usage": "<resource | storage>",
+        "usage": "<resource | place> [page]",
         "noPage": "could not find enough users to create this page!",
-        "sucess": "\\🏆 Top 10 in {{ resource }}!"
+        "sucess": "\\🏆 Top 5 `{{ resource }}`!",
+        "types": {
+            "money": "${{ value }}",
+            "lilistars": "{{ value }} Stars",
+            "farm": "Level {{ value }}",
+            "fishing": "Level {{ value }}",
+            "mining": "Level {{ value }}"
+        }
     },
     "profile": {
         "description": "Profile with information from a user",

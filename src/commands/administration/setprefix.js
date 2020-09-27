@@ -13,7 +13,7 @@ class SetPrefix extends LilirucaCommand {
         {
           id: 'prefix',
           type: Argument.validate('string', (m, phrase) => phrase.length < PREFIX_MAX_LIMIT),
-          otherwise: message => message.ct('prefixIsLoongMuch', { max: PREFIX_MAX_LIMIT })
+          otherwise: message => message.ct('error', { max: PREFIX_MAX_LIMIT })
         }
       ]
     })
@@ -21,8 +21,7 @@ class SetPrefix extends LilirucaCommand {
 
   async exec ({ util, guild, db, ct }, { prefix }) {
     await db.guilds.updateOne(guild.id, prefix, 'prefix')
-    const success = prefix ? 'changedPrefix' : 'resetPrefix'
-    util.send(ct(success, { prefix }))
+    util.send(ct('success', { prefix }))
   }
 }
 

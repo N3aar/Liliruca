@@ -3,16 +3,13 @@
         "description": "Altere o idioma dos comandos, assim ficará mais simples para seus membros interagirem comigo!",
         "usage": "<linguagem>",
         "error": "Me informe uma lingua correta! opções: {{ languages }}",
-        "resetLanguage": "\\💬 Linguagem resetada com sucesso para `{{ language }}`!",
-        "changedLanguage": "\\💬 Linguagem alterada com sucesso para `{{ language }}`!"
+        "success": "\\💬 Linguagem alterada com sucesso para `{{ language }}`!"
     },
     "setprefix": {
         "description": "Coloque um prefixo personalizado para os comandos em seu servidor, mas não esqueça de avisar os membros sobre este novo prefixo! 😉",
         "usage": "<prefixo>",
-        "prefixIsLoongMuch": "Este prefixo é muito grande, excedendo o limite de **[{{ max }}]** caracteristicas.",
-        "already": "Meu prefixo já está definido como `{{- prefix }}` neste servidor!",
-        "changedPrefix": "\\✏ Prefixo alterado com sucesso para `{{- prefix }}`!",
-        "resetPrefix": "\\✏ Prefixo **resetado** com sucesso!"
+        "error": "Digite um prefixo válido! limite de **[{{ max }}]** caracteres.",
+        "success": "\\✏ Prefixo alterado com sucesso para `{{- prefix }}`!"
     },
     "settimer": {
         "description": "Os hórarios são muito diferentes em vários locais do mundo, para isso existe este comando, você poderá alterar o horário de seu servidor, isso influenciará somente na estética dos locais, deixando os com períodos de dia e noite!",
@@ -209,11 +206,18 @@
         "success": "\\🤝 {{- receiver }} você recebeu dinheiro de {{- giver }}!"
     },
     "leaderboard": {
-        "description": "Classificação dos 10 usuários que mais possuem o recurso!",
+        "description": "Classificações dos melhores usuários!",
         "error": "digite o recurso corretamente!",
-        "usage": "<recurso | armazenamento>",
+        "usage": "<recurso | local> [página]",
         "noPage": "não foi possível encontrar usuários suficientes para criar esta página!",
-        "success": "\\🏆 Top 10 em {{ resource }}!"
+        "success": "\\🏆 Top 5 `{{- type }}`!",
+        "types": {
+            "money": "${{ value }}",
+            "lilistars": "{{ value }} Estrelas",
+            "farm": "Level {{ value }}",
+            "fishing": "Level {{ value }}",
+            "mining": "Level {{ value }}"
+        }
     },
     "profile": {
         "description": "Perfil com as informações de um usuário.",

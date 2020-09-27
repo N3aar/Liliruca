@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { languages } = require('@utils/locales')
-const { DEFAULT_LANGUAGE, EMOJIS: { books } } = require('@constants')
+const { EMOJIS: { books } } = require('@constants')
 
 class SetLanguage extends LilirucaCommand {
   constructor () {
@@ -20,14 +20,9 @@ class SetLanguage extends LilirucaCommand {
   }
 
   async exec ({ util, db, guild, locales }, { language }) {
-    const lang = language || DEFAULT_LANGUAGE
-
-    await db.guilds.updateOne(guild.id, lang, 'language')
-
-    const t = locales.getT(lang)
-    const success = 'commands:setlanguage.changedLanguage'
-
-    util.send(t(success, { language: lang }))
+    await db.guilds.updateOne(guild.id, language, 'language')
+    const t = locales.getT(language)
+    util.send(t('commands:setlanguage.success', { language }))
   }
 }
 

@@ -174,6 +174,7 @@ module.exports = {
     [PLACE_NAMES.FISHING]: 90,
     [PLACE_NAMES.MINING]: 120
   },
+  LEADERBOARD_TYPES: ['money', 'lilistars'],
   SEASONS_PERCENTAGE: {
     [SEASON_NAMES.SPRING]: {
       [PLACE_NAMES.FARM]: 0.9,
@@ -231,6 +232,7 @@ module.exports = {
     beatingHeart: '💓',
     abacus: '🧮',
     bookmark: '🔖',
+    trophy: '🏆',
     package: '📦',
     wrench: '🔧',
     gear: '⚙️',
