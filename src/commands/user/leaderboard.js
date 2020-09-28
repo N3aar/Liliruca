@@ -11,7 +11,7 @@ class Leaderboard extends LilirucaCommand {
       emoji: trophy,
       editable: true,
       typing: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'ATTACH_FILES',
       args: [
         {
           id: 'type',

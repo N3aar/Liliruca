@@ -7,7 +7,7 @@ const { DEFAULT_LANGUAGE } = require('@constants')
 class Locales {
   static loadAll () {
     return i18n.use(Backend).init({
-      ns: ['commands', 'errors', 'commons', 'categories', 'permissions', 'parameters'],
+      ns: ['commands', 'errors', 'commons', 'categories', 'permissions'],
       preload: readdirSync('src/locales'),
       fallbackLng: DEFAULT_LANGUAGE,
       lowerCaseLng: true,

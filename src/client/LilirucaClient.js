@@ -1,11 +1,11 @@
 const { join } = require('path')
 const { readdirSync } = require('fs')
 const { registerFont } = require('canvas')
-const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo')
+const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo')
 const Database = require('@database/Database')
 const { LilirucaCommand } = require('@structures')
 const { logger, locales } = require('@utils')
-const { OWNER_IDS, DEFAULT_PREFIX, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
+const { OWNER_IDS, DEFAULT_PREFIX, DEFAULT_LANGUAGE, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
 
 const joinPath = path => join(__dirname, '..', path)
 
@@ -41,8 +41,13 @@ class LilirucaClient extends AkairoClient {
       directory: joinPath('listeners')
     }
 
+    const inhibitorOptions = {
+      directory: joinPath('inhibitors')
+    }
+
     this.commandHandler = new CommandHandler(this, commandOptions)
     this.listenerHandler = new ListenerHandler(this, listenerOptions)
+    this.inhibitorHandler = new InhibitorHandler(this, inhibitorOptions)
     this.db = Database
     this.logger = logger
     this.locales = locales
@@ -100,15 +105,29 @@ class LilirucaClient extends AkairoClient {
     await this.locales.loadAll()
 
     this.commandHandler.useListenerHandler(this.listenerHandler)
+    this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
 
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
+    this.inhibitorHandler.loadAll()
 
     this.loadCustomArgumentTypes()
     this.loadCategories()
     this.loadAllFonts()
 
+    this.commandHandler.on('missingPermissions', this.permissionHandler)
+
     return this
+  }
+
+  async permissionHandler ({ guild, channel }, command, type, missing) {
+    const guildData = await Database.guilds.get(guild.id)
+    const language = guildData.language || DEFAULT_LANGUAGE
+    const t = locales.getT(language)
+
+    const permissions = missing.map(perm => t(`permissions:${perm}`)).join(', ')
+
+    channel.send(t(`permissions:${type}`, { permissions }))
   }
 
   async login (token = process.env.DISCORD_TOKEN) {

@@ -1,8 +1,9 @@
 {
+  "client": "\\❌ Eu preciso de permissões para executar este comando! Faltando: `{{- permissions }}`",
+  "user": "\\❌ Você precisa de permissões para executar este comando! Faltando: `{{- permissions }}`",
   "MANAGE_GUILD": "Gerenciar Servidor",
   "EMBED_LINKS": "Inserir Links",
   "ADD_REACTIONS": "Adicionar Reações",
   "USE_EXTERNAL_EMOJIS": "Usar Emojis Externos",
-  "ATTACH_FILES": "Anexar Arquivos",
-  "READ_MESSAGE_HISTORY": "Ver Histórico de Mensagens"
+  "ATTACH_FILES": "Anexar Arquivos"
 }

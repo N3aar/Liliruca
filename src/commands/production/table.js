@@ -35,6 +35,7 @@ class Table extends LilirucaCommand {
       aliases: ['tb'],
       emoji: EMOJIS.clipboard,
       editable: true,
+      clientPermissions: 'EMBED_LINKS',
       args: [
         {
           id: 'place',
