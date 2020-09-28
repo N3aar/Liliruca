@@ -209,7 +209,7 @@
         "description": "Classificações dos melhores usuários!",
         "error": "digite o recurso corretamente!",
         "usage": "<recurso | local> [página]",
-        "noPage": "não foi possível encontrar usuários suficientes para criar esta página!",
+        "noPage": "Não foi possível encontrar usuários suficientes para criar esta página!",
         "success": "\\🏆 Top 5 `{{- type }}`!",
         "types": {
             "money": "${{ value }}",

@@ -10,7 +10,6 @@
     "fishing": "Fishing",
     "mining": "Mining",
     "lilistars": "Lilistars",
-    "storage": "Storage",
     "food": "Food",
     "fish": "Fish",
     "metal": "Metal",
@@ -48,7 +47,8 @@
     "scarecrow": "Scarecrow",
     "fence": "Wooden Fence",
     "aliases": "Shortcuts",
-    "storage": {
+    "storage": "Storage",
+    "storages": {
         "farm": "Storage Farm" ,
         "fishing": "Storage Fishing",
         "mining": "Storage of Mining"

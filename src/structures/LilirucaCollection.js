@@ -1,12 +1,5 @@
 class LilirucaCollection {
   /**
-   * @param {number} maxSize Quantidade máxima de entidades que será armazenada em cache.
-   */
-  constructor (maxSize = 100) {
-    this.items = new Map()
-  }
-
-  /**
    * Procura um valor.
    *
    * @abstract
@@ -28,7 +21,7 @@ class LilirucaCollection {
    * @param {any} [value] - Valor da entidade.
    * @returns {any}
    */
-  set (id, key, value) {
+  updateOne (id, key, value) {
     throw new Error(`método set não foi definido em ${this.constructor.name}.`)
   }
 

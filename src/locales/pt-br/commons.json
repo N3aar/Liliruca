@@ -10,7 +10,6 @@
     "fishing": "Pescaria",
     "mining": "Mineração",
     "lilistars": "Lilistars",
-    "storage": "Armazenamento",
     "guild": "Guilda",
     "food": "Alimento",
     "fish": "Peixe",
@@ -42,7 +41,8 @@
     "scarecrow": "Espantalho",
     "fence": "Cerca de Madeira",
     "aliases": "Atalhos",
-    "storage": {
+    "storage": "Armazenamento",
+    "storages": {
         "farm": "Armazenamento da Fazenda",
         "fishing": "Armazenamento da Pescaria",
         "mining": "Armazenamento da Mineração"

@@ -1,13 +1,14 @@
 const { connect } = require('mongoose')
 const GuildModel = require('./models/Guild')
 const UserModel = require('./models/User')
-const BDCollection = require('./DBCollection')
+const DBCollection = require('./DBCollection')
+const DBCacheCollection = require('./DBCacheCollection')
 const logger = require('@utils/logger')
 
 class MongoDatabase {
   constructor () {
-    this.users = new BDCollection(UserModel)
-    this.guilds = new BDCollection(GuildModel)
+    this.users = new DBCollection(UserModel)
+    this.guilds = new DBCacheCollection(GuildModel)
   }
 
   async connect (uri = process.env.MONGO_URI) {

@@ -206,7 +206,7 @@
         "description": "Leaderboard from the best users!",
         "error": "type the resource correctly!",
         "usage": "<resource | place> [page]",
-        "noPage": "could not find enough users to create this page!",
+        "noPage": "Could not find enough users to create this page!",
         "sucess": "\\🏆 Top 5 `{{ resource }}`!",
         "types": {
             "money": "${{ value }}",

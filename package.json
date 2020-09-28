@@ -2,7 +2,10 @@
   "name": "liliruca",
   "version": "2.5.1",
   "description": "Rpg Bot",
+  "author": "Near",
   "main": "src/Client.js",
+  "repository": "github:vNear/Liliruca",
+  "license": "GPL-3.0",
   "scripts": {
     "start": "node -r module-alias/register .",
     "start:dev": "nodemon",
@@ -13,7 +16,6 @@
   "engines": {
     "node": ">=12.x"
   },
-  "author": "Near",
   "dependencies": {
     "axios": "^0.20.0",
     "canvas": "^2.6.1",
@@ -30,7 +32,7 @@
   "devDependencies": {
     "eslint": "^7.9.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
