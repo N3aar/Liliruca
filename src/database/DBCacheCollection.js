@@ -40,7 +40,7 @@ class DBCacheCollection extends LilirucaCollection {
   }
 
   async delete (id) {
-    await this.items.delete(id)
+    this.items.delete(id)
     await this.model.deleteOne({ _id: id })
   }
 }

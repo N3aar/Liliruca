@@ -1,34 +1,63 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
+const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { DAILY_COOLDOWN, EMOJIS: { star } } = require('@constants')
+const { DAILY_COOLDOWN, DAILY_BONUS, DAILY_STREAK, EMOJIS: { star, glowingstar, gift } } = require('@constants')
 
 class Daily extends LilirucaCommand {
   constructor () {
     super('daily', {
       aliases: ['dl'],
       emoji: star,
-      editable: true
+      editable: true,
+      clientPermissions: 'EMBED_LINKS'
     })
   }
 
-  async exec ({ db, language, ct, author, util }) {
+  async exec ({ ct, t, db, language, author, util }) {
     const data = await db.users.get(author.id)
-    const timestamp = Date.now() - data.dailyAt || 0
+    const timestamp = data.dailyAt ? Date.now() - data.dailyAt : DAILY_COOLDOWN
 
-    if (timestamp < DAILY_COOLDOWN && data.dailyAt) {
+    if (timestamp < DAILY_COOLDOWN) {
       const remaining = DAILY_COOLDOWN - timestamp
       const time = parseDuration(remaining, language)
       return util.send(ct('cooldown', { time }))
     }
 
+    const broke = timestamp >= (DAILY_COOLDOWN * 2)
+    const streak = broke || data.dailyStreak >= 5 ? 1 : data.dailyStreak + 1
+    const reward = streak >= 5 ? DAILY_BONUS : 10
+    const days = 5 - streak
+
     const values = {
       dailyAt: Date.now(),
-      lilistars: data.lilistars + 10
+      dailyStreak: streak,
+      lilistars: data.lilistars + reward
     }
 
     db.users.update(data, values)
 
-    util.send(ct('success', { count: 10 }))
+    const fields = [
+      {
+        name: `\\${gift} ${t('commons:reward')}`,
+        value: `**+${reward} Lilistars**`,
+        inline: true
+      },
+      {
+        name: `\\${glowingstar} ${t('commons:bonus')}`,
+        value: days ? ct('remaining', { days }) : ct('bonus'),
+        inline: true
+      }
+    ]
+
+    const embed = new LilirucaEmbed()
+      .addFields(fields)
+      .setImage(DAILY_STREAK[streak - 1])
+
+    if (broke) {
+      embed.setFooter(ct('broke'))
+    }
+
+    util.send(ct('success'), embed)
   }
 }
 

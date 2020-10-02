@@ -29,9 +29,9 @@ function displayDate (time, language) {
 function getDuration (timestamp) {
   const date = dayjs.duration(timestamp)
   return {
-    days: date.days(),
-    hours: date.hours(),
-    minutes: date.minutes()
+    days: Math.floor(date.asDays()),
+    hours: Math.floor(date.hours()),
+    minutes: Math.floor(date.minutes())
   }
 }
 

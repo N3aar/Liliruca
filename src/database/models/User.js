@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   collectedAt: Number,
   dailyAt: Number,
   givedAt: Number,
+  dailyStreak: { type: Number, default: 0 },
   lilistars: { type: Number, default: 0 },
   images: {
     farm: Array,

@@ -161,7 +161,10 @@
     "daily": {
         "description": "Lilistars que poderá pegar a cada 20 horas! Poderá comprar coisas especiais com estas lilistars",
         "cooldown": "Bônus diário já foi resgatado! aguarde `{{ time }}` para pegar novamente.",
-        "success": "\\⭐ {{ count }} Lilistars diários resgatados com sucesso!"
+        "broke": "Sequência quebrada! Você não resgatou o daily por mais de 2 dias.",
+        "remaining": "`+{{ days }} vezes!`",
+        "bonus": "**Concluído! \\✨**",
+        "success": "\\⭐ Lilistars diários resgatados com sucesso!"
     },
     "vote": {
         "description": "Ganhe lilistars votando no bot! Essas lilistars poderão ser gastos comprando produtos ou boosters no mercado!",

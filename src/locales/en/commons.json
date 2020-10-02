@@ -24,6 +24,8 @@
     "limit": "Limit",
     "example": "Example",
     "badges": "Badges",
+    "bonus": "Bonus",
+    "reward": "Reward",
     "none": "None.",
     "active": "\\🔹 Ative",
     "inactive": "\\🔸 Inative",
