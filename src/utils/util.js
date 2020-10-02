@@ -2,7 +2,7 @@ const { getDuration } = require('./date')
 const { SEQUENCE_OF_SESSIONS, SEASONS_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES } = require('../Constants')
 
 function getSeasonByMonth (month) {
-  const parsed = month ? Math.min(Math.max(month, 1), 12) : (new Date().getMonth() + 1)
+  const parsed = !isNaN(month) ? Math.min(Math.max(month, 1), 12) : (new Date().getMonth() + 1)
   return SEQUENCE_OF_SESSIONS[(parsed - 1) % 4]
 }
 

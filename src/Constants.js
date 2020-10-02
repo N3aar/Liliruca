@@ -106,7 +106,7 @@ module.exports = {
     'others'
   ],
   DAILY_COOLDOWN: 72000000,
-  DAILY_REWARD: 40,
+  DAILY_BONUS: 40,
   DAILY_STREAK: [
     'https://cdn.discordapp.com/attachments/612298119547191340/761722286129545227/daily_1.png',
     'https://cdn.discordapp.com/attachments/612298119547191340/761722287606988880/daily_2.png',
@@ -263,12 +263,6 @@ module.exports = {
     others: '🔍',
     scarecrow: '<:scarecrow:698353463716741182>',
     fence: '<:fence:698353484017303603>',
-    daily: {
-      empty: '<:empty:761324143085223947>',
-      empty_glowing: '<:emptyglowing:761324143014576200>',
-      star: '<:star:761324143463235614>',
-      star_glowing: '<:starglowing:761324143291269151>'
-    },
     fertilizer: {
       basic: '<:fertilizer_1:698353399871176704>',
       medium: '<:fertilizer_2:698353438001594418>',
