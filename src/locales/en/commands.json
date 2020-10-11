@@ -52,6 +52,57 @@
         "heartbeat": "Heartbeat",
         "success": "\\🔌 Bot connection data!"
     },
+    "active": {
+        "description": "Activate an item to use.",
+        "usage": "<item id>",
+        "noItem": "Type the item id correctly!",
+        "already": "This item is already active.",
+        "missing": "You do not have this item!",
+        "success": "\\🔓 Item successfully activated!"
+    },
+    "box": {
+        "description": "Open your boxes and win prizes!",
+        "usage": "[box tier]",
+        "noBox": "You do not have this box or it is not active!",
+        "empty": "You do not have any active box.",
+        "success": "\\🎁 Box was successfully opened!"
+    },
+    "buy": {
+        "description": "Buy items to use.",
+        "usage": "<item id> [amount]",
+        "noItem": "Type the item id correctly!",
+        "noMoney": "You don't have enough money to buy this item!",
+        "active": "Disable this item before!",
+        "payments": {
+            "money": "${{- value }}",
+            "lilistars": "{{- value }} Lilistars"
+        },
+        "success": "\\🛒 Purchased successfully!"
+    },
+    "disable": {
+        "description": "Deactivate an item and put it back in your inventory.",
+        "usage": "<item id>",
+        "noItem": "Type the item id correctly!",
+        "noActive": "This item is not active!",
+        "success": "\\🔒 Item successfully deactivated!"
+    },
+    "inventory": {
+        "description": "View your inventory or that of another user!",
+        "usage": "[member] [--actives]",
+        "noActiveItems": "You have no active items!",
+        "noItems": "You have no inventory items!",
+        "success": "\\🎒 `{{- member }}` inventory!"
+    },
+    "list": {
+        "description": "List of all buyable items!",
+        "usage": "[page]",
+        "noPage": "This page does not exist.",
+        "money": "${{ value }}",
+        "lilistars": "{{ value }} Lilistars",
+        "item": "\n**ID: `{{ id }}`\nPrice: `{{ price }}`\nUses: `{{ value }}`\n**",
+        "place": "**Required: `{{ place }} level {{ required }}`**",
+        "success": "\\📃 List of Items! `Page {{ page }}`"
+    },
     "hour": {
         "description": "Look the current time following the configuration of this guild!"
     },
@@ -76,35 +127,16 @@
         "attacked": "**Your plantation has been attacked by birds and wildlife!\nHis loss was ``{{- attack }}%``!**",
         "full": "Some of your storages are full! Empty to collect your new resources."
     },
-    "list": {
-        "description": "List of products you can buy in the market!",
-        "scarecrow": [
-            "A cloth scarecrow that will protect your plantation from bird attacks!\n**ID: ``SF``\nPrice: ``$300``\nDuration: ``2 days``\nRequires: ``Farm Level 4``**"
-        ],
-        "fence": [
-            "A wooden fence that prevents wildlife from entering your plantation!\n**ID: ``FF``\nPrice: ``$300``\nDuration: ``2 days``\nRequires: ``Farm Level 4``**"
-        ],
-        "fertilizer": [
-            "A more basic fertilizer to help with your crop, ensures an increase of ``5%`` to ``25%``!\n**ID: ``BF``\nPrice: ``2 Lilistars``\nDuration: ``5 uses``\nRequires: ``Farm Level 2``**",
-            "A medium fertilizer that ensures a reasonable increase of  ``15%`` to ``35%`` on your farm!\n**ID: ``MF``\nPrice: ``4 Lilistars``\nDuration: ``5 uses``\nRequires: ``Farm Level 3``**",
-            "The best of Fertilizers, ensures a increase of ``25%`` to ``50%`` in your crop!\n**ID: ``PF``\nPrice: ``6 Lilistars``\nDuration: ``4 uses``\nRequires: ``Farm Level 3``**"
-        ],
-        "baits": [
-            "A basic fishing box with some baits, ensures improved of ``5%`` to ``10%`` in your fishing!\n**ID: ``BB``\nPrice: ``2 Lilistars``\nDuration: ``5 uses``\nRequires: ``Fishing Level 2``**",
-            "A fishing box with reasonable baits, ensures improved of ``10%`` to ``20%`` in your fishing!\n**ID: ``MB``\nPrice: ``4 Lilistars``\nDuration: ``4 uses``\nRequires: ``Fishing Level 3``**",
-            "The best baits for attracting fish, ensures improved of ``15%`` to ``30%`` in your fishing!\n**ID: ``PB``\nPrice: ``6 Lilistars``\nDuration: ``4 uses``\nRequires: ``Fishing Level 3``**"
-        ],
-        "energetic": [
-            "A simple energetic will help you in your mining, ensuring performance of ``5%`` to ``10%``!\n**ID: ``BE``\nPrice: ``2 Lilistars``\nDuration: ``5 uses``\nRequires: ``Mining Level 2``**",
-            "A energetic improved that increase your performance in ``10%`` to ``15%``!\n**ID: ``ME``\nPrice: ``4 Lilistars``\nDuration: ``4 uses``\nRequires: ``Mining Level 3``**",
-            "The energetic powerful that will bring a lot of energy to your explorations, ensures improved ``15%`` to ``25%``!\n**ID: ``PE``\nPrice: ``6 Lilistars``\nDuration: ``4 uses``\nRequires: ``Mining Level 3``**"
-        ]
-    },
-    "market": {
-        "description": "Buy some special products in this market!",
-        "error": "type correctly the product ID you wish to purchase! To see the products use the command ``list``",
-        "noMoney": "You no have value needed for this purchase!",
-        "success": "\\🏪 Purchased successfully!"
+    "fish": {
+        "description": "Catch fish or treasures with your fishing rod and some baits!",
+        "noBaits": "You don't have enough bait!",
+        "recycle": "**\\♻️ Trash found has been recycled!**",
+        "rare": "Rare Fish",
+        "treasure": "Treasure",
+        "trash": "Trash",
+        "fishs": "Fish",
+        "fishRare": "**Congratulations you caught a {{- fish }}!**",
+        "success": "\\🎣 You managed to catch something!"
     },
     "sell": {
         "description": "Sale what was produced to make money",
@@ -147,13 +179,6 @@
             "mining": "Congratulations, you have unlocked a new location! Now get your pick and let's go mining! \\⛏"
         }
     },
-    "box": {
-        "description": "Buy boxes to open and win prizes!",
-        "usage": "<box name>",
-        "error": "type the box you want to buy!",
-        "noMoney": "you do not have enough money for this purchase!",
-        "success": "{{- emoji }} Purchased successfully!"
-    },
     "daily": {
         "description": "Lilistars you can catch every 20 hours! You can buy special things with these Lilistars.",
         "cooldown": "Daily bonus has already been redeemed! wait `{{- time }}` to take again.",
@@ -170,7 +195,7 @@
     },
     "months": {
         "description": "Look duration of the seasons and the effects it has on your production.",
-        "duration": "January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, made to be used inside the Bot.",
+        "duration": "**January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, made to be used inside the Bot.**",
         "increase": "will increase {{- value }}% in your production.",
         "decrease": "will decrease {{- value }}% in your production.",
         "success": "\\☁ All season durations and effects!"
@@ -207,13 +232,14 @@
     },
     "leaderboard": {
         "description": "Leaderboard from the best users!",
-        "error": "type the resource correctly!",
+        "error": "Type the resource correctly!",
         "usage": "<resource | place> [page]",
         "noPage": "Could not find enough users to create this page!",
-        "sucess": "\\🏆 Top 5 `{{ resource }}`!",
+        "sucess": "\\🏆 Top 5 `{{ resource }}`! Page: {{ page }}/50",
         "types": {
             "money": "${{ value }}",
             "lilistars": "{{ value }} Stars",
+            "fishs": "{{ value }} Rare Fish",
             "farm": "Level {{ value }}",
             "fishing": "Level {{ value }}",
             "mining": "Level {{ value }}"
@@ -224,10 +250,18 @@
         "usage": "[member]",
         "success": "\\🖼️ Profile of {{- name }}!"
     },
+    "rares": {
+        "description": "List of rare fish caught!",
+        "usage": "[member]",
+        "noRares": "Did not catch any rare fish!",
+        "success": "\\🐡 Rare fish caught by `{{ member }}`!"
+    },
     "stats": {
         "description": "View how your resources are doing",
         "usage": "[place] [member]",
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
+        "never": "Never collected.",
+        "last": "Last collected: {{- time }} ago.",
         "success": "\\📊 Resources of {{- name }}"
     }
   }

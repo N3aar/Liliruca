@@ -22,13 +22,15 @@ const UserSchema = new Schema({
   fishing: {
     level: { type: Number, default: 0, min: 0, max: PLACE_MAX_LEVEL },
     storage: { type: Number, default: 1 },
-    amount: { type: Number, default: 0 }
+    amount: { type: Number, default: 0 },
+    rares: { type: Object, default: { total: 0 } }
   },
   mining: {
     level: { type: Number, default: 0, min: 0, max: PLACE_MAX_LEVEL },
     storage: { type: Number, default: 1 },
     amount: { type: Number, default: 0 }
   },
+  activeItems: { type: Object, default: {} },
   items: { type: Object, default: {} }
 }, {
   timestamps: true,

@@ -31,14 +31,8 @@ const RESOURCE_NAMES = {
 
 const BOOSTER_NAMES = {
   FERTILIZER: 'fertilizer',
-  WORMS: 'worms',
+  FISHING_NET: 'fishing-net',
   ENERGETIC: 'energetic'
-}
-
-const BOOSTER_TYPES = {
-  BASIC: 'basic',
-  MEDIUM: 'medium',
-  PREMIUM: 'premium'
 }
 
 module.exports = {
@@ -99,13 +93,14 @@ module.exports = {
     'production',
     'user',
     'rewards',
+    'items',
     'seasons',
-    'ranking',
     'administration',
     'bot',
     'others'
   ],
   DAILY_COOLDOWN: 72000000,
+  DAILY_REWARD: 5,
   DAILY_BONUS: 40,
   DAILY_STREAK: [
     'https://cdn.discordapp.com/attachments/612298119547191340/761722286129545227/daily_1.png',
@@ -120,6 +115,17 @@ module.exports = {
   SEASON_NAMES,
   PLACE_NAMES,
   RESOURCE_NAMES,
+  RARE_FISHES: ['anglerfish', 'eel', 'goldenfish', 'mantaray', 'marlin', 'octopus', 'pufferfish', 'squid'],
+  TREASURE: {
+    money: { min: 80, max: 800 },
+    lilistars: { min: 1, max: 30 }
+  },
+  WEIGHTS: {
+    rare: { min: 5, max: 50 },
+    fishs: { min: 1, max: 20 },
+    treasure: { min: 10, max: 40 },
+    trash: { min: 1, max: 5 }
+  },
   PLACES_ALIASES: {
     [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],
     [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
@@ -132,7 +138,7 @@ module.exports = {
   },
   PLACES_BOOSTERS: {
     [PLACE_NAMES.FARM]: BOOSTER_NAMES.FERTILIZER,
-    [PLACE_NAMES.FISHING]: BOOSTER_NAMES.WORMS,
+    [PLACE_NAMES.FISHING]: BOOSTER_NAMES.FISHING_NET,
     [PLACE_NAMES.MINING]: BOOSTER_NAMES.ENERGETIC
   },
   RESOURCES: Object.values(RESOURCE_NAMES),
@@ -144,23 +150,6 @@ module.exports = {
     [PLACE_NAMES.FARM]: 80,
     [PLACE_NAMES.FISHING]: 15,
     [PLACE_NAMES.MINING]: 20
-  },
-  PLACE_BOOSTER: {
-    [PLACE_NAMES.FARM]: {
-      [BOOSTER_TYPES.BASIC]: { min: 5, max: 25 },
-      [BOOSTER_TYPES.MEDIUM]: { min: 15, max: 35 },
-      [BOOSTER_TYPES.PREMIUM]: { min: 25, max: 50 }
-    },
-    [PLACE_NAMES.FISHING]: {
-      [BOOSTER_TYPES.BASIC]: { min: 5, max: 10 },
-      [BOOSTER_TYPES.MEDIUM]: { min: 10, max: 20 },
-      [BOOSTER_TYPES.PREMIUM]: { min: 15, max: 30 }
-    },
-    [PLACE_NAMES.MINING]: {
-      [BOOSTER_TYPES.BASIC]: { min: 5, max: 10 },
-      [BOOSTER_TYPES.MEDIUM]: { min: 10, max: 15 },
-      [BOOSTER_TYPES.PREMIUM]: { min: 15, max: 25 }
-    }
   },
   UPGRADE_PRICE: {
     [PLACE_NAMES.FARM]: 500,
@@ -182,7 +171,7 @@ module.exports = {
     [PLACE_NAMES.FISHING]: 90,
     [PLACE_NAMES.MINING]: 120
   },
-  LEADERBOARD_TYPES: ['money', 'lilistars'],
+  LEADERBOARD_TYPES: ['money', 'lilistars', 'fishs'],
   SEASONS_PERCENTAGE: {
     [SEASON_NAMES.SPRING]: {
       [PLACE_NAMES.FARM]: 0.9,
@@ -219,8 +208,7 @@ module.exports = {
   ],
   EMOJIS: {
     money: '💰',
-    star: '⭐',
-    glowingstar: '🌟',
+    lilistars: '⭐',
     month: '📅',
     cloud: '☁️',
     spring: '🌺',
@@ -233,19 +221,28 @@ module.exports = {
     pencil: '✏️',
     picture: '🖼️',
     books: '📚',
+    backpack: '🎒',
     gift: '🎁',
     graph: '📊',
     handshake: '🤝',
     bank: '🏦',
+    shopcart: '🛒',
     antenna: '📡',
     lamp: '💡',
     beatingHeart: '💓',
     abacus: '🧮',
     bookmark: '🔖',
     trophy: '🏆',
-    package: '📦',
+    pack: '📦',
     wrench: '🔧',
     gear: '⚙️',
+    locked: '🔒',
+    open: '🔓',
+    news: '🆕',
+    page: '📃',
+    blowfish: '🐡',
+    star: '⭐',
+    glowingstar: '🌟',
     farm: '🌳',
     fishing: '⛵',
     mining: '⛏',
@@ -253,30 +250,44 @@ module.exports = {
     fish: ['🐟', '🐠', '🦐', '🐡', '🦀', '🦑', '🐙'],
     metal: ['💎'],
     storage: '📥',
+    fishingpole: '🎣',
     produced: '📬',
     production: '🏭',
     user: '🎓',
     rewards: '🎁',
+    items: '🧰',
     seasons: '⛅',
     administration: '🔧',
     bot: '🤖',
     others: '🔍',
-    scarecrow: '<:scarecrow:698353463716741182>',
-    fence: '<:fence:698353484017303603>',
-    fertilizer: {
-      basic: '<:fertilizer_1:698353399871176704>',
-      medium: '<:fertilizer_2:698353438001594418>',
-      premium: '<:fertilizer_3:698353438093869076>'
-    },
-    worms: {
-      basic: '<:worms_1:698353333672607744>',
-      medium: '<:worms_2:698353363971997756>',
-      premium: '<:worms_3:698353379599974480>'
-    },
-    energetic: {
-      basic: '<:energetic_1:698353310062870590>',
-      medium: '<:energetic_2:698353310071259207>',
-      premium: '<:energetic_3:698353310289100903>'
+    balance: '⚖️',
+    fishs: [
+      '<:fish_1:763957178523451453>',
+      '<:fish_2:763957215556010055>',
+      '<:fish_3:763957241711689738>',
+      '<:fish_4:763957268009320478>',
+      '<:fish_5:763957649313628171>'
+    ],
+    treasure: [
+      '<:treasure_chest_2:763957075914653797>',
+      '<:treasure_chest:763957075776241684>',
+      '<:treasure:763957075926843442>'
+    ],
+    trash: [
+      '<:trashbanana:763957773020823552>',
+      '<:trashboot:763957773229621288>',
+      '<:brokenglasses:763957773549436998>',
+      '<:brokenbottle:763957773431603210>'
+    ],
+    rare: {
+      anglerfish: '<:anglerfish:763957907430703135>',
+      eel: '<:eel:763957907838468096>',
+      goldenfish: '<:goldenfish:763957908190265394>',
+      mantaray: '<:mantaray:763957909272788992>',
+      marlin: '<:marlin:763957909821718549>',
+      octopus: '<:octopus:763957910681419796>',
+      pufferfish: '<:pufferfish:763957909972320277>',
+      squid: '<:squid:763957908970668034>'
     }
   }
 }

@@ -7,7 +7,7 @@ class DBCollection extends LilirucaCollection {
   }
 
   async get (id, projection) {
-    return this.model.findById(id, projection) || await this.model.create({ _id: id })
+    return await this.model.findById(id, projection) || await this.model.create({ _id: id })
   }
 
   async ranking (field, limit = 5, skip = 0) {

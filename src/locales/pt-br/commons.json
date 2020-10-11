@@ -1,7 +1,9 @@
 {
     "botMention": "{{- author }} use ``{{- prefix }}help`` para ver minhas funções!",
     "usage": "Use:",
+    "uses": "Usos",
     "howUse": "Como usar",
+    "description": "Descrição",
     "current": "Atual",
     "options": "Opções",
     "format": "Formato",
@@ -16,6 +18,7 @@
     "metal": "Metal",
     "money": "Dinheiro",
     "tax": "Taxa",
+    "box": "Caixa",
     "produced": "Produzido",
     "production": "Produção",
     "upgrade": "Melhoria",
@@ -27,6 +30,8 @@
     "badges": "Insígnias",
     "bonus": "Bônus",
     "reward": "Recompensa",
+    "fished": "Pescado",
+    "weight": "Peso",
     "none": "Nenhum.",
     "active": "\\🔹 Ativo",
     "inactive": "\\🔸 Inativo",
@@ -48,6 +53,16 @@
         "farm": "Armazenamento da Fazenda",
         "fishing": "Armazenamento da Pescaria",
         "mining": "Armazenamento da Mineração"
+    },
+    "rares": {
+        "anglerfish": "Tamboril",
+        "eel": "Enguia",
+        "goldenfish": "Dourado",
+        "mantaray": "Arraia",
+        "marlin": "Marlim",
+        "octopus": "Polvo",
+        "pufferfish": "Baiacu",
+        "squid": "Lula"
     },
     "boxes": {
         "boxes": "Caixas",

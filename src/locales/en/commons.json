@@ -1,7 +1,9 @@
 {
     "botMention": "{{ - author }} use ``{{- prefix }}help`` to see my functions!",
     "usage": "Use: ",
+    "uses": "Uses",
     "howUse": "How to use",
+    "description": "Description",
     "current": "Current",
     "options": "Options",
     "format": "Format",
@@ -15,6 +17,7 @@
     "metal": "Metal",
     "money": "Money",
     "tax": "Tax",
+    "box": "Box",
     "produced": "Produced",
     "production": "Production",
     "upgrade": "Upgrade",
@@ -26,6 +29,8 @@
     "badges": "Badges",
     "bonus": "Bonus",
     "reward": "Reward",
+    "fished": "Fished",
+    "weight": "Weight",
     "none": "None.",
     "active": "\\🔹 Ative",
     "inactive": "\\🔸 Inative",
@@ -54,6 +59,16 @@
         "farm": "Storage Farm" ,
         "fishing": "Storage Fishing",
         "mining": "Storage of Mining"
+    },
+    "rares": {
+        "anglerfish": "Anglerfish",
+        "eel": "Eel",
+        "goldenfish": "Goldenfish",
+        "mantaray": "Manta Ray",
+        "marlin": "Marlin",
+        "octopus": "Octopus",
+        "pufferfish": "Pufferfish",
+        "squid": "Squid"
     },
     "boxes": {
         "boxes": "Boxes",

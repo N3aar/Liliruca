@@ -56,6 +56,57 @@
     "eval": {
         "description": "Comando restrito a desenvolvedores!"
     },
+    "active": {
+        "description": "Ative um item para ser usado.",
+        "usage": "<id do item>",
+        "noItem": "Digite o id do item corretamente!",
+        "already": "Este item já está ativo.",
+        "missing": "Você não possui este item!",
+        "success": "\\🔓 Item ativado com sucesso!"
+    },
+    "box": {
+        "description": "Abra suas caixas e ganhe prếmios!",
+        "usage": "[tier da caixa]",
+        "noBox": "Você não possui essa caixa ou não esta ativa!",
+        "empty": "Você não possui nenhuma caixa ativa.",
+        "success": "\\🎁 Caixa foi aberta com sucesso!"
+    },
+    "buy": {
+        "description": "Compre itens para utilizar.",
+        "usage": "<id do item> [quantidade]",
+        "noItem": "Digite o id do item corretamente!",
+        "noMoney": "Você não possui dinheiro suficiente para comprar este item!",
+        "active": "Desative esse item antes!",
+        "payments": {
+            "money": "${{- value }}",
+            "lilistars": "{{- value }} Lilistars"
+        },
+        "success": "\\🛒 Item comprado com sucesso!"
+    },
+    "disable": {
+        "description": "Desative um item e coloque de volta em seu inventário.",
+        "usage": "<item>",
+        "noItem": "Digite o id do item corretamente!",
+        "noActive": "Este item não está ativo!",
+        "success": "\\🔒 Item desativado com sucesso!"
+    },
+    "inventory": {
+        "description": "Veja seu inventário ou de outro usuário!",
+        "usage": "[membro] [--actives]",
+        "noActiveItems": "Não possui itens ativos!",
+        "noItems": "Não possui itens no inventário!",
+        "success": "\\🎒 Inventário de `{{- member }}`!"
+    },
+    "list": {
+        "description": "Lista de todos itens compraveis!",
+        "usage": "[página]",
+        "noPage": "Está página não existe.",
+        "money": "${{ value }}",
+        "lilistars": "{{ value }} Lilistars",
+        "item": "\n**ID: `{{ id }}`\nPreço: `{{ price }}`\nUsos: `{{ value }}`**\n",
+        "place": "**Requer: `{{ place }} level {{ required }}`**",
+        "success": "\\📃 Lista de itens! `Página {{ page }}`"
+    },
     "hour": {
         "description": "Veja qual a hora atual seguindo a configuração deste servidor!"
     },
@@ -80,35 +131,16 @@
         "attacked": "**Sua plantação foi atacada por aves e animais selvagens!\nSua perda foi de ``{{- attack }}%``!**",
         "full": "Algum de seus armazenamentos está cheio! Esvazie para coletar seus novos recursos."
     },
-    "list": {
-        "description": "Lista de produtos que você pode comprar no mercado!",
-        "scarecrow": [
-            "Um espantalho de pano que irá proteger sua plantação de ataques de aves!\n**ID: ``SF``\nPreço: ``$300``\nDuração: ``2 dias``\nRequer: ``Fazenda Level 4``**"
-        ],
-        "fence": [
-            "Uma cerca de madeira que impede a entrada de animais selvagens em sua plantação!\n**ID: ``FF``\nPreço: ``$300``\nDuração: ``2 dias``\nRequer: ``Fazenda Level 4``**"
-        ],
-        "fertilizer": [
-            "Um Fertilizante mais básico para ajudar em sua colheita, garante um aumento de ``5%`` a ``25%``!\n**ID: ``BF``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Fazenda Level 2``**",
-            "Um Fertilizante médio que garante aumento rázoavel de ``15%`` a ``35%`` em sua colheita!\n**ID: ``MF``\nPreço: ``4 Lilistars``\nDuração: ``5 usos``\nRequer: ``Fazenda Level 3``**",
-            "O melhor dos Fertilizantes, garante um aumento de ``25%`` a ``50%`` em sua colheita!\n**ID: ``PF``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Fazenda Level 3``**"
-        ],
-        "baits": [
-            "Uma caixa de pesca básica com algumas iscas, garante melhoria de ``5%`` a ``10%`` em sua pesca!\n**ID: ``BB``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Pescaria Level 2``**",
-            "Uma caixa de pesca com iscas razoáveis, garante melhoria de ``10%`` a ``20%`` em sua pesca!\n**ID: ``MB``\nPreço: ``4 Lilistars``\nDuração: ``4 usos``\nRequer: ``Pescaria Level 3``**",
-            "As melhores iscas para se atrair os peixes, garante melhoria de ``15%`` a ``30%`` em sua pesca!\n**ID: ``PB``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Pescaria Level 3``**"
-        ],
-        "energetic": [
-            "Um energético simples, te ajudará em sua mineração garantindo desempenho de ``5%`` a ``10%``!\n**ID: ``BE``\nPreço: ``2 Lilistars``\nDuração: ``5 usos``\nRequer: ``Mineração Level 2``**",
-            "Um energético melhorado que aumenta seu desempenho em ``10%`` a ``15%``!\n**ID: ``ME``\nPreço: ``4 Lilistars``\nDuração: ``4 usos``\nRequer: ``Mineração Level 3``**",
-            "O energético poderoso que trará muita energia para suas explorações, garante melhoria de ``15%`` a ``25%``!\n**ID: ``PE``\nPreço: ``6 Lilistars``\nDuração: ``4 usos``\nRequer: ``Mineração Level 3``**"
-        ]
-    },
-    "market": {
-        "description": "Compre alguns produtos especiais neste mercado!",
-        "error": "digite corretamente o ID produto que deseja comprar!",
-        "noMoney": "você não possui valor nescessário para esta compra!",
-        "success": "\\🏪 Comprado com sucesso!"
+    "fish": {
+        "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas!",
+        "noBaits": "Você não possui iscas suficientes!",
+        "recycle": "**\\♻️ Lixo encontrado foi reciclado!**",
+        "rare": "Peixe Raro",
+        "treasure": "Tesouro",
+        "trash": "Lixo",
+        "fishs": "Peixe",
+        "fishRare": "**Parábens você pescou um(a) {{- fish }}!**",
+        "success": "\\🎣 Você conseguiu pescar algo!"
     },
     "sell": {
         "description": "Venda o que foi produzido para ganhar dinheiro",
@@ -151,13 +183,6 @@
             "mining": "Parabéns, você desbloqueou um novo local! Agora pegue sua picareta e vamos minerar! \\⛏"
         }
     },
-    "box": {
-        "description": "Comprar caixas para abrir e ganhar prêmios!",
-        "usage": "<nome da caixa>",
-        "error": "digite a caixa que deseja comprar!",
-        "noMoney": "você não possui dinheiro suficiente para esta compra!",
-        "success": "{{- emoji }} Comprado com sucesso!"
-    },
     "daily": {
         "description": "Lilistars que poderá pegar a cada 20 horas! Poderá comprar coisas especiais com estas lilistars",
         "cooldown": "Bônus diário já foi resgatado! aguarde `{{ time }}` para pegar novamente.",
@@ -175,7 +200,7 @@
     "months": {
         "description": "Veja a duração das estações e os efeitos que ela causa em sua produção.",
         "title": "__**ESTAÇÕES DO ANO**__",
-        "duration": "Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são ``fictícias``, feitas para serem usadas dentro do Bot.",
+        "duration": "**Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são ``fictícias``, feitas para serem usadas dentro do Bot.**",
         "increase": "aumentará {{- value }}% em sua produção.",
         "decrease": "diminuirá {{- value }}% em sua produção.",
         "success": "\\☁ Todas as durações e efeitos das estações!"
@@ -210,13 +235,14 @@
     },
     "leaderboard": {
         "description": "Classificações dos melhores usuários!",
-        "error": "digite o recurso corretamente!",
+        "error": "Digite o recurso corretamente!",
         "usage": "<recurso | local> [página]",
         "noPage": "Não foi possível encontrar usuários suficientes para criar esta página!",
-        "success": "\\🏆 Top 5 `{{- type }}`!",
+        "success": "\\🏆 Top 5 `{{- type }}`! Página: {{ page }}/50",
         "types": {
             "money": "${{ value }}",
             "lilistars": "{{ value }} Estrelas",
+            "fishs": "{{ value }} Peixes Raros",
             "farm": "Level {{ value }}",
             "fishing": "Level {{ value }}",
             "mining": "Level {{ value }}"
@@ -227,10 +253,18 @@
         "usage": "[membro]",
         "success": "\\🖼️ Perfil de {{- name }}!"
     },
+    "rares": {
+        "description": "Lista de peixes raros pescados!",
+        "usage": "[membro]",
+        "noRares": "Não pescou nenhum peixe raro!",
+        "success": "\\🐡 Peixes Raros pescados por `{{ member }}`!"
+    },
     "stats": {
         "description": "Visualize seus recursos ou de outro usuário.",
         "usage": "[local] [membro]",
         "production": "{{- generation }}/hr, máximo {{- max }} horas",
-        "success": "\\📊 Recursos de {{- name }}!"
+        "never": "Nunca coletou.",
+        "last": "Última coleta: {{- time }} atrás.",
+        "success": "\\📊 Recursos de `{{- name }}`!"
     }
   }
