@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getStoragePrice, bold } = require('@utils/util')
+const { getStoragePrice } = require('@utils/util')
 const { STORAGE_PRICES, EMOJIS: { abacus } } = require('@constants')
 
 class Calculate extends LilirucaCommand {
@@ -35,8 +35,8 @@ class Calculate extends LilirucaCommand {
     const storage = STORAGE_PRICES[place]
     const price = getStoragePrice(storage, firstValue, secondValue)
 
-    const value = bold(`${firstValue} \\➡ ${secondValue}`)
-    const result = bold(`$${price}`)
+    const value = `**${firstValue} \\➡ ${secondValue}**`
+    const result = `**$${price}**`
     const storageName = t(`commons:storages.${place}`)
 
     const embed = new LilirucaEmbed()

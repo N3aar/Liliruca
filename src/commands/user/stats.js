@@ -1,6 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getPercentageFromSeason, calculateProduction, bold } = require('@utils/util')
+const { parseDuration } = require('@utils/date')
+const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
 const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, EMOJIS } = require('@constants')
 
 class Stats extends LilirucaCommand {
@@ -25,7 +26,7 @@ class Stats extends LilirucaCommand {
     })
   }
 
-  async exec ({ t, ct, db, util }, { place, member }) {
+  async exec ({ t, ct, language, db, util }, { place, member }) {
     const data = await db.users.get(member.id)
     const dataPlace = data[place]
 
@@ -38,11 +39,12 @@ class Stats extends LilirucaCommand {
 
     const generate = dataPlace.level * PLACE_GENERATE[place]
     const generation = getPercentageFromSeason(generate, place)
-    const produced = calculateProduction(data.collectedAt, dataPlace.level, generation, place)
 
-    const limit = PRODUCTION_LIMIT[place] + (dataPlace.level * 2)
-    const limitProduction = getPercentageFromSeason(generation * limit, place)
-    const percentage = Math.floor((produced / limitProduction) * 100)
+    const productionLimit = PRODUCTION_LIMIT[place] + (dataPlace.level * 2)
+    const limit = getPercentageFromSeason(generate * productionLimit, place)
+    const calc = calculateProduction(data, generate, place)
+    const produced = calc > limit ? limit : calc
+    const percentage = Math.floor((produced / limit) * 100)
 
     const resource = PLACES_RESOURCES[place]
     const emojis = EMOJIS[resource]
@@ -68,25 +70,29 @@ class Stats extends LilirucaCommand {
       },
       {
         name: 'produced',
-        value: `${produced}/${limitProduction} (${percentage}%)`
+        value: `${produced}/${limit} (${percentage}%)`
       },
       {
         name: 'production',
-        value: `${ct('production', { generation, max: limit })}`
+        value: `${ct('production', { generation, max: productionLimit })}`
       }
     ]
 
     const fields = stats.map(field => ({
       name: `\\${field.emoji || EMOJIS[field.name]} ${t(`commons:${field.name}`)}`,
-      value: bold(field.value),
+      value: `**${field.value}**`,
       inline: true
     }))
 
-    const name = member.displayName
+    const collectedAt = data.collectedAt || 0
+    const past = Date.now() - collectedAt
+
+    const last = !data.collectedAt ? ct('never') : ct('last', { time: parseDuration(past, language) })
     const embed = new LilirucaEmbed()
       .addFields(fields)
+      .setFooter(last)
 
-    util.send(ct('success', { name }), embed)
+    util.send(ct('success', { name: member.displayName }), embed)
   }
 }
 

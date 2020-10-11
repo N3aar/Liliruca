@@ -3,8 +3,6 @@ const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getPriceResource } = require('@utils/util')
 const { PLACES, PLACES_RESOURCES, EMOJIS } = require('@constants')
 
-const bold = string => `**${string}**`
-
 class Sell extends LilirucaCommand {
   constructor () {
     super('sell', {
@@ -35,7 +33,7 @@ class Sell extends LilirucaCommand {
       total += price
 
       const name = `\\${EMOJIS[place]} ${t(`commons:${place}`)}`
-      const value = bold(`${t('commons:price')}: $${price}`)
+      const value = `**${t('commons:price')}: $${price}**`
 
       return {
         name,

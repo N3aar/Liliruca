@@ -1,7 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration, displayDate } = require('@utils/date')
-const { bold } = require('@utils/util')
 const { version } = require('@package')
 const { SUPPORT_GUILD, EMOJIS: { bookmark } } = require('@constants')
 
@@ -24,52 +23,52 @@ class Botinfo extends LilirucaCommand {
     const botinfo = [
       {
         name: `\\🎓 ${ct('version')}`,
-        value: bold(version),
+        value: `**${version}**`,
         inline: true
       },
       {
         name: `\\🔧 ${ct('language')}`,
-        value: bold('javascript'),
+        value: '**javascript**',
         inline: true
       },
       {
         name: `\\📁 ${ct('commands')}`,
-        value: bold(client.commands.size),
+        value: `**${client.commands.size}**`,
         inline: true
       },
       {
         name: `\\👥 ${ct('users')}`,
-        value: bold(client.users.cache.size),
+        value: `**${client.users.cache.size}**`,
         inline: true
       },
       {
         name: `\\📌 ${ct('guilds')}`,
-        value: bold(client.guilds.cache.size),
+        value: `**${client.guilds.cache.size}**`,
         inline: true
       },
       {
         name: `\\💬 ${ct('channels')}`,
-        value: bold(client.channels.cache.size),
+        value: `**${client.channels.cache.size}**`,
         inline: true
       },
       {
         name: `\\⌚ ${ct('uptime')}`,
-        value: bold(parseDuration(client.uptime, language)),
+        value: `**${parseDuration(client.uptime, language)}**`,
         inline: true
       },
       {
         name: `\\📅 ${t('commons:createdAt')}`,
-        value: bold(displayDate(client.user.createdAt, language)),
+        value: `**${displayDate(client.user.createdAt, language)}**`,
         inline: true
       },
       {
         name: `\\📆 ${t('commons:joinedAt')}`,
-        value: bold(displayDate(guild.joinedAt, language)),
+        value: `**${displayDate(guild.joinedAt, language)}**`,
         inline: true
       },
       {
         name: `\\🔗 ${ct('links')}`,
-        value: bold(links.join(' | ')),
+        value: `**${links.join(' | ')}**`,
         inline: false
       }
     ]

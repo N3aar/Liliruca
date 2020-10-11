@@ -1,6 +1,5 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { bold } = require('@utils/util')
 const { EMOJIS: { antenna, lamp, beatingHeart } } = require('@constants')
 
 class Ping extends LilirucaCommand {
@@ -23,17 +22,17 @@ class Ping extends LilirucaCommand {
     const ping = [
       {
         name: ct('latency'),
-        value: bold(`\\${lamp} ${latency}ms`),
+        value: `**\\${lamp} ${latency}ms**`,
         inline: true
       },
       {
         name: ct('heartbeat'),
-        value: bold(`\\${beatingHeart} ${hearbeat}ms`),
+        value: `**\\${beatingHeart} ${hearbeat}ms**`,
         inline: true
       },
       {
         name: ct('apiLatency'),
-        value: bold(`\\${antenna} ${APIlatency}ms`),
+        value: `**\\${antenna} ${APIlatency}ms**`,
         inline: true
       }
     ]

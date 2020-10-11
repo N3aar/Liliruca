@@ -1,7 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { displayDate } = require('@utils/date')
-const { bold } = require('@utils/util')
 const { TEAM, EMOJIS: { key } } = require('@constants')
 
 class Team extends LilirucaCommand {
@@ -24,7 +23,7 @@ class Team extends LilirucaCommand {
       const status = t(`commons:${user.status}`)
 
       const name = `${user.emoji} ${user.name}`
-      const value = `${bold(tags)}\n${bold(joined)}\n${bold(status)}`
+      const value = `**${(tags)}\n${(joined)}\n${(status)}**`
 
       return { name, value }
     })

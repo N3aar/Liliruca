@@ -1,7 +1,7 @@
 const { Category, Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { findCategory, bold } = require('@utils/util')
+const { findCategory } = require('@utils/util')
 const { EMOJIS } = require('@constants')
 
 class Help extends LilirucaCommand {
@@ -90,11 +90,11 @@ class Help extends LilirucaCommand {
     const fields = [
       {
         name: `\\📖 ${t('commons:description')}`,
-        value: bold(t(`commands:${command.id}.description`))
+        value: `**${t(`commands:${command.id}.description`)}**`
       },
       {
         name: t('commons:howUse'),
-        value: bold(`${prefix}${command.id} ${usage}`),
+        value: `**${prefix}${command.id} ${usage}**`,
         inline: true
       }
     ]
@@ -102,7 +102,7 @@ class Help extends LilirucaCommand {
     if (command.aliases) {
       fields.push({
         name: `\\🚩 ${t('commons:aliases')}`,
-        value: bold(command.aliases.filter(cmd => cmd !== command.id).join(', ')),
+        value: `**${command.aliases.filter(cmd => cmd !== command.id).join(', ')}**`,
         inline: true
       })
     }

@@ -1,6 +1,5 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { bold } = require('@utils/util')
 const { EMOJIS: { picture, money, star } } = require('@constants')
 
 class Profile extends LilirucaCommand {
@@ -26,12 +25,12 @@ class Profile extends LilirucaCommand {
     const profile = [
       {
         name: `\\${money} ${t('commons:money')}`,
-        value: bold(`$${data.money}`),
+        value: `**$${data.money}**`,
         inline: true
       },
       {
         name: `\\${star} Lilistars`,
-        value: bold(data.lilistars),
+        value: `**${data.lilistars}**`,
         inline: true
       }
     ]

@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { DAILY_COOLDOWN, DAILY_BONUS, DAILY_STREAK, EMOJIS: { star, glowingstar, gift } } = require('@constants')
+const { DAILY_COOLDOWN, DAILY_REWARD, DAILY_BONUS, DAILY_STREAK, EMOJIS: { star, glowingstar, gift } } = require('@constants')
 
 class Daily extends LilirucaCommand {
   constructor () {
@@ -25,7 +25,7 @@ class Daily extends LilirucaCommand {
 
     const broke = timestamp >= (DAILY_COOLDOWN * 2)
     const streak = broke || data.dailyStreak >= 5 ? 1 : data.dailyStreak + 1
-    const reward = streak >= 5 ? DAILY_BONUS : 10
+    const reward = streak < 5 ? DAILY_REWARD : DAILY_BONUS
     const days = 5 - streak
 
     const values = {
