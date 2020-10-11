@@ -1,4 +1,4 @@
-const items = require('@items')
+const items = require('../Items.json')
 
 function hasItem (id) {
   return (id in items)
