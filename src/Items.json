@@ -1,0 +1,251 @@
+{
+    "scarecrow": {
+        "place": "farm",
+        "price": 400,
+        "payment": "money",
+        "value": 3, 
+        "required": 6,
+        "emoji": "<:scarecrow:698353463716741182>"
+    },
+    "fence": {
+        "place": "farm",
+        "price": 400,
+        "payment": "money",
+        "value": 3,
+        "required": 6,
+        "emoji": "<:fence:698353484017303603>"
+    },
+    "baits:1": {
+        "place": "fishing",
+        "price": 5,
+        "payment": "lilistars",
+        "value": 3,
+        "required": 1,
+        "emoji": "<:worms_1:698353333672607744>",
+        "rare": { "max": 1 },
+        "treasure": { "min": 2, "max": 4 },
+        "trash": { "min": 5, "max": 52 },
+        "fish": { "min": 53 }
+    },
+    "baits:2": {
+        "place": "fishing",
+        "price": 10,
+        "payment": "lilistars",
+        "value": 5,
+        "required": 1,
+        "emoji": "<:worms_2:698353363971997756>",
+        "rare": { "max": 2 },
+        "treasure": { "min": 3, "max": 8 },
+        "trash": { "min": 9, "max": 54 },
+        "fish": { "min": 55 }
+    },
+    "baits:3": {
+        "place": "fishing",
+        "price": 15,
+        "payment": "lilistars",
+        "value": 5,
+        "required": 1,
+        "emoji": "<:worms_3:698353379599974480>",
+        "rare": { "max": 3 },
+        "treasure": { "min": 4, "max": 12 },
+        "trash": { "min": 13, "max": 56 },
+        "fish": { "min": 57 }
+    },
+    "box:1": {
+        "price": 5,
+        "payment": "lilistars",
+        "value": 1,
+        "emoji": "<:box_basic:764557366648635404>",
+        "item": { "max": 1 },
+        "lilistars": {
+            "min": 2,
+            "max": 4,
+            "reward": { "min": 1, "max": 10 }
+        },
+        "money": {
+            "min": 5,
+            "max": 52,
+            "reward": { "min": 20, "max": 200 }
+        },
+        "resource": {
+            "min": 53,
+            "reward": { "min": 40, "max": 400 }
+        }
+    },
+    "box:2": {
+        "price": 15,
+        "payment": "lilistars",
+        "value": 1,
+        "emoji": "<:box_common:764557391340896266>",
+        "item": { "max": 3 },
+        "lilistars": {
+            "min": 4,
+            "max": 8,
+            "reward": { "min": 1, "max": 30 }
+        },
+        "money": {
+            "min": 9,
+            "max": 54,
+            "reward": { "min": 30, "max": 300 }
+        },
+        "resource": {
+            "min": 55,
+            "reward": { "min": 60, "max": 600 }
+        }
+    },
+    "box:3": {
+        "price": 25,
+        "payment": "lilistars",
+        "value": 1,
+        "emoji": "<:box_uncommon:764557412953882654>",
+        "item": { "max": 5 },
+        "lilistars": {
+            "min": 6,
+            "max": 13,
+            "reward": { "min": 1, "max": 40 }
+        },
+        "money": {
+            "min": 14,
+            "max": 56,
+            "reward": { "min": 50, "max": 500 }
+        },
+        "resource": {
+            "min": 57,
+            "reward": { "min": 80, "max": 800 }
+        }
+    },
+    "box:4": {
+        "price": 35,
+        "payment": "lilistars",
+        "value": 1,
+        "emoji": "<:box_rare:764557430007922718>",
+        "item": {
+            "max": 8
+        },
+        "lilistars": {
+            "min": 9,
+            "max": 18,
+            "reward": { "min": 1, "max": 60 }
+        },
+        "money": {
+            "min": 19,
+            "max": 59,
+            "reward": { "min": 80, "max": 800 }
+        },
+        "resource": {
+            "min": 60,
+            "reward": { "min": 100, "max": 1000 }
+        }
+    },
+    "box:5": {
+        "price": 45,
+        "payment": "lilistars",
+        "value": 1,
+        "emoji": "<:box_epic:764557444524539924>",
+        "item": { "max": 10 },
+        "lilistars": {
+            "min": 11,
+            "max": 25,
+            "reward": { "min": 1, "max": 80 }
+        },
+        "money": {
+            "min": 26,
+            "max": 62,
+            "reward": { "min": 100, "max": 1000 }
+        },
+        "resource": {
+            "min": 63,
+            "reward": { "min": 120, "max": 1200 }
+        }
+    },
+    "fertilizer:1": {
+        "place": "farm",
+        "price": 10,
+        "payment": "lilistars",
+        "value": 5,
+        "required": 3,
+        "emoji": "<:fertilizer_1:698353399871176704>",
+        "min": 5,
+        "max": 25
+    },
+    "fertilizer:2": {
+        "place": "farm",
+        "price": 20,
+        "payment": "lilistars",
+        "value": 4,
+        "required": 4,
+        "emoji": "<:fertilizer_2:698353438001594418>",
+        "min": 15,
+        "max": 35
+    },
+    "fertilizer:3": {
+        "place": "farm",
+        "price": 30,
+        "payment": "lilistars",
+        "value": 4,
+        "required": 4,
+        "emoji": "<:fertilizer_3:698353438093869076>",
+        "min": 25,
+        "max": 50
+    },
+    "fishing-net:1": {
+        "place": "fishing",
+        "price": 10,
+        "payment": "lilistars",
+        "value": 5,
+        "required": 3,
+        "emoji": "<:fishing_net_1:762521726843355175>",
+        "min": 5,
+        "max": 10
+    },
+    "fishing-net:2": {
+        "place": "fishing",
+        "price": 20,
+        "payment": "lilistars",
+        "value": 4,
+        "required": 4,
+        "emoji": "<:fishing_net_2:762521726604017695>",
+        "min": 10,
+        "max": 20
+    },
+    "fishing-net:3": {
+        "place": "fishing",
+        "price": 30,
+        "payment": "lilistars",
+        "value": 4,
+        "required": 4,
+        "emoji": "<:fishing_net_3:762521727069847592>",
+        "min": 15,
+        "max": 30
+    },
+    "energetic:1": {
+        "place": "mining",
+        "price": 10,
+        "payment": "lilistars",
+        "value": 5,
+        "required": 3,
+        "emoji": "<:energetic_1:698353310062870590>",
+        "min": 5,
+        "max": 10
+    },
+    "energetic:2": {
+        "place": "mining",
+        "price": 20,
+        "payment": "lilistars",
+        "value": 4,
+        "required": 4,
+        "emoji": "<:energetic_2:698353310071259207>",
+        "min": 10,
+        "max": 15
+    },
+    "energetic:3": {
+        "place": "mining",
+        "price": 30,
+        "payment": "lilistars",
+        "value": 5,
+        "required": 4,
+        "emoji": "<:energetic_3:698353310289100903>",
+        "min": 15,
+        "max": 25
+    }
+}

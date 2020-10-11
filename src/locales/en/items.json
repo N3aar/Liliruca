@@ -1,0 +1,21 @@
+{
+    "scarecrow": "Scarecrow",
+    "fence": "Wooden Fence",
+    "baits_1": "Baits Tier 1",
+    "baits_2": "Baits Tier 2",
+    "baits_3": "Baits Tier 3",
+    "box_1": "Basic Box",
+    "box_2": "Common Box",
+    "box_3": "Uncommon Box",
+    "box_4": "Rare Box",
+    "box_5": "Epic Box",
+    "fertilizer_1": "Basic Fertilizer",
+    "fertilizer_2": "Medium Fertilizer",
+    "fertilizer_3": "Premium Fertilizer",
+    "fishing-net_1": "Small Fishing Net",
+    "fishing-net_2": "Medium Fishing Net",
+    "fishing-net_3": "Large Fishing Net",
+    "energetic_1": "Basic Energetic",
+    "energetic_2": "Medium Energetic",
+    "energetic_3": "Premium Energetic"
+}
