@@ -2,7 +2,6 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { bold } = require('@utils/util')
 const { GIVE_COOLDOWN, GIVE_TAX, GIVE_MIN, EMOJIS: { handshake, money, bank } } = require('@constants')
 
 class Give extends LilirucaCommand {
@@ -52,12 +51,12 @@ class Give extends LilirucaCommand {
     const profile = [
       {
         name: `\\${money} ${t('commons:money')}`,
-        value: bold(`$${donate}`),
+        value: `**$${donate}**`,
         inline: true
       },
       {
         name: `\\${bank} ${t('commons:tax')}`,
-        value: bold(`${tax}%`),
+        value: `**${tax}%**`,
         inline: true
       }
     ]

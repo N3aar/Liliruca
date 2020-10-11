@@ -1,5 +1,6 @@
 const { getDuration } = require('./date')
-const { SEQUENCE_OF_SESSIONS, SEASONS_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES } = require('../Constants')
+const { getItemInInventoryByTier } = require('./items')
+const { SEQUENCE_OF_SESSIONS, SEASONS_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES, PLACES_BOOSTERS } = require('../Constants')
 
 function getSeasonByMonth (month) {
   const parsed = !isNaN(month) ? Math.min(Math.max(month, 1), 12) : (new Date().getMonth() + 1)
@@ -24,7 +25,7 @@ function getPriceResource (resource, amount) {
     [RESOURCE_NAMES.FISH]: amount * 2,
     [RESOURCE_NAMES.METAL]: amount * 3
   }
-  return products[resource]
+  return Math.floor(products[resource])
 }
 
 function findCategory ({ client, t }, phrase) {
@@ -36,11 +37,7 @@ function findCategory ({ client, t }, phrase) {
   const number = Number(phrase)
 
   return client.categories.find(category => {
-    if (number === i) {
-      return true
-    }
-
-    if (category.id === phrase) {
+    if (number === i || category.id === phrase) {
       return true
     }
 
@@ -54,33 +51,29 @@ function findCategory ({ client, t }, phrase) {
   })
 }
 
-function calculateProduction (collectedAt, level, generate, place) {
-  if (!collectedAt || !level) {
+function random (max, min = 0, inclusive) {
+  return Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0))) + min
+}
+
+function calculateProduction (data, generate, place) {
+  if (!data.collectedAt) {
     return 0
   }
 
-  const ms = Date.now() - collectedAt
-  const time = getDuration(ms)
+  const time = getDuration(Date.now() - data.collectedAt)
 
-  if (time.days) {
-    time.hours += time.days * 24
-  }
+  time.hours += time.days * 24
 
-  const productionLimit = PRODUCTION_LIMIT[place] + (level * 2)
-
+  const productionLimit = PRODUCTION_LIMIT[place] + (data[place].level * 2)
   const timeHr = time.hours < productionLimit ? time.hours : productionLimit
-  const calcHr = generate * timeHr
+  const timeMt = timeHr + (time.minutes / 100) <= productionLimit ? time.minutes : 0
+  const produced = (generate * timeHr) + ((generate / 60) * timeMt)
 
-  const timeMt = timeHr + Number(`0.${time.minutes}`) <= productionLimit ? time.minutes : 0
-  const calcMt = (generate / 60) * timeMt
+  const name = PLACES_BOOSTERS[place]
+  const booster = name && getItemInInventoryByTier(data.activeItems, name)
+  const boosted = booster ? produced + (produced * (random(booster.item.max, booster.item.min, true) / 100)) : produced
 
-  const producedSeason = getPercentageFromSeason(calcHr + calcMt, place)
-
-  return Math.floor(producedSeason)
-}
-
-function bold (string) {
-  return `**${string}**`
+  return getPercentageFromSeason(boosted, place)
 }
 
 module.exports = {
@@ -90,5 +83,5 @@ module.exports = {
   getPriceResource,
   calculateProduction,
   findCategory,
-  bold
+  random
 }

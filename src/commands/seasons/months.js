@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LIlirucaEmbed = require('@structures/LilirucaEmbed')
-const { getSeasonByMonth, bold } = require('@utils/util')
+const { getSeasonByMonth } = require('@utils/util')
 const { PLACES, SEASONS_PERCENTAGE, SEQUENCE_OF_SESSIONS, EMOJIS } = require('@constants')
 
 class Months extends LilirucaCommand {
@@ -32,10 +32,10 @@ class Months extends LilirucaCommand {
         const placeName = places[place]
         const effectInfo = ct(effect, { value })
 
-        return bold(`${placeName} ${effectInfo}`)
+        return `**${placeName} ${effectInfo}**`
       })
 
-      const name = bold(`${emoji} » ${seasonName}`)
+      const name = `**${emoji} » ${seasonName}**`
       const value = info.join('\n')
 
       return { name, value }
@@ -44,7 +44,7 @@ class Months extends LilirucaCommand {
     const emoji = EMOJIS.month
     const months = t('commons:date.months')
     const name = `\\${emoji} » ${months}`
-    const value = bold(ct('duration'))
+    const value = ct('duration')
 
     seasonsInfos.unshift({ name, value })
 
