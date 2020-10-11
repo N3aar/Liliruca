@@ -1,8 +1,9 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { calculateProduction, bold } = require('@utils/util')
-const { STORAGES_SIZE, PLACE_GENERATE, PLACES, EMOJIS } = require('@constants')
+const { getItemInInventoryByTier, removeUsedItem } = require('@utils/items')
+const { calculateProduction, random } = require('@utils/util')
+const { STORAGES_SIZE, PLACE_GENERATE, PLACES, PLACES_BOOSTERS, EMOJIS } = require('@constants')
 
 class Collect extends LilirucaCommand {
   constructor () {
@@ -29,7 +30,7 @@ class Collect extends LilirucaCommand {
 
     for (const place of PLACES) {
       const dataPlace = data[place]
-      const storageLimit = (dataPlace.storage * STORAGES_SIZE[place])
+      const storageLimit = dataPlace.storage * STORAGES_SIZE[place]
 
       if (dataPlace.level && dataPlace.amount >= storageLimit) {
         return util.send(ct('full'))
@@ -37,20 +38,29 @@ class Collect extends LilirucaCommand {
     }
 
     const places = PLACES.filter(place => data[place].level)
+    const attack = data.farm.level >= 6 && this.farmAttack(data.activeItems)
 
     const collect = places.map(place => {
       const dataPlace = data[place]
       const generate = dataPlace.level * PLACE_GENERATE[place]
-      const production = calculateProduction(collectedAt, dataPlace.level, generate, place)
+      const production = calculateProduction(data, generate, place)
 
-      data[place].amount += production
+      const limit = dataPlace.storage * STORAGES_SIZE[place]
+      const total = dataPlace.amount + production > limit ? limit - dataPlace.amount : production
+      const attacked = place === 'farm' && attack ? total - (total * (attack / 100)) : total
 
-      const name = `\\${EMOJIS[place]} ${t(`commons:${place}`)}`
-      const value = bold(`${t('commons:amount')}: ${production}`)
+      const name = PLACES_BOOSTERS[place]
+      const booster = name && getItemInInventoryByTier(data.activeItems, name)
+
+      if (booster) {
+        removeUsedItem(data, booster.id)
+      }
+
+      dataPlace.amount += attacked
 
       return {
-        name,
-        value,
+        name: `\\${EMOJIS[place]} ${t(`commons:${place}`)}`,
+        value: `**${t('commons:amount')}: ${attacked}**`,
         inline: true
       }
     })
@@ -60,6 +70,18 @@ class Collect extends LilirucaCommand {
       .addFields(collect)
       .setFooter(last)
 
+    if (attack) {
+      embed.setDescription(ct('attacked', { attack }))
+    }
+
+    if (data.activeItems.scarecrow) {
+      removeUsedItem(data, 'scarecrow')
+    }
+
+    if (data.activeItems.fence) {
+      removeUsedItem(data, 'fence')
+    }
+
     const values = {
       collectedAt: timestamp
     }
@@ -67,6 +89,17 @@ class Collect extends LilirucaCommand {
     db.users.update(data, values)
 
     util.send(ct('success'), embed)
+  }
+
+  farmAttack (items) {
+    if (items.scarecrow && items.fence) {
+      return null
+    }
+
+    const protection = !items.scarecrow && !items.fence ? 2 : 4
+    if (random(protection) === 0) {
+      return random(30, 5, true)
+    }
   }
 }
 
