@@ -64,11 +64,9 @@ class Leaderboard extends LilirucaCommand {
     ctx.fillStyle = '#1cac50'
     index = 0
 
-    const storage = PLACES.includes(type)
-
     for (const user of users) {
       const username = `${user.username.slice(0, 10)}#${user.discriminator}`
-      const value = storage ? data[index][type].storage : data[index][type]
+      const value = this.getValue(data[index], type)
 
       const parsed = ct(`types.${type}`, { value })
       const position = 363 - ctx.measureText(parsed).width
@@ -81,9 +79,21 @@ class Leaderboard extends LilirucaCommand {
     }
 
     const attach = new MessageAttachment(canvas.toBuffer(), 'leaderboard.png')
-    const parsed = t(`commons:${storage ? 'storages.' : ''}${type}`)
+    const parsed = t(`commons:${PLACES.includes(type) ? 'storages.' : ''}${type}`)
 
-    util.send(ct('success', { type: parsed }), attach)
+    util.send(ct('success', { type: parsed, page }), attach)
+  }
+
+  getValue (data, type) {
+    if (PLACES.includes(type)) {
+      return data[type].storage
+    }
+
+    if (type === 'fishs') {
+      return data.fishing.rares.total
+    }
+
+    return data[type]
   }
 }
 
