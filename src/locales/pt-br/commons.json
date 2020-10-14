@@ -71,8 +71,13 @@
         "epic": "Épica",
         "legendary": "Lendária"
     },
+    "weathers": {
+        "storm": "Tempestade",
+        "cloudy": "Nublado",
+        "sunny": "Ensolarado",
+        "rainy": "Chuva"
+     },
     "seasons": {
-       "current": "Estação Atual",
        "spring": "Primavera",
        "summer": "Verão",
        "autumn": "Outono",

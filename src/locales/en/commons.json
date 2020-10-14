@@ -77,6 +77,12 @@
         "epic": "Epic",
         "legendary": "Legendary"
     },
+    "weathers": {
+        "storm": "Storm",
+        "cloudy": "Cloudy",
+        "sunny": "Sunny",
+        "rainy": "Rain"
+     },
     "seasons": {
         "spring": "Spring",
         "summer": "Summer",

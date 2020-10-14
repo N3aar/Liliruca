@@ -23,6 +23,13 @@ const SEASON_NAMES = {
   WINTER: 'winter'
 }
 
+const WEATHER_NAMES = {
+  SUNNY: 'sunny',
+  RAINY: 'rainy',
+  CLOUDY: 'cloudy',
+  STORM: 'storm'
+}
+
 const RESOURCE_NAMES = {
   FOOD: 'food',
   FISH: 'fish',
@@ -94,7 +101,7 @@ module.exports = {
     'user',
     'rewards',
     'items',
-    'seasons',
+    'time',
     'administration',
     'bot',
     'others'
@@ -141,6 +148,8 @@ module.exports = {
     [PLACE_NAMES.FISHING]: BOOSTER_NAMES.FISHING_NET,
     [PLACE_NAMES.MINING]: BOOSTER_NAMES.ENERGETIC
   },
+  SEASONS: Object.values(SEASON_NAMES),
+  WEATHERS: Object.values(WEATHER_NAMES),
   RESOURCES: Object.values(RESOURCE_NAMES),
   PLACES: Object.values(PLACE_NAMES),
   PLACE_START_LEVEL: 1,
@@ -172,6 +181,26 @@ module.exports = {
     [PLACE_NAMES.MINING]: 120
   },
   LEADERBOARD_TYPES: ['money', 'lilistars', 'fishs'],
+  WEATHER_PERCENTAGE: {
+    [WEATHER_NAMES.STORM]: {
+      [PLACE_NAMES.FARM]: 1.10,
+      [PLACE_NAMES.FISHING]: 0.85,
+      [PLACE_NAMES.MINING]: 0.9
+    },
+    [WEATHER_NAMES.RAINY]: {
+      [PLACE_NAMES.FARM]: 1.15,
+      [PLACE_NAMES.FISHING]: 1.1
+    },
+    [WEATHER_NAMES.CLOUDY]: {
+      [PLACE_NAMES.FISHING]: 0.95
+    }
+  },
+  WEATHERS_COLORS: {
+    [WEATHER_NAMES.SUNNY]: '#FFD335',
+    [WEATHER_NAMES.RAINY]: '#00B2FF',
+    [WEATHER_NAMES.CLOUDY]: '#F2FFFF',
+    [WEATHER_NAMES.STORM]: '#00007A'
+  },
   SEASONS_PERCENTAGE: {
     [SEASON_NAMES.SPRING]: {
       [PLACE_NAMES.FARM]: 0.9,
@@ -200,12 +229,6 @@ module.exports = {
     [SEASON_NAMES.AUTUMN]: '#ab7f4f',
     [SEASON_NAMES.WINTER]: '#00ccff'
   },
-  SEQUENCE_OF_SESSIONS: [
-    SEASON_NAMES.SPRING,
-    SEASON_NAMES.SUMMER,
-    SEASON_NAMES.AUTUMN,
-    SEASON_NAMES.WINTER
-  ],
   EMOJIS: {
     money: '💰',
     lilistars: '⭐',
@@ -251,12 +274,18 @@ module.exports = {
     metal: ['💎'],
     storage: '📥',
     fishingpole: '🎣',
+    umbrella: '☂️',
+    cloudrain: '⛅',
+    cloudy: '☁️',
+    storm: '⛈️',
+    rainy: '🌧️',
+    sunny: '🌤️',
     produced: '📬',
     production: '🏭',
     user: '🎓',
     rewards: '🎁',
     items: '🧰',
-    seasons: '⛅',
+    time: '🌦️',
     administration: '🔧',
     bot: '🤖',
     others: '🔍',

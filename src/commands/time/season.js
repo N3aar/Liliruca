@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js')
+const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { getSeasonByMonth } = require('@utils/util')
 const { EMOJIS, SEASONS_COLORS } = require('@constants')
@@ -19,22 +19,27 @@ class Season extends LilirucaCommand {
     const season = getSeasonByMonth(month)
     const seasonNext = getSeasonByMonth(month + 1)
 
-    const current = ct('current')
-    const next = ct('next')
-
-    const seasonEmoji = EMOJIS[season]
-    const seasonNextEmoji = EMOJIS[seasonNext]
-
     const seasonName = t(`commons:seasons.${season}`)
     const seasonNextName = t(`commons:seasons.${seasonNext}`)
 
-    const color = SEASONS_COLORS[season]
-    const embed = new MessageEmbed()
-      .setColor(color)
-      .addField(current, `${seasonEmoji} ${seasonName}`)
-      .addField(next, `${seasonNextEmoji} ${seasonNextName}`)
+    const seasons = [
+      {
+        name: ct('current'),
+        value: `**${EMOJIS[season]} ${seasonName}**`,
+        inline: true
+      },
+      {
+        name: ct('next'),
+        value: `**${EMOJIS[seasonNext]} ${seasonNextName}**`,
+        inline: true
+      }
+    ]
 
-    util.send(embed)
+    const embed = new LilirucaEmbed()
+      .setColor(SEASONS_COLORS[season])
+      .addFields(seasons)
+
+    util.send(ct('success'), embed)
   }
 }
 

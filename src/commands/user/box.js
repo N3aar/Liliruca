@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { random } = require('@utils/util')
+const { random, randomChances } = require('@utils/util')
 const { items, getItemById, addItemInInventory, getItemInInventoryByTier, removeUsedItem } = require('@utils/items')
 const { PLACES, STORAGES_SIZE, PLACES_RESOURCES, EMOJIS } = require('@constants')
 
@@ -38,13 +38,13 @@ class Box extends LilirucaCommand {
     const boxId = id || box.id
     const boxItem = id ? box : box.item
 
-    const itemReward = this.randomBox(boxItem)
+    const itemReward = randomChances(boxItem.chances)
     const packer = this[itemReward]
-    const item = boxItem[itemReward]
+    const item = boxItem.rewards[itemReward]
     const reward = packer ? packer(item, data, t) : {}
 
     const emoji = reward.emoji || `\\${EMOJIS[itemReward]}`
-    const value = reward.value || random(item.reward.max, item.reward.min, true)
+    const value = reward.value || random(item.max, item.min, true)
     const type = reward.type || t(`commons:${itemReward}`)
 
     if (!reward.value) {
@@ -74,16 +74,6 @@ class Box extends LilirucaCommand {
     util.send(ct('success'), embed)
   }
 
-  randomBox (item) {
-    const chance = random(100, 1, true)
-    switch (true) {
-      case chance >= (item.item.min || 1) && chance <= item.item.max: return 'item'
-      case chance >= item.lilistars.min && chance <= item.lilistars.max: return 'lilistars'
-      case chance >= item.money.min && chance <= item.money.max: return 'money'
-      case chance >= item.resource.min && chance <= (item.resource.max || 100): return 'resource'
-    }
-  }
-
   item (_, data, t) {
     const ids = Object.keys(items)
     const itemId = ids[random(ids.length)]
@@ -105,7 +95,7 @@ class Box extends LilirucaCommand {
     const place = filter[random(filter.length)]
     const resource = PLACES_RESOURCES[place]
     const emojis = EMOJIS[resource]
-    const amount = random(item.reward.max, item.reward.min, true)
+    const amount = random(item.max, item.min, true)
     const dataPlace = data[place]
     const limit = dataPlace.storage * STORAGES_SIZE[place]
     const total = dataPlace.amount + amount > limit ? limit - dataPlace.amount : amount

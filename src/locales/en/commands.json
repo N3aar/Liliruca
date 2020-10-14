@@ -193,17 +193,35 @@
         "noVoted": "\\💖 vote for me and retype this command, you will earn Lilistars to spend on the ``market`` command, more product details use the ``list`` command, you can earn this reward every 13 hours!\nhttps://botsparadiscord.xyz/bots/548862902078275605/votar",
         "success": "\\👍 successfully voted, thanks for your support!"
     },
-    "months": {
-        "description": "Look duration of the seasons and the effects it has on your production.",
-        "duration": "**January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, made to be used inside the Bot.**",
+    "days": {
+        "description": "See the effects of the weathers they will cause in your production.",
+        "note": "`Note:` **The weather forecasts are `fictitious`, created to be used inside the Bot.**",
+        "current": "{{ emoji }} Current Weather: {{ weather }}",
         "increase": "will increase {{- value }}% in your production.",
         "decrease": "will decrease {{- value }}% in your production.",
-        "success": "\\☁ All season durations and effects!"
+        "noEffect": "will have no effect.",
+        "success": "\\⛅ All weather effects!"
+    },
+    "months": {
+        "description": "Look duration of the seasons and the effects it has on your production.",
+        "title": "__**SEASONS**__",
+        "current": "{{ emoji }} Current Season: {{ season }}",
+        "duration": "**January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, created to be used inside the Bot.**",
+        "increase": "will increase {{- value }}% in your production.",
+        "decrease": "will decrease {{- value }}% in your production.",
+        "success": "\\📅 All season durations and effects!"
     },
     "season": {
         "description": "Show the current season",
         "current": "Current Season",
-        "next": "Next Season"
+        "next": "Next Season",
+        "success": "\\☁️ Seasons!"
+    },
+    "weather": {
+        "description": "Weather forecasts for today and tomorrow.",
+        "current": "Current",
+        "next": "Next",
+        "success": "\\☂️ Weather forecast!"
     },
     "farm": {
         "description": "View the map of your farm or other user.",

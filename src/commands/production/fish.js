@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { random } = require('@utils/util')
+const { random, randomChances } = require('@utils/util')
 const { getItemInInventoryByTier, removeUsedItem, addItemInInventory } = require('@utils/items')
 const { RARE_FISHES, WEIGHTS, TREASURE, EMOJIS } = require('@constants')
 
@@ -27,7 +27,7 @@ class Fish extends LilirucaCommand {
       return util.send(ct('noBaits'))
     }
 
-    const catched = this.randomCatch(baits.item)
+    const catched = randomChances(baits.item.chances)
     const weight = random(WEIGHTS[catched].max, WEIGHTS[catched].min, true)
     const emojis = EMOJIS[catched]
 
@@ -82,16 +82,6 @@ class Fish extends LilirucaCommand {
     db.users.update(data, values)
 
     util.send(ct('success'), embed)
-  }
-
-  randomCatch (item) {
-    const chance = random(100, 1, true)
-    switch (true) {
-      case chance >= (item.rare.min || 1) && chance <= item.rare.max: return 'rare'
-      case chance >= item.treasure.min && chance <= item.treasure.max: return 'treasure'
-      case chance >= item.trash.min && chance <= item.trash.max: return 'trash'
-      case chance >= item.fish.min && chance <= (item.fish.max || 100): return 'fishs'
-    }
   }
 
   rare (emojis, weight, rares) {

@@ -23,7 +23,7 @@ class Eval extends LilirucaCommand {
     })
   }
 
-  async exec ({ channel, content, author, mentions, util, guild, db, prefix, t, ct }, { code }) {
+  async exec ({ client, channel, content, author, mentions, util, guild, db, prefix, t, ct }, { code }) {
     const embed = new LilirucaEmbed()
     const text = code.replace(/^`(``(js|javascript)?\s?)?|`(``)?$/g, '')
 

@@ -197,18 +197,35 @@
         "noVoted": "\\💖 vote em mim e digite novamente este comando, você ganhará lilistars para gastar no comando ``market``, mais detalhes dos produtos use o comando ``list``, você pode ganhar essa recompensa a cada 13 horas!\nhttps://botsparadiscord.xyz/bots/548862902078275605/votar",
         "success": "\\👍 votado com sucesso, obrigado pelo seu apoio!"
     },
+    "days": {
+        "description": "Veja os efeitos dos climas que irão causar em sua produção.",
+        "note": "`Nota:` **As previsões de tempo são `fictícias`, criadas para serem usadas dentro do Bot.**",
+        "current": "{{ emoji }} Clima Atual: {{ weather }}",
+        "increase": "aumentará {{- value }}% em sua produção.",
+        "decrease": "diminuirá {{- value }}% em sua produção.",
+        "noEffect": "não terá efeito.",
+        "success": "\\⛅ Todos os efeitos dos climas!"
+    },
     "months": {
         "description": "Veja a duração das estações e os efeitos que ela causa em sua produção.",
         "title": "__**ESTAÇÕES DO ANO**__",
-        "duration": "**Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são ``fictícias``, feitas para serem usadas dentro do Bot.**",
+        "current": "{{ emoji }} Estação Atual: {{ season }}",
+        "duration": "**Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são `fictícias`, criadas para serem usadas dentro do Bot.**",
         "increase": "aumentará {{- value }}% em sua produção.",
         "decrease": "diminuirá {{- value }}% em sua produção.",
-        "success": "\\☁ Todas as durações e efeitos das estações!"
+        "success": "\\📅 Todas as durações e efeitos das estações!"
     },
     "season": {
         "description": "Mostra a Estação atual.",
-        "current": "Estação atual",
-        "next": "Próxima Estação"
+        "current": "Estação Atual",
+        "next": "Próxima Estação",
+        "success": "\\☁️ Estações!"
+    },
+    "weather": {
+        "description": "Previsões do tempo para hoje e amanhã.",
+        "current": "Atual",
+        "next": "Próxima",
+        "success": "\\☂️ Previsão do Tempo!"
     },
     "farm": {
         "description": "Veja o mapa de sua fazenda ou de outro usuário.",
