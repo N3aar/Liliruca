@@ -5,5 +5,7 @@
     "noPlace": "Me informe o local correto que você quer fazer esta melhoria!",
     "locked": "Você ainda não desbloqueou isso!",
     "guildPermission": "Você não possui permissão nesta Guilda para isto.",
-    "notFound": "Não encontrei"
+    "notFound": "Não encontrei",
+    "noItem": "Digite o id do item corretamente!",
+    "noEnergy": "Você não tem energia suficiente para isso!"
 }
