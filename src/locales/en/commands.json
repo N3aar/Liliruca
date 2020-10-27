@@ -55,7 +55,7 @@
     "active": {
         "description": "Activate an item to use.",
         "usage": "<item id>",
-        "noItem": "Type the item id correctly!",
+        "inative": "This item does not have to be active!",
         "already": "This item is already active.",
         "missing": "You do not have this item!",
         "success": "\\🔓 Item successfully activated!"
@@ -79,29 +79,45 @@
         },
         "success": "\\🛒 Purchased successfully!"
     },
+    "craft": {
+        "description": "Create items with your materials",
+        "usage": "<item id> [amount]",
+        "noCraftable": "This item is not craftable!",
+        "noMoney": "You don't have enough money! `Missing: ${{ missing }}`.",
+        "noMaterial": "You don't have the necessary materials! `Missing: x{{ missing }} {{ material }}`.",
+        "success": "\\🛠️ Successfully crafted item!"
+    },
     "disable": {
         "description": "Deactivate an item and put it back in your inventory.",
         "usage": "<item id>",
-        "noItem": "Type the item id correctly!",
         "noActive": "This item is not active!",
         "success": "\\🔒 Item successfully deactivated!"
     },
     "inventory": {
         "description": "View your inventory or that of another user!",
-        "usage": "[member] [--actives]",
+        "usage": "[page] [member] [--actives]",
         "noActiveItems": "You have no active items!",
         "noItems": "You have no inventory items!",
-        "success": "\\🎒 `{{- member }}` inventory!"
+        "success": "\\🎒 `{{- member }}` inventory | `Page {{ page }}`"
     },
     "list": {
         "description": "List of all buyable items!",
-        "usage": "[page]",
+        "usage": "[page] [--type <type>]",
         "noPage": "This page does not exist.",
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
-        "item": "\n**ID: `{{ id }}`\nPrice: `{{ price }}`\nUses: `{{ value }}`\n**",
-        "place": "**Required: `{{ place }} level {{ required }}`**",
+        "item": "**ID: `{{ id }}`\nType: `{{ type }}`\nPrice: `{{ price }}`\nUses: `{{ value }}`\nSale: `{{ sale }}`**",
+        "craftable": "\n**Craftable**",
+        "place": "\n**Required: `{{ place }} level {{ required }}`**",
         "success": "\\📃 List of Items! `Page {{ page }}`"
+    },
+    "sale": {
+        "description": "Sell items from your inventory",
+        "usage": "<item id> [amount]",
+        "noItems": "You do not own this item or quantity!",
+        "lilistars": "{{ value }} Lilistars",
+        "money": "${{ value }}",
+        "success": "\\🛒 Item successfully sold!"
     },
     "hour": {
         "description": "Look the current time following the configuration of this guild!"
@@ -124,7 +140,7 @@
         "last": "Last collected: {{- time }} ago.",
         "success": "\\📬 Collected successfully!",
         "cooldown": "Your production is not ready yet, wait `{{ min }} minutes` to collect again.",
-        "attacked": "**Your plantation has been attacked by birds and wildlife!\nHis loss was ``{{- attack }}%``!**",
+        "attacked": "**Your plantation has been attacked by birds and wildlife!\nHis loss was ``{{ attack }}%``!**",
         "full": "Some of your storages are full! Empty to collect your new resources."
     },
     "fish": {
@@ -135,8 +151,28 @@
         "treasure": "Treasure",
         "trash": "Trash",
         "fishs": "Fish",
-        "fishRare": "**Congratulations you caught a {{- fish }}!**",
+        "fishRare": "**Congratulations you caught a {{ fish }}!**",
         "success": "\\🎣 You managed to catch something!"
+    },
+    "forge": {
+        "description": "Forge ores into bars",
+        "usage": "<ore id> [amount]",
+        "noOre": "Type ore id correctly!",
+        "missing": "You don't have that amount of ores!",
+        "noCoal": "You do not have coal to forge this item!",
+        "noMoney": "You don't have enough money! `Missing: ${{ missing }}`",
+        "success": "\\🔥 Successfully forged item!"
+    },
+    "mine": {
+        "description": "Collect ores with your pickaxe",
+        "noPickaxe": "You don't have an active pickaxe to mine.",
+        "success": "\\⛏️ Collect ores successfully!"
+    },
+    "saw": {
+        "description": "Cut wood into planks for use in construction.",
+        "noWood": "You don't have enough wood!",
+        "noMoney": "You don't have enough money! `Missing: ${{ missing }}`",
+        "success": "\\⚙️ Woods have been successfully processed!"
     },
     "sell": {
         "description": "Sale what was produced to make money",
@@ -146,38 +182,45 @@
     "storage": {
         "description": "Increase the levels of a storage",
         "usage": "<place> [levels]",
-        "noMoney": "You enough money to buy this upgrade! Missing: `{{- remainder }}`.",
-        "success": "\\⚙️ Storage upgraded to `level {{- level}}`!"
+        "noMoney": "You enough money to buy this upgrade! `Missing: {{ missing }}`.",
+        "noMaterials": "You enough material to make this upgrade! `Missing: x{{ missing }} {{ material }}`.",
+        "success": "\\⚙️ Storage upgraded to `level {{ level}}`!"
     },
     "table": {
         "description": "View a complete table of resource prices and upgrades",
         "usage": "<place>",
         "noPlace": "Type valid place!",
-        "maxUpgrade": "Maximum level: {{- max }}",
-        "formula": "Level multiplied by **${{- price }}**",
-        "sell": "**__Formula__**: Amount {{- operation }} by {{- value }}\n**__Example__**: {{- emoji }} = {{- amount }} 💰 = {{- money }}",
+        "maxUpgrade": "Maximum level: {{ max }}",
+        "formula": "Previous level multiplied by **${{ price }}**",
+        "sell": "**__Formula__**: Amount {{ operation }} by {{ value }}\n**__Example__**: \\{{ emoji }} = {{ amount }} 💰 = {{ money }}",
         "division": "divided",
         "multiply": "multiplied",
         "calculate": "To know the price of several levels, use:\n**{{- prefix }}calculate <initial level> <final level>**",
-        "storage": "\\📋 {{- place }} storage prices!",
-        "table": "\\📋 {{- place }} prices!",
+        "storage": "\\📋 {{ place }} storage prices!",
+        "table": "\\📋 {{ place }} prices!",
         "upgrade": {
-            "farm": "Level 1: **$0**\n{{- prices }}\n...",
-            "fishing": "Level 1: Unlocked at level `10` of Farm\n{{- prices }}\n...",
-            "mining": "Level 1: Unlocked at level `10` of Fishing\n{{- prices }}\n..."
+            "farm": "Level 1: **$0**\n{{ prices }}\n...",
+            "fishing": "Level 1: Unlocked at level `10` of Farm\n{{ prices }}\n...",
+            "mining": "Level 1: Unlocked at level `10` of Fishing\n{{ prices }}\n..."
         }
     },
     "upgrade": {
-        "description": "To upgrade the level of a place",
+        "description": "Upgrade the level of a place",
         "usage": "<place>",
         "maxLevel": "You already at the maximum level at this place",
-        "noMoney": "you enough money to buy this upgrade! Missing: {{- remainder }}",
-        "success": "\\⚙️ Level {{- level}}, upgraded successfully!",
-        "protection": "\\🌳 Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``market``, prices are in command ``list``",
+        "noMoney": "you enough money to buy this upgrade! Missing: {{ missing }}",
+        "noMaterial": "You do not have the necessary materials for construction! `Missing: x{{ missing }} {{ material }}`",
+        "success": "\\⚙️ Level {{ level}}, upgraded successfully!",
+        "protection": "\\🌳 Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``buy``, prices are in command ``list``",
         "unlock": {
             "fishing": "Congratulations, you have unlocked a new location! Now get your fishing rod and let's go fishing! \\⛵",
             "mining": "Congratulations, you have unlocked a new location! Now get your pick and let's go mining! \\⛏"
         }
+    },
+    "wood": {
+        "description": "Chopping wood with your axe",
+        "noSaw": "You don't have an active tool for cutting wood.",
+        "success": "\\🪓 Successfully collected wood!"
     },
     "daily": {
         "description": "Lilistars you can catch every 20 hours! You can buy special things with these Lilistars.",
@@ -238,6 +281,19 @@
         "usage": "[@user]",
         "success": "\\⛏ Mining of {{- name }}"
     },
+    "energetic": {
+        "description": "Energy drink to recover energy",
+        "empty": "You don't own this drink!",
+        "noEnergetic": "You don't have an active energy drink!",
+        "recoveredEnergy": "\\🔋 Recovered Energy",
+        "current": "🔋 Current Energy: {{ energy }}",
+        "success": "\\🥤 Energy drink used successfully!"
+    },
+    "energy": {
+        "description": "Fully restore your energy",
+        "cooldown": "Your energy has already been restored! wait `{{ time }}` to use again.",
+        "success": "\\⚡ Power was successfully restored!"
+    },
     "give": {
         "description": "Give money to other users!",
         "usage": "<member> <value>",
@@ -250,7 +306,7 @@
     },
     "leaderboard": {
         "description": "Leaderboard from the best users!",
-        "error": "Type the resource correctly!",
+        "error": "Type the resource correctly! \n`Resources: {{ types }}`",
         "usage": "<resource | place> [page]",
         "noPage": "Could not find enough users to create this page!",
         "sucess": "\\🏆 Top 5 `{{ resource }}`! Page: {{ page }}/50",

@@ -5,20 +5,29 @@
     "howUse": "Como usar",
     "description": "Descrição",
     "current": "Atual",
+    "created": "Criado",
     "options": "Opções",
+    "energy": "Energia",
     "format": "Formato",
     "places": "Locais",
     "farm": "Fazenda",
     "fishing": "Pescaria",
     "mining": "Mineração",
-    "lilistars": "Lilistars",
     "guild": "Guilda",
+    "item": "Item",
+    "materials": "Materiais",
     "food": "Alimento",
     "fish": "Peixe",
     "metal": "Metal",
+    "wood": "Madeira",
+    "ore": "Minério",
+    "forged": "Forjado",
     "money": "Dinheiro",
+    "lilistars": "Lilistars",
     "tax": "Taxa",
     "box": "Caixa",
+    "process": "Processado",
+    "result": "Resultado",
     "produced": "Produzido",
     "production": "Produção",
     "upgrade": "Melhoria",
@@ -32,6 +41,8 @@
     "reward": "Recompensa",
     "fished": "Pescado",
     "weight": "Peso",
+    "tool": "Ferramenta",
+    "drink": "Bebida",
     "none": "Nenhum.",
     "active": "\\🔹 Ativo",
     "inactive": "\\🔸 Inativo",
@@ -64,13 +75,6 @@
         "pufferfish": "Baiacu",
         "squid": "Lula"
     },
-    "boxes": {
-        "boxes": "Caixas",
-        "common": "Comum",
-        "rare": "Rara",
-        "epic": "Épica",
-        "legendary": "Lendária"
-    },
     "weathers": {
         "storm": "Tempestade",
         "cloudy": "Nublado",
@@ -89,22 +93,5 @@
         "hours": "hora(s)",
         "minutes": "minuto(s)",
         "seconds": "segundo(s)"
-    },
-    "boosters": {
-        "fertilizer": {
-            "basic": "Fertilizante Básico",
-            "medium": "Fertilizante Médio",
-            "premium": "Fertilizante Prêmio"
-        },
-        "worms": {
-            "basic": "Iscas Básico",
-            "mediuem": "Iscas Médio",
-            "premium": "Iscas Prêmio"
-        },
-        "energetic": {
-            "basic": "Energético Básico",
-            "medium": "Energético Médio",
-            "premium": "Energético Prêmio"
-        }
     }
 }

@@ -59,7 +59,7 @@
     "active": {
         "description": "Ative um item para ser usado.",
         "usage": "<id do item>",
-        "noItem": "Digite o id do item corretamente!",
+        "inative": "Este item não precisa ser ativo!",
         "already": "Este item já está ativo.",
         "missing": "Você não possui este item!",
         "success": "\\🔓 Item ativado com sucesso!"
@@ -74,7 +74,6 @@
     "buy": {
         "description": "Compre itens para utilizar.",
         "usage": "<id do item> [quantidade]",
-        "noItem": "Digite o id do item corretamente!",
         "noMoney": "Você não possui dinheiro suficiente para comprar este item!",
         "active": "Desative esse item antes!",
         "payments": {
@@ -83,29 +82,45 @@
         },
         "success": "\\🛒 Item comprado com sucesso!"
     },
+    "craft": {
+        "description": "Criar itens com seus materiais",
+        "usage": "<id do item> [quantidade]",
+        "noCraftable": "Este item não é craftável!",
+        "noMoney": "Você não possui dinheiro suficiente! `Faltando: ${{ missing }}`.",
+        "noMaterial": "Você não possui os materiais necessários! `Faltando: x{{ missing }} {{ material }}`.",
+        "success": "\\🛠️ Item craftado com sucesso!"
+    },
     "disable": {
         "description": "Desative um item e coloque de volta em seu inventário.",
-        "usage": "<item>",
-        "noItem": "Digite o id do item corretamente!",
+        "usage": "<id do item>",
         "noActive": "Este item não está ativo!",
         "success": "\\🔒 Item desativado com sucesso!"
     },
     "inventory": {
         "description": "Veja seu inventário ou de outro usuário!",
-        "usage": "[membro] [--actives]",
+        "usage": "[page] [membro] [--actives]",
         "noActiveItems": "Não possui itens ativos!",
         "noItems": "Não possui itens no inventário!",
-        "success": "\\🎒 Inventário de `{{- member }}`!"
+        "success": "\\🎒 Inventário de `{{- member }}` | `Página {{ page }}`"
     },
     "list": {
         "description": "Lista de todos itens compraveis!",
-        "usage": "[página]",
+        "usage": "[página] [--type <tipo>]",
         "noPage": "Está página não existe.",
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
-        "item": "\n**ID: `{{ id }}`\nPreço: `{{ price }}`\nUsos: `{{ value }}`**\n",
-        "place": "**Requer: `{{ place }} level {{ required }}`**",
+        "item": "**ID: `{{ id }}`\nTipo: `{{ type }}`\nPreço: `{{ price }}`\nUsos: `{{ value }}`\nVenda: `{{ sale }}`**",
+        "craftable": "\n**Craftável**",
+        "place": "\n**Requer: `{{ place }} level {{ required }}`**",
         "success": "\\📃 Lista de itens! `Página {{ page }}`"
+    },
+    "sale": {
+        "description": "Venda items do seu inventário",
+        "usage": "<id do item> [quantidade]",
+        "noItems": "Você não possui este item ou esta quantidade!",
+        "lilistars": "{{ value }} Lilistars",
+        "money": "${{ value }}",
+        "success": "\\🛒 Item vendido com sucesso!"
     },
     "hour": {
         "description": "Veja qual a hora atual seguindo a configuração deste servidor!"
@@ -125,10 +140,10 @@
     "collect": {
         "description": "Para coletar todos os seus recursos produzidos",
         "first": "Primeira coleta!",
-        "last": "Última coleta: {{- time }} atrás.",
+        "last": "Última coleta: {{ time }} atrás.",
         "success": "\\📬 Coletado com sucesso!",
         "cooldown": "Sua produção ainda não esta pronta, aguarde `{{ min }} minutos` para coletar novamente.",
-        "attacked": "**Sua plantação foi atacada por aves e animais selvagens!\nSua perda foi de ``{{- attack }}%``!**",
+        "attacked": "**Sua plantação foi atacada por aves e animais selvagens!\nSua perda foi de ``{{ attack }}%``!**",
         "full": "Algum de seus armazenamentos está cheio! Esvazie para coletar seus novos recursos."
     },
     "fish": {
@@ -139,8 +154,28 @@
         "treasure": "Tesouro",
         "trash": "Lixo",
         "fishs": "Peixe",
-        "fishRare": "**Parábens você pescou um(a) {{- fish }}!**",
+        "fishRare": "**Parábens você pescou um(a) {{ fish }}!**",
         "success": "\\🎣 Você conseguiu pescar algo!"
+    },
+    "forge": {
+        "description": "Forge os mínérios em barras",
+        "usage": "<id do minério> [quantidade]",
+        "noOre": "Digite o mínério corretamente!",
+        "missing": "Você não possui essa quantia de minérios!",
+        "noCoal": "Você não possui carvão para forjar este item!",
+        "noMoney": "Você não tem dinheiro suficiente! `Faltando ${{ missing }}`",
+        "success": "\\🔥 Item forjado com sucesso!"
+    },
+    "mine": {
+        "description": "Coletar mínérios com sua picareta",
+        "noPickaxe": "Você não possui uma picareta ativa para minerar.",
+        "success": "\\⛏️ Coletou minérios com sucesso!"
+    },
+    "saw": {
+        "description": "Corte madeiras em tábuas para usar em construções.",
+        "noWood": "Você não tem madeira suficiente! `Faltando: {{ missing }}`",
+        "noMoney": "Você não tem dinheiro suficiente! `Faltando ${{ missing }}`",
+        "success": "\\⚙️ Madeiras foram processadas com sucesso!"
     },
     "sell": {
         "description": "Venda o que foi produzido para ganhar dinheiro",
@@ -150,38 +185,46 @@
     "storage": {
         "description": "Aumentar os leveis de um armazenamento",
         "usage": "<local> [levels]",
-        "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! Faltando: `${{- remainder }}`.",
-        "success": "\\⚙️ Armazenamento melhorado para `level {{- level }}`!"
+        "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
+        "noMaterials": "Você não tem material suficiente para fazer essa melhoria! `Faltando: x{{ missing }} {{ material }}`.",
+        "success": "\\⚙️ Armazenamento melhorado para `level {{ level }}`!"
     },
     "table": {
         "description": "Visualizar uma tabela dos preços de recursos e melhorias",
         "usage": "<local> [--storage]",
         "noPlace": "Digite um local válido!",
         "maxUpgrade": "Level máximo: {{- max }}",
-        "formula": "Level multiplicado por **${{- price }}**",
-        "sell": "**__Fórmula__**: Quantidade {{- operation }} por {{- value }}\n**__Exemplo__**: {{- emoji }} = {{- amount }} 💰 = {{- money }}",
+        "formula": "Level anterior multiplicado por **${{ price }}**",
+        "materials": "{{ material }} x Level anterior multiplicado por {{ amount }}",
+        "sell": "**__Fórmula__**: Quantidade {{ operation }} por {{ value }}\n**__Exemplo__**: \\{{ emoji }} = {{ amount }} \\💰 = {{ money }}",
         "division": "dividida",
         "multiply": "multiplicada",
         "calculate": "Para saber o preço de varios levels, use:\n**{{- prefix }}calculate <level inicial> <level final>**",
-        "storage": "\\📋 Preços do armazenamento da {{- place }}!",
-        "table": "\\📋 Preços da {{- place }}!",
+        "storage": "\\📋 Preços do armazenamento da {{ place }}!",
+        "table": "\\📋 Preços da {{ place }}!",
         "upgrade": {
-            "farm": "Level 1: **$0**\n{{- prices }}\n...",
-            "fishing": "Level 1: Desbloqueado no level `10` da Fazenda\n{{- prices }}\n...",
-            "mining": "Level 1: Desbloqueado no level `10` da Pescaria\n{{- prices }}\n..."
+            "farm": "Level 1: **$0**\n{{ prices }}\n...",
+            "fishing": "Level 1: Desbloqueado no level `10` da Fazenda\n{{ prices }}\n...",
+            "mining": "Level 1: Desbloqueado no level `10` da Pescaria\n{{ prices }}\n..."
         }
     },
     "upgrade": {
-        "description": "Para atualizar o level de um local",
+        "description": "Atualizar o level de um local",
         "usage": "<local>",
         "maxLevel": "Você já esta no level máximo neste local",
-        "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! Ainda falta: ${{- remainder }}.",
+        "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
+        "noMaterial": "Você não possui os materiais necessários para construção! `Faltando: x{{ missing }} {{ material }}`",
         "success": "\\⚙️ Level {{- level }}, melhorado com sucesso!",
-        "protection": "\\🌳 Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``market``, os preços estão no comando ``list``",
+        "protection": "\\🌳 Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``buy``, os preços estão no comando ``list``",
         "unlock": {
             "fishing": "Parabéns, você desbloqueou um novo local! Agora pegue sua vara de pesca e vamos pescar! \\⛵",
             "mining": "Parabéns, você desbloqueou um novo local! Agora pegue sua picareta e vamos minerar! \\⛏"
         }
+    },
+    "wood": {
+        "description": "Cortar madeiras com seu machado",
+        "noSaw": "Você não possui uma ferramenta ativa para cortar madeira.",
+        "success": "\\🪓 Coletou madeiras com sucesso!"
     },
     "daily": {
         "description": "Lilistars que poderá pegar a cada 20 horas! Poderá comprar coisas especiais com estas lilistars",
@@ -240,6 +283,19 @@
         "usage": "<@usuário>",
         "success": "\\⛏ Mineração de {{- name }}"
     },
+    "energetic": {
+        "description": "Beber energético para recuperar energia",
+        "empty": "Você não possui essa bebida!",
+        "noEnergetic": "Você não possui uma bebida energética ativa!",
+        "recoveredEnergy": "\\🔋 Energia Recuperada",
+        "current": "🔋 Energia Atual: {{ energy }}",
+        "success": "\\🥤 Bebida energética usada com sucesso!"
+    },
+    "energy": {
+        "description": "Restaure totalmente sua energia",
+        "cooldown": "Sua energia já foi restaurada! aguarde `{{ time }}` para usar novamente.",
+        "success": "\\⚡ Energia foi restaurada com sucesso!"
+    },
     "give": {
         "description": "Dê dinheiro a outros usuários!",
         "usage": "<membro> <valor>",
@@ -252,7 +308,7 @@
     },
     "leaderboard": {
         "description": "Classificações dos melhores usuários!",
-        "error": "Digite o recurso corretamente!",
+        "error": "Digite o recurso corretamente! \n`Recursos: {{ types }}`",
         "usage": "<recurso | local> [página]",
         "noPage": "Não foi possível encontrar usuários suficientes para criar esta página!",
         "success": "\\🏆 Top 5 `{{- type }}`! Página: {{ page }}/50",

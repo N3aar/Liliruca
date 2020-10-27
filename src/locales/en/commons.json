@@ -5,19 +5,28 @@
     "howUse": "How to use",
     "description": "Description",
     "current": "Current",
+    "created": "Criado",
     "options": "Options",
+    "energy": "Energy",
     "format": "Format",
     "places": "Places",
     "farm": "Farm",
     "fishing": "Fishing",
     "mining": "Mining",
-    "lilistars": "Lilistars",
+    "item": "Item",
+    "materials": "Materiais",
     "food": "Food",
     "fish": "Fish",
     "metal": "Metal",
+    "wood": "Wood",
+    "ore": "Ore",
+    "forged": "Forged",
     "money": "Money",
+    "lilistars": "Lilistars",
     "tax": "Tax",
     "box": "Box",
+    "process": "Process",
+    "result": "Result",
     "produced": "Produced",
     "production": "Production",
     "upgrade": "Upgrade",
@@ -31,6 +40,8 @@
     "reward": "Reward",
     "fished": "Fished",
     "weight": "Weight",
+    "tool": "Tool",
+    "drink": "Drink",
     "none": "None.",
     "active": "\\🔹 Ative",
     "inactive": "\\🔸 Inative",
@@ -70,13 +81,6 @@
         "pufferfish": "Pufferfish",
         "squid": "Squid"
     },
-    "boxes": {
-        "boxes": "Boxes",
-        "common": "Common",
-        "rare": "Rare",
-        "epic": "Epic",
-        "legendary": "Legendary"
-    },
     "weathers": {
         "storm": "Storm",
         "cloudy": "Cloudy",
@@ -95,22 +99,5 @@
         "hours": "hour(s)",
         "minutes": "minute(s)",
         "seconds": "second(s)"
-    },
-    "boosters": {
-        "fertilizer": {
-            "basic": "Basic Fertilizer",
-            "medium": "Medium Fertilizer",
-            "premium": "Premium Fertilizer"
-        },
-        "worms": {
-            "basic": "Basic Baits",
-            "mediuem": "Medium Baits",
-            "premium": "Iscas Prêmio"
-        },
-        "energetic": {
-            "basic": "Basic Energetic",
-            "medium": "Medium Energetic",
-            "premium": "Premium Energetic"
-        }
     }
 }
