@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { items, getItemById, addItemInInventory, getItemInInventoryByTier, removeUsedItem } = require('@utils/items')
+const { items, getItemById, addItemInInventory, getItemInInventoryByTier, removeItem } = require('@utils/items')
 const { PLACES, STORAGES_SIZE, PLACES_RESOURCES, EMOJIS } = require('@constants')
 
 class Box extends LilirucaCommand {
@@ -51,7 +51,7 @@ class Box extends LilirucaCommand {
       data[itemReward] += value
     }
 
-    removeUsedItem(data, boxId)
+    removeItem(data, 'activeItems', boxId)
 
     db.users.update(data, {})
 
@@ -80,8 +80,7 @@ class Box extends LilirucaCommand {
     const item = getItemById(itemId)
     const inventory = data.activeItems[itemId] ? 'activeItems' : 'items'
 
-    addItemInInventory(data[inventory], itemId, item.value)
-    data.markModified(inventory)
+    addItemInInventory(data, inventory, itemId, item.value)
 
     return {
       emoji: item.emoji,

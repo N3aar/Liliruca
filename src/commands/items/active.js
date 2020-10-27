@@ -1,6 +1,5 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { hasItem, getItemById } = require('@utils/items')
+const { getItemById } = require('@utils/items')
 const { EMOJIS: { open } } = require('@constants')
 
 class Active extends LilirucaCommand {
@@ -13,14 +12,19 @@ class Active extends LilirucaCommand {
       args: [
         {
           id: 'itemId',
-          type: Argument.validate('lowercase', (message, phrase) => hasItem(phrase)),
-          otherwise: message => message.ct('noItem')
+          type: 'itemId',
+          otherwise: message => message.t('errors:noItem')
         }
       ]
     })
   }
 
   async exec ({ ct, t, db, member, util }, { itemId }) {
+    const item = getItemById(itemId)
+    if (item.inactive) {
+      return util.send(ct('inative'))
+    }
+
     const data = await db.users.get(member.id)
 
     if (data.activeItems[itemId]) {
@@ -31,7 +35,6 @@ class Active extends LilirucaCommand {
       return util.send(ct('missing'))
     }
 
-    const item = getItemById(itemId)
     if (item.required && data[item.place].level < item.required) {
       return util.send(t('errors:locked'))
     }

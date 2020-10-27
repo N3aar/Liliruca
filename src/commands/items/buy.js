@@ -1,25 +1,25 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById, hasItem, addItemInInventory } = require('@utils/items')
-const { EMOJIS: { shopcart, pack, money } } = require('@constants')
+const { getItemById, addItemInInventory } = require('@utils/items')
+const { EMOJIS: { bank, pack, money } } = require('@constants')
 
 class Buy extends LilirucaCommand {
   constructor () {
     super('buy', {
       aliases: ['by'],
-      emoji: shopcart,
+      emoji: bank,
       editable: true,
       clientPermissions: 'EMBED_LINKS',
       args: [
         {
           id: 'itemId',
-          type: Argument.validate('lowercase', (message, phrase) => hasItem(phrase)),
-          otherwise: message => message.ct('noItem')
+          type: 'itemId',
+          otherwise: message => message.t('errors:noItem')
         },
         {
           id: 'amount',
-          type: Argument.range('integer', 1, 100),
+          type: Argument.range('integer', 1, Infinity),
           default: 1
         }
       ]
@@ -39,9 +39,7 @@ class Buy extends LilirucaCommand {
     }
 
     const inventory = data.activeItems[itemId] ? 'activeItems' : 'items'
-
-    addItemInInventory(data[inventory], itemId, item.value * amount)
-    data.markModified(inventory)
+    addItemInInventory(data, inventory, itemId, item.value * amount)
 
     const price = item.price * amount
     const values = {

@@ -1,6 +1,4 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { hasItem } = require('@utils/items')
 const { EMOJIS: { locked } } = require('@constants')
 
 class Disable extends LilirucaCommand {
@@ -13,8 +11,8 @@ class Disable extends LilirucaCommand {
       args: [
         {
           id: 'itemId',
-          type: Argument.validate('lowercase', (message, phrase) => hasItem(phrase)),
-          otherwise: message => message.ct('noItem')
+          type: 'itemId',
+          otherwise: message => message.t('errors:noItem')
         }
       ]
     })

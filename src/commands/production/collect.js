@@ -1,8 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { getItemInInventoryByTier, removeUsedItem } = require('@utils/items')
 const { calculateProduction, random } = require('@utils/util')
+const { getItemInInventoryByTier, removeItem } = require('@utils/items')
 const { STORAGES_SIZE, PLACE_GENERATE, PLACES, PLACES_BOOSTERS, EMOJIS } = require('@constants')
 
 class Collect extends LilirucaCommand {
@@ -22,6 +22,7 @@ class Collect extends LilirucaCommand {
     const oneHour = 3600000
     const collectedAt = data.collectedAt || timestamp - oneHour
     const past = timestamp - collectedAt
+    const last = !data.collectedAt ? ct('first') : ct('last', { time: parseDuration(past, language) })
 
     if (past < oneHour) {
       const min = (60 - Math.floor(past / 60 / 1000)) || 1
@@ -40,6 +41,10 @@ class Collect extends LilirucaCommand {
     const places = PLACES.filter(place => data[place].level)
     const attack = data.farm.level >= 6 && this.farmAttack(data.activeItems)
 
+    if (!data.collectedAt) {
+      data.collectedAt = collectedAt
+    }
+
     const collect = places.map(place => {
       const dataPlace = data[place]
       const generate = dataPlace.level * PLACE_GENERATE[place]
@@ -47,13 +52,13 @@ class Collect extends LilirucaCommand {
 
       const limit = dataPlace.storage * STORAGES_SIZE[place]
       const total = dataPlace.amount + production > limit ? limit - dataPlace.amount : production
-      const attacked = place === 'farm' && attack ? total - (total * (attack / 100)) : total
+      const attacked = place === 'farm' && attack ? Math.floor(total - (total * (attack / 100))) : total
 
       const name = PLACES_BOOSTERS[place]
       const booster = name && getItemInInventoryByTier(data.activeItems, name)
 
       if (booster) {
-        removeUsedItem(data, booster.id)
+        removeItem(data, 'activeItems', booster.id)
       }
 
       dataPlace.amount += attacked
@@ -65,7 +70,6 @@ class Collect extends LilirucaCommand {
       }
     })
 
-    const last = !data.collectedAt ? ct('first') : ct('last', { time: parseDuration(past, language) })
     const embed = new LilirucaEmbed()
       .addFields(collect)
       .setFooter(last)
@@ -75,11 +79,11 @@ class Collect extends LilirucaCommand {
     }
 
     if (data.activeItems.scarecrow) {
-      removeUsedItem(data, 'scarecrow')
+      removeItem(data, 'activeItems', 'scarecrow')
     }
 
     if (data.activeItems.fence) {
-      removeUsedItem(data, 'fence')
+      removeItem(data, 'activeItems', 'fence')
     }
 
     const values = {
