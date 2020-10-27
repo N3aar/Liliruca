@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { EMOJIS: { picture, money, star } } = require('@constants')
+const { EMOJIS: { picture, money, star, battery, voltage } } = require('@constants')
 
 class Profile extends LilirucaCommand {
   constructor () {
@@ -31,6 +31,11 @@ class Profile extends LilirucaCommand {
       {
         name: `\\${star} Lilistars`,
         value: `**${data.lilistars}**`,
+        inline: true
+      },
+      {
+        name: `\\${battery} ${t('commons:energy')}`,
+        value: `**${voltage} ${data.energy}**`,
         inline: true
       }
     ]

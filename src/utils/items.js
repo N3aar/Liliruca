@@ -1,5 +1,19 @@
 const items = require('../Items.json')
 
+function loadTypes () {
+  const types = []
+
+  for (const id in items) {
+    const { type } = items[id]
+
+    if (type && !types.includes(type)) {
+      types.push(type)
+    }
+  }
+
+  return types
+}
+
 function hasItem (id) {
   return (id in items)
 }
@@ -12,37 +26,38 @@ function getItemInInventoryByTier (inventory, itemName, levelMax = 3) {
   for (let i = levelMax; i > 0; i--) {
     const item = `${itemName}:${i}`
     if (inventory[item]) {
-      return { id: item, item: getItemById(item) }
+      return { id: item, item: getItemById(item), tier: i }
     }
   }
   return null
 }
 
-function addItemInInventory (inventory, itemId, amount = 1) {
-  if (!inventory[itemId]) {
-    inventory[itemId] = 0
+function addItemInInventory (data, inventory, itemId, amount = 1) {
+  if (!data[inventory][itemId]) {
+    data[inventory][itemId] = 0
   }
 
-  inventory[itemId] += amount
+  data[inventory][itemId] += amount
+
+  data.markModified(inventory)
 }
 
-function removeUsedItem (data, itemId, uses = 1) {
-  const value = data.activeItems[itemId]
+function removeItem (data, inventory, itemId, uses = 1) {
+  data.markModified(inventory)
 
-  data.markModified('activeItems')
-
-  if (value <= 1) {
-    return delete data.activeItems[itemId]
+  if ((data[inventory][itemId] - uses) < 1) {
+    return delete data[inventory][itemId]
   }
 
-  data.activeItems[itemId] -= uses
+  data[inventory][itemId] -= uses
 }
 
 module.exports = {
+  loadTypes,
   hasItem,
   getItemById,
   getItemInInventoryByTier,
   addItemInInventory,
-  removeUsedItem,
+  removeItem,
   items
 }

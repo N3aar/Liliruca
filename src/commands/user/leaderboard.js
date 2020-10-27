@@ -16,7 +16,7 @@ class Leaderboard extends LilirucaCommand {
         {
           id: 'type',
           type: Argument.union(LEADERBOARD_TYPES, 'place'),
-          otherwise: message => message.ct('error')
+          otherwise: message => message.ct('error', { types: LEADERBOARD_TYPES.join(' | ') })
         },
         {
           id: 'page',
