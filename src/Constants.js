@@ -1,4 +1,4 @@
-const { loadTypes } = require('@utils/items')
+const { loadTypes } = require('./utils/items')
 
 const TEAM_MEMBER_STATUS = {
   ACTIVE: 'active',
