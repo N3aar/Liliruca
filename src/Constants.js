@@ -1,3 +1,5 @@
+const { loadTypes } = require('@utils/items')
+
 const TEAM_MEMBER_STATUS = {
   ACTIVE: 'active',
   INACTIVE: 'inactive'
@@ -39,7 +41,7 @@ const RESOURCE_NAMES = {
 const BOOSTER_NAMES = {
   FERTILIZER: 'fertilizer',
   FISHING_NET: 'fishing-net',
-  ENERGETIC: 'energetic'
+  BOMB: 'bomb'
 }
 
 module.exports = {
@@ -119,10 +121,23 @@ module.exports = {
   GIVE_COOLDOWN: 18000000,
   GIVE_TAX: 0.95,
   GIVE_MIN: 50,
+  ENERGY_COST: 20,
+  ENERGY_COOLDOWN: 21600000,
   SEASON_NAMES,
   PLACE_NAMES,
   RESOURCE_NAMES,
-  RARE_FISHES: ['anglerfish', 'eel', 'goldenfish', 'mantaray', 'marlin', 'octopus', 'pufferfish', 'squid'],
+  ITEMS_TYPES: loadTypes(),
+  ORES: ['copper-ore', 'iron-ore', 'gold-ore', 'cobalt-ore'],
+  RARE_FISHES: [
+    'anglerfish',
+    'eel',
+    'goldenfish',
+    'mantaray',
+    'marlin',
+    'octopus',
+    'pufferfish',
+    'squid'
+  ],
   TREASURE: {
     money: { min: 80, max: 800 },
     lilistars: { min: 1, max: 30 }
@@ -146,7 +161,7 @@ module.exports = {
   PLACES_BOOSTERS: {
     [PLACE_NAMES.FARM]: BOOSTER_NAMES.FERTILIZER,
     [PLACE_NAMES.FISHING]: BOOSTER_NAMES.FISHING_NET,
-    [PLACE_NAMES.MINING]: BOOSTER_NAMES.ENERGETIC
+    [PLACE_NAMES.MINING]: BOOSTER_NAMES.BOMB
   },
   SEASONS: Object.values(SEASON_NAMES),
   WEATHERS: Object.values(WEATHER_NAMES),
@@ -165,6 +180,20 @@ module.exports = {
     [PLACE_NAMES.FISHING]: 2000,
     [PLACE_NAMES.MINING]: 3500
   },
+  UPGRADE_MATERIALS: {
+    [PLACE_NAMES.FARM]: {
+      material: 'wooden-plank',
+      amount: 10
+    },
+    [PLACE_NAMES.FISHING]: {
+      material: 'wooden-plank',
+      amount: 30
+    },
+    [PLACE_NAMES.MINING]: {
+      material: 'iron-bar',
+      amount: 10
+    }
+  },
   PRODUCTION_LIMIT: {
     [PLACE_NAMES.FARM]: 6,
     [PLACE_NAMES.FISHING]: 5,
@@ -180,7 +209,14 @@ module.exports = {
     [PLACE_NAMES.FISHING]: 90,
     [PLACE_NAMES.MINING]: 120
   },
-  LEADERBOARD_TYPES: ['money', 'lilistars', 'fishs'],
+  LEADERBOARD_TYPES: [
+    'money',
+    'lilistars',
+    'fishs',
+    PLACE_NAMES.FARM,
+    PLACE_NAMES.FISHING,
+    PLACE_NAMES.MINING
+  ],
   WEATHER_PERCENTAGE: {
     [WEATHER_NAMES.STORM]: {
       [PLACE_NAMES.FARM]: 1.10,
@@ -256,9 +292,15 @@ module.exports = {
     abacus: '🧮',
     bookmark: '🔖',
     trophy: '🏆',
+    axe: '🪓',
+    fire: '🔥',
     pack: '📦',
     wrench: '🔧',
+    hammerwrench: '🛠️',
     gear: '⚙️',
+    battery: '🔋',
+    voltage: '⚡',
+    drink: '🥤',
     locked: '🔒',
     open: '🔓',
     news: '🆕',

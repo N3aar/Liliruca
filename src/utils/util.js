@@ -85,15 +85,16 @@ function findCategory ({ client, t }, phrase) {
   }
 
   let i = 1
+  const arg = phrase.toLowerCase()
   const number = Number(phrase)
 
   return client.categories.find(category => {
-    if (number === i || category.id === phrase) {
+    if (number === i || category.id === arg) {
       return true
     }
 
     const categoryName = t(`categories:${category.id}`).toLowerCase()
-    if (categoryName === phrase) {
+    if (categoryName === arg) {
       return true
     }
 

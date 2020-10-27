@@ -7,7 +7,7 @@ const { EMOJIS } = require('@constants')
 class Help extends LilirucaCommand {
   constructor () {
     super('help', {
-      aliases: ['hp'],
+      aliases: ['hp', 'cmds', 'commands'],
       emoji: EMOJIS.papyrus,
       editable: true,
       clientPermissions: 'EMBED_LINKS',

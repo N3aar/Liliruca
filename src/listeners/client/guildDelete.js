@@ -24,6 +24,11 @@ class GuildDeleteListener extends Listener {
 
       guildsWeebhook.send(this.guilds.size, embed)
     }
+
+    const channel = this.channels.get(process.env.STATS_CHANNEL_ID)
+    if (channel) {
+      channel.setName(`🔑 ${this.guilds.size} Guilds`)
+    }
   }
 }
 
