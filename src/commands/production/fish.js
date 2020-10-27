@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { getItemInInventoryByTier, removeUsedItem, addItemInInventory } = require('@utils/items')
+const { getItemInInventoryByTier, removeItem, addItemInInventory } = require('@utils/items')
 const { RARE_FISHES, WEIGHTS, TREASURE, EMOJIS } = require('@constants')
 
 class Fish extends LilirucaCommand {
@@ -54,7 +54,7 @@ class Fish extends LilirucaCommand {
       }
     ]
 
-    removeUsedItem(data, baits.id)
+    removeItem(data, 'activeItems', baits.id)
 
     const embed = new LilirucaEmbed()
       .addFields(fields)
@@ -67,8 +67,9 @@ class Fish extends LilirucaCommand {
       const fish = t(`commons:rares.${fished.fish}`)
       const newEmoji = fished.new ? `\\${EMOJIS.news} ` : ''
 
-      addItemInInventory(dataPlace.rares, fished.fish)
-      addItemInInventory(dataPlace.rares, 'total')
+      addItemInInventory(dataPlace, 'rares', fished.fish)
+
+      dataPlace.rares.total += 1
 
       data.markModified('fishing.rares')
       embed.setDescription(newEmoji + ct('fishRare', { fish }))

@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { items, getItemById } = require('@utils/items')
-const { EMOJIS: { page } } = require('@constants')
+const { ITEMS_TYPES, EMOJIS: { page } } = require('@constants')
 
 class List extends LilirucaCommand {
   constructor () {
@@ -16,30 +16,51 @@ class List extends LilirucaCommand {
           id: 'page',
           type: Argument.range('integer', 1, Infinity),
           default: 1
+        },
+        {
+          id: 'filter',
+          match: 'option',
+          flag: '--type',
+          type: ITEMS_TYPES
         }
       ]
     })
   }
 
-  async exec ({ ct, t, util }, { page }) {
+  async exec ({ ct, t, util }, { page, filter }) {
+    const ids = Object.keys(items)
+    const array = filter ? ids.filter(id => items[id].type === filter) : ids
+
     const pageIndex = (page - 1) * 4
-    const itemsIds = Object.keys(items).slice(pageIndex, pageIndex + 4)
+    const itemsIds = array.slice(pageIndex, pageIndex + 4)
 
     if (!itemsIds.length) {
       return util.send(ct('noPage'))
     }
 
     const fields = itemsIds.map(id => {
-      const item = getItemById(id)
+      const item = Object.assign({}, getItemById(id))
       const name = t(`items:${id.replace(':', '_')}`)
+      const sale = item.sale || Math.floor(item.price / item.value / 2)
 
       item.id = id
       item.price = ct(item.payment, { value: item.price })
+      item.sale = ct(item.payment, { value: sale })
       item.place = t(`commons:${item.place}`)
+
+      let value = ct('item', item)
+
+      if (item.craftable) {
+        value += ct('craftable')
+      }
+
+      if (item.required) {
+        value += ct('place', item)
+      }
 
       return {
         name: `${item.emoji} ${name}`,
-        value: ct('item', item) + (item.required ? ct('place', item) : '')
+        value
       }
     })
 
