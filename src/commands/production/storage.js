@@ -1,7 +1,8 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { getStoragePrice } = require('@utils/util')
-const { STORAGE_PRICES, EMOJIS: { storage } } = require('@constants')
+const { STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS: { storage } } = require('@constants')
+const { removeItem } = require('../../utils/items')
 
 class Storage extends LilirucaCommand {
   constructor () {
@@ -32,14 +33,28 @@ class Storage extends LilirucaCommand {
       return util.send(t('errors:locked'))
     }
 
-    const storage = STORAGE_PRICES[place]
     const level = dataPlace.storage
-    const price = getStoragePrice(storage, level, level + levels)
+    const upgrade = level + levels
+
+    const storage = STORAGE_PRICES[place]
+    const price = getStoragePrice(storage, level, upgrade)
 
     if (data.money < price) {
-      const remainder = price - data.money
-      return util.send(ct('noMoney', { remainder }))
+      const missing = price - data.money
+      return util.send(ct('noMoney', { missing }))
     }
+
+    const { material, amount } = UPGRADE_MATERIALS[place]
+    const items = data.items[material] || 0
+    const required = Math.floor(amount / 3)
+    const materials = getStoragePrice(required, level, upgrade)
+
+    if (items < materials) {
+      const missing = materials - items
+      return util.send(ct('noMaterials', { missing, material: t(`items:${material}`) }))
+    }
+
+    removeItem(data, 'items', material, materials)
 
     data[place].storage += levels
 

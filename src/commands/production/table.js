@@ -1,6 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { PLACE_NAMES, PLACES_RESOURCES, PLACE_MAX_LEVEL, UPGRADE_PRICE, STORAGE_PRICES, EMOJIS } = require('@constants')
+const { getItemById } = require('@utils/items')
+const { PLACE_NAMES, PLACES_RESOURCES, PLACE_MAX_LEVEL, UPGRADE_PRICE, STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS } = require('@constants')
 
 const table = {
   [PLACE_NAMES.FARM]: {
@@ -67,6 +68,9 @@ class Table extends LilirucaCommand {
     const sell = table[place]
     const prices = table.list(upgrade)
 
+    const { material, amount } = UPGRADE_MATERIALS[place]
+    const { emoji } = getItemById(material)
+
     sell.operation = ct(sell.operation)
     sell.emoji = emojis[Math.floor(Math.random() * emojis.length)]
 
@@ -84,7 +88,11 @@ class Table extends LilirucaCommand {
         value: ct('formula', { price: upgrade })
       },
       {
-        name: `\\${EMOJIS.package} ${t('commons:sell')}`,
+        name: `${emoji} ${t('commons:materials')}`,
+        value: ct('materials', { material: t(`items:${material}`), amount })
+      },
+      {
+        name: `\\${EMOJIS.pack} ${t('commons:sell')}`,
         value: ct('sell', sell)
       }
     ]
@@ -92,6 +100,11 @@ class Table extends LilirucaCommand {
 
   storage ({ t, ct, place, prefix }) {
     const storage = STORAGE_PRICES[place]
+
+    const { material, amount } = UPGRADE_MATERIALS[place]
+    const { emoji } = getItemById(material)
+    const materials = Math.floor(amount / 3)
+
     return [
       {
         name: `\\${EMOJIS.gear} ${t('commons:upgrade')}`,
@@ -100,6 +113,10 @@ class Table extends LilirucaCommand {
       {
         name: `\\${EMOJIS.abacus} ${t('commons:formula')}`,
         value: ct('formula', { price: storage })
+      },
+      {
+        name: `${emoji} ${t('commons:materials')}`,
+        value: ct('materials', { material: t(`items:${material}`), amount: materials })
       },
       {
         name: `\\${EMOJIS.lamp} ${t('commons:tip')}`,

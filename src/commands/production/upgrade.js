@@ -1,6 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { PLACES, PLACE_NAMES, UPGRADE_PRICE, PLACE_MAX_LEVEL, EMOJIS: { gear } } = require('@constants')
+const { removeItem } = require('@utils/items')
+const { PLACES, UPGRADE_PRICE, UPGRADE_MATERIALS, PLACE_MAX_LEVEL, EMOJIS: { gear } } = require('@constants')
 
 class Upgrade extends LilirucaCommand {
   constructor () {
@@ -18,7 +19,7 @@ class Upgrade extends LilirucaCommand {
     })
   }
 
-  async exec ({ ct, t, util, db, author, channel }, { place }) {
+  async exec ({ ct, t, util, db, author }, { place }) {
     const data = await db.users.get(author.id)
     const dataPlace = data[place]
 
@@ -33,37 +34,39 @@ class Upgrade extends LilirucaCommand {
     const price = UPGRADE_PRICE[place] * dataPlace.level
 
     if (data.money < price) {
-      const remainder = price - data.money
-      return util.send(ct('noMoney', { remainder }))
+      const missing = price - data.money
+      return util.send(ct('noMoney', { missing }))
+    }
+
+    const { material, amount } = UPGRADE_MATERIALS[place]
+    const required = amount * dataPlace.level
+    const items = data.items[material] || 0
+
+    if (items < required) {
+      return util.send(ct('noMaterial', { material: t(`items:${material}`), missing: required - items }))
     }
 
     data[place].level++
+
+    const last = PLACES[PLACES.length - 1]
+    const unlocked = (place !== last && dataPlace.level === 10) && PLACES[PLACES.indexOf(place) + 1]
+
+    const embed = unlocked && new LilirucaEmbed()
+      .setDescription(`${author}, ${ct(`unlock.${unlocked}`)}`)
+
+    removeItem(data, 'items', material, required)
+
+    if (unlocked) {
+      data[unlocked].level = 1
+    }
 
     const values = {
       money: data.money - price
     }
 
-    await util.send(ct('success', { level: dataPlace.level }))
-
-    this.checkUnlocked({ ct, author, data, place, channel })
-
     db.users.update(data, values)
-  }
 
-  checkUnlocked ({ ct, author, data, place, channel }) {
-    const dataPlace = data[place]
-
-    if (place !== PLACE_NAMES.MINING && dataPlace.level === 10) {
-      const index = PLACES.indexOf(place)
-      const unlocked = PLACES[index + 1]
-
-      const unlock = new LilirucaEmbed()
-        .setDescription(`${author}, ${ct(`unlock.${unlocked}`)}`)
-
-      data[unlocked].level = 1
-
-      channel.send(unlock)
-    }
+    util.send(ct('success', { level: dataPlace.level }), embed)
   }
 }
 
