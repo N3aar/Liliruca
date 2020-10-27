@@ -14,7 +14,7 @@ class Weather extends LilirucaCommand {
   }
 
   exec ({ t, ct, util }) {
-    const date = new Date(2020, 9, 31)
+    const date = new Date()
     const day = date.getDate()
 
     date.setDate(day + 1)
