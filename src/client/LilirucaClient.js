@@ -7,7 +7,7 @@ const { LilirucaCommand } = require('@structures')
 const { logger, locales } = require('@utils')
 const { hasItem } = require('@utils/items')
 const { OWNER_IDS, DEFAULT_PREFIX, DEFAULT_LANGUAGE, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
-
+const { Intents } = require('discord.js')
 const joinPath = path => join(__dirname, '..', path)
 
 class LilirucaClient extends AkairoClient {
@@ -17,9 +17,17 @@ class LilirucaClient extends AkairoClient {
         ownerID: OWNER_IDS
       }, {
         disableMentions: 'everyone',
-        messageCacheMaxSize: 100
+        messageCacheMaxSize: 100,
+        ws: {
+          intents: [
+            Intents.FLAGS.GUILDS,
+            Intents.FLAGS.GUILD_MESSAGES
+          ]
+        }
       }
     )
+
+    this.eventCount = 0
 
     const getPrefix = async ({ guild }) => {
       const guildData = guild && await this.db.guilds.get(guild.id)
