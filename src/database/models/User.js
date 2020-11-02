@@ -4,13 +4,14 @@ const { PLACE_START_LEVEL, PLACE_MAX_LEVEL, PLACE_MIN_LEVEL } = require('@consta
 const UserSchema = new Schema({
   _id: { type: String, required: true },
   money: { type: Number, default: 0 },
-  energy: { type: Number, default: 100, min: 0, max: 100 },
-  energizedAt: Number,
   collectedAt: Number,
   givedAt: Number,
   dailyAt: Number,
+  energizedAt: Number,
+  energy: { type: Number, default: 100, min: 0, max: 100 },
   dailyStreak: { type: Number, default: 0, min: 0 },
   lilistars: { type: Number, default: 0, min: 0 },
+  background: { type: Number },
   images: {
     farm: Array,
     fishing: Array,
