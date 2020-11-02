@@ -32,6 +32,8 @@
         "supportGuild": "Support",
         "donate": "Donate",
         "vote": "Vote",
+        "nodeVersion": "Node.js Version",
+        "memoryUsage": "Memory Usage",
         "success": "\\📋 Bot information!"
     },
     "help": {

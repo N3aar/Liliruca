@@ -32,6 +32,8 @@
         "inviteMe": "Convite",
         "supportGuild": "Suporte",
         "donate": "Doar",
+        "nodeVersion": "Versão do Node.js",
+        "memoryUsage": "Uso de Memoria",
         "vote": "Votar",
         "success": "\\📋 Informações do bot!"
     },
