@@ -57,7 +57,7 @@ class Help extends LilirucaCommand {
     const categories = client.categories.map(category => (
       {
         name: `\\${EMOJIS[category.id]} » ${t(`categories:${category.id}`)}`,
-        value: `\`${category.map(({ id }) => id).join(', ')}\``
+        value: `${category.map(({ id }) => `\`${id}\``).join(', ')}`
       }
     ))
 
@@ -69,10 +69,10 @@ class Help extends LilirucaCommand {
 
   handleCategory ({ t, util, prefix, ct }, category) {
     const commands = category.map(command => {
-      const usage = command.usage ? t(`commands:${command.id}.usage`) : ''
+      const usage = command.usage ? ` ${t(`commands:${command.id}.usage`)}` : ''
       return {
         name: `\\${command.emoji} » ${command.id[0].toUpperCase() + command.id.slice(1)}`,
-        value: `\`${t('commons:usage')} ${prefix + command.id} ${usage}\` **- ${t(`commands:${command.id}.description`)}**`
+        value: `\`${t('commons:usage')} ${prefix + command.id}${usage}\` **- ${t(`commands:${command.id}.description`)}**`
       }
     })
 

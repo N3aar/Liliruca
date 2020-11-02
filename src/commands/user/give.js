@@ -45,7 +45,7 @@ class Give extends LilirucaCommand {
     }
 
     const receiverData = await db.users.get(mentionMember.id)
-    const donate = amount * GIVE_TAX
+    const donate = Math.floor(amount * GIVE_TAX)
     const tax = Math.floor((1 - GIVE_TAX) * 100)
 
     const profile = [

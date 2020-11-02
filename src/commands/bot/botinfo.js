@@ -16,7 +16,7 @@ class Botinfo extends LilirucaCommand {
 
   async exec ({ t, ct, language, util, guild, client }) {
     const links = [
-      `[${ct('inviteMe')}](https://discord.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=379976`,
+      `[${ct('inviteMe')}](https://discord.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=379976)`,
       `[${ct('supportGuild')}](${SUPPORT_GUILD})`
     ]
 
@@ -28,7 +28,7 @@ class Botinfo extends LilirucaCommand {
       },
       {
         name: `\\🔧 ${ct('language')}`,
-        value: '**javascript**',
+        value: '**Javascript**',
         inline: true
       },
       {

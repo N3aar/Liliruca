@@ -15,8 +15,10 @@
         "type": "material",
         "value": 1,
         "inactive": true,
-        "craftable": true,
-        "emoji": "<:woodenplanks:767468624495116328>"
+        "emoji": "<:woodenplanks:767468624495116328>",
+        "materials": {
+            "wood": 2
+        }
     },
     "coal": {
         "price": 150,
@@ -46,8 +48,10 @@
         "type": "material",
         "value": 1,
         "inactive": true,
-        "craftable": true,
-        "emoji": "<:copper_bar:769614530615443498>"
+        "emoji": "<:copper_bar:769614530615443498>",
+        "materials": {
+            "copper-ore": 2
+        }
     },
     "iron-ore": {
         "price": 280,
@@ -68,8 +72,10 @@
         "type": "material",
         "value": 1,
         "inactive": true,
-        "craftable": true,
-        "emoji": "<:iron_bar:769612893099786321>"
+        "emoji": "<:iron_bar:769612893099786321>",
+        "materials": {
+            "iron-ore": 2
+        }
     },
     "gold-ore": {
         "price": 360,
@@ -90,8 +96,10 @@
         "type": "material",
         "value": 1,
         "inactive": true,
-        "craftable": true,
-        "emoji": "<:gold_bar:769612953255149619>"
+        "emoji": "<:gold_bar:769612953255149619>",
+        "materials": {
+            "gold-ore": 2
+        }
     },
     "cobalt-ore": {
         "price": 440,
@@ -112,8 +120,10 @@
         "type": "material",
         "value": 1,
         "inactive": true,
-        "craftable": true,
-        "emoji": "<:cobalt_bar:769614531110371358>"
+        "emoji": "<:cobalt_bar:769614531110371358>",
+        "materials": {
+            "cobalt-ore": 2
+        }
     },
     "scarecrow": {
         "place": "farm",
@@ -150,7 +160,7 @@
         "energy": 60
     },
     "energetic:3": {
-        "price": 50,
+        "price": 40,
         "payment": "lilistars",
         "type": "energy",
         "value": 1,
@@ -320,6 +330,10 @@
             "gold-ore": { "min": 4, "max": 8 },
             "iron-ore": { "min": 9, "max": 33 },
             "copper-ore": { "min": 34 }
+        },
+        "materials": {
+            "wooden-plank": 20,
+            "copper-bar": 15
         }
     },
     "pickaxe:3": {
@@ -343,6 +357,10 @@
             "gold-ore": { "min": 6, "max": 15 },
             "iron-ore": { "min": 16, "max": 45 },
             "copper-ore": { "min": 46 }
+        },
+        "materials": {
+            "wooden-plank": 20,
+            "iron-bar": 15
         }
     },
     "pickaxe:4": {
@@ -366,6 +384,10 @@
             "gold-ore": { "min": 9, "max": 23 },
             "iron-ore": { "min": 24, "max": 58 },
             "copper-ore": { "min": 59 }
+        },
+        "materials": {
+            "wooden-plank": 20,
+            "gold-bar": 15
         }
     },
     "pickaxe:5": {
@@ -389,6 +411,10 @@
             "gold-ore": { "min": 13, "max": 37 },
             "iron-ore": { "min": 38, "max": 62 },
             "copper-ore": { "min": 63 }
+        },
+        "materials": {
+            "wooden-plank": 20,
+            "cobalt-bar": 15
         }
     },
     "box:1": {

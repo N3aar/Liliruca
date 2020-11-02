@@ -107,7 +107,7 @@
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
         "item": "**ID: `{{ id }}`\nType: `{{ type }}`\nPrice: `{{ price }}`\nUses: `{{ value }}`\nSale: `{{ sale }}`**",
-        "craftable": "\n**Craftable**",
+        "energy": "\n**Energy:** `{{ energy }}`",
         "place": "\n**Required: `{{ place }} level {{ required }}`**",
         "success": "\\📃 List of Items! `Page {{ page }}`"
     },
@@ -129,8 +129,6 @@
     "calculate": {
         "description": "Calculate price to upgrade your storage!",
         "usage": "<place> [value] [value]",
-        "value": "\\🧪 Value",
-        "result": "\\✔️ Result",
         "invalidPlace": "Type a valid place!",
         "success": "\\🧮 Calculation completed successfully!"
     },
@@ -144,7 +142,7 @@
         "full": "Some of your storages are full! Empty to collect your new resources."
     },
     "fish": {
-        "description": "Catch fish or treasures with your fishing rod and some baits!",
+        "description": "Catch fish or treasures with your fishing rod and some baits",
         "noBaits": "You don't have enough bait!",
         "recycle": "**\\♻️ Trash found has been recycled!**",
         "rare": "Rare Fish",
@@ -169,7 +167,8 @@
         "success": "\\⛏️ Collect ores successfully!"
     },
     "saw": {
-        "description": "Cut wood into planks for use in construction.",
+        "description": "Cut wood into planks",
+        "usage": "[amount]",
         "noWood": "You don't have enough wood!",
         "noMoney": "You don't have enough money! `Missing: ${{ missing }}`",
         "success": "\\⚙️ Woods have been successfully processed!"
@@ -188,10 +187,11 @@
     },
     "table": {
         "description": "View a complete table of resource prices and upgrades",
-        "usage": "<place>",
+        "usage": "<place> [--storage]",
         "noPlace": "Type valid place!",
         "maxUpgrade": "Maximum level: {{ max }}",
         "formula": "Previous level multiplied by **${{ price }}**",
+        "materials": "{{ material }} x Previous level multiplied by {{ amount }}",
         "sell": "**__Formula__**: Amount {{ operation }} by {{ value }}\n**__Example__**: \\{{ emoji }} = {{ amount }} 💰 = {{ money }}",
         "division": "divided",
         "multiply": "multiplied",
@@ -223,7 +223,7 @@
         "success": "\\🪓 Successfully collected wood!"
     },
     "daily": {
-        "description": "Lilistars you can catch every 20 hours! You can buy special things with these Lilistars.",
+        "description": "Lilistars that you can redeem every 20 hours",
         "cooldown": "Daily bonus has already been redeemed! wait `{{- time }}` to take again.",
         "broke": "Broken streak! You have not redeemed the daily for more than 2 days.",
         "remaining": "`+{{ days }} times!`",
@@ -283,6 +283,7 @@
     },
     "energetic": {
         "description": "Energy drink to recover energy",
+        "usage": "[energetic tier]",
         "empty": "You don't own this drink!",
         "noEnergetic": "You don't have an active energy drink!",
         "recoveredEnergy": "\\🔋 Recovered Energy",
@@ -332,7 +333,7 @@
     },
     "stats": {
         "description": "View how your resources are doing",
-        "usage": "[place] [member]",
+        "usage": "<place> [member]",
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
         "never": "Never collected.",
         "last": "Last collected: {{- time }} ago.",

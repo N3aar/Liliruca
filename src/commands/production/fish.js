@@ -2,7 +2,7 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
 const { getItemInInventoryByTier, removeItem, addItemInInventory } = require('@utils/items')
-const { RARE_FISHES, WEIGHTS, TREASURE, EMOJIS } = require('@constants')
+const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST, EMOJIS } = require('@constants')
 
 class Fish extends LilirucaCommand {
   constructor () {
@@ -20,6 +20,10 @@ class Fish extends LilirucaCommand {
 
     if (!dataPlace.level) {
       return util.send(t('errors:locked'))
+    }
+
+    if (data.energy < ENERGY_COST) {
+      return util.send(t('errors:noEnergy'))
     }
 
     const baits = getItemInInventoryByTier(data.activeItems, 'baits')
@@ -76,6 +80,7 @@ class Fish extends LilirucaCommand {
     }
 
     const values = {
+      energy: data.energy - ENERGY_COST,
       money: data.money + (fished.money || 0),
       lilistars: data.lilistars + (fished.stars || 0)
     }

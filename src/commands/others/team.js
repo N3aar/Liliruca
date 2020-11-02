@@ -25,7 +25,10 @@ class Team extends LilirucaCommand {
       const name = `${user.emoji} ${user.name}`
       const value = `**${(tags)}\n${(joined)}\n${(status)}**`
 
-      return { name, value }
+      return {
+        name,
+        value
+      }
     })
 
     const embed = new LilirucaEmbed()

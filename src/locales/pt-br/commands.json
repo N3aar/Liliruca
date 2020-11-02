@@ -110,7 +110,7 @@
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
         "item": "**ID: `{{ id }}`\nTipo: `{{ type }}`\nPreço: `{{ price }}`\nUsos: `{{ value }}`\nVenda: `{{ sale }}`**",
-        "craftable": "\n**Craftável**",
+        "energy": "\n**Energia:** `{{ energy }}`",
         "place": "\n**Requer: `{{ place }} level {{ required }}`**",
         "success": "\\📃 Lista de itens! `Página {{ page }}`"
     },
@@ -132,8 +132,6 @@
     "calculate": {
         "description": "Calcule o preço para melhorar seu armazenamento!",
         "usage": "<local> [valor] [valor]",
-        "value": "\\🧪 Valor",
-        "result": "\\✔️ Resultado",
         "invalidPlace": "Digite um local válido!",
         "success": "\\🧮 Cálculo concluído com sucesso!"
     },
@@ -147,7 +145,7 @@
         "full": "Algum de seus armazenamentos está cheio! Esvazie para coletar seus novos recursos."
     },
     "fish": {
-        "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas!",
+        "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas",
         "noBaits": "Você não possui iscas suficientes!",
         "recycle": "**\\♻️ Lixo encontrado foi reciclado!**",
         "rare": "Peixe Raro",
@@ -172,7 +170,8 @@
         "success": "\\⛏️ Coletou minérios com sucesso!"
     },
     "saw": {
-        "description": "Corte madeiras em tábuas para usar em construções.",
+        "description": "Corte madeiras em tábuas",
+        "usage": "[quantidade]",
         "noWood": "Você não tem madeira suficiente! `Faltando: {{ missing }}`",
         "noMoney": "Você não tem dinheiro suficiente! `Faltando ${{ missing }}`",
         "success": "\\⚙️ Madeiras foram processadas com sucesso!"
@@ -227,7 +226,7 @@
         "success": "\\🪓 Coletou madeiras com sucesso!"
     },
     "daily": {
-        "description": "Lilistars que poderá pegar a cada 20 horas! Poderá comprar coisas especiais com estas lilistars",
+        "description": "Lilistars que poderá resgatar a cada 20 horas",
         "cooldown": "Bônus diário já foi resgatado! aguarde `{{ time }}` para pegar novamente.",
         "broke": "Sequência quebrada! Você não resgatou o daily por mais de 2 dias.",
         "remaining": "`+{{ days }} vezes!`",
@@ -285,6 +284,7 @@
     },
     "energetic": {
         "description": "Beber energético para recuperar energia",
+        "usage": "[tier do energético]",
         "empty": "Você não possui essa bebida!",
         "noEnergetic": "Você não possui uma bebida energética ativa!",
         "recoveredEnergy": "\\🔋 Energia Recuperada",
@@ -334,7 +334,7 @@
     },
     "stats": {
         "description": "Visualize seus recursos ou de outro usuário.",
-        "usage": "[local] [membro]",
+        "usage": "<local> [membro]",
         "production": "{{- generation }}/hr, máximo {{- max }} horas",
         "never": "Nunca coletou.",
         "last": "Última coleta: {{- time }} atrás.",

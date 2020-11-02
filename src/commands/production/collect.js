@@ -78,12 +78,14 @@ class Collect extends LilirucaCommand {
       embed.setDescription(ct('attacked', { attack }))
     }
 
-    if (data.activeItems.scarecrow) {
-      removeItem(data, 'activeItems', 'scarecrow')
-    }
+    if (data.farm.level >= 6) {
+      if (data.activeItems.scarecrow) {
+        removeItem(data, 'activeItems', 'scarecrow')
+      }
 
-    if (data.activeItems.fence) {
-      removeItem(data, 'activeItems', 'fence')
+      if (data.activeItems.fence) {
+        removeItem(data, 'activeItems', 'fence')
+      }
     }
 
     const values = {

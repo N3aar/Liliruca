@@ -50,15 +50,18 @@ class Upgrade extends LilirucaCommand {
 
     const last = PLACES[PLACES.length - 1]
     const unlocked = (place !== last && dataPlace.level === 10) && PLACES[PLACES.indexOf(place) + 1]
+    const protection = place === 'farm' && dataPlace.level === 6
 
-    const embed = unlocked && new LilirucaEmbed()
-      .setDescription(`${author}, ${ct(`unlock.${unlocked}`)}`)
-
-    removeItem(data, 'items', material, required)
+    const embed = (unlocked || protection) && new LilirucaEmbed()
 
     if (unlocked) {
       data[unlocked].level = 1
+      embed.setDescription(`${author}, ${ct(`unlock.${unlocked}`)}`)
+    } else if (protection) {
+      embed.setDescription(`${author}, ${ct('protection')}`)
     }
+
+    removeItem(data, 'items', material, required)
 
     const values = {
       money: data.money - price

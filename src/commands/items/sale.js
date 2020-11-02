@@ -36,7 +36,7 @@ class Sale extends LilirucaCommand {
     }
 
     const item = getItemById(itemId)
-    const price = item.sale || Math.floor((item.price / item.value / 3) * amount)
+    const price = (item.sale || Math.floor(item.price / item.value / 3)) * amount
     const fields = [
       {
         name: `\\${pack} ${t('commons:item')}`,

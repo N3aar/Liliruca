@@ -50,12 +50,17 @@ class List extends LilirucaCommand {
 
       let value = ct('item', item)
 
-      if (item.craftable) {
-        value += ct('craftable')
+      if (item.energy) {
+        value += ct('energy', item)
       }
 
       if (item.required) {
         value += ct('place', item)
+      }
+
+      if (item.materials) {
+        const materials = Object.keys(item.materials).map(m => `\` x${item.materials[m]} ${t(`items:${m}`)}\``).join('\n')
+        value += `\n**${t('commons:materials')}:\n${materials}**`
       }
 
       return {
