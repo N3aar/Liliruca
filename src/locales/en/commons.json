@@ -5,7 +5,7 @@
     "howUse": "How to use",
     "description": "Description",
     "current": "Current",
-    "created": "Criado",
+    "created": "Created",
     "options": "Options",
     "energy": "Energy",
     "format": "Format",
@@ -67,6 +67,7 @@
     "fence": "Wooden Fence",
     "aliases": "Shortcuts",
     "storage": "Storage",
+    "currentEnergy": "Current Energy: {{ energy }}",
     "storages": {
         "farm": "Storage Farm" ,
         "fishing": "Storage Fishing",

@@ -64,13 +64,6 @@
         "missing": "Você não possui este item!",
         "success": "\\🔓 Item ativado com sucesso!"
     },
-    "box": {
-        "description": "Abra suas caixas e ganhe prếmios!",
-        "usage": "[tier da caixa]",
-        "noBox": "Você não possui essa caixa ou não esta ativa!",
-        "empty": "Você não possui nenhuma caixa ativa.",
-        "success": "\\🎁 Caixa foi aberta com sucesso!"
-    },
     "buy": {
         "description": "Compre itens para utilizar.",
         "usage": "<id do item> [quantidade]",
@@ -271,16 +264,28 @@
     },
     "farm": {
         "description": "Veja o mapa de sua fazenda ou de outro usuário.",
-        "success": "\\🌳 Fazenda de {{- name }}"
+        "success": "\\🌳 Fazenda de `{{- name }}`"
     },
     "fishing": {
         "description": "Veja o mapa de sua pescaria ou de outro usuário.",
-        "success": "\\⛵ Pescaria de {{- name }}"
+        "success": "\\⛵ Pescaria de `{{- name }}`"
     },
     "mining": {
         "description": "Veja o mapa de sua mineração ou de outro usuário.",
         "usage": "<@usuário>",
-        "success": "\\⛏ Mineração de {{- name }}"
+        "success": "\\⛏ Mineração de `{{- name }}`"
+    },
+    "backgrounds": {
+        "description": "Prévia de fundos para utilizar no perfil",
+        "usage": "[número]",
+        "success": "\\🎴 Fundo `{{ id }}°`!"
+    },
+    "box": {
+        "description": "Abra suas caixas e ganhe prếmios!",
+        "usage": "[tier da caixa]",
+        "noBox": "Você não possui essa caixa ou não esta ativa!",
+        "empty": "Você não possui nenhuma caixa ativa.",
+        "success": "\\🎁 Caixa foi aberta com sucesso!"
     },
     "energetic": {
         "description": "Beber energético para recuperar energia",
@@ -288,7 +293,6 @@
         "empty": "Você não possui essa bebida!",
         "noEnergetic": "Você não possui uma bebida energética ativa!",
         "recoveredEnergy": "\\🔋 Energia Recuperada",
-        "current": "🔋 Energia Atual: {{ energy }}",
         "success": "\\🥤 Bebida energética usada com sucesso!"
     },
     "energy": {
@@ -324,13 +328,19 @@
     "profile": {
         "description": "Perfil com as informações de um usuário.",
         "usage": "[membro]",
-        "success": "\\🖼️ Perfil de {{- name }}!"
+        "success": "\\🖼️ Perfil de `{{- name }}`!"
     },
     "rares": {
         "description": "Lista de peixes raros pescados!",
         "usage": "[membro]",
         "noRares": "Não pescou nenhum peixe raro!",
         "success": "\\🐡 Peixes Raros pescados por `{{ member }}`!"
+    },
+    "setbackground": {
+        "description": "Defina um fundo para seu perfil",
+        "noFrame": "Você não possui uma moldura para utilizar! Compre com comando `buy`.",
+        "usage": "[número do fundo]",
+        "success": "\\🖌️ Fundo definido com sucesso!"
     },
     "stats": {
         "description": "Visualize seus recursos ou de outro usuário.",

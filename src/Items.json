@@ -1,4 +1,13 @@
 {
+    "frame": {
+        "price": 10,
+        "sale": 5,
+        "payment": "lilistars",
+        "type": "utilities",
+        "value": 1,
+        "inactive": true,
+        "emoji": "<:frame:772932181042790440>"
+    },
     "wood": {
         "price": 50,
         "sale": 5,

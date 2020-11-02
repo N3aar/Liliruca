@@ -60,6 +60,7 @@
     "fence": "Cerca de Madeira",
     "aliases": "Atalhos",
     "storage": "Armazenamento",
+    "currentEnergy": "🔋 Energia Atual: {{ energy }}",
     "storages": {
         "farm": "Armazenamento da Fazenda",
         "fishing": "Armazenamento da Pescaria",

@@ -61,7 +61,7 @@ class Energetic extends LilirucaCommand {
 
     const embed = new LilirucaEmbed()
       .addFields(fields)
-      .setFooter(ct('current', { energy: values.energy }))
+      .setFooter(t('commons:currentEnergy', { energy: values.energy }))
 
     util.send(ct('success'), embed)
   }

@@ -76,6 +76,7 @@ class Mine extends LilirucaCommand {
 
     const embed = new LilirucaEmbed()
       .addFields(fields)
+      .setFooter(t('commons:currentEnergy', { energy: values.energy }))
 
     util.send(ct('success'), embed)
   }

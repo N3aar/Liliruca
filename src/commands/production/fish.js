@@ -85,6 +85,8 @@ class Fish extends LilirucaCommand {
       lilistars: data.lilistars + (fished.stars || 0)
     }
 
+    embed.setFooter(t('commons:currentEnergy', { energy: values.energy }))
+
     db.users.update(data, values)
 
     util.send(ct('success'), embed)

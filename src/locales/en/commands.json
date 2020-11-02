@@ -60,13 +60,6 @@
         "missing": "You do not have this item!",
         "success": "\\🔓 Item successfully activated!"
     },
-    "box": {
-        "description": "Open your boxes and win prizes!",
-        "usage": "[box tier]",
-        "noBox": "You do not have this box or it is not active!",
-        "empty": "You do not have any active box.",
-        "success": "\\🎁 Box was successfully opened!"
-    },
     "buy": {
         "description": "Buy items to use.",
         "usage": "<item id> [amount]",
@@ -269,17 +262,29 @@
     "farm": {
         "description": "View the map of your farm or other user.",
         "usage": ["[@user]"],
-        "success": "\\🌳 Farm of {{- name }}"
+        "success": "\\🌳 Farm of `{{- name }}"
     },
     "fishing": {
         "description": "View the map of your fishing or other user.",
         "usage": ["[@user]"],
-        "success": "\\⛵ Fishing of {{- name }}"
+        "success": "\\⛵ Fishing of `{{- name }}`"
     },
     "mining": {
         "description": "View the map of your mining or other user.",
         "usage": "[@user]",
-        "success": "\\⛏ Mining of {{- name }}"
+        "success": "\\⛏ Mining of `{{- name }}`"
+    },
+    "backgrounds": {
+        "description": "Backgrounds preview to use in profile",
+        "usage": "[number]",
+        "success": "\\🎴 Background `{{ id }}°`!"
+    },
+    "box": {
+        "description": "Open your boxes and win prizes!",
+        "usage": "[box tier]",
+        "noBox": "You do not have this box or it is not active!",
+        "empty": "You do not have any active box.",
+        "success": "\\🎁 Box was successfully opened!"
     },
     "energetic": {
         "description": "Energy drink to recover energy",
@@ -287,7 +292,6 @@
         "empty": "You don't own this drink!",
         "noEnergetic": "You don't have an active energy drink!",
         "recoveredEnergy": "\\🔋 Recovered Energy",
-        "current": "🔋 Current Energy: {{ energy }}",
         "success": "\\🥤 Energy drink used successfully!"
     },
     "energy": {
@@ -323,7 +327,7 @@
     "profile": {
         "description": "Profile with information from a user",
         "usage": "[member]",
-        "success": "\\🖼️ Profile of {{- name }}!"
+        "success": "\\🖼️ Profile of `{{- name }}`!"
     },
     "rares": {
         "description": "List of rare fish caught!",
@@ -331,12 +335,18 @@
         "noRares": "Did not catch any rare fish!",
         "success": "\\🐡 Rare fish caught by `{{ member }}`!"
     },
+    "setbackground": {
+        "description": "Set a background for your profile",
+        "noFrame": "You don't have a frame to use! Buy with `buy` command.",
+        "usage": "[background number]",
+        "success": "\\🖌️ Background set successfully!"
+    },
     "stats": {
         "description": "View how your resources are doing",
         "usage": "<place> [member]",
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
         "never": "Never collected.",
         "last": "Last collected: {{- time }} ago.",
-        "success": "\\📊 Resources of {{- name }}"
+        "success": "\\📊 Resources of `{{- name }}`"
     }
   }

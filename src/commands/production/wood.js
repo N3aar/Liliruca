@@ -45,15 +45,15 @@ class Wood extends LilirucaCommand {
     ]
 
     removeItem(data, 'activeItems', saw.id)
-
-    const embed = new LilirucaEmbed()
-      .addFields(fields)
-
     addItemInInventory(data, 'items', 'wood', amount)
 
     const values = {
       energy: data.energy - ENERGY_COST
     }
+
+    const embed = new LilirucaEmbed()
+      .addFields(fields)
+      .setFooter(t('commons:currentEnergy', { energy: values.energy }))
 
     db.users.update(data, values)
 
