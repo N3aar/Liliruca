@@ -112,11 +112,11 @@ module.exports = {
   DAILY_REWARD: 5,
   DAILY_BONUS: 40,
   DAILY_STREAK: [
-    'https://cdn.discordapp.com/attachments/612298119547191340/761722286129545227/daily_1.png',
-    'https://cdn.discordapp.com/attachments/612298119547191340/761722287606988880/daily_2.png',
-    'https://cdn.discordapp.com/attachments/612298119547191340/761722289611472926/daily_3.png',
-    'https://cdn.discordapp.com/attachments/612298119547191340/761722291192201257/daily_4.png',
-    'https://cdn.discordapp.com/attachments/612298119547191340/761722293181218866/daily_5.png'
+    'https://cdn.discordapp.com/attachments/612335526019596289/772905049541312532/daily_1.png',
+    'https://cdn.discordapp.com/attachments/612335526019596289/772905051659436062/daily_2.png',
+    'https://cdn.discordapp.com/attachments/612335526019596289/772905054608556052/daily_3.png',
+    'https://cdn.discordapp.com/attachments/612335526019596289/772905245932126218/daily_4.png',
+    'https://cdn.discordapp.com/attachments/612335526019596289/772905268102430770/daily_5.png'
   ],
   GIVE_COOLDOWN: 18000000,
   GIVE_TAX: 0.95,
@@ -305,6 +305,8 @@ module.exports = {
     open: '🔓',
     news: '🆕',
     page: '📃',
+    card: '🎴',
+    paintbrush: '🖌️',
     blowfish: '🐡',
     star: '⭐',
     glowingstar: '🌟',
@@ -360,5 +362,35 @@ module.exports = {
       pufferfish: '<:pufferfish:763957909972320277>',
       squid: '<:squid:763957908970668034>'
     }
-  }
+  },
+  backgrounds: [
+    '772905763512385536/black.png',
+    '772905755602714684/anime-sky.png',
+    '772905759712477204/apocalyptic.png',
+    '772905768508325938/galaxy.png',
+    '772905773051019314/goku.png',
+    '772905776334897222/horse.png',
+    '772905778649759784/ice-dragon.png',
+    '772905785297600532/itachi.png',
+    '772905789740417024/kakashi.png',
+    '772905792768311326/kimetsu.png',
+    '772905878202482768/madara.png',
+    '772905882253918209/mikasa.png',
+    '772905893057789992/mountain-dragon.png',
+    '772905901865828363/naruto.png',
+    '772905907025739786/ocean.png',
+    '772905910279733258/purple-pink.png',
+    '772905913623248936/rainbow.png',
+    '772905919175720980/resident-evil.png',
+    '772905922078703616/sasuke.png',
+    '772905925303992330/soft-blue.png',
+    '772905928479211570/soft-pink.png',
+    '772905935856861184/sport-car-2.png',
+    '772905933268451368/sport-car.png',
+    '772905939975012362/stardew-valley.png',
+    '772905942831726645/vaporwave.png',
+    '772905945755680788/vegeta.png',
+    '772905948682649670/whale.png',
+    '772905952034816080/yui.png'
+  ]
 }
