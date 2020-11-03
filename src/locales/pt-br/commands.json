@@ -312,9 +312,9 @@
     "leaderboard": {
         "description": "Classificações dos melhores usuários!",
         "error": "Digite o recurso corretamente! \n`Recursos: {{ types }}`",
-        "usage": "<recurso | local> [página]",
+        "usage": "<recurso | local> [página] --guild",
         "noPage": "Não foi possível encontrar usuários suficientes para criar esta página!",
-        "success": "Top 5 user ratings by `{{- type }}`! Página: {{ page }}/50",
+        "success": "Classificação dos 5 melhores por `{{- type }}`! Página: `{{ page }}/50`",
         "types": {
             "money": "${{ value }}",
             "lilistars": "{{ value }} Estrelas",

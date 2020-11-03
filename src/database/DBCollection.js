@@ -10,8 +10,9 @@ class DBCollection extends LilirucaCollection {
     return await this.model.findById(id, projection) || await this.model.create({ _id: id })
   }
 
-  async ranking (field, limit = 5, skip = 0) {
-    return this.model.find({}, null, { limit, skip, sort: { [field]: -1 } })
+  async ranking (field, ids, limit = 5, skip = 0) {
+    const find = ids && { _id: { $in: ids } }
+    return this.model.find(find || {}, null, { limit, skip, sort: { [field]: -1 } })
   }
 
   async updateOne (id, value, key) {

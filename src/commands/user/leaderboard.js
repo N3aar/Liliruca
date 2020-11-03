@@ -22,13 +22,19 @@ class Leaderboard extends LilirucaCommand {
           id: 'page',
           type: Argument.range('integer', 1, 50, true),
           default: 1
+        },
+        {
+          id: 'guildOnly',
+          match: 'flag',
+          flag: '--guild'
         }
       ]
     })
   }
 
-  async exec ({ t, ct, client, util, db }, { type, page }) {
-    const data = await db.users.ranking(type, 5, 5 * (page - 1))
+  async exec ({ t, ct, client, guild, util, db }, { type, page, guildOnly }) {
+    const ids = guildOnly && guild.members.cache.map(member => member.id)
+    const data = await db.users.ranking(type, ids, 5, 5 * (page - 1))
 
     if (data.length < 5) {
       return util.send(ct('noPage'))

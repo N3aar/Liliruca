@@ -19,7 +19,7 @@
     },
     "botinfo": {
         "description": "Look the information about me!",
-        "about": "Hello, I'm the **Liliruca**, a Discord bot about RPG and fantasy, my goal is to bring fun and competition to users!\n\nI'm working at **{{ uptime }}**, on **{{ guildCount }} servers**, along with **{{ userCount }} users**, with {{ commands }} different commands.\n\nI've been on Discord since **{{ createdAt }}** and joined here on **{{ joinedAt }}**",
+        "about": "Hello, I'm the **Liliruca**, a Discord bot about RPG and fantasy, my goal is to bring fun and competition to users!\n\nI'm working at **{{ uptime }}**, on **{{ guildCount }} servers**, along with **{{ usersCount }} users**, with **{{ commands }}** different commands.\n\nI've been on Discord since **{{ createdAt }}** and joined here on **{{ joinedAt }}**",
         "version": "Bot Version",
         "inviteMe": "Invite",
         "supportGuild": "Support",
@@ -312,9 +312,9 @@
     "leaderboard": {
         "description": "Leaderboard from the best users!",
         "error": "Type the resource correctly! \n`Resources: {{ types }}`",
-        "usage": "<resource | place> [page]",
+        "usage": "<resource | place> [page] --guild",
         "noPage": "Could not find enough users to create this page!",
-        "sucess": "Top 5 user ratings by `{{ resource }}`! Page: {{ page }}/50",
+        "sucess": "Top 5 ranking for `{{ resource }}`! Page: `{{ page }}/50`",
         "types": {
             "money": "${{ value }}",
             "lilistars": "{{ value }} Stars",
