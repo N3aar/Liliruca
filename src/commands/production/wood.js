@@ -13,11 +13,32 @@ class Wood extends LilirucaCommand {
       clientPermissions: [
         'EMBED_LINKS',
         'USE_EXTERNAL_EMOJIS'
+      ],
+      args: [
+        {
+          id: 'allEnergy',
+          match: 'flag',
+          flag: ['--all-energy', '--ae']
+        }
       ]
     })
   }
 
-  async exec ({ t, ct, util, db, author }) {
+  static getAmount (count, energy, saw) {
+    let amount = 0
+    let spentEnergy = energy
+    for (let i = 0; i < count; i++) {
+      if (spentEnergy >= ENERGY_COST) {
+        amount += random(saw.item.max, saw.item.min, true)
+        spentEnergy -= ENERGY_COST
+      } else {
+        break
+      }
+    }
+    return { amount, spentEnergy }
+  }
+
+  async exec ({ t, ct, util, db, author }, { allEnergy }) {
     const data = await db.users.get(author.id)
 
     if (data.energy < ENERGY_COST) {
@@ -29,7 +50,9 @@ class Wood extends LilirucaCommand {
       return util.send(ct('noSaw'))
     }
 
-    const amount = random(saw.item.max, saw.item.min, true)
+    const count = allEnergy ? Math.floor(data.energy / ENERGY_COST) : 1
+    const { amount, spentEnergy } = Wood.getAmount(count, data.energy, saw)
+
     const wood = getItemById('wood')
     const fields = [
       {
@@ -52,7 +75,7 @@ class Wood extends LilirucaCommand {
     addItemInInventory(data, 'items', 'wood', amount)
 
     const values = {
-      energy: data.energy - ENERGY_COST
+      energy: spentEnergy
     }
 
     db.users.update(data, values)
