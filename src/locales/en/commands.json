@@ -43,6 +43,15 @@
         "heartbeat": "Heartbeat",
         "success": "Bot connection data!"
     },
+    "technical": {
+        "description": "Technical information about the bot",
+        "events": "Events",
+        "eventCount": "{{ count }} Executed events",
+        "library": "Library",
+        "database": "Database",
+        "memoryUsage": "Memory Usage",
+        "success": "Bot technical information!"
+    },
     "active": {
         "description": "Activate an item to use.",
         "usage": "<item id>",

@@ -43,6 +43,15 @@
         "heartbeat": "Heartbeat",
         "success": "Dados de conexão do Bot!"
     },
+    "technical": {
+        "description": "Informações técnicas sobre o bot",
+        "events": "Eventos",
+        "eventCount": "{{ count }} Eventos Executados",
+        "library": "Biblioteca",
+        "database": "Banco de Dados",
+        "memoryUsage": "Memória Usada",
+        "success": "Informações técnicas do bot"
+    },
     "eval": {
         "description": "Comando restrito a desenvolvedores!"
     },
