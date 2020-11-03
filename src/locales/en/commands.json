@@ -3,13 +3,13 @@
         "description": "Change the language of the commands, thus simpler for your members to interact with me!",
         "usage": "<language>",
         "error": "Inform me correct language! options: {{- languages }}",
-        "success": "\\💬 Language changed successfully to `{{ language }}`!"
+        "success": "Language changed successfully to `{{ language }}`!"
     },
     "setprefix": {
         "description": "Place a custom prefix for the commands on your server, but be sure to notify your server members about this new prefix! 😉",
         "usage": "<prefix>",
         "error": "Type a valid prefix! **[{{max}}]** character limit.",
-        "success": "\\✏ Prefix changed successfully to `{{- prefix }}`!"
+        "success": "Prefix changed successfully to `{{- prefix }}`!"
     },
     "settimer": {
         "description": "Hours are very different in various places in the world, for this there is this command, you can change the time of your server, this will only influence the aesthetics of the places, leaving them with periods of day and night!",
@@ -19,29 +19,18 @@
     },
     "botinfo": {
         "description": "Look the information about me!",
-        "version": "Version",
-        "language": "Language",
-        "commands": "Commands",
-        "users": "Users",
-        "guilds": "Guilds",
-        "channels": "Channels",
-        "shards": "Shards",
-        "uptime": "Uptime",
-        "links": "Links",
+        "about": "Hello, I'm the **Liliruca**, a Discord bot about RPG and fantasy, my goal is to bring fun and competition to users!\n\nI'm working at **{{ uptime }}**, on **{{ guildCount }} servers**, along with **{{ userCount }} users**, with {{ commands }} different commands.\n\nI've been on Discord since **{{ createdAt }}** and joined here on **{{ joinedAt }}**",
+        "version": "Bot Version",
         "inviteMe": "Invite",
         "supportGuild": "Support",
-        "donate": "Donate",
-        "vote": "Vote",
-        "nodeVersion": "Node.js Version",
-        "memoryUsage": "Memory Usage",
-        "success": "\\📋 Bot information!"
+        "success": "Bot information!"
     },
     "help": {
         "description": "All information about the Commands!",
         "usage": "<command | category | number | --all>",
         "notFind": "category or command was not found!",
-        "success": "\\📚 Pages of help!",
-        "all": "\\📚 All commands!",
+        "success": "Pages of help!",
+        "all": "All commands!",
         "category": "\\{{- emoji }}  `{{- category }}` Category!",
         "command": "\\{{- emoji }} Command `{{- command }}`!"
     },
@@ -52,7 +41,7 @@
         "ping": "Ping",
         "apiLatency": "Latency of API",
         "heartbeat": "Heartbeat",
-        "success": "\\🔌 Bot connection data!"
+        "success": "Bot connection data!"
     },
     "active": {
         "description": "Activate an item to use.",
@@ -60,7 +49,7 @@
         "inative": "This item does not have to be active!",
         "already": "This item is already active.",
         "missing": "You do not have this item!",
-        "success": "\\🔓 Item successfully activated!"
+        "success": "Item successfully activated!"
     },
     "buy": {
         "description": "Buy items to use.",
@@ -72,7 +61,7 @@
             "money": "${{- value }}",
             "lilistars": "{{- value }} Lilistars"
         },
-        "success": "\\🛒 Purchased successfully!"
+        "success": "Purchased successfully!"
     },
     "craft": {
         "description": "Create items with your materials",
@@ -80,20 +69,20 @@
         "noCraftable": "This item is not craftable!",
         "noMoney": "You don't have enough money! `Missing: ${{ missing }}`.",
         "noMaterial": "You don't have the necessary materials! `Missing: x{{ missing }} {{ material }}`.",
-        "success": "\\🛠️ Successfully crafted item!"
+        "success": "Successfully crafted item!"
     },
     "disable": {
         "description": "Deactivate an item and put it back in your inventory.",
         "usage": "<item id>",
         "noActive": "This item is not active!",
-        "success": "\\🔒 Item successfully deactivated!"
+        "success": "Item successfully deactivated!"
     },
     "inventory": {
         "description": "View your inventory or that of another user!",
         "usage": "[page] [member] [--actives]",
         "noActiveItems": "You have no active items!",
         "noItems": "You have no inventory items!",
-        "success": "\\🎒 `{{- member }}` inventory | `Page {{ page }}`"
+        "success": "`{{- member }}` inventory | `Page {{ page }}`"
     },
     "list": {
         "description": "List of all buyable items!",
@@ -104,7 +93,7 @@
         "item": "**ID: `{{ id }}`\nType: `{{ type }}`\nPrice: `{{ price }}`\nUses: `{{ value }}`\nSale: `{{ sale }}`**",
         "energy": "\n**Energy:** `{{ energy }}`",
         "place": "\n**Required: `{{ place }} level {{ required }}`**",
-        "success": "\\📃 List of Items! `Page {{ page }}`"
+        "success": "List of Items! `Page {{ page }}`"
     },
     "sale": {
         "description": "Sell items from your inventory",
@@ -112,40 +101,40 @@
         "noItems": "You do not own this item or quantity!",
         "lilistars": "{{ value }} Lilistars",
         "money": "${{ value }}",
-        "success": "\\🛒 Item successfully sold!"
+        "success": "Item successfully sold!"
     },
     "hour": {
         "description": "Look the current time following the configuration of this guild!"
     },
     "team": {
         "description": "Team that develops the bot, and makes it increasingly amazing!",
-        "success": "\\🔑 Development team!"
+        "success": "Development team!"
     },
     "calculate": {
         "description": "Calculate price to upgrade your storage!",
         "usage": "<place> [value] [value]",
         "invalidPlace": "Type a valid place!",
-        "success": "\\🧮 Calculation completed successfully!"
+        "success": "Calculation completed successfully!"
     },
     "collect": {
         "description": "To collect all your resources produced",
         "first": "First collected!",
         "last": "Last collected: {{- time }} ago.",
-        "success": "\\📬 Collected successfully!",
         "cooldown": "Your production is not ready yet, wait `{{ min }} minutes` to collect again.",
         "attacked": "**Your plantation has been attacked by birds and wildlife!\nHis loss was ``{{ attack }}%``!**",
-        "full": "Some of your storages are full! Empty to collect your new resources."
+        "full": "Some of your storages are full! Empty to collect your new resources.",
+        "success": "Collected successfully!"
     },
     "fish": {
         "description": "Catch fish or treasures with your fishing rod and some baits",
         "noBaits": "You don't have enough bait!",
-        "recycle": "**\\♻️ Trash found has been recycled!**",
+        "recycle": "**Trash found has been recycled!**",
         "rare": "Rare Fish",
         "treasure": "Treasure",
         "trash": "Trash",
         "fishs": "Fish",
         "fishRare": "**Congratulations you caught a {{ fish }}!**",
-        "success": "\\🎣 You managed to catch something!"
+        "success": "You managed to catch something!"
     },
     "forge": {
         "description": "Forge ores into bars",
@@ -154,31 +143,31 @@
         "missing": "You don't have that amount of ores!",
         "noCoal": "You do not have coal to forge this item!",
         "noMoney": "You don't have enough money! `Missing: ${{ missing }}`",
-        "success": "\\🔥 Successfully forged item!"
+        "success": "Successfully forged item!"
     },
     "mine": {
         "description": "Collect ores with your pickaxe",
         "noPickaxe": "You don't have an active pickaxe to mine.",
-        "success": "\\⛏️ Collect ores successfully!"
+        "success": "Collect ores successfully!"
     },
     "saw": {
         "description": "Cut wood into planks",
         "usage": "[amount]",
         "noWood": "You don't have enough wood!",
         "noMoney": "You don't have enough money! `Missing: ${{ missing }}`",
-        "success": "\\⚙️ Woods have been successfully processed!"
+        "success": "Woods have been successfully processed!"
     },
     "sell": {
         "description": "Sale what was produced to make money",
         "noStorage": "You not have resources for sale!",
-        "success": "\\💰 Sold successfully!"
+        "success": "Sold successfully!"
     },
     "storage": {
         "description": "Increase the levels of a storage",
         "usage": "<place> [levels]",
         "noMoney": "You enough money to buy this upgrade! `Missing: {{ missing }}`.",
         "noMaterials": "You enough material to make this upgrade! `Missing: x{{ missing }} {{ material }}`.",
-        "success": "\\⚙️ Storage upgraded to `level {{ level}}`!"
+        "success": "Storage upgraded to `level {{ level}}`!"
     },
     "table": {
         "description": "View a complete table of resource prices and upgrades",
@@ -191,8 +180,8 @@
         "division": "divided",
         "multiply": "multiplied",
         "calculate": "To know the price of several levels, use:\n**{{- prefix }}calculate <initial level> <final level>**",
-        "storage": "\\📋 {{ place }} storage prices!",
-        "table": "\\📋 {{ place }} prices!",
+        "storage": "{{ place }} storage prices!",
+        "table": "{{ place }} prices!",
         "upgrade": {
             "farm": "Level 1: **$0**\n{{ prices }}\n...",
             "fishing": "Level 1: Unlocked at level `10` of Farm\n{{ prices }}\n...",
@@ -205,8 +194,8 @@
         "maxLevel": "You already at the maximum level at this place",
         "noMoney": "you enough money to buy this upgrade! Missing: {{ missing }}",
         "noMaterial": "You do not have the necessary materials for construction! `Missing: x{{ missing }} {{ material }}`",
-        "success": "\\⚙️ Level {{ level}}, upgraded successfully!",
-        "protection": "\\🌳 Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``buy``, prices are in command ``list``",
+        "success": "Level {{ level}}, upgraded successfully!",
+        "protection": "Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``buy``, prices are in command ``list``",
         "unlock": {
             "fishing": "Congratulations, you have unlocked a new location! Now get your fishing rod and let's go fishing! \\⛵",
             "mining": "Congratulations, you have unlocked a new location! Now get your pick and let's go mining! \\⛏"
@@ -215,7 +204,7 @@
     "wood": {
         "description": "Chopping wood with your axe",
         "noSaw": "You don't have an active tool for cutting wood.",
-        "success": "\\🪓 Successfully collected wood!"
+        "success": "Successfully collected wood!"
     },
     "daily": {
         "description": "Lilistars that you can redeem every 20 hours",
@@ -223,7 +212,7 @@
         "broke": "Broken streak! You have not redeemed the daily for more than 2 days.",
         "remaining": "`+{{ days }} times!`",
         "bonus": "**Concluded! \\✨**",
-        "success": "\\⭐ daily Lilistars rescued successfully!"
+        "success": "daily Lilistars rescued successfully!"
     },
     "vote": {
         "description": "Earn Lilistars by voting for the bot! These Lilistars can be spent buying products or boosters in the market!",
@@ -238,7 +227,7 @@
         "increase": "will increase {{- value }}% in your production.",
         "decrease": "will decrease {{- value }}% in your production.",
         "noEffect": "will have no effect.",
-        "success": "\\⛅ All weather effects!"
+        "success": "All weather effects!"
     },
     "months": {
         "description": "Look duration of the seasons and the effects it has on your production.",
@@ -247,19 +236,19 @@
         "duration": "**January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, created to be used inside the Bot.**",
         "increase": "will increase {{- value }}% in your production.",
         "decrease": "will decrease {{- value }}% in your production.",
-        "success": "\\📅 All season durations and effects!"
+        "success": "All season durations and effects!"
     },
     "season": {
         "description": "Show the current season",
         "current": "Current Season",
         "next": "Next Season",
-        "success": "\\☁️ Seasons!"
+        "success": "Seasons!"
     },
     "weather": {
         "description": "Weather forecasts for today and tomorrow.",
         "current": "Current",
         "next": "Next",
-        "success": "\\☂️ Weather forecast!"
+        "success": "Weather forecast!"
     },
     "farm": {
         "description": "View the map of your farm or other user.",
@@ -279,14 +268,14 @@
     "backgrounds": {
         "description": "Backgrounds preview to use in profile",
         "usage": "[number]",
-        "success": "\\🎴 Background `{{ id }}°`!"
+        "success": "Background `{{ id }}°`!"
     },
     "box": {
         "description": "Open your boxes and win prizes!",
         "usage": "[box tier]",
         "noBox": "You do not have this box or it is not active!",
         "empty": "You do not have any active box.",
-        "success": "\\🎁 Box was successfully opened!"
+        "success": "Box was successfully opened!"
     },
     "energetic": {
         "description": "Energy drink to recover energy",
@@ -294,12 +283,12 @@
         "empty": "You don't own this drink!",
         "noEnergetic": "You don't have an active energy drink!",
         "recoveredEnergy": "\\🔋 Recovered Energy",
-        "success": "\\🥤 Energy drink used successfully!"
+        "success": "Energy drink used successfully!"
     },
     "energy": {
         "description": "Fully restore your energy",
         "cooldown": "Your energy has already been restored! wait `{{ time }}` to use again.",
-        "success": "\\⚡ Power was successfully restored!"
+        "success": "Power was successfully restored!"
     },
     "give": {
         "description": "Give money to other users!",
@@ -309,14 +298,14 @@
         "noMoney": "You don't have that amount of money!",
         "yourself": "You cannot donate yourself.",
         "cooldown": "You already gave money to a user, wait `{{ time }}` to do it again!",
-        "success": "\\🤝 {{- receiver }} you received money from {{- giver }}!"
+        "success": "{{- receiver }} you received money from {{- giver }}!"
     },
     "leaderboard": {
         "description": "Leaderboard from the best users!",
         "error": "Type the resource correctly! \n`Resources: {{ types }}`",
         "usage": "<resource | place> [page]",
         "noPage": "Could not find enough users to create this page!",
-        "sucess": "\\🏆 Top 5 `{{ resource }}`! Page: {{ page }}/50",
+        "sucess": "Top 5 user ratings by `{{ resource }}`! Page: {{ page }}/50",
         "types": {
             "money": "${{ value }}",
             "lilistars": "{{ value }} Stars",
@@ -329,19 +318,19 @@
     "profile": {
         "description": "Profile with information from a user",
         "usage": "[member]",
-        "success": "\\🖼️ Profile of `{{- name }}`!"
+        "success": "Profile of `{{- name }}`!"
     },
     "rares": {
         "description": "List of rare fish caught!",
         "usage": "[member]",
         "noRares": "Did not catch any rare fish!",
-        "success": "\\🐡 Rare fish caught by `{{ member }}`!"
+        "success": "Rare fish caught by `{{ member }}`!"
     },
     "setbackground": {
         "description": "Set a background for your profile",
         "noFrame": "You don't have a frame to use! Buy with `buy` command.",
         "usage": "[background number]",
-        "success": "\\🖌️ Background set successfully!"
+        "success": "Background set successfully!"
     },
     "stats": {
         "description": "View how your resources are doing",
@@ -349,6 +338,6 @@
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
         "never": "Never collected.",
         "last": "Last collected: {{- time }} ago.",
-        "success": "\\📊 Resources of `{{- name }}`"
+        "success": "Resources of `{{- name }}`"
     }
   }

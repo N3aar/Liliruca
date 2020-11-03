@@ -35,7 +35,7 @@ class Team extends LilirucaCommand {
       .addFields(team)
       .setTimestamp()
 
-    util.send(ct('success'), embed)
+    util.send(`\\🔑 ${ct('success')}`, embed)
   }
 }
 

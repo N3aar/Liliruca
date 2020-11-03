@@ -29,6 +29,8 @@ class GuildDeleteListener extends Listener {
     if (channel) {
       channel.setName(`🔑 ${this.guilds.size} Guilds`)
     }
+
+    this.db.guilds.delete(guild.id)
   }
 }
 

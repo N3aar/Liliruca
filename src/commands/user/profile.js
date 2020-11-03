@@ -32,7 +32,7 @@ class Profile extends LilirucaCommand {
 
     const name = member.displayName
     const avatarUrl = member.user.displayAvatarURL({ format: 'png', size: 256 })
-    const bkg = data.background || 'black'
+    const bkg = data.background || 1
 
     const folder = 'src/assets/profile/'
     const template = await loadImage(folder + 'template.png')
@@ -69,7 +69,7 @@ class Profile extends LilirucaCommand {
 
     const profile = new MessageAttachment(canvas.toBuffer(), 'profile.png')
 
-    util.send(ct('success', { name }), profile)
+    util.send(`\\🖼️ ${ct('success', { name })}`, profile)
   }
 }
 

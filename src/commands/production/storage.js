@@ -64,7 +64,7 @@ class Storage extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(ct('success', { level: dataPlace.storage }))
+    util.send(`\\⚙️ ${ct('success', { level: dataPlace.storage })}`)
   }
 }
 

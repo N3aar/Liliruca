@@ -22,7 +22,7 @@ class SetLanguage extends LilirucaCommand {
   async exec ({ util, db, guild, locales }, { language }) {
     await db.guilds.updateOne(guild.id, language, 'language')
     const t = locales.getT(language)
-    util.send(t('commands:setlanguage.success', { language }))
+    util.send(`\\💬 ${t('commands:setlanguage.success', { language })}`)
   }
 }
 

@@ -81,7 +81,7 @@ class Leaderboard extends LilirucaCommand {
     const attach = new MessageAttachment(canvas.toBuffer(), 'leaderboard.png')
     const parsed = t(`commons:${PLACES.includes(type) ? 'storages.' : ''}${type}`)
 
-    util.send(ct('success', { type: parsed, page }), attach)
+    util.send(`\\🏆 ${ct('success', { type: parsed, page })}`, attach)
   }
 
   getValue (data, type) {

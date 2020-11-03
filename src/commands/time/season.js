@@ -39,7 +39,7 @@ class Season extends LilirucaCommand {
       .setColor(SEASONS_COLORS[season])
       .addFields(seasons)
 
-    util.send(ct('success'), embed)
+    util.send(`\\☁️ ${ct('success')}`, embed)
   }
 }
 

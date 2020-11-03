@@ -40,7 +40,7 @@ class Ping extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(ping)
 
-    sent.edit(ct('success'), embed)
+    sent.edit(`\\🔌 ${ct('success')}`, embed)
   }
 }
 

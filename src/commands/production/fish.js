@@ -64,7 +64,7 @@ class Fish extends LilirucaCommand {
       .addFields(fields)
 
     if (catched === 'trash') {
-      embed.setDescription(ct('recycle'))
+      embed.setDescription(`\\♻️ ${ct('recycle')}`)
     }
 
     if (catched === 'rare') {
@@ -89,7 +89,7 @@ class Fish extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(ct('success'), embed)
+    util.send(`\\🎣 ${ct('success')}`, embed)
   }
 
   rare (emojis, weight, rares) {

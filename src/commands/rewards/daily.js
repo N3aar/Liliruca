@@ -57,7 +57,7 @@ class Daily extends LilirucaCommand {
       embed.setFooter(ct('broke'))
     }
 
-    util.send(ct('success'), embed)
+    util.send(`\\⭐ ${ct('success')}`, embed)
   }
 }
 

@@ -50,7 +50,7 @@ class Help extends LilirucaCommand {
       .setDescription(categories)
       .setFooter(`${prefix}help ${t('commands:help.usage')}`)
 
-    util.send(ct('success'), embed)
+    util.send(`\\📚 ${ct('all')}`, embed)
   }
 
   handleShowAll ({ client, util, ct, t }) {

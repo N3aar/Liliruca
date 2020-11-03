@@ -64,7 +64,7 @@ class Buy extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(buy)
 
-    util.send(ct('success'), embed)
+    util.send(`\\🛒 ${ct('success')}`, embed)
   }
 }
 

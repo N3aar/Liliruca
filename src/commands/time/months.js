@@ -51,7 +51,7 @@ class Months extends LilirucaCommand {
       .addFields(fields)
       .setFooter(current)
 
-    util.send(ct('success'), embed)
+    util.send(`\\📅 ${ct('success')}`, embed)
   }
 }
 

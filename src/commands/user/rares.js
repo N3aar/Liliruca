@@ -33,7 +33,7 @@ class Rares extends LilirucaCommand {
       .setDescription(list)
       .setFooter(`Total: ${rares.total}`)
 
-    util.send(ct('success', { member: member.displayName }), embed)
+    util.send(`\\🐡 ${ct('success', { member: member.displayName })}`, embed)
   }
 }
 

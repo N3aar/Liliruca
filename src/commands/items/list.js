@@ -72,7 +72,7 @@ class List extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(ct('success', { page }), embed)
+    util.send(`\\📃 ${ct('success', { page })}`, embed)
   }
 }
 

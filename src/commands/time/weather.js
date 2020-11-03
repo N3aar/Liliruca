@@ -42,7 +42,7 @@ class Weather extends LilirucaCommand {
       .setColor(WEATHERS_COLORS[weather])
       .addFields(seasons)
 
-    util.send(ct('success'), embed)
+    util.send(`\\☂️ ${ct('success')}`, embed)
   }
 }
 

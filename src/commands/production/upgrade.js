@@ -58,7 +58,7 @@ class Upgrade extends LilirucaCommand {
       data[unlocked].level = 1
       embed.setDescription(`${author}, ${ct(`unlock.${unlocked}`)}`)
     } else if (protection) {
-      embed.setDescription(`${author}, ${ct('protection')}`)
+      embed.setDescription(`${author}, \\🌳 ${ct('protection')}`)
     }
 
     removeItem(data, 'items', material, required)
@@ -69,7 +69,7 @@ class Upgrade extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(ct('success', { level: dataPlace.level }), embed)
+    util.send(`\\⚙️ ${ct('success', { level: dataPlace.level })}`, embed)
   }
 }
 

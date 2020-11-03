@@ -46,7 +46,7 @@ class Calculate extends LilirucaCommand {
     const fields = [
       {
         name: `\\🧪 ${t('commons:value')}`,
-        value: `**${lower} \\➡ ${highest}**`,
+        value: `**Level ${lower} \\➡ Level ${highest}**`,
         inline: true
       },
       {
@@ -65,7 +65,7 @@ class Calculate extends LilirucaCommand {
       .addFields(fields)
       .setFooter(storageName)
 
-    util.send(ct('success'), embed)
+    util.send(`\\🧮 ${ct('success')}`, embed)
   }
 }
 

@@ -78,7 +78,7 @@ class Mine extends LilirucaCommand {
       .addFields(fields)
       .setFooter(t('commons:currentEnergy', { energy: values.energy }))
 
-    util.send(ct('success'), embed)
+    util.send(`\\⛏️ ${ct('success')}`, embed)
   }
 }
 

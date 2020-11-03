@@ -92,7 +92,7 @@ class Stats extends LilirucaCommand {
       .addFields(fields)
       .setFooter(last)
 
-    util.send(ct('success', { name: member.displayName }), embed)
+    util.send(`\\📊 ${ct('success', { name: member.displayName })}`, embed)
   }
 }
 

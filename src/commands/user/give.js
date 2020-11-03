@@ -79,7 +79,7 @@ class Give extends LilirucaCommand {
     const giver = member.toString()
     const receiver = mentionMember.toString()
 
-    util.send(ct('success', { giver, receiver, donate }), embed)
+    util.send(`\\🤝 ${ct('success', { giver, receiver, donate })}`, embed)
   }
 }
 

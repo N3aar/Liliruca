@@ -59,7 +59,7 @@ class Table extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(ct(type, { place: t(`commons:${place}`) }), embed)
+    util.send(`\\📋 ${ct(type, { place: t(`commons:${place}`) })}`, embed)
   }
 
   table ({ t, ct, place }) {

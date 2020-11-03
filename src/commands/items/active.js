@@ -47,7 +47,7 @@ class Active extends LilirucaCommand {
 
     db.users.update(data, {})
 
-    util.send(ct('success'))
+    util.send(`\\🔓 ${ct('success')}`)
   }
 }
 

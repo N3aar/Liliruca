@@ -22,8 +22,8 @@ function parseDuration (time, language) {
   return dayjs.duration(time).locale(language).humanize()
 }
 
-function displayDate (time, language) {
-  return dayjs(time).locale(language).format('L')
+function displayDate (time, language, format = 'L') {
+  return dayjs(time).locale(language).format(format)
 }
 
 function getDuration (timestamp) {

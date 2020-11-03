@@ -56,7 +56,7 @@ class Inventory extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .setDescription(items.join('\n'))
 
-    util.send(ct('success', { member: member.displayName, page }), embed)
+    util.send(`\\🎒 ${ct('success', { member: member.displayName, page })}`, embed)
   }
 }
 

@@ -1,9 +1,9 @@
+const { Permissions } = require('discord.js')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { parseDuration, displayDate } = require('@utils/date')
 const { version } = require('@package')
+const { parseDuration, displayDate } = require('@utils/date')
 const { SUPPORT_GUILD, EMOJIS: { bookmark } } = require('@constants')
-const { Permissions } = require('discord.js')
 
 class Botinfo extends LilirucaCommand {
   constructor () {
@@ -16,11 +16,13 @@ class Botinfo extends LilirucaCommand {
   }
 
   static getBotPermissions () {
-    return Permissions.FLAGS.SEND_MESSAGES |
+    return Permissions.FLAGS.ADMINISTRATOR |
       Permissions.FLAGS.VIEW_CHANNEL |
-      Permissions.FLAGS.USE_EXTERNAL_EMOJIS |
+      Permissions.FLAGS.SEND_MESSAGES |
+      Permissions.FLAGS.EMBED_LINKS |
       Permissions.FLAGS.ATTACH_FILES |
-      Permissions.FLAGS.READ_MESSAGE_HISTORY
+      Permissions.FLAGS.READ_MESSAGE_HISTORY |
+      Permissions.FLAGS.USE_EXTERNAL_EMOJIS
   }
 
   static getBotInvite (clientId, permissions) {
@@ -29,74 +31,42 @@ class Botinfo extends LilirucaCommand {
 
   async exec ({ t, ct, language, util, guild, client }) {
     const botInviteUrl = Botinfo.getBotInvite(client.user.id, Botinfo.getBotPermissions())
-    const botInvite = `[${ct('inviteMe')}](${botInviteUrl})`
-    const supportServer = `[${ct('supportGuild')}](${SUPPORT_GUILD})`
-    const links = [botInvite, supportServer]
-    const memoryUsage = (process.memoryUsage().heapUsed / 1048576).toFixed(2)
+    const avatar = client.user.displayAvatarURL({ format: 'png', size: 4096 })
 
-    const botinfo = [
+    const abount = {
+      guildCount: client.guilds.cache.size,
+      usersCount: client.users.cache.size,
+      commands: client.commands.size,
+      uptime: parseDuration(client.uptime, language),
+      createdAt: displayDate(client.user.createdAt, language),
+      joinedAt: displayDate(guild.joinedAt, language)
+    }
+
+    const fields = [
       {
         name: `\\🎓 ${ct('version')}`,
-        value: `${version}`,
+        value: `**${version}**`,
         inline: true
       },
       {
-        name: `\\🔧 ${ct('nodeVersion')}`,
-        value: process.versions.node,
-        inline: true
-      },
-
-      {
-        name: `\\🧮 ${ct('memoryUsage')}`,
-        value: memoryUsage,
+        name: `\\📌 ${ct('supportGuild')}`,
+        value: `[Clique Aqui](${SUPPORT_GUILD})`,
         inline: true
       },
       {
-        name: `\\📁 ${ct('commands')}`,
-        value: `${client.commands.size}`,
-        inline: true
-      },
-      {
-        name: `\\👥 ${ct('users')}`,
-        value: `${client.users.cache.size}`,
-        inline: true
-      },
-      {
-        name: `\\📌 ${ct('guilds')}`,
-        value: `${client.guilds.cache.size}`,
-        inline: true
-      },
-      {
-        name: `\\💬 ${ct('channels')}`,
-        value: `${client.channels.cache.size}`,
-        inline: true
-      },
-      {
-        name: `\\⌚ ${ct('uptime')}`,
-        value: `${parseDuration(client.uptime, language)}`,
-        inline: true
-      },
-      {
-        name: `\\📅 ${t('commons:createdAt')}`,
-        value: `${displayDate(client.user.createdAt, language)}`,
-        inline: true
-      },
-      {
-        name: `\\📆 ${t('commons:joinedAt')}`,
-        value: `${displayDate(guild.joinedAt, language)}`,
-        inline: true
-      },
-      {
-        name: `\\🔗 ${ct('links')}`,
-        value: `${links.join(' | ')}`,
+        name: `\\📎 ${ct('inviteMe')}`,
+        value: `[Clique Aqui](${botInviteUrl})`,
         inline: true
       }
     ]
 
     const embed = new LilirucaEmbed()
-      .addFields(botinfo)
+      .setAuthor(ct('success'), avatar)
+      .setThumbnail(avatar)
+      .setDescription(ct('about', abount))
+      .addFields(fields)
 
-    util.send(ct('success'), embed)
+    util.send(embed)
   }
 }
 

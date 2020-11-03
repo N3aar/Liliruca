@@ -3,13 +3,13 @@
         "description": "Altere o idioma dos comandos, assim ficará mais simples para seus membros interagirem comigo!",
         "usage": "<linguagem>",
         "error": "Me informe uma lingua correta! opções: {{ languages }}",
-        "success": "\\💬 Linguagem alterada com sucesso para `{{ language }}`!"
+        "success": "Linguagem alterada com sucesso para `{{ language }}`!"
     },
     "setprefix": {
         "description": "Coloque um prefixo personalizado para os comandos em seu servidor, mas não esqueça de avisar os membros sobre este novo prefixo! 😉",
         "usage": "<prefixo>",
         "error": "Digite um prefixo válido! limite de **[{{ max }}]** caracteres.",
-        "success": "\\✏ Prefixo alterado com sucesso para `{{- prefix }}`!"
+        "success": "Prefixo alterado com sucesso para `{{- prefix }}`!"
     },
     "settimer": {
         "description": "Os hórarios são muito diferentes em vários locais do mundo, para isso existe este comando, você poderá alterar o horário de seu servidor, isso influenciará somente na estética dos locais, deixando os com períodos de dia e noite!",
@@ -19,30 +19,18 @@
     },
     "botinfo": {
         "description": "Veja muitas informações sobre mim!",
-        "version": "Versão",
-        "language": "Linguagem",
-        "commands": "Comandos",
-        "users": "Usuários",
-        "guilds": "Servidores",
-        "channels": "Canais",
-        "shards": "Shards",
-        "library": "Biblioteca",
-        "uptime": "Tempo Online",
-        "links": "Links",
+        "about": "Olá, eu sou a **Liliruca**, um bot do Discord sobre RPG e fantasia, meu objetivo é trazer diversão e competição ao usuários!\n\nEstou trabalhando a **{{ uptime }}**, em **{{ guildCount }} servidores**, junto a **{{ usersCount }} usuários**, com **{{ commands }} comandos** diferentes.\n\nEstou no Discord desde **{{ createdAt }}** e entrei aqui em **{{ joinedAt }}**",
+        "version": "Versão do Bot",
         "inviteMe": "Convite",
         "supportGuild": "Suporte",
-        "donate": "Doar",
-        "nodeVersion": "Versão do Node.js",
-        "memoryUsage": "Uso de Memoria",
-        "vote": "Votar",
-        "success": "\\📋 Informações do bot!"
+        "success": "Informações do bot!"
     },
     "help": {
         "description": "Todas as informações sobre os Comandos!",
         "usage": "<comando | categoria | número | --all>",
         "notFind": "Categoria ou Comando não foi encontrado!",
-        "success": "\\📚 Páginas de ajuda!",
-        "all": "\\📚 Todos os Comandos!",
+        "success": "Páginas de ajuda!",
+        "all": "Todos os Comandos!",
         "category": "\\{{- emoji }} Categoria `{{- category }}`!",
         "command": "\\{{- emoji }} Comando `{{- command }}`!"
     },
@@ -53,7 +41,7 @@
         "ping": "Ping",
         "apiLatency": "Latência da API",
         "heartbeat": "Heartbeat",
-        "success": "\\🔌 Dados de conexão do Bot!"
+        "success": "Dados de conexão do Bot!"
     },
     "eval": {
         "description": "Comando restrito a desenvolvedores!"
@@ -64,7 +52,7 @@
         "inative": "Este item não precisa ser ativo!",
         "already": "Este item já está ativo.",
         "missing": "Você não possui este item!",
-        "success": "\\🔓 Item ativado com sucesso!"
+        "success": "Item ativado com sucesso!"
     },
     "buy": {
         "description": "Compre itens para utilizar.",
@@ -75,7 +63,7 @@
             "money": "${{- value }}",
             "lilistars": "{{- value }} Lilistars"
         },
-        "success": "\\🛒 Item comprado com sucesso!"
+        "success": "Item comprado com sucesso!"
     },
     "craft": {
         "description": "Criar itens com seus materiais",
@@ -83,20 +71,20 @@
         "noCraftable": "Este item não é craftável!",
         "noMoney": "Você não possui dinheiro suficiente! `Faltando: ${{ missing }}`.",
         "noMaterial": "Você não possui os materiais necessários! `Faltando: x{{ missing }} {{ material }}`.",
-        "success": "\\🛠️ Item craftado com sucesso!"
+        "success": "Item craftado com sucesso!"
     },
     "disable": {
         "description": "Desative um item e coloque de volta em seu inventário.",
         "usage": "<id do item>",
         "noActive": "Este item não está ativo!",
-        "success": "\\🔒 Item desativado com sucesso!"
+        "success": "Item desativado com sucesso!"
     },
     "inventory": {
         "description": "Veja seu inventário ou de outro usuário!",
         "usage": "[page] [membro] [--actives]",
         "noActiveItems": "Não possui itens ativos!",
         "noItems": "Não possui itens no inventário!",
-        "success": "\\🎒 Inventário de `{{- member }}` | `Página {{ page }}`"
+        "success": "Inventário de `{{- member }}` | `Página {{ page }}`"
     },
     "list": {
         "description": "Lista de todos itens compraveis!",
@@ -107,7 +95,7 @@
         "item": "**ID: `{{ id }}`\nTipo: `{{ type }}`\nPreço: `{{ price }}`\nUsos: `{{ value }}`\nVenda: `{{ sale }}`**",
         "energy": "\n**Energia:** `{{ energy }}`",
         "place": "\n**Requer: `{{ place }} level {{ required }}`**",
-        "success": "\\📃 Lista de itens! `Página {{ page }}`"
+        "success": "Lista de itens! `Página {{ page }}`"
     },
     "sale": {
         "description": "Venda items do seu inventário",
@@ -115,40 +103,40 @@
         "noItems": "Você não possui este item ou esta quantidade!",
         "lilistars": "{{ value }} Lilistars",
         "money": "${{ value }}",
-        "success": "\\🛒 Item vendido com sucesso!"
+        "success": "Item vendido com sucesso!"
     },
     "hour": {
         "description": "Veja qual a hora atual seguindo a configuração deste servidor!"
     },
     "team": {
         "description": "Equipe que desenvolve o bot, e o torna cada vez mais incrivel!",
-        "success": "\\🔑 Equipe de desenvolvimento!"
+        "success": "Equipe de desenvolvimento!"
     },
     "calculate": {
         "description": "Calcule o preço para melhorar seu armazenamento!",
         "usage": "<local> [valor] [valor]",
         "invalidPlace": "Digite um local válido!",
-        "success": "\\🧮 Cálculo concluído com sucesso!"
+        "success": "Cálculo concluído com sucesso!"
     },
     "collect": {
         "description": "Para coletar todos os seus recursos produzidos",
         "first": "Primeira coleta!",
         "last": "Última coleta: {{ time }} atrás.",
-        "success": "\\📬 Coletado com sucesso!",
         "cooldown": "Sua produção ainda não esta pronta, aguarde `{{ min }} minutos` para coletar novamente.",
         "attacked": "**Sua plantação foi atacada por aves e animais selvagens!\nSua perda foi de ``{{ attack }}%``!**",
-        "full": "Algum de seus armazenamentos está cheio! Esvazie para coletar seus novos recursos."
+        "full": "Algum de seus armazenamentos está cheio! Esvazie para coletar seus novos recursos.",
+        "success": "Coletado com sucesso!"
     },
     "fish": {
         "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas",
         "noBaits": "Você não possui iscas suficientes!",
-        "recycle": "**\\♻️ Lixo encontrado foi reciclado!**",
+        "recycle": "**Lixo encontrado foi reciclado!**",
         "rare": "Peixe Raro",
         "treasure": "Tesouro",
         "trash": "Lixo",
         "fishs": "Peixe",
         "fishRare": "**Parábens você pescou um(a) {{ fish }}!**",
-        "success": "\\🎣 Você conseguiu pescar algo!"
+        "success": "Você conseguiu pescar algo!"
     },
     "forge": {
         "description": "Forge os mínérios em barras",
@@ -157,31 +145,31 @@
         "missing": "Você não possui essa quantia de minérios!",
         "noCoal": "Você não possui carvão para forjar este item!",
         "noMoney": "Você não tem dinheiro suficiente! `Faltando ${{ missing }}`",
-        "success": "\\🔥 Item forjado com sucesso!"
+        "success": "Item forjado com sucesso!"
     },
     "mine": {
         "description": "Coletar mínérios com sua picareta",
         "noPickaxe": "Você não possui uma picareta ativa para minerar.",
-        "success": "\\⛏️ Coletou minérios com sucesso!"
+        "success": "Coletou minérios com sucesso!"
     },
     "saw": {
         "description": "Corte madeiras em tábuas",
         "usage": "[quantidade]",
         "noWood": "Você não tem madeira suficiente! `Faltando: {{ missing }}`",
         "noMoney": "Você não tem dinheiro suficiente! `Faltando ${{ missing }}`",
-        "success": "\\⚙️ Madeiras foram processadas com sucesso!"
+        "success": "Madeiras foram processadas com sucesso!"
     },
     "sell": {
         "description": "Venda o que foi produzido para ganhar dinheiro",
         "noStorage": "Você não possui recursos para venda!",
-        "success": "\\💰 Vendido com sucesso!"
+        "success": "Vendido com sucesso!"
     },
     "storage": {
         "description": "Aumentar os leveis de um armazenamento",
         "usage": "<local> [levels]",
         "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
         "noMaterials": "Você não tem material suficiente para fazer essa melhoria! `Faltando: x{{ missing }} {{ material }}`.",
-        "success": "\\⚙️ Armazenamento melhorado para `level {{ level }}`!"
+        "success": "Armazenamento melhorado para `level {{ level }}`!"
     },
     "table": {
         "description": "Visualizar uma tabela dos preços de recursos e melhorias",
@@ -194,8 +182,8 @@
         "division": "dividida",
         "multiply": "multiplicada",
         "calculate": "Para saber o preço de varios levels, use:\n**{{- prefix }}calculate <level inicial> <level final>**",
-        "storage": "\\📋 Preços do armazenamento da {{ place }}!",
-        "table": "\\📋 Preços da {{ place }}!",
+        "storage": "Preços do armazenamento da {{ place }}!",
+        "table": "Preços da {{ place }}!",
         "upgrade": {
             "farm": "Level 1: **$0**\n{{ prices }}\n...",
             "fishing": "Level 1: Desbloqueado no level `10` da Fazenda\n{{ prices }}\n...",
@@ -208,8 +196,8 @@
         "maxLevel": "Você já esta no level máximo neste local",
         "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
         "noMaterial": "Você não possui os materiais necessários para construção! `Faltando: x{{ missing }} {{ material }}`",
-        "success": "\\⚙️ Level {{- level }}, melhorado com sucesso!",
-        "protection": "\\🌳 Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``buy``, os preços estão no comando ``list``",
+        "success": "Level {{- level }}, melhorado com sucesso!",
+        "protection": "Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``buy``, os preços estão no comando ``list``",
         "unlock": {
             "fishing": "Parabéns, você desbloqueou um novo local! Agora pegue sua vara de pesca e vamos pescar! \\⛵",
             "mining": "Parabéns, você desbloqueou um novo local! Agora pegue sua picareta e vamos minerar! \\⛏"
@@ -218,7 +206,7 @@
     "wood": {
         "description": "Cortar madeiras com seu machado",
         "noSaw": "Você não possui uma ferramenta ativa para cortar madeira.",
-        "success": "\\🪓 Coletou madeiras com sucesso!"
+        "success": "Coletou madeiras com sucesso!"
     },
     "daily": {
         "description": "Lilistars que poderá resgatar a cada 20 horas",
@@ -226,7 +214,7 @@
         "broke": "Sequência quebrada! Você não resgatou o daily por mais de 2 dias.",
         "remaining": "`+{{ days }} vezes!`",
         "bonus": "**Concluído! \\✨**",
-        "success": "\\⭐ Lilistars diários resgatados com sucesso!"
+        "success": "Lilistars diários resgatados com sucesso!"
     },
     "vote": {
         "description": "Ganhe lilistars votando no bot! Essas lilistars poderão ser gastos comprando produtos ou boosters no mercado!",
@@ -241,7 +229,7 @@
         "increase": "aumentará {{- value }}% em sua produção.",
         "decrease": "diminuirá {{- value }}% em sua produção.",
         "noEffect": "não terá efeito.",
-        "success": "\\⛅ Todos os efeitos dos climas!"
+        "success": "Todos os efeitos dos climas!"
     },
     "months": {
         "description": "Veja a duração das estações e os efeitos que ela causa em sua produção.",
@@ -250,19 +238,19 @@
         "duration": "**Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são `fictícias`, criadas para serem usadas dentro do Bot.**",
         "increase": "aumentará {{- value }}% em sua produção.",
         "decrease": "diminuirá {{- value }}% em sua produção.",
-        "success": "\\📅 Todas as durações e efeitos das estações!"
+        "success": "Todas as durações e efeitos das estações!"
     },
     "season": {
         "description": "Mostra a Estação atual.",
         "current": "Estação Atual",
         "next": "Próxima Estação",
-        "success": "\\☁️ Estações!"
+        "success": "Estações do Ano!"
     },
     "weather": {
         "description": "Previsões do tempo para hoje e amanhã.",
         "current": "Atual",
         "next": "Próxima",
-        "success": "\\☂️ Previsão do Tempo!"
+        "success": "Previsão do Tempo!"
     },
     "farm": {
         "description": "Veja o mapa de sua fazenda ou de outro usuário.",
@@ -280,14 +268,14 @@
     "backgrounds": {
         "description": "Prévia de fundos para utilizar no perfil",
         "usage": "[número]",
-        "success": "\\🎴 Fundo `{{ id }}°`!"
+        "success": "Fundo `{{ id }}°`!"
     },
     "box": {
         "description": "Abra suas caixas e ganhe prếmios!",
         "usage": "[tier da caixa]",
         "noBox": "Você não possui essa caixa ou não esta ativa!",
         "empty": "Você não possui nenhuma caixa ativa.",
-        "success": "\\🎁 Caixa foi aberta com sucesso!"
+        "success": "Caixa foi aberta com sucesso!"
     },
     "energetic": {
         "description": "Beber energético para recuperar energia",
@@ -295,12 +283,12 @@
         "empty": "Você não possui essa bebida!",
         "noEnergetic": "Você não possui uma bebida energética ativa!",
         "recoveredEnergy": "\\🔋 Energia Recuperada",
-        "success": "\\🥤 Bebida energética usada com sucesso!"
+        "success": "Bebida energética usada com sucesso!"
     },
     "energy": {
         "description": "Restaure totalmente sua energia",
         "cooldown": "Sua energia já foi restaurada! aguarde `{{ time }}` para usar novamente.",
-        "success": "\\⚡ Energia foi restaurada com sucesso!"
+        "success": "Energia foi restaurada com sucesso!"
     },
     "give": {
         "description": "Dê dinheiro a outros usuários!",
@@ -310,14 +298,14 @@
         "noMoney": "Você não possui esta quantia de dinheiro!",
         "yourself": "Você não pode doar a si mesmo.",
         "cooldown": "Você já efetuou uma doação a um usúario, aguarde `{{ time }}` para fazer isto novamente!",
-        "success": "\\🤝 {{- receiver }} você recebeu dinheiro de {{- giver }}!"
+        "success": "{{- receiver }} você recebeu dinheiro de {{- giver }}!"
     },
     "leaderboard": {
         "description": "Classificações dos melhores usuários!",
         "error": "Digite o recurso corretamente! \n`Recursos: {{ types }}`",
         "usage": "<recurso | local> [página]",
         "noPage": "Não foi possível encontrar usuários suficientes para criar esta página!",
-        "success": "\\🏆 Top 5 `{{- type }}`! Página: {{ page }}/50",
+        "success": "Top 5 user ratings by `{{- type }}`! Página: {{ page }}/50",
         "types": {
             "money": "${{ value }}",
             "lilistars": "{{ value }} Estrelas",
@@ -330,19 +318,19 @@
     "profile": {
         "description": "Perfil com as informações de um usuário.",
         "usage": "[membro]",
-        "success": "\\🖼️ Perfil de `{{- name }}`!"
+        "success": "Perfil de `{{- name }}`!"
     },
     "rares": {
         "description": "Lista de peixes raros pescados!",
         "usage": "[membro]",
         "noRares": "Não pescou nenhum peixe raro!",
-        "success": "\\🐡 Peixes Raros pescados por `{{ member }}`!"
+        "success": "Peixes Raros pescados por `{{ member }}`!"
     },
     "setbackground": {
         "description": "Defina um fundo para seu perfil",
         "noFrame": "Você não possui uma moldura para utilizar! Compre com comando `buy`.",
         "usage": "[número do fundo]",
-        "success": "\\🖌️ Fundo definido com sucesso!"
+        "success": "Fundo definido com sucesso!"
     },
     "stats": {
         "description": "Visualize seus recursos ou de outro usuário.",
@@ -350,6 +338,6 @@
         "production": "{{- generation }}/hr, máximo {{- max }} horas",
         "never": "Nunca coletou.",
         "last": "Última coleta: {{- time }} atrás.",
-        "success": "\\📊 Recursos de `{{- name }}`!"
+        "success": "Recursos de `{{- name }}`!"
     }
   }

@@ -94,7 +94,7 @@ class Collect extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(ct('success'), embed)
+    util.send(`\\📬 ${ct('success')}`, embed)
   }
 
   farmAttack (items) {

@@ -91,7 +91,7 @@ class Craft extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(ct('success'), embed)
+    util.send(`\\🛠️ ${ct('success')}`, embed)
   }
 }
 
