@@ -97,13 +97,23 @@
     },
     "list": {
         "description": "Lista de todos itens compraveis!",
-        "usage": "[página] [--type <tipo>]",
+        "usage": "[id do item] [--type <tipo>] [--page <página>]",
         "noPage": "Está página não existe.",
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
+        "itemId": "ID",
+        "itemType": "Tipo",
+        "itemPrice": "Preço",
+        "itemUtility": "Utilidade",
+        "itemUses": "{{ value }} Uso(s)",
+        "itemSale": "Venda",
+        "itemEnergy": "Energia",
+        "itemRequired": "Requer",
         "item": "**ID: `{{ id }}`\nTipo: `{{ type }}`\nPreço: `{{ price }}`\nUsos: `{{ value }}`\nVenda: `{{ sale }}`**",
         "energy": "\n**Energia:** `{{ energy }}`",
         "place": "\n**Requer: `{{ place }} level {{ required }}`**",
+        "usedIn": "**Usado em**",
+        "itemProfile": "Informações sobre `{{ itemName }}`!",
         "success": "Lista de itens! `Página {{ page }}`"
     },
     "sale": {
@@ -129,6 +139,7 @@
     },
     "collect": {
         "description": "Para coletar todos os seus recursos produzidos",
+        "boosted": "**Booster: {{ percentage }}%**",
         "first": "Primeira coleta!",
         "last": "Última coleta: {{ time }} atrás.",
         "cooldown": "Sua produção ainda não esta pronta, aguarde `{{ min }} minutos` para coletar novamente.",
@@ -345,6 +356,7 @@
         "description": "Visualize seus recursos ou de outro usuário.",
         "usage": "<local> [membro]",
         "production": "{{- generation }}/hr, máximo {{- max }} horas",
+        "booster": "**Aumento de {{ min }}% a {{ max }}%**",
         "never": "Nunca coletou.",
         "last": "Última coleta: {{- time }} atrás.",
         "success": "Recursos de `{{- name }}`!"

@@ -62,6 +62,10 @@
     "aliases": "Atalhos",
     "storage": "Armazenamento",
     "currentEnergy": "🔋 Energia Atual: {{ energy }}",
+    "moneyTypes": {
+        "money": "${{ value }}",
+        "lilistars": "{{ value }} Lilistars"
+    },
     "storages": {
         "farm": "Armazenamento da Fazenda",
         "fishing": "Armazenamento da Pescaria",
@@ -95,5 +99,6 @@
         "hours": "hora(s)",
         "minutes": "minuto(s)",
         "seconds": "segundo(s)"
-    }
+    },
+    "level": "Level {{level}}"
 }

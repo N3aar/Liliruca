@@ -52,7 +52,32 @@ function removeItem (data, inventory, itemId, uses = 1) {
   data[inventory][itemId] -= uses
 }
 
+function normalizeItemPrice (payment, value, t) {
+  return t(`commons:moneyTypes.${payment}`, { value })
+}
+
+function getItemSale (item) {
+  return item.sale || Math.floor(item.price / item.value / 2) || 1
+}
+
+function getItemsByMaterialId (materialId) {
+  return Object.entries(items).filter(([, i]) => i.materials && i.materials[materialId])
+}
+
+function getItemName (itemId, t) {
+  return t(`items:${itemId.replace(':', '_')}.name`)
+}
+
+function getItemDescription (itemId, t) {
+  return t(`items:${itemId.replace(':', '_')}.description`)
+}
+
 module.exports = {
+  getItemName,
+  getItemDescription,
+  getItemsByMaterialId,
+  normalizeItemPrice,
+  getItemSale,
   loadTypes,
   hasItem,
   getItemById,

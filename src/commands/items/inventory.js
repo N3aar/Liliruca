@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById } = require('@utils/items')
+const { getItemName, getItemById } = require('@utils/items')
 const { EMOJIS: { backpack } } = require('@constants')
 
 class Inventory extends LilirucaCommand {
@@ -50,7 +50,7 @@ class Inventory extends LilirucaCommand {
     const items = itemsIds.map(id => {
       const { emoji } = getItemById(id)
       const showId = ids ? `\`[${id}]\`` : ''
-      return `${emoji} **x${inventory[id]} ${t(`items:${id.replace(':', '_')}`)}** ${showId}`
+      return `${emoji} **x${inventory[id]} ${getItemName(id, t)}** ${showId}`
     }, '')
 
     const embed = new LilirucaEmbed()

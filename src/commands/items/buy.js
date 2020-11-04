@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById, addItemInInventory } = require('@utils/items')
+const { getItemName, getItemById, addItemInInventory } = require('@utils/items')
 const { EMOJIS: { bank, pack, money } } = require('@constants')
 
 class Buy extends LilirucaCommand {
@@ -51,7 +51,7 @@ class Buy extends LilirucaCommand {
     const buy = [
       {
         name: `\\${pack} ${t('commons:item')}`,
-        value: `**${item.emoji} ${amount}x ${t(`items:${itemId.replace(':', '_')}`)}**`,
+        value: `**${item.emoji} ${amount}x ${getItemName(itemId, t)}**`,
         inline: true
       },
       {

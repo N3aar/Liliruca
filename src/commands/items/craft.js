@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemName, getItemById, removeItem, addItemInInventory } = require('@utils/items')
 const { EMOJIS: { hammerwrench, items, money } } = require('@constants')
 
 class Craft extends LilirucaCommand {
@@ -51,15 +51,15 @@ class Craft extends LilirucaCommand {
       const required = item.materials[material] * amount
 
       if (value < required) {
-        return util.send(ct('noMaterial', { material: t(`items:${material}`), missing: required - value }))
+        return util.send(ct('noMaterial', { material: getItemName(material, t), missing: required - value }))
       }
     }
 
-    const materials = Object.keys(item.materials).map(name => `x${item.materials[name]} ${t(`items:${name}`)}`)
+    const materials = Object.keys(item.materials).map(name => `x${item.materials[name]} ${getItemName(name, t)}`)
     const fields = [
       {
         name: `${item.emoji} ${t('commons:created')}`,
-        value: `**x${item.value * amount} ${t(`items:${itemId.replace(':', '_')}`)}**`,
+        value: `**x${item.value * amount} ${getItemName(itemId, t)}**`,
         inline: true
       },
       {

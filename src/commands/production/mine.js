@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { randomChances, random } = require('@utils/util')
-const { getItemById, getItemInInventoryByTier, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemName, getItemById, getItemInInventoryByTier, removeItem, addItemInInventory } = require('@utils/items')
 const { ENERGY_COST, EMOJIS: { mining } } = require('@constants')
 
 class Mine extends LilirucaCommand {
@@ -40,12 +40,12 @@ class Mine extends LilirucaCommand {
     const fields = [
       {
         name: `${pickaxe.item.emoji} ${t('commons:tool')}`,
-        value: `**${t(`items:${pickaxe.id.replace(':', '_')}`)}**`,
+        value: `**${getItemName(pickaxe, t)}**`,
         inline: true
       },
       {
         name: `${emoji} ${t('commons:ore')}`,
-        value: `**x${amount} ${t(`items:${itemReward}`)}**`,
+        value: `**x${amount} ${getItemName(itemReward, t)}**`,
         inline: true
       }
     ]
@@ -60,7 +60,7 @@ class Mine extends LilirucaCommand {
 
       fields.push({
         name: `${coalItem.emoji} ${t('commons:bonus')}`,
-        value: `**x${coalAmount} ${t('items:coal')}**`,
+        value: `**x${coalAmount} ${getItemName('coal', t)}**`,
         inline: true
       })
     }

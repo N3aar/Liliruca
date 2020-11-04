@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemName, getItemById, removeItem, addItemInInventory } = require('@utils/items')
 const { ORES, EMOJIS: { fire, money } } = require('@constants')
 
 class Forge extends LilirucaCommand {
@@ -55,12 +55,12 @@ class Forge extends LilirucaCommand {
     const fields = [
       {
         name: `${item.emoji} ${t('commons:ore')}`,
-        value: `**x${amount} ${t(`items:${ore}`)}**`,
+        value: `**x${amount} ${getItemName(ore, t)}**`,
         inline: true
       },
       {
         name: `${bar.emoji} ${t('commons:forged')}`,
-        value: `**x${barAmount} ${t(`items:${item.forge}`)}**`,
+        value: `**x${barAmount} ${getItemName(item.forge, t)}**`,
         inline: true
       },
       {

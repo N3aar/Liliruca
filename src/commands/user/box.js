@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { items, getItemById, addItemInInventory, getItemInInventoryByTier, removeItem } = require('@utils/items')
+const { items, getItemName, getItemById, addItemInInventory, getItemInInventoryByTier, removeItem } = require('@utils/items')
 const { PLACES, STORAGES_SIZE, PLACES_RESOURCES, EMOJIS } = require('@constants')
 
 class Box extends LilirucaCommand {
@@ -58,7 +58,7 @@ class Box extends LilirucaCommand {
     const fields = [
       {
         name: `${boxItem.emoji} ${t('commons:box')}`,
-        value: `**${t(`items:${boxId.replace(':', '_')}`)}**`,
+        value: `**${getItemName(boxId, t)}**`,
         inline: true
       },
       {
@@ -85,7 +85,7 @@ class Box extends LilirucaCommand {
     return {
       emoji: item.emoji,
       value: item.value,
-      type: t(`items:${itemId.replace(':', '_')}`)
+      type: getItemName(itemId, t)
     }
   }
 

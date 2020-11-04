@@ -95,13 +95,23 @@
     },
     "list": {
         "description": "List of all buyable items!",
-        "usage": "[page] [--type <type>]",
+        "usage": "[item id] [--type <type>] [--page <page>]",
         "noPage": "This page does not exist.",
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
+        "itemId": "ID",
+        "itemType": "Type",
+        "itemPrice": "Price",
+        "itemUtility": "Utility",
+        "itemUses": "{{ value }} Use(s)",
+        "itemSale": "Sale",
+        "itemEnergy": "Energy",
+        "itemRequired": "Required",
         "item": "**ID: `{{ id }}`\nType: `{{ type }}`\nPrice: `{{ price }}`\nUses: `{{ value }}`\nSale: `{{ sale }}`**",
         "energy": "\n**Energy:** `{{ energy }}`",
         "place": "\n**Required: `{{ place }} level {{ required }}`**",
+        "usedIn": "**Used In**",
+        "itemProfile": "`{{ itemName }}` Information!",
         "success": "List of Items! `Page {{ page }}`"
     },
     "sale": {
@@ -345,6 +355,7 @@
         "description": "View how your resources are doing",
         "usage": "<place> [member]",
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
+        "booster": "Increaded {{ min }}% to {{ max }}%",
         "never": "Never collected.",
         "last": "Last collected: {{- time }} ago.",
         "success": "Resources of `{{- name }}`"

@@ -1,6 +1,5 @@
 const { getDuration } = require('./date')
-const { getItemInInventoryByTier } = require('./items')
-const { SEASONS, SEASONS_PERCENTAGE, WEATHERS, WEATHER_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES, PLACES_BOOSTERS } = require('../Constants')
+const { SEASONS, SEASONS_PERCENTAGE, WEATHERS, WEATHER_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES } = require('../Constants')
 
 function getSeasonByMonth (month) {
   const parsed = !isNaN(month) ? Math.min(Math.max(month, 1), 12) : (new Date().getMonth() + 1)
@@ -42,7 +41,7 @@ function getPriceResource (resource, amount) {
   return Math.floor(products[resource])
 }
 
-function random (max, min = 0, inclusive) {
+function random (max, min = 0, inclusive = false) {
   return Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0))) + min
 }
 
@@ -56,7 +55,7 @@ function randomChances (chances) {
   }
 }
 
-function calculateProduction (data, generate, place) {
+function calculateProduction (data, generate, place, booster) {
   if (!data.collectedAt) {
     return 0
   }
@@ -70,13 +69,14 @@ function calculateProduction (data, generate, place) {
   const timeMt = timeHr + (time.minutes / 100) <= productionLimit ? time.minutes : 0
   const produced = (generate * timeHr) + ((generate / 60) * timeMt)
 
-  const name = PLACES_BOOSTERS[place]
-  const booster = name && getItemInInventoryByTier(data.activeItems, name)
-  const boosted = booster ? produced + (produced * (random(booster.item.max, booster.item.min, true) / 100)) : produced
+  const percentage = booster && random(booster.item.max, booster.item.min, true)
+  const boosted = percentage && produced + (produced * percentage / 100)
+  const season = getPercentageFromSeason(boosted || produced, place)
 
-  const season = getPercentageFromSeason(boosted, place)
-
-  return getPercentageFromWeather(season)
+  return {
+    production: getPercentageFromWeather(season),
+    boosted: percentage
+  }
 }
 
 function findCategory ({ client, t }, phrase) {
@@ -103,7 +103,12 @@ function findCategory ({ client, t }, phrase) {
   })
 }
 
+function capitalize (str) {
+  return str[0].toUpperCase() + str.slice(1)
+}
+
 module.exports = {
+  capitalize,
   getSeasonByMonth,
   getPercentageFromSeason,
   getWeatherByDay,

@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random } = require('@utils/util')
-const { getItemById, getItemInInventoryByTier, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemName, getItemById, getItemInInventoryByTier, removeItem, addItemInInventory } = require('@utils/items')
 const { ENERGY_COST, EMOJIS: { axe } } = require('@constants')
 
 class Wood extends LilirucaCommand {
@@ -34,7 +34,7 @@ class Wood extends LilirucaCommand {
     const fields = [
       {
         name: `${saw.item.emoji} ${t('commons:tool')}`,
-        value: `**${t(`items:${saw.id.replace(':', '_')}`)}**`,
+        value: `**${getItemName(saw, t)}**`,
         inline: true
       },
       {
@@ -57,7 +57,7 @@ class Wood extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\🪓 ${ct('success')}`, embed)
+    util.send(ct('success'), embed)
   }
 }
 

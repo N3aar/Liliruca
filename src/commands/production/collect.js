@@ -48,14 +48,15 @@ class Collect extends LilirucaCommand {
     const collect = places.map(place => {
       const dataPlace = data[place]
       const generate = dataPlace.level * PLACE_GENERATE[place]
-      const production = calculateProduction(data, generate, place)
-
-      const limit = dataPlace.storage * STORAGES_SIZE[place]
-      const total = dataPlace.amount + production > limit ? limit - dataPlace.amount : production
-      const attacked = place === 'farm' && attack ? Math.floor(total - (total * (attack / 100))) : total
 
       const name = PLACES_BOOSTERS[place]
       const booster = name && getItemInInventoryByTier(data.activeItems, name)
+
+      const { production, boosted } = calculateProduction(data, generate, place, booster)
+      const limit = dataPlace.storage * STORAGES_SIZE[place]
+      const total = dataPlace.amount + production > limit ? limit - dataPlace.amount : production
+      const attacked = place === 'farm' && attack ? Math.floor(total - (total * (attack / 100))) : total
+      const percentage = booster ? `\n${ct('boosted', { percentage: boosted })}` : ''
 
       if (booster) {
         removeItem(data, 'activeItems', booster.id)
@@ -65,7 +66,7 @@ class Collect extends LilirucaCommand {
 
       return {
         name: `\\${EMOJIS[place]} ${t(`commons:${place}`)}`,
-        value: `**${t('commons:amount')}: ${attacked}**`,
+        value: `**${t('commons:amount')}: ${attacked}**` + percentage,
         inline: true
       }
     })
@@ -78,14 +79,12 @@ class Collect extends LilirucaCommand {
       embed.setDescription(ct('attacked', { attack }))
     }
 
-    if (data.farm.level >= 6) {
-      if (data.activeItems.scarecrow) {
-        removeItem(data, 'activeItems', 'scarecrow')
-      }
+    if (data.activeItems.scarecrow) {
+      removeItem(data, 'activeItems', 'scarecrow')
+    }
 
-      if (data.activeItems.fence) {
-        removeItem(data, 'activeItems', 'fence')
-      }
+    if (data.activeItems.fence) {
+      removeItem(data, 'activeItems', 'fence')
     }
 
     const values = {

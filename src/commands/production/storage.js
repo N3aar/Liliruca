@@ -1,6 +1,6 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { getStoragePrice } = require('@utils/util')
+const { getItemName, getStoragePrice } = require('@utils/util')
 const { STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS: { storage } } = require('@constants')
 const { removeItem } = require('../../utils/items')
 
@@ -51,7 +51,7 @@ class Storage extends LilirucaCommand {
 
     if (items < materials) {
       const missing = materials - items
-      return util.send(ct('noMaterials', { missing, material: t(`items:${material}`) }))
+      return util.send(ct('noMaterials', { missing, material: getItemName(material, t) }))
     }
 
     removeItem(data, 'items', material, materials)

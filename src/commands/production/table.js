@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById } = require('@utils/items')
+const { getItemName, getItemById } = require('@utils/items')
 const { PLACE_NAMES, PLACES_RESOURCES, PLACE_MAX_LEVEL, UPGRADE_PRICE, STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS } = require('@constants')
 
 const table = {
@@ -89,7 +89,7 @@ class Table extends LilirucaCommand {
       },
       {
         name: `${emoji} ${t('commons:materials')}`,
-        value: ct('materials', { material: t(`items:${material}`), amount })
+        value: ct('materials', { material: getItemName(material, t), amount })
       },
       {
         name: `\\${EMOJIS.pack} ${t('commons:sell')}`,
@@ -116,7 +116,7 @@ class Table extends LilirucaCommand {
       },
       {
         name: `${emoji} ${t('commons:materials')}`,
-        value: ct('materials', { material: t(`items:${material}`), amount: materials })
+        value: ct('materials', { material: getItemName(material, t), amount: materials })
       },
       {
         name: `\\${EMOJIS.lamp} ${t('commons:tip')}`,

@@ -19,7 +19,7 @@
     },
     "wooden-plank": {
         "price": 130,
-        "sale": 10,
+        "sale": 40,
         "payment": "money",
         "type": "material",
         "value": 1,
@@ -284,6 +284,7 @@
     "baits:3": {
         "place": "fishing",
         "price": 15,
+        "sale": 2,
         "payment": "lilistars",
         "type": "bait",
         "value": 5,

@@ -69,6 +69,10 @@
     "aliases": "Shortcuts",
     "storage": "Storage",
     "currentEnergy": "Current Energy: {{ energy }}",
+    "moneyTypes": {
+        "money": "${{ value }}",
+        "lilistars": "{{ value }} Lilistars"
+    },
     "storages": {
         "farm": "Storage Farm" ,
         "fishing": "Storage Fishing",
@@ -102,5 +106,6 @@
         "hours": "hour(s)",
         "minutes": "minute(s)",
         "seconds": "second(s)"
-    }
+    },
+    "level": "Level {{level}}"
 }

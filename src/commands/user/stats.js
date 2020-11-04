@@ -2,7 +2,8 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
 const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
-const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, EMOJIS } = require('@constants')
+const { getItemName, getItemInInventoryByTier } = require('@utils/items')
+const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, PLACES_BOOSTERS, EMOJIS } = require('@constants')
 
 class Stats extends LilirucaCommand {
   constructor () {
@@ -40,10 +41,13 @@ class Stats extends LilirucaCommand {
     const generate = dataPlace.level * PLACE_GENERATE[place]
     const generation = getPercentageFromSeason(generate, place)
 
+    const boosterName = PLACES_BOOSTERS[place]
+    const booster = getItemInInventoryByTier(data.activeItems, boosterName)
+
     const productionLimit = PRODUCTION_LIMIT[place] + (dataPlace.level * 2)
     const limit = getPercentageFromSeason(generate * productionLimit, place)
-    const calc = calculateProduction(data, generate, place)
-    const produced = calc > limit ? limit : calc
+    const { production } = calculateProduction(data, generate, place, booster)
+    const produced = production > limit ? limit : production
     const percentage = Math.floor((produced / limit) * 100)
 
     const resource = PLACES_RESOURCES[place]
@@ -52,44 +56,51 @@ class Stats extends LilirucaCommand {
 
     const stats = [
       {
-        name: 'money',
-        value: `$${data.money}`
+        name: `\\${EMOJIS.money} ${t('commons:money')}`,
+        value: `**$${data.money}**`,
+        inline: true
       },
       {
-        name: place,
-        value: `Level ${dataPlace.level}`
+        name: `\\${EMOJIS[place]} ${t(`commons:${place}`)}`,
+        value: `**${t('commons:level', { level: dataPlace.level })}**`,
+        inline: true
       },
       {
-        name: 'storage',
-        value: `Level ${dataPlace.storage}`
+        name: `\\${EMOJIS.storage} ${t('commons:storage')}`,
+        value: `**${t('commons:level', { level: dataPlace.storage })}**`,
+        inline: true
       },
       {
-        name: resource,
-        value: `${t('commons:amount')}: ${amount}/${storageSize}`,
-        emoji: resourceEmoji
+        name: `\\${resourceEmoji} ${t(`commons:${resource}`)}`,
+        value: `**${t('commons:amount')}: ${amount}/${storageSize}**`,
+        inline: true
       },
       {
-        name: 'produced',
-        value: `${produced}/${limit} (${percentage}%)`
+        name: `\\${EMOJIS.produced} ${t('commons:produced')}`,
+        value: `**${produced}/${limit} (${percentage}%)**`,
+        inline: true
       },
       {
-        name: 'production',
-        value: `${ct('production', { generation, max: productionLimit })}`
+        name: `\\${EMOJIS.production} ${t('commons:production')}`,
+        value: `**${ct('production', { generation, max: productionLimit })}**`,
+        inline: true
       }
     ]
 
-    const fields = stats.map(field => ({
-      name: `\\${field.emoji || EMOJIS[field.name]} ${t(`commons:${field.name}`)}`,
-      value: `**${field.value}**`,
-      inline: true
-    }))
+    if (booster) {
+      stats.push({
+        name: `${booster.item.emoji} ${getItemName(booster.id, t)}`,
+        value: ct('booster', { min: booster.item.min, max: booster.item.max }),
+        inline: true
+      })
+    }
 
     const collectedAt = data.collectedAt || 0
     const past = Date.now() - collectedAt
 
     const last = !data.collectedAt ? ct('never') : ct('last', { time: parseDuration(past, language) })
     const embed = new LilirucaEmbed()
-      .addFields(fields)
+      .addFields(stats)
       .setFooter(last)
 
     util.send(`\\📊 ${ct('success', { name: member.displayName })}`, embed)

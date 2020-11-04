@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById, removeItem } = require('@utils/items')
+const { getItemName, getItemById, removeItem } = require('@utils/items')
 const { EMOJIS: { shopcart, pack, money } } = require('@constants')
 
 class Sale extends LilirucaCommand {
@@ -40,7 +40,7 @@ class Sale extends LilirucaCommand {
     const fields = [
       {
         name: `\\${pack} ${t('commons:item')}`,
-        value: `**${item.emoji} ${amount}x ${t(`items:${itemId.replace(':', '_')}`)}**`,
+        value: `**${item.emoji} ${amount}x ${getItemName(itemId, t)}**`,
         inline: true
       },
       {

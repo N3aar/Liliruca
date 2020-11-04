@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { removeItem } = require('@utils/items')
+const { getItemName, removeItem } = require('@utils/items')
 const { PLACES, UPGRADE_PRICE, UPGRADE_MATERIALS, PLACE_MAX_LEVEL, EMOJIS: { gear } } = require('@constants')
 
 class Upgrade extends LilirucaCommand {
@@ -43,7 +43,7 @@ class Upgrade extends LilirucaCommand {
     const items = data.items[material] || 0
 
     if (items < required) {
-      return util.send(ct('noMaterial', { material: t(`items:${material}`), missing: required - items }))
+      return util.send(ct('noMaterial', { material: getItemName(material, t), missing: required - items }))
     }
 
     data[place].level++

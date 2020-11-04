@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getStoragePrice } = require('@utils/util')
-const { getItemById } = require('@utils/items')
+const { getItemName, getItemById } = require('@utils/items')
 const { STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS } = require('@constants')
 
 class Calculate extends LilirucaCommand {
@@ -56,7 +56,7 @@ class Calculate extends LilirucaCommand {
       },
       {
         name: `${emoji} ${t('commons:materials')}`,
-        value: `**x${materials} ${t(`items:${material}`)}**`,
+        value: `**x${materials} ${getItemName(material, t)}**`,
         inline: true
       }
     ]

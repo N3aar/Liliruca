@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById, addItemInInventory, removeItem } = require('@utils/items')
+const { getItemName, getItemById, addItemInInventory, removeItem } = require('@utils/items')
 const { EMOJIS: { gear, money } } = require('@constants')
 
 class Saw extends LilirucaCommand {
@@ -44,12 +44,12 @@ class Saw extends LilirucaCommand {
     const fields = [
       {
         name: `${wood} ${t('commons:process')}`,
-        value: `**x${required} ${t('items:wood')}**`,
+        value: `**x${required} ${getItemName('wood', t)}**`,
         inline: true
       },
       {
         name: `${plank} ${t('commons:result')}`,
-        value: `**x${amount} ${t('items:wooden-plank')}**`,
+        value: `**x${amount} ${getItemName('wooden-plank', t)}**`,
         inline: true
       },
       {

@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemInInventoryByTier, getItemById, removeItem } = require('@utils/items')
+const { getItemName, getItemInInventoryByTier, getItemById, removeItem } = require('@utils/items')
 const { EMOJIS: { drink, voltage } } = require('@constants')
 
 class Energetic extends LilirucaCommand {
@@ -40,7 +40,7 @@ class Energetic extends LilirucaCommand {
     const fields = [
       {
         name: `\\${drink} ${t('commons:drink')}`,
-        value: `**${t(`items:${energeticId.replace(':', '_')}`)}**`,
+        value: `**${getItemName(energeticId, t)}**`,
         inline: true
       },
       {
