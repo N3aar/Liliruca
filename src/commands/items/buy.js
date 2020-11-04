@@ -21,12 +21,17 @@ class Buy extends LilirucaCommand {
           id: 'amount',
           type: Argument.range('integer', 1, Infinity),
           default: 1
+        },
+        {
+          id: 'active',
+          match: 'flag',
+          flag: ['--active', '--at']
         }
       ]
     })
   }
 
-  async exec ({ ct, t, db, member, util }, { itemId, amount }) {
+  async exec ({ ct, t, db, member, util }, { itemId, amount, active }) {
     const item = getItemById(itemId)
     const data = await db.users.get(member.id)
 
@@ -38,7 +43,8 @@ class Buy extends LilirucaCommand {
       return util.send(ct('noMoney'))
     }
 
-    const inventory = data.activeItems[itemId] ? 'activeItems' : 'items'
+    const autoActive = (active && !item.inactive && !(itemId in data.items))
+    const inventory = (data.activeItems[itemId] || autoActive) ? 'activeItems' : 'items'
     addItemInInventory(data, inventory, itemId, item.value * amount)
 
     const price = item.price * amount

@@ -25,7 +25,7 @@ class Inventory extends LilirucaCommand {
         {
           id: 'active',
           match: 'flag',
-          flag: '--actives'
+          flag: ['--actives', '--at']
         },
         {
           id: 'ids',

@@ -28,7 +28,7 @@ class Mine extends LilirucaCommand {
       return util.send(t('errors:noEnergy'))
     }
 
-    const pickaxe = getItemInInventoryByTier(data.activeItems, 'pickaxe')
+    const pickaxe = getItemInInventoryByTier(data.activeItems, 'pickaxe', 5)
     if (!pickaxe) {
       return util.send(ct('noPickaxe'))
     }

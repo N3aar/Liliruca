@@ -62,7 +62,7 @@
     },
     "buy": {
         "description": "Buy items to use.",
-        "usage": "<item id> [amount]",
+        "usage": "<item id> [amount] [--active | --at]",
         "noItem": "Type the item id correctly!",
         "noMoney": "You don't have enough money to buy this item!",
         "active": "Disable this item before!",
@@ -88,7 +88,7 @@
     },
     "inventory": {
         "description": "View your inventory or that of another user!",
-        "usage": "[page] [member] [--actives]",
+        "usage": "[page] [member] [--actives | --at]",
         "noActiveItems": "You have no active items!",
         "noItems": "You have no inventory items!",
         "success": "`{{- member }}` inventory | `Page {{ page }}`"
@@ -223,6 +223,7 @@
     "wood": {
         "description": "Chopping wood with your axe",
         "noSaw": "You don't have an active tool for cutting wood.",
+        "insufficient": "Your tool does not have enough uses for this!!",
         "success": "Successfully collected wood!"
     },
     "daily": {
@@ -355,7 +356,7 @@
         "description": "View how your resources are doing",
         "usage": "<place> [member]",
         "production": "{{- generation }}/hr, maximum {{- max }} hours",
-        "booster": "Increaded {{ min }}% to {{ max }}%",
+        "booster": "Increased {{ min }}% to {{ max }}%",
         "never": "Never collected.",
         "last": "Last collected: {{- time }} ago.",
         "success": "Resources of `{{- name }}`"

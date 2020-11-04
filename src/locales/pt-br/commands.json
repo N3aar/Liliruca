@@ -65,7 +65,7 @@
     },
     "buy": {
         "description": "Compre itens para utilizar.",
-        "usage": "<id do item> [quantidade]",
+        "usage": "<id do item> [quantidade] [--active | --at]",
         "noMoney": "Você não possui dinheiro suficiente para comprar este item!",
         "active": "Desative esse item antes!",
         "payments": {
@@ -90,7 +90,7 @@
     },
     "inventory": {
         "description": "Veja seu inventário ou de outro usuário!",
-        "usage": "[page] [membro] [--actives]",
+        "usage": "[page] [membro] [--actives | --at]",
         "noActiveItems": "Não possui itens ativos!",
         "noItems": "Não possui itens no inventário!",
         "success": "Inventário de `{{- member }}` | `Página {{ page }}`"
@@ -225,7 +225,9 @@
     },
     "wood": {
         "description": "Cortar madeiras com seu machado",
+        "usage": "[quantia de usos]",
         "noSaw": "Você não possui uma ferramenta ativa para cortar madeira.",
+        "insufficient": "Sua ferramenta não possui usos suficientes para isso!",
         "success": "Coletou madeiras com sucesso!"
     },
     "daily": {
