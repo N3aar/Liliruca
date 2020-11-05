@@ -42,7 +42,6 @@
     "nodemon": "^2.0.6"
   },
   "_moduleAliases": {
-    "@app": "src",
     "@package": "package.json",
     "@utils": "src/utils",
     "@database": "src/database",
