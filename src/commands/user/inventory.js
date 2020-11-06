@@ -13,14 +13,16 @@ class Inventory extends LilirucaCommand {
       clientPermissions: 'EMBED_LINKS',
       args: [
         {
-          id: 'page',
-          type: Argument.range('integer', 1, Infinity),
-          default: 1
-        },
-        {
           id: 'member',
           type: 'realMember',
           default: message => message.member
+        },
+        {
+          id: 'page',
+          match: 'option',
+          flag: ['--page', '--p'],
+          type: Argument.range('integer', 1, Infinity),
+          default: 1
         },
         {
           id: 'ids',
