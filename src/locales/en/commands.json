@@ -295,7 +295,7 @@
     },
     "inventory": {
         "description": "View your inventory or that of another user!",
-        "usage": "[page] [member]",
+        "usage": "[member] [--page | --p <page>] [--id]",
         "noItems": "You have no inventory items!",
         "success": "`{{- member }}` inventory | `Page {{ page }}`"
     },
