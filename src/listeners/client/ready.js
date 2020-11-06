@@ -16,7 +16,7 @@ class ReadyListener extends Listener {
 
     const readyMessage = `Bot started successfully! (${UsersSize} users & ${GuildsSize} servers)`
     const rebootChannel = client.channels.cache.get(process.env.REBOOT_CHANNEL)
-    const statsChannel = client.channels.get(process.env.STATS_CHANNEL_ID)
+    const statsChannel = client.channels.cache.get(process.env.STATS_CHANNEL_ID)
 
     client.logger.success(readyMessage)
 
