@@ -210,7 +210,7 @@
     },
     "wood": {
         "description": "Chopping wood with your axe",
-        "usage": "[item id]",
+        "usage": "[amount of uses] [item id]",
         "noAxe": "You don't have this tool for cutting wood.",
         "insufficient": "Your tool does not have enough uses for this!!",
         "success": "Successfully collected wood!"

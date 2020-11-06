@@ -5,7 +5,6 @@ const GuildSchema = new Schema({
   prefix: String,
   language: { type: String, lowercase: true }
 }, {
-  timestamps: true,
   minimize: false
 })
 
