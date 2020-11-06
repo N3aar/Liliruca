@@ -55,13 +55,12 @@
     "eval": {
         "description": "Comando restrito a desenvolvedores!"
     },
-    "active": {
-        "description": "Ative um item para ser usado.",
+    "box": {
+        "description": "Abra suas caixas e ganhe prếmios!",
         "usage": "<id do item>",
-        "inative": "Este item não precisa ser ativo!",
-        "already": "Este item já está ativo.",
-        "missing": "Você não possui este item!",
-        "success": "Item ativado com sucesso!"
+        "noBox": "Você não possui essa caixa ou não esta ativa!",
+        "empty": "Você não possui nenhuma caixa ativa.",
+        "success": "Caixa foi aberta com sucesso!"
     },
     "buy": {
         "description": "Compre itens para utilizar.",
@@ -81,19 +80,6 @@
         "noMoney": "Você não possui dinheiro suficiente! `Faltando: ${{ missing }}`.",
         "noMaterial": "Você não possui os materiais necessários! `Faltando: x{{ missing }} {{ material }}`.",
         "success": "Item craftado com sucesso!"
-    },
-    "disable": {
-        "description": "Desative um item e coloque de volta em seu inventário.",
-        "usage": "<id do item>",
-        "noActive": "Este item não está ativo!",
-        "success": "Item desativado com sucesso!"
-    },
-    "inventory": {
-        "description": "Veja seu inventário ou de outro usuário!",
-        "usage": "[page] [membro] [--actives | --at]",
-        "noActiveItems": "Não possui itens ativos!",
-        "noItems": "Não possui itens no inventário!",
-        "success": "Inventário de `{{- member }}` | `Página {{ page }}`"
     },
     "list": {
         "description": "Lista de todos itens compraveis!",
@@ -117,7 +103,7 @@
         "success": "Lista de itens! `Página {{ page }}`"
     },
     "sale": {
-        "description": "Venda items do seu inventário",
+        "description": "Venda itens do seu inventário",
         "usage": "<id do item> [quantidade]",
         "noItems": "Você não possui este item ou esta quantidade!",
         "lilistars": "{{ value }} Lilistars",
@@ -149,6 +135,7 @@
     },
     "fish": {
         "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas",
+        "usage": "[id do item]",
         "noBaits": "Você não possui iscas suficientes!",
         "recycle": "**Lixo encontrado foi reciclado!**",
         "rare": "Peixe Raro",
@@ -169,7 +156,8 @@
     },
     "mine": {
         "description": "Coletar mínérios com sua picareta",
-        "noPickaxe": "Você não possui uma picareta ativa para minerar.",
+        "usage": "[id do item]",
+        "noPickaxe": "Você não possui essa picareta para minerar.",
         "success": "Coletou minérios com sucesso!"
     },
     "saw": {
@@ -225,8 +213,8 @@
     },
     "wood": {
         "description": "Cortar madeiras com seu machado",
-        "usage": "[quantia de usos]",
-        "noSaw": "Você não possui uma ferramenta ativa para cortar madeira.",
+        "usage": "[quantia de usos] [id do item]",
+        "noAxe": "Você não possui essa ferramenta para cortar madeira.",
         "insufficient": "Sua ferramenta não possui usos suficientes para isso!",
         "success": "Coletou madeiras com sucesso!"
     },
@@ -274,36 +262,15 @@
         "next": "Próxima",
         "success": "Previsão do Tempo!"
     },
-    "farm": {
-        "description": "Veja o mapa de sua fazenda ou de outro usuário.",
-        "success": "\\🌳 Fazenda de `{{- name }}`"
-    },
-    "fishing": {
-        "description": "Veja o mapa de sua pescaria ou de outro usuário.",
-        "success": "\\⛵ Pescaria de `{{- name }}`"
-    },
-    "mining": {
-        "description": "Veja o mapa de sua mineração ou de outro usuário.",
-        "usage": "<@usuário>",
-        "success": "\\⛏ Mineração de `{{- name }}`"
-    },
     "backgrounds": {
         "description": "Prévia de fundos para utilizar no perfil",
         "usage": "[número]",
         "success": "Fundo `{{ id }}°`!"
     },
-    "box": {
-        "description": "Abra suas caixas e ganhe prếmios!",
-        "usage": "[tier da caixa]",
-        "noBox": "Você não possui essa caixa ou não esta ativa!",
-        "empty": "Você não possui nenhuma caixa ativa.",
-        "success": "Caixa foi aberta com sucesso!"
-    },
     "energetic": {
         "description": "Beber energético para recuperar energia",
-        "usage": "[tier do energético]",
-        "empty": "Você não possui essa bebida!",
-        "noEnergetic": "Você não possui uma bebida energética ativa!",
+        "usage": "[id do item]",
+        "noEnergetic": "Você não possui essa bebida!",
         "recoveredEnergy": "\\🔋 Energia Recuperada",
         "success": "Bebida energética usada com sucesso!"
     },
@@ -311,6 +278,12 @@
         "description": "Restaure totalmente sua energia",
         "cooldown": "Sua energia já foi restaurada! aguarde `{{ time }}` para usar novamente.",
         "success": "Energia foi restaurada com sucesso!"
+    },
+    "equip": {
+        "description": "Equipe suas ferramentas ou items",
+        "usage": "<id do item>",
+        "noTool": "Este item não precisa ser equipado!",
+        "success": "Ferramenta foi equipada com sucesso!"
     },
     "give": {
         "description": "Dê dinheiro a outros usuários!",
@@ -321,6 +294,12 @@
         "yourself": "Você não pode doar a si mesmo.",
         "cooldown": "Você já efetuou uma doação a um usúario, aguarde `{{ time }}` para fazer isto novamente!",
         "success": "{{- receiver }} você recebeu dinheiro de {{- giver }}!"
+    },
+    "inventory": {
+        "description": "Veja seu inventário ou de outro usuário!",
+        "usage": "[membro] [--page | --p <página>]",
+        "noItems": "Não possui itens no inventário!",
+        "success": "Inventário de `{{- member }}` | `Página {{ page }}`"
     },
     "leaderboard": {
         "description": "Classificações dos melhores usuários!",
@@ -362,5 +341,23 @@
         "never": "Nunca coletou.",
         "last": "Última coleta: {{- time }} atrás.",
         "success": "Recursos de `{{- name }}`!"
+    },
+    "tools": {
+        "description": "Todas suas ferramentas equipadas para utilizar",
+        "notEquipped": "Não equipado.",
+        "energetic": "Energético",
+        "axe": "Machado",
+        "baits": "Iscas",
+        "pickaxe": "Picareta",
+        "fertilizer": "Fertilizante",
+        "fishingNet": "Rede de Pesca",
+        "bomb": "Bomba",
+        "success": "Seus itens e ferramentas equipados!"
+    },
+    "unequip": {
+        "description": "Desequipar sua ferramenta ou item",
+        "usage": "<id do item>",
+        "noEquipped": "Este item não esta equipado!",
+        "success": "Desequipado com sucesso!"
     }
   }

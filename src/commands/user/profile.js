@@ -69,7 +69,7 @@ class Profile extends LilirucaCommand {
 
     const profile = new MessageAttachment(canvas.toBuffer(), 'profile.png')
 
-    util.send(`\\🖼️ ${ct('success', { name })}`, profile)
+    util.send(`\\${picture} ${ct('success', { name })}`, profile)
   }
 }
 

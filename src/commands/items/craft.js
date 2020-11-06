@@ -10,7 +10,10 @@ class Craft extends LilirucaCommand {
       aliases: ['cf'],
       emoji: hammerwrench,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ],
       args: [
         {
           id: 'itemId',
@@ -74,9 +77,7 @@ class Craft extends LilirucaCommand {
       }
     ]
 
-    const inventory = data.activeItems[itemId] ? 'activeItems' : 'items'
-
-    addItemInInventory(data, inventory, itemId, item.value * amount)
+    addItemInInventory(data, 'items', itemId, item.value * amount)
 
     for (const material in item.materials) {
       removeItem(data, 'items', material, item.materials[material] * amount)
@@ -91,7 +92,7 @@ class Craft extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(`\\🛠️ ${ct('success')}`, embed)
+    util.send(`\\${hammerwrench} ${ct('success')}`, embed)
   }
 }
 

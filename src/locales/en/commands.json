@@ -52,13 +52,12 @@
         "memoryUsage": "Memory Usage",
         "success": "Bot technical information!"
     },
-    "active": {
-        "description": "Activate an item to use.",
+    "box": {
+        "description": "Open your boxes and win prizes!",
         "usage": "<item id>",
-        "inative": "This item does not have to be active!",
-        "already": "This item is already active.",
-        "missing": "You do not have this item!",
-        "success": "Item successfully activated!"
+        "noBox": "You do not have this box or it is not active!",
+        "empty": "You do not have any active box.",
+        "success": "Box was successfully opened!"
     },
     "buy": {
         "description": "Buy items to use.",
@@ -79,19 +78,6 @@
         "noMoney": "You don't have enough money! `Missing: ${{ missing }}`.",
         "noMaterial": "You don't have the necessary materials! `Missing: x{{ missing }} {{ material }}`.",
         "success": "Successfully crafted item!"
-    },
-    "disable": {
-        "description": "Deactivate an item and put it back in your inventory.",
-        "usage": "<item id>",
-        "noActive": "This item is not active!",
-        "success": "Item successfully deactivated!"
-    },
-    "inventory": {
-        "description": "View your inventory or that of another user!",
-        "usage": "[page] [member] [--actives | --at]",
-        "noActiveItems": "You have no active items!",
-        "noItems": "You have no inventory items!",
-        "success": "`{{- member }}` inventory | `Page {{ page }}`"
     },
     "list": {
         "description": "List of all buyable items!",
@@ -146,6 +132,7 @@
     },
     "fish": {
         "description": "Catch fish or treasures with your fishing rod and some baits",
+        "usage": "[item id]",
         "noBaits": "You don't have enough bait!",
         "recycle": "**Trash found has been recycled!**",
         "rare": "Rare Fish",
@@ -166,7 +153,8 @@
     },
     "mine": {
         "description": "Collect ores with your pickaxe",
-        "noPickaxe": "You don't have an active pickaxe to mine.",
+        "usage": "[item id]",
+        "noPickaxe": "You don't have that pickaxe to mine.",
         "success": "Collect ores successfully!"
     },
     "saw": {
@@ -222,7 +210,8 @@
     },
     "wood": {
         "description": "Chopping wood with your axe",
-        "noSaw": "You don't have an active tool for cutting wood.",
+        "usage": "[item id]",
+        "noAxe": "You don't have this tool for cutting wood.",
         "insufficient": "Your tool does not have enough uses for this!!",
         "success": "Successfully collected wood!"
     },
@@ -270,38 +259,16 @@
         "next": "Next",
         "success": "Weather forecast!"
     },
-    "farm": {
-        "description": "View the map of your farm or other user.",
-        "usage": ["[@user]"],
-        "success": "\\🌳 Farm of `{{- name }}"
-    },
-    "fishing": {
-        "description": "View the map of your fishing or other user.",
-        "usage": ["[@user]"],
-        "success": "\\⛵ Fishing of `{{- name }}`"
-    },
-    "mining": {
-        "description": "View the map of your mining or other user.",
-        "usage": "[@user]",
-        "success": "\\⛏ Mining of `{{- name }}`"
-    },
     "backgrounds": {
         "description": "Backgrounds preview to use in profile",
         "usage": "[number]",
         "success": "Background `{{ id }}°`!"
     },
-    "box": {
-        "description": "Open your boxes and win prizes!",
-        "usage": "[box tier]",
-        "noBox": "You do not have this box or it is not active!",
-        "empty": "You do not have any active box.",
-        "success": "Box was successfully opened!"
-    },
     "energetic": {
         "description": "Energy drink to recover energy",
-        "usage": "[energetic tier]",
+        "usage": "[item id]",
         "empty": "You don't own this drink!",
-        "noEnergetic": "You don't have an active energy drink!",
+        "noEnergetic": "You don't have that drink!",
         "recoveredEnergy": "\\🔋 Recovered Energy",
         "success": "Energy drink used successfully!"
     },
@@ -309,6 +276,12 @@
         "description": "Fully restore your energy",
         "cooldown": "Your energy has already been restored! wait `{{ time }}` to use again.",
         "success": "Power was successfully restored!"
+    },
+    "equip": {
+        "description": "Equip your tools or items",
+        "usage": "<item id>",
+        "noTool": "This item does not need to be equipped!",
+        "success": "Tool was successfully equipped!"
     },
     "give": {
         "description": "Give money to other users!",
@@ -319,6 +292,12 @@
         "yourself": "You cannot donate yourself.",
         "cooldown": "You already gave money to a user, wait `{{ time }}` to do it again!",
         "success": "{{- receiver }} you received money from {{- giver }}!"
+    },
+    "inventory": {
+        "description": "View your inventory or that of another user!",
+        "usage": "[page] [member]",
+        "noItems": "You have no inventory items!",
+        "success": "`{{- member }}` inventory | `Page {{ page }}`"
     },
     "leaderboard": {
         "description": "Leaderboard from the best users!",
@@ -360,5 +339,23 @@
         "never": "Never collected.",
         "last": "Last collected: {{- time }} ago.",
         "success": "Resources of `{{- name }}`"
+    },
+    "tools": {
+        "description": "All your tools equipped to use",
+        "notEquipped": "Not equipped.",
+        "energetic": "Energetic",
+        "axe": "Axe",
+        "baits": "Baits",
+        "pickaxe": "Pickaxe",
+        "fertilizer": "Fertilizer",
+        "fishingNet": "Fishing Net",
+        "bomb": "Bomb",
+        "success": "Your items and tools equipped!"
+    },
+    "unequip": {
+        "description": "Unequip your tool or item",
+        "usage": "<item id>",
+        "noEquipped": "This item is not equipped!",
+        "success": "Successfully unequipped!"
     }
   }

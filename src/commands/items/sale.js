@@ -10,7 +10,10 @@ class Sale extends LilirucaCommand {
       aliases: ['se'],
       emoji: shopcart,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ],
       args: [
         {
           id: 'itemId',
@@ -28,8 +31,7 @@ class Sale extends LilirucaCommand {
 
   async exec ({ t, ct, util, db, author }, { itemId, amount }) {
     const data = await db.users.get(author.id)
-    const inventory = data.activeItems[itemId] ? 'activeItems' : 'items'
-    const value = data[inventory][itemId]
+    const value = data.items[itemId]
 
     if (!value || value < amount) {
       return util.send(ct('noItems'))
@@ -53,7 +55,7 @@ class Sale extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    removeItem(data, inventory, itemId, amount)
+    removeItem(data, 'items', itemId, amount)
 
     const values = {
       [item.payment]: data[item.payment] + price
@@ -61,7 +63,7 @@ class Sale extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\🛒 ${ct('success')}`, embed)
+    util.send(`\\${shopcart} ${ct('success')}`, embed)
   }
 }
 

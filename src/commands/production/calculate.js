@@ -65,7 +65,7 @@ class Calculate extends LilirucaCommand {
       .addFields(fields)
       .setFooter(storageName)
 
-    util.send(`\\🧮 ${ct('success')}`, embed)
+    util.send(`\\${EMOJIS.abacus} ${ct('success')}`, embed)
   }
 }
 

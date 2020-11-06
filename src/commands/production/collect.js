@@ -2,7 +2,7 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
 const { calculateProduction, random } = require('@utils/util')
-const { getItemInInventoryByTier, removeItem } = require('@utils/items')
+const { getToolInInventory, removeItem } = require('@utils/items')
 const { STORAGES_SIZE, PLACE_GENERATE, PLACES, PLACES_BOOSTERS, EMOJIS } = require('@constants')
 
 class Collect extends LilirucaCommand {
@@ -39,7 +39,7 @@ class Collect extends LilirucaCommand {
     }
 
     const places = PLACES.filter(place => data[place].level)
-    const attack = data.farm.level >= 6 && this.farmAttack(data.activeItems)
+    const attack = data.farm.level >= 6 && this.farmAttack(data.items)
 
     if (!data.collectedAt) {
       data.collectedAt = collectedAt
@@ -50,7 +50,7 @@ class Collect extends LilirucaCommand {
       const generate = dataPlace.level * PLACE_GENERATE[place]
 
       const name = PLACES_BOOSTERS[place]
-      const booster = name && getItemInInventoryByTier(data.activeItems, name)
+      const booster = name && getToolInInventory(data, name)
 
       const { production, boosted } = calculateProduction(data, generate, place, booster)
       const limit = dataPlace.storage * STORAGES_SIZE[place]
@@ -59,7 +59,7 @@ class Collect extends LilirucaCommand {
       const percentage = booster ? `\n${ct('boosted', { percentage: boosted })}` : ''
 
       if (booster) {
-        removeItem(data, 'activeItems', booster.id)
+        removeItem(data, 'items', booster.id)
       }
 
       dataPlace.amount += attacked
@@ -79,12 +79,12 @@ class Collect extends LilirucaCommand {
       embed.setDescription(ct('attacked', { attack }))
     }
 
-    if (data.activeItems.scarecrow) {
-      removeItem(data, 'activeItems', 'scarecrow')
+    if (data.items.scarecrow) {
+      removeItem(data, 'items', 'scarecrow')
     }
 
-    if (data.activeItems.fence) {
-      removeItem(data, 'activeItems', 'fence')
+    if (data.items.fence) {
+      removeItem(data, 'items', 'fence')
     }
 
     const values = {
@@ -93,7 +93,7 @@ class Collect extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\📬 ${ct('success')}`, embed)
+    util.send(`\\${EMOJIS.produced} ${ct('success')}`, embed)
   }
 
   farmAttack (items) {

@@ -53,7 +53,7 @@ class Technical extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(`\\🔧 ${ct('success')}`, embed)
+    util.send(`\\${wrench} ${ct('success')}`, embed)
   }
 }
 

@@ -21,10 +21,11 @@ class Backgrounds extends LilirucaCommand {
   }
 
   exec ({ ct, util }, { id }) {
+    const defaultUrl = 'https://cdn.discordapp.com/attachments/612335526019596289/'
     const embed = new LilirucaEmbed()
-      .setImage(`https://cdn.discordapp.com/attachments/612335526019596289/${backgrounds[id - 1]}`)
+      .setImage(defaultUrl + backgrounds[id - 1])
 
-    util.send(`\\🎴 ${ct('success', { id })}`, embed)
+    util.send(`\\${card} ${ct('success', { id })}`, embed)
   }
 }
 

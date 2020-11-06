@@ -10,7 +10,10 @@ class Buy extends LilirucaCommand {
       aliases: ['by'],
       emoji: bank,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ],
       args: [
         {
           id: 'itemId',
@@ -21,11 +24,6 @@ class Buy extends LilirucaCommand {
           id: 'amount',
           type: Argument.range('integer', 1, Infinity),
           default: 1
-        },
-        {
-          id: 'active',
-          match: 'flag',
-          flag: ['--active', '--at']
         }
       ]
     })
@@ -43,9 +41,7 @@ class Buy extends LilirucaCommand {
       return util.send(ct('noMoney'))
     }
 
-    const autoActive = (active && !item.inactive && !(itemId in data.items))
-    const inventory = (data.activeItems[itemId] || autoActive) ? 'activeItems' : 'items'
-    addItemInInventory(data, inventory, itemId, item.value * amount)
+    addItemInInventory(data, 'items', itemId, item.value * amount)
 
     const price = item.price * amount
     const values = {
@@ -70,7 +66,7 @@ class Buy extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(buy)
 
-    util.send(`\\🛒 ${ct('success')}`, embed)
+    util.send(`\\${bank} ${ct('success')}`, embed)
   }
 }
 

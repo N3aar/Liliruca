@@ -69,7 +69,7 @@ class Upgrade extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\⚙️ ${ct('success', { level: dataPlace.level })}`, embed)
+    util.send(`\\${gear} ${ct('success', { level: dataPlace.level })}`, embed)
   }
 }
 

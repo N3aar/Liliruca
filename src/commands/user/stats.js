@@ -2,7 +2,7 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
 const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
-const { getItemName, getItemInInventoryByTier } = require('@utils/items')
+const { getToolInInventory, getItemName } = require('@utils/items')
 const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, PLACES_BOOSTERS, EMOJIS } = require('@constants')
 
 class Stats extends LilirucaCommand {
@@ -11,16 +11,21 @@ class Stats extends LilirucaCommand {
       aliases: ['st'],
       emoji: EMOJIS.graph,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ],
       args: [
         {
           id: 'place',
           type: 'place',
-          default: 'farm'
+          default: 'farm',
+          unordered: true
         },
         {
           id: 'member',
           type: 'realMember',
+          unordered: true,
           default: message => message.member
         }
       ]
@@ -41,8 +46,8 @@ class Stats extends LilirucaCommand {
     const generate = dataPlace.level * PLACE_GENERATE[place]
     const generation = getPercentageFromSeason(generate, place)
 
-    const boosterName = PLACES_BOOSTERS[place]
-    const booster = getItemInInventoryByTier(data.activeItems, boosterName)
+    const name = PLACES_BOOSTERS[place]
+    const booster = name && getToolInInventory(data, name)
 
     const productionLimit = PRODUCTION_LIMIT[place] + (dataPlace.level * 2)
     const limit = getPercentageFromSeason(generate * productionLimit, place)
@@ -103,7 +108,7 @@ class Stats extends LilirucaCommand {
       .addFields(stats)
       .setFooter(last)
 
-    util.send(`\\📊 ${ct('success', { name: member.displayName })}`, embed)
+    util.send(`\\${EMOJIS.graph} ${ct('success', { name: member.displayName })}`, embed)
   }
 }
 

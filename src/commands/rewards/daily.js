@@ -49,15 +49,16 @@ class Daily extends LilirucaCommand {
       }
     ]
 
+    const defaultUrl = 'https://cdn.discordapp.com/attachments/612335526019596289/'
     const embed = new LilirucaEmbed()
       .addFields(fields)
-      .setImage(DAILY_STREAK[streak - 1])
+      .setImage(defaultUrl + DAILY_STREAK[streak - 1])
 
     if (broke) {
       embed.setFooter(ct('broke'))
     }
 
-    util.send(`\\⭐ ${ct('success')}`, embed)
+    util.send(`\\${star} ${ct('success')}`, embed)
   }
 }
 

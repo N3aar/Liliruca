@@ -87,7 +87,7 @@ class Leaderboard extends LilirucaCommand {
     const attach = new MessageAttachment(canvas.toBuffer(), 'leaderboard.png')
     const parsed = t(`commons:${PLACES.includes(type) ? 'storages.' : ''}${type}`)
 
-    util.send(`\\🏆 ${ct('success', { type: parsed, page })}`, attach)
+    util.send(`\\${trophy} ${ct('success', { type: parsed, page })}`, attach)
   }
 
   getValue (data, type) {
@@ -96,7 +96,7 @@ class Leaderboard extends LilirucaCommand {
     }
 
     if (type === 'fishs') {
-      return data.fishing.rares.total
+      return data.raresFishs.total
     }
 
     return data[type]

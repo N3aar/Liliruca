@@ -36,7 +36,10 @@ class Table extends LilirucaCommand {
       aliases: ['tb'],
       emoji: EMOJIS.clipboard,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ],
       args: [
         {
           id: 'place',
@@ -59,7 +62,7 @@ class Table extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(`\\📋 ${ct(type, { place: t(`commons:${place}`) })}`, embed)
+    util.send(`\\${EMOJIS.clipboard} ${ct(type, { place: t(`commons:${place}`) })}`, embed)
   }
 
   table ({ t, ct, place }) {

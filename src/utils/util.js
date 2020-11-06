@@ -14,8 +14,10 @@ function getPercentageFromSeason (value, place, month) {
 
 function getWeatherByDay (day, month, year) {
   const date = new Date()
-  const parsed = !isNaN(day) ? Math.min(Math.max(day, 1), 31) : date.getDate()
-  const weather = ((year || date.getFullYear()) - parsed) % (month || (date.getMonth() + 2))
+  const parsedYear = year || date.getFullYear()
+  const parsedMonth = month || (date.getMonth() + 2)
+  const parsedDay = !isNaN(day) ? Math.min(Math.max(day, 1), 31) : date.getDate()
+  const weather = (parsedYear - parsedDay) % parsedMonth
   return WEATHERS[weather % 4]
 }
 
@@ -41,15 +43,22 @@ function getPriceResource (resource, amount) {
   return Math.floor(products[resource])
 }
 
+function capitalize (str) {
+  return str[0].toUpperCase() + str.slice(1)
+}
+
 function random (max, min = 0, inclusive = false) {
-  return Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0))) + min
+  return Math.floor(Math.random() * (max - min + inclusive)) + min
 }
 
 function randomChances (chances) {
   const chance = random(100, 1, true)
   for (const name in chances) {
     const values = chances[name]
-    if (chance >= (values.min || 1) && chance <= (values.max || 100)) {
+    const min = values.min || 1
+    const max = values.max || 100
+
+    if (chance >= min && chance <= max) {
       return name
     }
   }
@@ -57,24 +66,20 @@ function randomChances (chances) {
 
 function calculateProduction (data, generate, place, booster) {
   if (!data.collectedAt) {
-    return 0
+    return { production: 0, boosted: 0 }
   }
 
-  const time = getDuration(Date.now() - data.collectedAt)
-
-  time.hours += time.days * 24
-
   const productionLimit = PRODUCTION_LIMIT[place] + (data[place].level * 2)
-  const timeHr = time.hours < productionLimit ? time.hours : productionLimit
-  const timeMt = timeHr + (time.minutes / 100) <= productionLimit ? time.minutes : 0
-  const produced = (generate * timeHr) + ((generate / 60) * timeMt)
+  const parsed = productionLimit * 60 * 60 * 1000
+  const time = getDuration(Math.min(Date.now() - data.collectedAt, parsed))
 
+  const produced = (time.hours * generate) + (time.minutes * (generate / 60))
   const percentage = booster && random(booster.item.max, booster.item.min, true)
   const boosted = percentage && produced + (produced * percentage / 100)
   const season = getPercentageFromSeason(boosted || produced, place)
 
   return {
-    production: getPercentageFromWeather(season),
+    production: getPercentageFromWeather(season, place),
     boosted: percentage
   }
 }
@@ -103,20 +108,16 @@ function findCategory ({ client, t }, phrase) {
   })
 }
 
-function capitalize (str) {
-  return str[0].toUpperCase() + str.slice(1)
-}
-
 module.exports = {
-  capitalize,
   getSeasonByMonth,
   getPercentageFromSeason,
   getWeatherByDay,
   getPercentageFromWeather,
   getStoragePrice,
   getPriceResource,
-  calculateProduction,
-  findCategory,
+  capitalize,
+  random,
   randomChances,
-  random
+  calculateProduction,
+  findCategory
 }

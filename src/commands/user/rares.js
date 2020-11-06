@@ -21,10 +21,10 @@ class Rares extends LilirucaCommand {
 
   async exec ({ ct, t, db, util }, { member }) {
     const data = await db.users.get(member.id)
-    const rares = data.fishing.rares
+    const rares = data.raresFishs
     const fishs = Object.keys(rares).filter(fs => fs !== 'total')
 
-    if (fishs.length < 2) {
+    if (!fishs.length) {
       return util.send(ct('noRares'))
     }
 
@@ -33,7 +33,7 @@ class Rares extends LilirucaCommand {
       .setDescription(list)
       .setFooter(`Total: ${rares.total}`)
 
-    util.send(`\\🐡 ${ct('success', { member: member.displayName })}`, embed)
+    util.send(`\\${blowfish} ${ct('success', { member: member.displayName })}`, embed)
   }
 }
 

@@ -3,15 +3,18 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { capitalize } = require('@utils/util')
 const { items, getItemById, getItemDescription, normalizeItemPrice, getItemSale, getItemsByMaterialId, getItemName } = require('@utils/items')
-const { ITEMS_TYPES, EMOJIS: { page } } = require('@constants')
+const { ITEMS_TYPES, EMOJIS: { pagecurl } } = require('@constants')
 
 class List extends LilirucaCommand {
   constructor () {
     super('list', {
       aliases: ['lt', 'catalog', 'items'],
-      emoji: page,
+      emoji: pagecurl,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ],
       args: [
         {
           id: 'itemId',
@@ -61,7 +64,7 @@ class List extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(`\\📃 ${ct('success', { page })}`, embed)
+    util.send(`\\${pagecurl} ${ct('success', { page })}`, embed)
   }
 
   runItemProfile (itemId, { ct, t, util }) {

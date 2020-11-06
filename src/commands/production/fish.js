@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { getItemInInventoryByTier, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemById, getToolInInventory, removeItem, addItemInInventory } = require('@utils/items')
 const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST, EMOJIS } = require('@constants')
 
 class Fish extends LilirucaCommand {
@@ -10,11 +10,20 @@ class Fish extends LilirucaCommand {
       aliases: ['fh'],
       emoji: EMOJIS.fishingpole,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ],
+      args: [
+        {
+          id: 'itemId',
+          type: 'itemId'
+        }
+      ]
     })
   }
 
-  async exec ({ t, ct, util, db, author }) {
+  async exec ({ t, ct, util, db, author }, { itemId }) {
     const data = await db.users.get(author.id)
     const dataPlace = data.fishing
 
@@ -26,20 +35,22 @@ class Fish extends LilirucaCommand {
       return util.send(t('errors:noEnergy'))
     }
 
-    const baits = getItemInInventoryByTier(data.activeItems, 'baits')
+    const baits = (data.items[itemId] && getItemById(itemId)) || getToolInInventory(data, 'baits')
     if (!baits) {
       return util.send(ct('noBaits'))
     }
 
-    const catched = randomChances(baits.item.chances)
+    const baitsId = itemId || baits.id
+    const baitsItem = itemId ? baits : baits.item
+
+    const catched = randomChances(baitsItem.chances)
     const weight = random(WEIGHTS[catched].max, WEIGHTS[catched].min, true)
     const emojis = EMOJIS[catched]
 
     const hook = this[catched]
-    const fished = hook(emojis, weight, dataPlace.rares)
+    const fished = hook(emojis, weight, data.raresFishs)
     const emoji = fished.emoji || emojis[random(emojis.length)]
     const reward = catched === 'treasure' ? 'reward' : 'price'
-
     const fields = [
       {
         name: `${emoji} ${t('commons:fished')}`,
@@ -47,18 +58,18 @@ class Fish extends LilirucaCommand {
         inline: true
       },
       {
-        name: `${EMOJIS.balance} ${t('commons:weight')}`,
+        name: `\\${EMOJIS.balance} ${t('commons:weight')}`,
         value: `**${weight}kg**`,
         inline: true
       },
       {
-        name: `${EMOJIS.money} ${t(`commons:${reward}`)}`,
+        name: `\\${EMOJIS.money} ${t(`commons:${reward}`)}`,
         value: `**${fished.reward}**`,
         inline: true
       }
     ]
 
-    removeItem(data, 'activeItems', baits.id)
+    removeItem(data, 'items', baitsId)
 
     const embed = new LilirucaEmbed()
       .addFields(fields)
@@ -71,11 +82,11 @@ class Fish extends LilirucaCommand {
       const fish = t(`commons:rares.${fished.fish}`)
       const newEmoji = fished.new ? `\\${EMOJIS.news} ` : ''
 
-      addItemInInventory(dataPlace, 'rares', fished.fish)
+      addItemInInventory(data, 'raresFishs', fished.fish)
 
-      dataPlace.rares.total += 1
+      data.raresFishs.total += 1
 
-      data.markModified('fishing.rares')
+      data.markModified('raresFishs')
       embed.setDescription(newEmoji + ct('fishRare', { fish }))
     }
 
@@ -89,7 +100,7 @@ class Fish extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\🎣 ${ct('success')}`, embed)
+    util.send(`\\${EMOJIS.fishingpole} ${ct('success')}`, embed)
   }
 
   rare (emojis, weight, rares) {

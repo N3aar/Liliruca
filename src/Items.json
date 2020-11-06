@@ -5,7 +5,6 @@
         "payment": "lilistars",
         "type": "utilities",
         "value": 1,
-        "inactive": true,
         "emoji": "<:frame:772932181042790440>"
     },
     "wood": {
@@ -14,7 +13,6 @@
         "payment": "money",
         "type": "material",
         "value": 1, 
-        "inactive": true,
         "emoji": "<:wood:766150662374948865>"
     },
     "wooden-plank": {
@@ -23,7 +21,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:woodenplanks:767468624495116328>",
         "materials": {
             "wood": 2
@@ -35,7 +32,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:coal:769612186674528319>"
     },
     "copper-ore": {
@@ -44,7 +40,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:copper_ore:770028965800706098>",
         "forge": "copper-bar",
         "rarity": 1,
@@ -56,7 +51,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:copper_bar:769614530615443498>",
         "materials": {
             "copper-ore": 2
@@ -68,7 +62,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:iron_ore:769612233750741013>",
         "forge": "iron-bar",
         "rarity": 2,
@@ -80,7 +73,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:iron_bar:769612893099786321>",
         "materials": {
             "iron-ore": 2
@@ -92,7 +84,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:gold_ore:769612288135004160>",
         "forge": "gold-bar",
         "rarity": 3,
@@ -104,7 +95,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:gold_bar:769612953255149619>",
         "materials": {
             "gold-ore": 2
@@ -116,7 +106,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:cobalt_ore:769612395009409074>",
         "forge": "cobalt-bar",
         "rarity": 4,
@@ -128,7 +117,6 @@
         "payment": "money",
         "type": "material",
         "value": 1,
-        "inactive": true,
         "emoji": "<:cobalt_bar:769614531110371358>",
         "materials": {
             "cobalt-ore": 2
@@ -152,15 +140,16 @@
         "required": 6,
         "emoji": "<:fence:767105687959371776>"
     },
-    "energetic:1": {
+    "energetic_small": {
         "price": 10,
         "payment": "lilistars",
         "type": "energy",
+        "tool": "energetic",
         "value": 1,
         "emoji": "<:energetic_1:769611422245715979>",
         "energy": 15
     },
-    "energetic:2": {
+    "energetic_medium": {
         "price": 30,
         "payment": "lilistars",
         "type": "energy",
@@ -168,30 +157,33 @@
         "emoji": "<:energetic_2:769611422350442537>",
         "energy": 60
     },
-    "energetic:3": {
+    "energetic_large": {
         "price": 40,
         "payment": "lilistars",
         "type": "energy",
+        "tool": "energetic",
         "value": 1,
         "emoji": "<:energetic_3:769611422333665331>",
         "energy": 100
     },
-    "axe:1": {
+    "axe": {
         "place": "farm",
         "price": 100,
         "payment": "money",
         "type": "tool",
+        "tool": "axe",
         "value": 5,
         "required": 1,
         "emoji": "<:axe:769660103636549633>",
         "min": 5,
         "max": 20
     },
-    "axe:2": {
+    "axe_copper": {
         "place": "farm",
         "price": 20,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "axe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -203,11 +195,12 @@
             "copper-bar": 10
         }
     },
-    "axe:3": {
+    "axe_iron": {
         "place": "farm",
         "price": 30,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "axe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -219,11 +212,12 @@
             "iron-bar": 10
         }
     },
-    "axe:4": {
+    "axe_gold": {
         "place": "farm",
         "price": 40,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "axe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -235,11 +229,12 @@
             "gold-bar": 10
         }
     },
-    "axe:5": {
+    "axe_cobalt": {
         "place": "farm",
         "price": 50,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "axe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -251,11 +246,12 @@
             "cobalt-bar": 10
         }
     },
-    "baits:1": {
+    "baits_basic": {
         "place": "fishing",
         "price": 5,
         "payment": "lilistars",
         "type": "bait",
+        "tool": "baits",
         "value": 3,
         "required": 1,
         "emoji": "<:baits_1:698353333672607744>",
@@ -266,11 +262,12 @@
             "fishs": { "min": 53 }
         }
     },
-    "baits:2": {
+    "baits_medium": {
         "place": "fishing",
         "price": 10,
         "payment": "lilistars",
         "type": "bait",
+        "tool": "baits",
         "value": 5,
         "required": 1,
         "emoji": "<:baits_2:698353363971997756>",
@@ -281,12 +278,13 @@
             "fishs": { "min": 55 }
         }
     },
-    "baits:3": {
+    "baits_premium": {
         "place": "fishing",
         "price": 15,
         "sale": 2,
         "payment": "lilistars",
         "type": "bait",
+        "tool": "baits",
         "value": 5,
         "required": 1,
         "emoji": "<:baits_3:698353379599974480>",
@@ -297,11 +295,12 @@
             "fishs": { "min": 57 }
         }
     },
-    "pickaxe:1": {
+    "pickaxe": {
         "place": "mining",
         "price": 800,
         "payment": "money",
         "type": "tool",
+        "tool": "pickaxe",
         "value": 5,
         "required": 1,
         "emoji": "<:pickaxe:770029747065323562>",
@@ -319,11 +318,12 @@
             "copper-ore": { "min": 34 }
         }
     },
-    "pickaxe:2": {
+    "pickaxe_copper": {
         "place": "mining",
         "price": 20,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "pickaxe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -346,11 +346,12 @@
             "copper-bar": 15
         }
     },
-    "pickaxe:3": {
+    "pickaxe_iron": {
         "place": "mining",
         "price": 30,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "pickaxe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -373,11 +374,12 @@
             "iron-bar": 15
         }
     },
-    "pickaxe:4": {
+    "pickaxe_gold": {
         "place": "mining",
         "price": 40,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "pickaxe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -400,11 +402,12 @@
             "gold-bar": 15
         }
     },
-    "pickaxe:5": {
+    "pickaxe_cobalt": {
         "place": "mining",
         "price": 50,
         "payment": "lilistars",
         "type": "tool",
+        "tool": "pickaxe",
         "value": 5,
         "required": 1,
         "craftable": true,
@@ -427,7 +430,7 @@
             "cobalt-bar": 15
         }
     },
-    "box:1": {
+    "box_basic": {
         "price": 5,
         "payment": "lilistars",
         "type": "reward",
@@ -445,7 +448,7 @@
             "resource": { "min": 53 }
         }
     },
-    "box:2": {
+    "box_common": {
         "price": 15,
         "payment": "lilistars",
         "type": "reward",
@@ -463,7 +466,7 @@
             "resource": { "min": 55 }
         }
     },
-    "box:3": {
+    "box_uncommon": {
         "price": 25,
         "payment": "lilistars",
         "type": "reward",
@@ -481,7 +484,7 @@
             "resource": { "min": 57 }
         }
     },
-    "box:4": {
+    "box_rare": {
         "price": 35,
         "payment": "lilistars",
         "type": "reward",
@@ -499,7 +502,7 @@
             "resource": { "min": 60 }
         }
     },
-    "box:5": {
+    "box_epic": {
         "price": 45,
         "payment": "lilistars",
         "type": "reward",
@@ -517,99 +520,108 @@
             "resource": { "min": 63 }   
         }
     },
-    "fertilizer:1": {
+    "fertilizer_basic": {
         "place": "farm",
         "price": 10,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "fertilizer",
         "value": 5,
         "required": 3,
         "emoji": "<:fertilizer_1:698353399871176704>",
         "min": 5,
         "max": 25
     },
-    "fertilizer:2": {
+    "fertilizer_medium": {
         "place": "farm",
         "price": 20,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "fertilizer",
         "value": 4,
         "required": 4,
         "emoji": "<:fertilizer_2:698353438001594418>",
         "min": 15,
         "max": 35
     },
-    "fertilizer:3": {
+    "fertilizer_premium": {
         "place": "farm",
         "price": 30,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "fertilizer",
         "value": 4,
         "required": 4,
         "emoji": "<:fertilizer_3:698353438093869076>",
         "min": 25,
         "max": 50
     },
-    "fishing-net:1": {
+    "fishing-net_small": {
         "place": "fishing",
         "price": 10,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "fishingNet",
         "value": 5,
         "required": 3,
         "emoji": "<:fishing_net_1:762521726843355175>",
         "min": 5,
         "max": 10
     },
-    "fishing-net:2": {
+    "fishing-net_medium": {
         "place": "fishing",
         "price": 20,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "fishingNet",
         "value": 4,
         "required": 4,
         "emoji": "<:fishing_net_2:762521726604017695>",
         "min": 10,
         "max": 20
     },
-    "fishing-net:3": {
+    "fishing-net_large": {
         "place": "fishing",
         "price": 30,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "fishingNet",
         "value": 4,
         "required": 4,
         "emoji": "<:fishing_net_3:762521727069847592>",
         "min": 15,
         "max": 30
     },
-    "bomb:1": {
+    "bomb_small": {
         "place": "mining",
         "price": 10,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "bomb",
         "value": 5,
         "required": 3,
         "emoji": "<:bomb_1:765636729117474846>",
         "min": 5,
         "max": 10
     },
-    "bomb:2": {
+    "bomb_medium": {
         "place": "mining",
         "price": 20,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "bomb",
         "value": 4,
         "required": 4,
         "emoji": "<:bomb_2:765636762075791402>",
         "min": 10,
         "max": 15
     },
-    "bomb:3": {
+    "bomb_large": {
         "place": "mining",
         "price": 30,
         "payment": "lilistars",
         "type": "booster",
+        "tool": "bomb",
         "value": 5,
         "required": 4,
         "emoji": "<:bomb_3:765636788055965756>",

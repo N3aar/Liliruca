@@ -1,7 +1,6 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemInInventoryByTier, getItemById, removeItem } = require('@utils/items')
+const { getItemName, getItemById, getToolInInventory, removeItem } = require('@utils/items')
 const { EMOJIS: { drink, voltage } } = require('@constants')
 
 class Energetic extends LilirucaCommand {
@@ -13,29 +12,23 @@ class Energetic extends LilirucaCommand {
       clientPermissions: 'EMBED_LINKS',
       args: [
         {
-          id: 'tier',
-          type: Argument.range('integer', 1, 3),
-          default: null
+          id: 'itemId',
+          type: 'itemId'
         }
       ]
     })
   }
 
-  async exec ({ t, ct, author, db, util }, { tier }) {
+  async exec ({ t, ct, author, db, util }, { itemId }) {
     const data = await db.users.get(author.id)
-    const id = tier && `energetic:${tier}`
 
-    if (id && !data.activeItems[id]) {
-      return util.send(ct('empty'))
-    }
-
-    const energetic = getItemById(id) || getItemInInventoryByTier(data.activeItems, 'energetic')
+    const energetic = (data.items[itemId] && getItemById(itemId)) || getToolInInventory(data, 'energetic')
     if (!energetic) {
       return util.send(ct('noEnergetic'))
     }
 
-    const energeticId = id || energetic.id
-    const energeticItem = id ? energetic : energetic.item
+    const energeticId = itemId || energetic.id
+    const energeticItem = itemId ? energetic : energetic.item
 
     const fields = [
       {
@@ -55,7 +48,7 @@ class Energetic extends LilirucaCommand {
       energy: Math.min(energy, 100)
     }
 
-    removeItem(data, 'activeItems', energeticId)
+    removeItem(data, 'items', energeticId)
 
     db.users.update(data, values)
 
@@ -63,7 +56,7 @@ class Energetic extends LilirucaCommand {
       .addFields(fields)
       .setFooter(t('commons:currentEnergy', { energy: values.energy }))
 
-    util.send(`\\🥤 ${ct('success')}`, embed)
+    util.send(`\\${drink} ${ct('success')}`, embed)
   }
 }
 

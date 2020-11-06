@@ -21,7 +21,7 @@ class SetPrefix extends LilirucaCommand {
 
   async exec ({ util, guild, db, ct }, { prefix }) {
     await db.guilds.updateOne(guild.id, prefix, 'prefix')
-    util.send(`\\✏ ${ct('success', { prefix })}`)
+    util.send(`\\${pencil} ${ct('success', { prefix })}`)
   }
 }
 

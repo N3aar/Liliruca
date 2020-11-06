@@ -34,7 +34,7 @@ class Setbackground extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\🖌️ ${ct('success')}`)
+    util.send(`\\${paintbrush} ${ct('success')}`)
   }
 }
 
