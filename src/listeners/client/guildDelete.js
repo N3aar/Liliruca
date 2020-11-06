@@ -22,12 +22,12 @@ class GuildDeleteListener extends Listener {
         .setFooter(guild.id)
         .setTimestamp(guild.createdAt)
 
-      guildsWeebhook.send(this.guilds.size, embed)
+      guildsWeebhook.send(this.guilds.cache.size, embed)
     }
 
-    const channel = this.channels.get(process.env.STATS_CHANNEL_ID)
+    const channel = this.channels.cache.get(process.env.STATS_CHANNEL_ID)
     if (channel) {
-      channel.setName(`🔑 ${this.guilds.size} Guilds`)
+      channel.setName(`📌 ${this.guilds.cache.size} Guilds`)
     }
 
     this.db.guilds.delete(guild.id)
