@@ -1,40 +1,40 @@
 class LilirucaCollection {
   /**
-   * Procura um valor.
+   * Get entity
    *
    * @abstract
-   * @param {string} id - ID da entidade.
-   * @param {string} key - Chave para buscar.
-   * @param {any} [defaultValue] - Valor padrão caso não exista.
+   * @param {string} id
+   * @param {string} key
+   * @param {any} [defaultValue]
    * @returns {any}
    */
   get (id, key, defaultValue) {
-    throw new Error(`método get não foi definido em ${this.constructor.name}.`)
+    throw new Error(`${this.constructor.name} doesn't have a get() method.`)
   }
 
   /**
-   * Define um valor.
+   * Update one value
    *
    * @abstract
-   * @param {string} id - ID da entidade.
-   * @param {string} key - Chave para buscar.
-   * @param {any} [value] - Valor da entidade.
+   * @param {string} id
+   * @param {string} key
+   * @param {any} [value]
    * @returns {any}
    */
   updateOne (id, key, value) {
-    throw new Error(`método set não foi definido em ${this.constructor.name}.`)
+    throw new Error(`${this.constructor.name} doesn't have a updateOne() method.`)
   }
 
   /**
-   * Deleta uma Entidade.
+   * Delete the entity
    *
    * @abstract
-   * @param {string} id - ID of entry.
-   * @param {string} key - The key to delete.
+   * @param {string} id
+   * @param {string} key
    * @returns {any}
    */
   delete (id, key) {
-    throw new Error(`método delete não foi definido em ${this.constructor.name}.`)
+    throw new Error(`${this.constructor.name} doesn't have a delete() method.`)
   }
 }
 
