@@ -140,7 +140,7 @@
         "required": 6,
         "emoji": "<:fence:767105687959371776>"
     },
-    "energetic_small": {
+    "small_energetic": {
         "price": 10,
         "payment": "lilistars",
         "type": "energy",
@@ -149,7 +149,7 @@
         "emoji": "<:energetic_1:769611422245715979>",
         "energy": 15
     },
-    "energetic_medium": {
+    "medium_energetic": {
         "price": 30,
         "payment": "lilistars",
         "type": "energy",
@@ -157,7 +157,7 @@
         "emoji": "<:energetic_2:769611422350442537>",
         "energy": 60
     },
-    "energetic_large": {
+    "large_energetic": {
         "price": 40,
         "payment": "lilistars",
         "type": "energy",
@@ -178,7 +178,7 @@
         "min": 5,
         "max": 20
     },
-    "axe_copper": {
+    "copper_axe": {
         "place": "farm",
         "price": 20,
         "payment": "lilistars",
@@ -195,7 +195,7 @@
             "copper-bar": 10
         }
     },
-    "axe_iron": {
+    "iron_axe": {
         "place": "farm",
         "price": 30,
         "payment": "lilistars",
@@ -212,7 +212,7 @@
             "iron-bar": 10
         }
     },
-    "axe_gold": {
+    "gold_axe": {
         "place": "farm",
         "price": 40,
         "payment": "lilistars",
@@ -229,7 +229,7 @@
             "gold-bar": 10
         }
     },
-    "axe_cobalt": {
+    "cobalt_axe": {
         "place": "farm",
         "price": 50,
         "payment": "lilistars",
@@ -246,7 +246,7 @@
             "cobalt-bar": 10
         }
     },
-    "baits_basic": {
+    "basic_bait": {
         "place": "fishing",
         "price": 5,
         "payment": "lilistars",
@@ -262,7 +262,7 @@
             "fishs": { "min": 53 }
         }
     },
-    "baits_medium": {
+    "medium_baits": {
         "place": "fishing",
         "price": 10,
         "payment": "lilistars",
@@ -278,7 +278,7 @@
             "fishs": { "min": 55 }
         }
     },
-    "baits_premium": {
+    "premium_baits": {
         "place": "fishing",
         "price": 15,
         "sale": 2,
@@ -318,7 +318,7 @@
             "copper-ore": { "min": 34 }
         }
     },
-    "pickaxe_copper": {
+    "copper_pickaxe": {
         "place": "mining",
         "price": 20,
         "payment": "lilistars",
@@ -346,7 +346,7 @@
             "copper-bar": 15
         }
     },
-    "pickaxe_iron": {
+    "iron_pickaxe": {
         "place": "mining",
         "price": 30,
         "payment": "lilistars",
@@ -374,7 +374,7 @@
             "iron-bar": 15
         }
     },
-    "pickaxe_gold": {
+    "gold_pickaxe": {
         "place": "mining",
         "price": 40,
         "payment": "lilistars",
@@ -402,7 +402,7 @@
             "gold-bar": 15
         }
     },
-    "pickaxe_cobalt": {
+    "cobalt_pickaxe": {
         "place": "mining",
         "price": 50,
         "payment": "lilistars",
@@ -430,7 +430,7 @@
             "cobalt-bar": 15
         }
     },
-    "box_basic": {
+    "basic_box": {
         "price": 5,
         "payment": "lilistars",
         "type": "reward",
@@ -448,7 +448,7 @@
             "resource": { "min": 53 }
         }
     },
-    "box_common": {
+    "common_box": {
         "price": 15,
         "payment": "lilistars",
         "type": "reward",
@@ -466,7 +466,7 @@
             "resource": { "min": 55 }
         }
     },
-    "box_uncommon": {
+    "uncommon_box": {
         "price": 25,
         "payment": "lilistars",
         "type": "reward",
@@ -484,7 +484,7 @@
             "resource": { "min": 57 }
         }
     },
-    "box_rare": {
+    "rare_box": {
         "price": 35,
         "payment": "lilistars",
         "type": "reward",
@@ -502,7 +502,7 @@
             "resource": { "min": 60 }
         }
     },
-    "box_epic": {
+    "epic_box": {
         "price": 45,
         "payment": "lilistars",
         "type": "reward",
@@ -520,7 +520,7 @@
             "resource": { "min": 63 }   
         }
     },
-    "fertilizer_basic": {
+    "basic_fertilizer": {
         "place": "farm",
         "price": 10,
         "payment": "lilistars",
@@ -532,7 +532,7 @@
         "min": 5,
         "max": 25
     },
-    "fertilizer_medium": {
+    "medium_fertilizer": {
         "place": "farm",
         "price": 20,
         "payment": "lilistars",
@@ -544,7 +544,7 @@
         "min": 15,
         "max": 35
     },
-    "fertilizer_premium": {
+    "premium_fertilizer": {
         "place": "farm",
         "price": 30,
         "payment": "lilistars",
@@ -556,7 +556,7 @@
         "min": 25,
         "max": 50
     },
-    "fishing-net_small": {
+    "small_fishing-net": {
         "place": "fishing",
         "price": 10,
         "payment": "lilistars",
@@ -568,7 +568,7 @@
         "min": 5,
         "max": 10
     },
-    "fishing-net_medium": {
+    "medium_fishing-net": {
         "place": "fishing",
         "price": 20,
         "payment": "lilistars",
@@ -580,7 +580,7 @@
         "min": 10,
         "max": 20
     },
-    "fishing-net_large": {
+    "large_fishing-net": {
         "place": "fishing",
         "price": 30,
         "payment": "lilistars",
@@ -592,7 +592,7 @@
         "min": 15,
         "max": 30
     },
-    "bomb_small": {
+    "small_bomb": {
         "place": "mining",
         "price": 10,
         "payment": "lilistars",
@@ -604,7 +604,7 @@
         "min": 5,
         "max": 10
     },
-    "bomb_medium": {
+    "medium_bomb": {
         "place": "mining",
         "price": 20,
         "payment": "lilistars",
@@ -616,7 +616,7 @@
         "min": 10,
         "max": 15
     },
-    "bomb_large": {
+    "large_bomb": {
         "place": "mining",
         "price": 30,
         "payment": "lilistars",

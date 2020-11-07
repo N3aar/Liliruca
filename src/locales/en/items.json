@@ -55,15 +55,15 @@
         "name": "Wooden Fence",
         "description": "A wooden fence that prevents wild animals from attacking your plantation!"
     },
-    "energetic_basic": {
+    "basic_energetic": {
         "name": "Basic Energetic",
         "description": "A small bottle of energetic that restores some of your energy!"
     },
-    "energetic_medium": {
+    "medium_energetic": {
         "name": "Medium Energetic",
         "description": "A reasonable medium-sized energetic that restores your energy!"
     },
-    "energetic_large": {
+    "large_energetic": {
         "name": "Large Energetic",
         "description": "A great energetic that totally restores your energy!"
     },
@@ -71,31 +71,31 @@
         "name": "Axe",
         "description": "Common axe for collecting wood! Used with the `wood` command"
     },
-    "axe_copper": {
+    "copper_axe": {
         "name": "Copper Axe",
         "description": "Copper axe for collecting wood! Used with the `wood` command"
     },
-    "axe_iron": {
+    "iron_axe": {
         "name": "Iron Axe",
         "description": "Iron axe for collecting wood! Used with the `wood` command"
     },
-    "axe_gold": {
+    "gold_axe": {
         "name": "Gold Axe",
         "description": "Gold axe for collecting wood! Used with the `wood` command"
     },
-    "axe_cobalt": {
+    "cobalt_axe": {
         "name": "Cobalt Axe",
         "description": "Cobalto axe for collecting wood! Used with the `wood` command"
     },
-    "baits_basic": {
+    "basic_baits": {
         "name": "Basic Baits",
         "description": "Box of baits with common baits to use in your fishing! Used with the `fish` command"
     },
-    "baits_medium": {
+    "medium_baits": {
         "name": "Medium Baits",
         "description": "Bait box with medium baits to use in your fishing! Used with the `fish` command"
     },
-    "baits_premium": {
+    "premium_baits": {
         "name": "Premium Baits",
         "description": "Box with the best baits to use in your fishing! Used with the `fish` command"
     },
@@ -103,75 +103,75 @@
         "name": "Pickaxe",
         "description": "Common pickaxe for mining and ore collection! Used with the `mine` command"
     },
-    "pickaxe_copper": {
+    "copper_pickaxe": {
         "name": "Copper Pickaxe",
         "description": "Copper pickaxe for mining and ore collection! Used with the `mine` command"
     },
-    "pickaxe_iron": {
+    "iron_pickaxe": {
         "name": "Iron Pickaxe",
         "description": "Iron pickaxe for mining and ore collection! Used with the `mine` command"
     },
-    "pickaxe_gold": {
+    "gold_pickaxe": {
         "name": "Gold Pickaxe",
         "description": "Gold pickaxe for mining and ore collection! Used with the `mine` command"
     },
-    "pickaxe_cobalt": {
+    "cobalt_pickaxe": {
         "name": "Cobalt Pickaxe",
         "description": "Cobalt pickaxe for mining and ore collection! Used with the `mine` command"
     },
-    "box_basic": {
+    "basic_box": {
         "name": "Basic Box",
         "description": "Basic box that will give you with small rewards! Open it using the `box` command"
     },
-    "box_common": {
+    "common_box": {
         "name": "Common Box",
         "description": "Common box that will give you reasonable rewards! Open it using the `box` command"
     },
-    "box_uncommon": {
+    "uncommon_box": {
         "name": "Uncommon Box",
         "description": "Uncommon box that will give you good rewards! Open it using the `box` command"
     },
-    "box_rare": {
+    "rare_box": {
         "name": "Rare Box",
         "description": "Rare box that will give you great rewards! Open it using the `box` command"
     },
-    "box_epic": {
+    "epic_box": {
         "name": "Epic Box",
         "description": "Epic Box that will give you incredible rewards! Open it using the `box` command"
     },
-    "fertilizer_basic": {
+    "basic_fertilizer": {
         "name": "Basic Fertilizer",
         "description": "A basic Fertilizer to help with your harvest, ensures an increase of 5% to 25%!"
     },
-    "fertilizer_medium": {
+    "medium_fertilizer": {
         "name": "Medium Fertilizer",
         "description": "An average fertilizer that ensures a reasonable increase of 15% to 35% in your harvest!"
     },
-    "fertilizer_premium": {
+    "premium_fertilizer": {
         "name": "Premium Fertilizer",
         "description": "The best of Fertilizers, ensures an increase of 25% to 50% in your harvest!"
     },
-    "fishing-net_small": {
+    "small_fishing-net": {
         "name": "Small Fishing Net",
         "description": "A basic fishing net with small size, ensures an improvement of 5% to 10% in your fishing!"
     },
-    "fishing-net_medium": {
+    "medium_fishing-net": {
         "name": "Medium Fishing Net",
         "description": "A reasonable fishing net ensures a 10% to 20% improvement in your fishing!"
     },
-    "fishing-net_large": {
+    "large_fishing-net": {
         "name": "Large Fishing Net",
         "description": "The largest fishing net to catch fish, ensures an improvement of 15% to 30% in your fishing!"
     },
-    "bomb_small": {
+    "small_bomb": {
         "name": "Small Bomb",
         "description": "A small explosive that opens small holes, will help you in your mining ensuring an increase of 5% to 10%!"
     },
-    "bomb_medium": {
+    "medium_bomb": {
         "name": "Medium Bomb",
         "description": "A medium explosive that paves the way through the mine, ensuring an increase of 10% to 15% in your mining!"
     },
-    "bomb_large": {
+    "large_bomb": {
         "name": "Large Bomb",
         "description": "A powerful explosive that will open up large spaces and ensuring a 15% to 25% increase in your mining!"
     }

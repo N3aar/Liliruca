@@ -18,8 +18,8 @@ class Craft extends LilirucaCommand {
         {
           id: 'itemId',
           type: (_, phrase) => {
-            const { craftable } = getItemById(phrase)
-            if (craftable) {
+            const item = getItemById(phrase)
+            if (item && item.craftable) {
               return phrase
             }
             return null

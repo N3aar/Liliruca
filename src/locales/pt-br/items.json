@@ -55,15 +55,15 @@
         "name": "Cerca de Madeira",
         "description": "Uma cerca de madeira que impede a entrada de animais selvagens em sua plantação!"
     },
-    "energetic_small": {
+    "small_energetic": {
         "name": "Energético Pequeno",
         "description": "Um pequeno frasco de energético que restaura um pouco de sua energia!"
     },
-    "energetic_medium": {
+    "medium_energetic": {
         "name": "Energético Médio",
         "description": "Um razoável energético de tamanho médio que restaura sua energia!"
     },
-    "energetic_large": {
+    "large_energetic": {
         "name": "Energético Grande",
         "description": "Um grande energético que restaura totalmente sua energia!"
     },
@@ -71,31 +71,31 @@
         "name": "Machado",
         "description": "Machado comum para coleta de madeira! Usado com o comando `wood`"
     },
-    "axe_copper": {
+    "copper_axe": {
         "name": "Machado de Cobre",
         "description": "Machado de cobre para coleta de madeira! Usado com o comando `wood`"
     },
-    "axe_iron": {
+    "iron_axe": {
         "name": "Machado de Ferro",
         "description": "Machado de ferro para coleta de madeira! Usado com o comando `wood`"
     },
-    "axe_gold": {
+    "gold_axe": {
         "name": "Machado de Ouro",
         "description": "Machado de ouro para coleta de madeira! Usado com o comando `wood`"
     },
-    "axe_cobalt": {
+    "cobalt_axe": {
         "name": "Machado de Cobalto",
         "description": "Machado de cobalto para coleta de madeira! Usado com o comando `wood`"
     },
-    "baits_basic": {
+    "basic_baits": {
         "name": "Iscas Básico",
         "description": "Caixa de iscas com iscas comuns para utilizar em sua pesca! Usado com o comando `fish`"
     },
-    "baits_medium": {
+    "medium_baits": {
         "name": "Iscas Médio",
         "description": "Caixa de iscas com iscas médias para utilizar em sua pesca! Usado com o comando `fish`"
     },
-    "baits_premium": {
+    "premium_baits": {
         "name": "Iscas Prêmio",
         "description": "Caixa com melhores iscas para utilizar em sua pesca! Usado com o comando `fish`"
     },
@@ -103,75 +103,75 @@
         "name": "Picareta",
         "description": "Picareta comum para mineração e coleta de minérios! Usado com o comando `mine`"
     },
-    "pickaxe_copper": {
+    "copper_pickaxe": {
         "name": "Picareta de Cobre",
         "description": "Picareta de cobre para mineração e coleta de minérios! Usado com o comando `mine`"
     },        
-    "pickaxe_iron": {
+    "iron_pickaxe": {
         "name": "Picareta de Ferro",
         "description": "Picareta de ferro para mineração e coleta de minérios! Usado com o comando `mine`"
     },
-    "pickaxe_gold": {
+    "gold_pickaxe": {
         "name": "Picareta de Ouro",
         "description": "Picareta de ouro para mineração e coleta de minérios! Usado com o comando `mine`"
     },
-    "pickaxe_cobalt": {
+    "cobalt_pickaxe": {
         "name": "Picareta de Cobalto",
         "description": "Picareta de cobalto para mineração e coleta de minérios! Usado com o comando `mine`"
     },
-    "box_basic": {
+    "basic_box": {
         "name": "Caixa Básica",
         "description": "Caixa básica que te dará com pequenas recompensas! Abra utilizando o comando `box`"
     },
-    "box_common": {
+    "common_box": {
         "name": "Caixa Comum",
         "description": "Caixa comum que te dará recompensas razoáveis! Abra utilizando o comando `box`"
     },
-    "box_uncommon": {
+    "uncommon_box": {
         "name": "Caixa Incomum",
         "description": "Caixa incomum que te dará boas recompensas! Abra utilizando o comando `box`"
     },
-    "box_rare": {
+    "rare_box": {
         "name": "Caixa Rara",
         "description": "Caixa rara que te dará ótimas recompensas! Abra utilizando o comando `box`"
     },
-    "box_epic": {
+    "epic_box": {
         "name": "Caixa Épica",
         "description": "Caixa Épica que te dará incríveis recompensas! Abra utilizando o comando `box`"
     },
-    "fertilizer_basic": {
+    "basic_fertilizer": {
         "name": "Fertilizante Básico",
         "description": "Um Fertilizante básico para ajudar em sua colheita, garante um aumento de 5% a 25%!"
     },
-    "fertilizer_medium": {
+    "medium_fertilizer": {
         "name": "Fertilizante Médio",
         "description": "Um Fertilizante médio que garante aumento rázoavel de 15% a 35% em sua colheita!"
     },
-    "fertilizer_premium": {
+    "premium_fertilizer": {
         "name": "Fertilizante Prêmio",
         "description": "O melhor dos Fertilizantes, garante um aumento de 25% a 50% em sua colheita!"
     },
-    "fishing-net_small": {
+    "small_fishing-net": {
         "name": "Rede de Pesca Pequena",
         "description": "Uma rede de pesca básica com tamanho pequeno, garante melhoria de 5% a 10% em sua pescaria!"
     },
-    "fishing-net_medium": {
+    "medium_fishing-net": {
         "name": "Rede de Pesca Média",
         "description": "Uma rede de pesca razoável, garante melhoria de 10% a 20% em sua pescaria!"
     },
-    "fishing-net_large": {
+    "large_fishing-net": {
         "name": "Rede de Pesca Grande",
         "description": "A maior rede de pesca para pegar peixes, garante melhoria de 15% a 30% em sua pescaria!"
     },
-    "bomb_small": {
+    "small_bomb": {
         "name": "Bomba Pequena",
         "description": "Um explosivo pequeno que abre pequenos buracos, te ajudará em sua mineração garantindo aumento de 5% a 10%!"
     },
-    "bomb_medium": {
+    "medium_bomb": {
         "name": "Bomba Média",
         "description": "Um explosivo médio que abre caminhos pela mina garantindo aumento em 10% a 15% em sua mineração!"
     },
-    "bomb_large": {
+    "large_bomb": {
         "name": "Bomba Grande",
         "description": "Um explosivo poderoso que abrirá grandes espaços e garantindo aumento de 15% a 25% em sua mineração!"
     }

@@ -96,7 +96,7 @@ class List extends LilirucaCommand {
     ]
 
     if (item.energy) {
-      fields.push({ name: ct('itemEnergy'), value: `\\⚡ ${item.energy}`, inline: true, emoji: '\\🔋' })
+      fields.push({ name: ct('itemEnergy'), value: `${item.energy}`, inline: true, emoji: '\\🔋' })
     }
 
     if (item.required) {

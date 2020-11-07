@@ -1,8 +1,8 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { getItemName, getStoragePrice } = require('@utils/util')
+const { getStoragePrice } = require('@utils/util')
+const { getItemName, removeItem } = require('@utils/items')
 const { STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS: { storage } } = require('@constants')
-const { removeItem } = require('../../utils/items')
 
 class Storage extends LilirucaCommand {
   constructor () {
