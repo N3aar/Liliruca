@@ -50,7 +50,7 @@ class Help extends LilirucaCommand {
       .setDescription(categories)
       .setFooter(`${prefix}help ${t('commands:help.usage')}`)
 
-    util.send(`\\📚 ${ct('all')}`, embed)
+    util.send(`\\📚 ${ct('success')}`, embed)
   }
 
   handleShowAll ({ client, util, ct, t }) {
@@ -64,7 +64,7 @@ class Help extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(categories)
 
-    util.send(ct('all'), embed)
+    util.send(`\\📚 ${ct('all')}`, embed)
   }
 
   handleCategory ({ t, util, prefix, ct }, category) {
@@ -82,7 +82,7 @@ class Help extends LilirucaCommand {
     const emoji = EMOJIS[category]
     const categoryName = t(`categories:${category}`)
 
-    util.send(ct('category', { emoji, category: categoryName }), embed)
+    util.send(`\\${emoji} ${ct('category', { category: categoryName })}`, embed)
   }
 
   handleCommand ({ t, prefix, util, ct }, command) {
@@ -110,7 +110,7 @@ class Help extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(ct('command', { emoji: command.emoji, command: command.id }), embed)
+    util.send(`\\${command.emoji} ${ct('command', { command: command.id })}`, embed)
   }
 }
 

@@ -31,8 +31,8 @@
         "notFind": "Categoria ou Comando não foi encontrado!",
         "success": "Páginas de ajuda!",
         "all": "Todos os Comandos!",
-        "category": "\\{{- emoji }} Categoria `{{- category }}`!",
-        "command": "\\{{- emoji }} Comando `{{- command }}`!"
+        "category": "Categoria `{{- category }}`!",
+        "command": "Comando `{{- command }}`!"
     },
     "ping": {
         "description": "Dados de conexão do bot com os servidores.",
