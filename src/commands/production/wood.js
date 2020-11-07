@@ -18,7 +18,7 @@ class Wood extends LilirucaCommand {
       args: [
         {
           id: 'uses',
-          type: Argument.range('integer', 1, 10),
+          type: Argument.range('integer', 1, 10, true),
           default: 1
         },
         {

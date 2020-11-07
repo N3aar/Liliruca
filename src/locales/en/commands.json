@@ -55,13 +55,12 @@
     "box": {
         "description": "Open your boxes and win prizes!",
         "usage": "<item id>",
-        "noBox": "You do not have this box or it is not active!",
-        "empty": "You do not have any active box.",
+        "noBox": "You do not have this box!",
         "success": "Box was successfully opened!"
     },
     "buy": {
         "description": "Buy items to use.",
-        "usage": "<item id> [amount] [--active | --at]",
+        "usage": "<item id> [amount]",
         "noItem": "Type the item id correctly!",
         "noMoney": "You don't have enough money to buy this item!",
         "active": "Disable this item before!",

@@ -58,13 +58,12 @@
     "box": {
         "description": "Abra suas caixas e ganhe prếmios!",
         "usage": "<id do item>",
-        "noBox": "Você não possui essa caixa ou não esta ativa!",
-        "empty": "Você não possui nenhuma caixa ativa.",
+        "noBox": "Você não possui essa caixa!",
         "success": "Caixa foi aberta com sucesso!"
     },
     "buy": {
         "description": "Compre itens para utilizar.",
-        "usage": "<id do item> [quantidade] [--active | --at]",
+        "usage": "<id do item> [quantidade]",
         "noMoney": "Você não possui dinheiro suficiente para comprar este item!",
         "active": "Desative esse item antes!",
         "payments": {
