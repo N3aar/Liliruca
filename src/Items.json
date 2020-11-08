@@ -246,7 +246,7 @@
             "cobalt-bar": 10
         }
     },
-    "basic_bait": {
+    "basic_baits": {
         "place": "fishing",
         "price": 5,
         "payment": "lilistars",
