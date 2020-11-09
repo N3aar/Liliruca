@@ -1,5 +1,5 @@
-const { MessageAttachment } = require('discord.js')
 const { createCanvas, loadImage } = require('canvas')
+const { MessageAttachment } = require('discord.js')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { EMOJIS: { picture } } = require('@constants')
 
@@ -21,9 +21,8 @@ class Profile extends LilirucaCommand {
     })
   }
 
-  async exec ({ ct, t, db, util }, { member }) {
+  async exec ({ ct, db, util }, { member }) {
     const data = await db.users.get(member.id)
-
     const width = 590
     const height = 230
 

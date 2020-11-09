@@ -49,19 +49,12 @@ class Leaderboard extends LilirucaCommand {
 
     const template = await loadImage('src/assets/leaderboard/template.png')
 
-    const defaultUser = {
-      username: 'xxxx',
-      discriminator: '0000',
-      defaultAvatar: await loadImage(client.user.displayAvatarURL({ format: 'png', size: 64 }))
-    }
-
-    const promises = data.map(doc => client.users.cache.get(doc.id) || client.users.fetch(doc.id).catch(_ => defaultUser))
-    const users = await Promise.all(promises)
+    const users = await Promise.all(data.map(doc => (client.users.fetch(doc.id))))
 
     let index = 0
 
     for await (const user of users) {
-      const avatar = user.defaultAvatar || await loadImage(user.displayAvatarURL({ format: 'png', size: 64 }))
+      const avatar = await loadImage(user.displayAvatarURL({ format: 'png', size: 64 }))
       ctx.drawImage(avatar, 61, 61 + (54 * index), 44, 44)
       index++
     }
@@ -70,20 +63,18 @@ class Leaderboard extends LilirucaCommand {
 
     ctx.font = '15px thebold'
     ctx.fillStyle = '#1cac50'
-    index = 0
 
-    for (const user of users) {
+    for (const i in users) {
+      const user = users[i]
       const username = `${user.username.slice(0, 10)}#${user.discriminator}`
-      const value = this.getValue(data[index], type).toLocaleString()
+      const value = this.getValue(data[i], type)
 
       const parsed = ct(`types.${type}`, { value })
       const position = 363 - ctx.measureText(parsed).width
-      const espace = index * 54
+      const espace = i * 54
 
       ctx.fillText(username, 109, 89 + espace)
       ctx.fillText(parsed, position, 89 + espace)
-
-      index++
     }
 
     const attach = new MessageAttachment(canvas.toBuffer(), 'leaderboard.png')
@@ -113,7 +104,7 @@ class Leaderboard extends LilirucaCommand {
       return data.raresFishs.total
     }
 
-    return data[type]
+    return data[type].toLocaleString()
   }
 }
 
