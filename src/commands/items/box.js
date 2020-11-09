@@ -18,7 +18,7 @@ class Box extends LilirucaCommand {
       args: [
         {
           id: 'itemId',
-          type: Argument.validate('itemId', (m, phrase) => phrase.startsWith('box_')),
+          type: Argument.validate('itemId', (m, phrase) => phrase.includes('box')),
           otherwise: message => message.t('errors:noItem')
         }
       ]
