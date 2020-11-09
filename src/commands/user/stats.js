@@ -62,7 +62,7 @@ class Stats extends LilirucaCommand {
     const stats = [
       {
         name: `\\${EMOJIS.money} ${t('commons:money')}`,
-        value: `**$${data.money}**`,
+        value: `**$${data.money.toLocaleString()}**`,
         inline: true
       },
       {

@@ -51,7 +51,7 @@ class Calculate extends LilirucaCommand {
       },
       {
         name: `\\💰 ${t('commons:price')}`,
-        value: `**$${price}**`,
+        value: `**$${price.toLocaleString()}**`,
         inline: true
       },
       {
