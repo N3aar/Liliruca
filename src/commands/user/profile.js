@@ -56,8 +56,8 @@ class Profile extends LilirucaCommand {
     ctx.fillText(name, 228.15, 78.13)
 
     ctx.font = '18.81px segoe-ui-light'
-    ctx.fillText(`$${data.money}`, 228.15, 129.27)
-    ctx.fillText(`${data.lilistars} Lilistars`, 417.19, 129.27)
+    ctx.fillText(`$${data.money.toLocaleString()}`, 228.15, 129.27)
+    ctx.fillText(`${data.lilistars.toLocaleString()} Lilistars`, 417.19, 129.27)
 
     const energy = `${data.energy}/100`
     const position = 220 + ((barWidth / 2) - (ctx.measureText(energy).width / 2))

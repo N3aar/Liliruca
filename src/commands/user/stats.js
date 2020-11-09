@@ -44,7 +44,7 @@ class Stats extends LilirucaCommand {
     const storageSize = dataPlace.storage * STORAGES_SIZE[place]
 
     const generate = dataPlace.level * PLACE_GENERATE[place]
-    const generation = getPercentageFromSeason(generate, place)
+    const generation = getPercentageFromSeason(generate, place).toLocaleString()
 
     const name = PLACES_BOOSTERS[place]
     const booster = name && getToolInInventory(data, name)
@@ -62,7 +62,7 @@ class Stats extends LilirucaCommand {
     const stats = [
       {
         name: `\\${EMOJIS.money} ${t('commons:money')}`,
-        value: `**$${data.money}**`,
+        value: `**$${data.money.toLocaleString()}**`,
         inline: true
       },
       {
@@ -77,12 +77,12 @@ class Stats extends LilirucaCommand {
       },
       {
         name: `\\${resourceEmoji} ${t(`commons:${resource}`)}`,
-        value: `**${t('commons:amount')}: ${amount}/${storageSize}**`,
+        value: `**${t('commons:amount')}: ${amount.toLocaleString()}/${storageSize.toLocaleString()}**`,
         inline: true
       },
       {
         name: `\\${EMOJIS.produced} ${t('commons:produced')}`,
-        value: `**${produced}/${limit} (${percentage}%)**`,
+        value: `**${produced.toLocaleString()}/${limit.toLocaleString()} (${percentage}%)**`,
         inline: true
       },
       {

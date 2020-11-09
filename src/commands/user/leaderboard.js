@@ -33,8 +33,9 @@ class Leaderboard extends LilirucaCommand {
   }
 
   async exec ({ t, ct, client, guild, util, db }, { type, page, guildOnly }) {
+    const parsedType = this.parseTypes(type)
     const ids = guildOnly && guild.members.cache.map(member => member.id)
-    const data = await db.users.ranking(type, ids, 5, 5 * (page - 1))
+    const data = await db.users.ranking(parsedType, ids, 5, 5 * (page - 1))
 
     if (data.length < 5) {
       return util.send(ct('noPage'))
@@ -54,7 +55,8 @@ class Leaderboard extends LilirucaCommand {
       defaultAvatar: await loadImage(client.user.displayAvatarURL({ format: 'png', size: 64 }))
     }
 
-    const users = data.map(doc => client.users.cache.get(doc.id) || defaultUser)
+    const promises = data.map(doc => client.users.cache.get(doc.id) || client.users.fetch(doc.id).catch(_ => defaultUser))
+    const users = await Promise.all(promises)
 
     let index = 0
 
@@ -72,7 +74,7 @@ class Leaderboard extends LilirucaCommand {
 
     for (const user of users) {
       const username = `${user.username.slice(0, 10)}#${user.discriminator}`
-      const value = this.getValue(data[index], type)
+      const value = this.getValue(data[index], type).toLocaleString()
 
       const parsed = ct(`types.${type}`, { value })
       const position = 363 - ctx.measureText(parsed).width
@@ -88,6 +90,18 @@ class Leaderboard extends LilirucaCommand {
     const parsed = t(`commons:${PLACES.includes(type) ? 'storages.' : ''}${type}`)
 
     util.send(`\\${trophy} ${ct('success', { type: parsed, page })}`, attach)
+  }
+
+  parseTypes (type) {
+    if (PLACES.includes(type)) {
+      return `${type}.storage`
+    }
+
+    if (type === 'fishs') {
+      return 'raresFishs.total'
+    }
+
+    return type
   }
 
   getValue (data, type) {
