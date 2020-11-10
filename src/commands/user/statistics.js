@@ -1,13 +1,13 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemById, getItemName } = require('@utils/items')
-const { RARE_FISHES, STATISTICS_EMOJIS, STATISTICS_TYPES, EMOJIS: { blowfish, rare } } = require('@constants')
+const { RARE_FISHES, STATISTICS_EMOJIS, STATISTICS_TYPES, EMOJIS: { graph, blowfish, rare } } = require('@constants')
 
 class Statistics extends LilirucaCommand {
   constructor () {
     super('statistics', {
       aliases: ['rr'],
-      emoji: blowfish,
+      emoji: graph,
       editable: true,
       clientPermissions: 'EMBED_LINKS',
       args: [
@@ -75,7 +75,7 @@ class Statistics extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(`\\ ${ct('success', { member: member.displayName })}`, embed)
+    util.send(`\\${graph} ${ct('success', { member: member.displayName })}`, embed)
   }
 
   static showRareFishs (values, util, t, ct, member) {

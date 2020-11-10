@@ -140,7 +140,7 @@
         "rare": "Peixe Raro",
         "treasure": "Tesouro",
         "trash": "Lixo",
-        "fishs": "Peixe",
+        "fish": "Peixe",
         "fishRare": "**Parábens você pescou um(a) {{ fish }}!**",
         "success": "Você conseguiu pescar algo!"
     },

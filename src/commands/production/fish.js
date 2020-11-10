@@ -45,7 +45,7 @@ class Fish extends LilirucaCommand {
 
     const catched = randomChances(baitsItem.chances)
     const weight = random(WEIGHTS[catched].max, WEIGHTS[catched].min, true)
-    const emojis = EMOJIS[catched]
+    const emojis = EMOJIS.fishs[catched]
 
     const hook = this[catched]
     const fished = hook(emojis, weight, data.statistics)

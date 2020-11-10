@@ -137,7 +137,7 @@
         "rare": "Rare Fish",
         "treasure": "Treasure",
         "trash": "Trash",
-        "fishs": "Fish",
+        "fish": "Fish",
         "fishRare": "**Congratulations you caught a {{ fish }}!**",
         "success": "You managed to catch something!"
     },
