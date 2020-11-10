@@ -144,7 +144,7 @@ module.exports = {
   },
   WEIGHTS: {
     rare: { min: 5, max: 50 },
-    fishs: { min: 1, max: 20 },
+    fish: { min: 1, max: 20 },
     treasure: { min: 10, max: 40 },
     trash: { min: 1, max: 5 }
   },
@@ -265,6 +265,47 @@ module.exports = {
     [SEASON_NAMES.AUTUMN]: '#ab7f4f',
     [SEASON_NAMES.WINTER]: '#00ccff'
   },
+  STATISTICS_TYPES: {
+    axe: [
+      'axe',
+      'copper_axe',
+      'iron_axe',
+      'gold_axe',
+      'cobalt_axe'
+    ],
+    pickaxe: [
+      'pickaxe',
+      'copper_pickaxe',
+      'iron_pickaxe',
+      'gold_pickaxe',
+      'cobalt_pickaxe'
+    ],
+    materials: [
+      'copper-ore',
+      'iron-ore',
+      'gold-ore',
+      'cobalt-ore',
+      'coal',
+      'wood',
+      'wooden-plank'
+    ],
+    fishing: [
+      'rare',
+      'fish',
+      'trash',
+      'treasure'
+    ]
+  },
+  STATISTICS_EMOJIS: {
+    axe: '🪓',
+    pickaxe: '⛏',
+    materials: '🧰',
+    fishing: '🎣',
+    rare: '🐡',
+    fish: '🐟',
+    trash: '🗑️',
+    treasure: '💰'
+  },
   EMOJIS: {
     money: '💰',
     lilistars: '⭐',
@@ -335,33 +376,35 @@ module.exports = {
     administration: '🔧',
     bot: '🤖',
     others: '🔍',
-    fishs: [
-      '<:fish_1:763957178523451453>',
-      '<:fish_2:763957215556010055>',
-      '<:fish_3:763957241711689738>',
-      '<:fish_4:763957268009320478>',
-      '<:fish_5:763957649313628171>'
-    ],
-    treasure: [
-      '<:treasure_chest_2:763957075914653797>',
-      '<:treasure_chest:763957075776241684>',
-      '<:treasure:763957075926843442>'
-    ],
-    trash: [
-      '<:trashbanana:763957773020823552>',
-      '<:trashboot:763957773229621288>',
-      '<:brokenglasses:763957773549436998>',
-      '<:brokenbottle:763957773431603210>'
-    ],
-    rare: {
-      anglerfish: '<:anglerfish:763957907430703135>',
-      eel: '<:eel:763957907838468096>',
-      goldenfish: '<:goldenfish:763957908190265394>',
-      mantaray: '<:mantaray:763957909272788992>',
-      marlin: '<:marlin:763957909821718549>',
-      octopus: '<:octopus:763957910681419796>',
-      pufferfish: '<:pufferfish:763957909972320277>',
-      squid: '<:squid:763957908970668034>'
+    fishs: {
+      fish: [
+        '<:fish_1:763957178523451453>',
+        '<:fish_2:763957215556010055>',
+        '<:fish_3:763957241711689738>',
+        '<:fish_4:763957268009320478>',
+        '<:fish_5:763957649313628171>'
+      ],
+      treasure: [
+        '<:treasure_chest_2:763957075914653797>',
+        '<:treasure_chest:763957075776241684>',
+        '<:treasure:763957075926843442>'
+      ],
+      trash: [
+        '<:trashbanana:763957773020823552>',
+        '<:trashboot:763957773229621288>',
+        '<:brokenglasses:763957773549436998>',
+        '<:brokenbottle:763957773431603210>'
+      ],
+      rare: {
+        anglerfish: '<:anglerfish:763957907430703135>',
+        eel: '<:eel:763957907838468096>',
+        goldenfish: '<:goldenfish:763957908190265394>',
+        mantaray: '<:mantaray:763957909272788992>',
+        marlin: '<:marlin:763957909821718549>',
+        octopus: '<:octopus:763957910681419796>',
+        pufferfish: '<:pufferfish:763957909972320277>',
+        squid: '<:squid:763957908970668034>'
+      }
     }
   },
   backgrounds: [

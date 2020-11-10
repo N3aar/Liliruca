@@ -138,7 +138,7 @@
         "rare": "Rare Fish",
         "treasure": "Treasure",
         "trash": "Trash",
-        "fishs": "Fish",
+        "fish": "Fish",
         "fishRare": "**Congratulations you caught a {{ fish }}!**",
         "success": "You managed to catch something!"
     },
@@ -319,26 +319,28 @@
         "usage": "[member]",
         "success": "Profile of `{{- name }}`!"
     },
-    "rares": {
-        "description": "List of rare fish caught!",
+    "statistics": {
+        "description": "User stats",
         "usage": "[member]",
-        "noRares": "Did not catch any rare fish!",
-        "success": "Rare fish caught by `{{ member }}`!"
-    },
-    "setbackground": {
-        "description": "Set a background for your profile",
-        "noFrame": "You don't have a frame to use! Buy with `buy` command.",
-        "usage": "[background number]",
-        "success": "Background set successfully!"
-    },
-    "stats": {
-        "description": "View how your resources are doing",
-        "usage": "<place> [member]",
-        "production": "{{- generation }}/hr, maximum {{- max }} hours",
-        "booster": "Increased {{ min }}% to {{ max }}%",
-        "never": "Never collected.",
-        "last": "Last collected: {{- time }} ago.",
-        "success": "Resources of `{{- name }}`"
+        "axe": "Axes",
+        "pickaxe": "Pickaxes",
+        "materials": "Materials",
+        "fishing" : "Fishing",
+        "tool": "{{ name }} used {{ count }} time(s).",
+        "material": "{{ name }} {{ count }} acquired",
+        "notool": "{{ name }} was not used.",
+        "nomaterial": "{{ name }} was not acquired.",
+        "rare": "{{ count }} rare fish fished.",
+        "no_rare": "No rare fish caught.",
+        "fish": "{{ count }} Fish caught.",
+        "no_fish": "No fish caught.",
+        "trash": "{{ count }} Trash caught.",
+        "no_trash": "No trash caught.",
+        "treasure": "{{ count }} Treasure caught.",
+        "no_treasure": "No treasure caught.",
+        "rareFishs": "Rare fish fished by `{{ member }}`!",
+        "success": "`{{ member }}'s` Stats!",
+        "noRares": "Did not catch any rare fish!"
     },
     "tools": {
         "description": "All your tools equipped to use",

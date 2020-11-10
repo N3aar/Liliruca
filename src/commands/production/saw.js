@@ -61,6 +61,7 @@ class Saw extends LilirucaCommand {
 
     removeItem(data, 'items', 'wood', required)
     addItemInInventory(data, 'items', 'wooden-plank', amount)
+    addItemInInventory(data, 'statistics', 'wooden-plank', amount)
 
     const values = {
       money: data.money - price

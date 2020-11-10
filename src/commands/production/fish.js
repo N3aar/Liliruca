@@ -46,10 +46,10 @@ class Fish extends LilirucaCommand {
 
     const catched = randomChances(baits.chances)
     const weight = random(WEIGHTS[catched].max, WEIGHTS[catched].min, true)
-    const emojis = EMOJIS[catched]
+    const emojis = EMOJIS.fishs[catched]
 
     const hook = this[catched]
-    const fished = hook(emojis, weight, data.raresFishs)
+    const fished = hook(emojis, weight, data.statistics)
     const emoji = fished.emoji || emojis[random(emojis.length)]
     const reward = catched === 'treasure' ? 'reward' : 'price'
     const fields = [
@@ -83,13 +83,12 @@ class Fish extends LilirucaCommand {
       const fish = t(`commons:rares.${fished.fish}`)
       const newEmoji = fished.new ? `\\${EMOJIS.news} ` : ''
 
-      addItemInInventory(data, 'raresFishs', fished.fish)
+      addItemInInventory(data, 'statistics', fished.fish, 1)
 
-      data.raresFishs.total += 1
-
-      data.markModified('raresFishs')
       embed.setDescription(newEmoji + ct('fishRare', { fish }))
     }
+
+    addItemInInventory(data, 'statistics', catched, 1)
 
     const values = {
       energy: data.energy - ENERGY_COST,
@@ -135,7 +134,7 @@ class Fish extends LilirucaCommand {
     }
   }
 
-  fishs (_, weight) {
+  fish (_, weight) {
     const money = weight * 20
     return {
       reward: `$${money}`,
