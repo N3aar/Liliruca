@@ -6,7 +6,7 @@ const { RARE_FISHES, STATISTICS_EMOJIS, STATISTICS_TYPES, EMOJIS: { graph, blowf
 class Statistics extends LilirucaCommand {
   constructor () {
     super('statistics', {
-      aliases: ['rr'],
+      aliases: ['sc'],
       emoji: graph,
       editable: true,
       clientPermissions: 'EMBED_LINKS',

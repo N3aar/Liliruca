@@ -321,7 +321,7 @@
         "success": "Perfil de `{{- name }}`!"
     },
     "statistics": {
-        "description": "Lista de peixes raros pescados!",
+        "description": "Estatísticas de um usuário!",
         "usage": "[membro]",
         "axe": "Machados",
         "pickaxe": "Picaretas",
