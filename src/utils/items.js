@@ -40,11 +40,11 @@ function addItemInInventory (data, inventory, itemId, amount = 1) {
 
   data[inventory][itemId] += amount
 
-  data.markModified('items')
+  data.markModified(inventory)
 }
 
 function removeItem (data, inventory, itemId, uses = 1) {
-  data.markModified('items')
+  data.markModified(inventory)
 
   if ((data[inventory][itemId] - uses) < 1) {
     return delete data.items[itemId]

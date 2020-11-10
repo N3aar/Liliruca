@@ -12,7 +12,7 @@ const UserSchema = new Schema({
   // [ITEM_NAME]: ITEM_COUNT
   tools: { type: Object, default: {} },
   items: { type: Object, default: {} },
-  raresFishs: { type: Object, default: { total: 0 } },
+  statistics: { type: Object, default: {} },
 
   // COOLDOWN'S
   collectedAt: Number,

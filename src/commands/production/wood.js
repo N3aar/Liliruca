@@ -67,6 +67,8 @@ class Wood extends LilirucaCommand {
 
     removeItem(data, 'items', toolId, uses)
     addItemInInventory(data, 'items', 'wood', amount)
+    addItemInInventory(data, 'statistics', 'wood', amount)
+    addItemInInventory(data, 'statistics', toolId, uses)
 
     const values = {
       energy: data.energy - energyCost

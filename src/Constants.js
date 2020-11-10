@@ -265,6 +265,47 @@ module.exports = {
     [SEASON_NAMES.AUTUMN]: '#ab7f4f',
     [SEASON_NAMES.WINTER]: '#00ccff'
   },
+  STATISTICS_TYPES: {
+    axe: [
+      'axe',
+      'copper_axe',
+      'iron_axe',
+      'gold_axe',
+      'cobalt_axe'
+    ],
+    pickaxe: [
+      'pickaxe',
+      'copper_pickaxe',
+      'iron_pickaxe',
+      'gold_pickaxe',
+      'cobalt_pickaxe'
+    ],
+    materials: [
+      'copper-ore',
+      'iron-ore',
+      'gold-ore',
+      'cobalt-ore',
+      'coal',
+      'wood',
+      'wooden-plank'
+    ],
+    fishing: [
+      'rare',
+      'fish',
+      'trash',
+      'treasure'
+    ]
+  },
+  STATISTICS_EMOJIS: {
+    axe: '🪓',
+    pickaxe: '⛏',
+    materials: '🧰',
+    fishing: '🎣',
+    rare: '🐡',
+    fish: '🐟',
+    trash: '🗑️',
+    treasure: '💰'
+  },
   EMOJIS: {
     money: '💰',
     lilistars: '⭐',

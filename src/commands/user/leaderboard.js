@@ -89,7 +89,7 @@ class Leaderboard extends LilirucaCommand {
     }
 
     if (type === 'fishs') {
-      return 'raresFishs.total'
+      return 'statistics.rare'
     }
 
     return type
@@ -101,7 +101,7 @@ class Leaderboard extends LilirucaCommand {
     }
 
     if (type === 'fishs') {
-      return data.raresFishs.total
+      return data.statistics.rare || 0
     }
 
     return data[type].toLocaleString()

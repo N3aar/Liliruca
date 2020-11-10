@@ -66,6 +66,7 @@ class Mine extends LilirucaCommand {
 
     if (coal) {
       addItemInInventory(data, 'items', 'coal', coalAmount)
+      addItemInInventory(data, 'statistics', 'coal', coalAmount)
 
       fields.push({
         name: `${coalItem.emoji} ${t('commons:bonus')}`,
@@ -76,6 +77,8 @@ class Mine extends LilirucaCommand {
 
     removeItem(data, 'items', pickaxeId)
     addItemInInventory(data, 'items', itemReward, amount)
+    addItemInInventory(data, 'statistics', itemReward, amount)
+    addItemInInventory(data, 'statistics', pickaxeId, 1)
 
     const values = {
       energy: data.energy - ENERGY_COST

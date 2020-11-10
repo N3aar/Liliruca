@@ -318,7 +318,7 @@
         "usage": "[member]",
         "success": "Profile of `{{- name }}`!"
     },
-    "rares": {
+    "statistics": {
         "description": "List of rare fish caught!",
         "usage": "[member]",
         "noRares": "Did not catch any rare fish!",

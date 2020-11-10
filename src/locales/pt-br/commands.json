@@ -320,11 +320,28 @@
         "usage": "[membro]",
         "success": "Perfil de `{{- name }}`!"
     },
-    "rares": {
+    "statistics": {
         "description": "Lista de peixes raros pescados!",
         "usage": "[membro]",
-        "noRares": "Não pescou nenhum peixe raro!",
-        "success": "Peixes Raros pescados por `{{ member }}`!"
+        "axe": "Machados",
+        "pickaxe": "Picaretas",
+        "materials": "Materiais",
+        "fishing" : "Pesca",
+        "tool": "{{ name }} usado {{ count }} vez(es)",
+        "material": "{{ name }} {{ count }} adquirido(s)",
+        "notool": "{{ name }} não foi utilizado.",
+        "nomaterial": "{{ name }} não foi adquirido.",
+        "rare": "{{ count }} Peixes raros pescados.",
+        "no_rare": "Nenhum Peixe raro pescado.",
+        "fish": "{{ count }} Peixes comuns pescados.",
+        "no_fish": "Nenhum Peixe pescado.",
+        "trash": "{{ count }} Lixos pescados.",
+        "no_trash": "Nenhum Lixo pescado.",
+        "treasure": "{{ count }} Tesouros pescados.",
+        "no_treasure": "Nenhum Tesouro pescado.",
+        "rareFishs": "Peixes Raros pescados por `{{ member }}`!",
+        "success": "Estatísticas de `{{ member }}`!",
+        "noRares": "Não pescou nenhum peixe raro!"
     },
     "setbackground": {
         "description": "Defina um fundo para seu perfil",
