@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemById } = require('@utils/items')
+const { getItemName, getItem } = require('@utils/items')
 const { EMOJIS: { items } } = require('@constants')
 
 class Tools extends LilirucaCommand {
@@ -63,7 +63,7 @@ class Tools extends LilirucaCommand {
 
   getItemInformation (t, data, name) {
     const item = data.tools[name]
-    return item && `${getItemById(item).emoji} **${getItemName(item, t)}**`
+    return item && `${getItem(item).emoji} **${getItemName(item, t)}**`
   }
 }
 

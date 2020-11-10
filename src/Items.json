@@ -1,6 +1,6 @@
 {
   "frame": {
-    "numId": 1,
+    "numId": "1",
     "price": 10,
     "sale": 5,
     "payment": "lilistars",
@@ -9,7 +9,7 @@
     "emoji": "<:frame:772932181042790440>"
   },
   "wood": {
-    "numId": 2,
+    "numId": "2",
     "price": 50,
     "sale": 5,
     "payment": "money",
@@ -18,7 +18,7 @@
     "emoji": "<:wood:766150662374948865>"
   },
   "wooden-plank": {
-    "numId": 3,
+    "numId": "3",
     "price": 130,
     "sale": 40,
     "payment": "money",
@@ -30,7 +30,7 @@
     }
   },
   "coal": {
-    "numId": 4,
+    "numId": "4",
     "price": 150,
     "sale": 15,
     "payment": "money",
@@ -39,7 +39,7 @@
     "emoji": "<:coal:769612186674528319>"
   },
   "copper-ore": {
-    "numId": 5,
+    "numId": "5",
     "price": 200,
     "sale": 25,
     "payment": "money",
@@ -51,7 +51,7 @@
     "amount": 1
   },
   "copper-bar": {
-    "numId": 6,
+    "numId": "6",
     "price": 400,
     "sale": 80,
     "payment": "money",
@@ -63,7 +63,7 @@
     }
   },
   "iron-ore": {
-    "numId": 7,
+    "numId": "7",
     "price": 280,
     "sale": 35,
     "payment": "money",
@@ -75,7 +75,7 @@
     "amount": 1
   },
   "iron-bar": {
-    "numId": 8,
+    "numId": "8",
     "price": 480,
     "sale": 90,
     "payment": "money",
@@ -87,7 +87,7 @@
     }
   },
   "gold-ore": {
-    "numId": 9,
+    "numId": "9",
     "price": 360,
     "sale": 45,
     "payment": "money",
@@ -99,7 +99,7 @@
     "amount": 1
   },
   "gold-bar": {
-    "numId": 10,
+    "numId": "10",
     "price": 560,
     "sale": 100,
     "payment": "money",
@@ -111,7 +111,7 @@
     }
   },
   "cobalt-ore": {
-    "numId": 11,
+    "numId": "11",
     "price": 440,
     "sale": 55,
     "payment": "money",
@@ -123,7 +123,7 @@
     "amount": 1
   },
   "cobalt-bar": {
-    "numId": 12,
+    "numId": "12",
     "price": 640,
     "sale": 110,
     "payment": "money",
@@ -135,7 +135,7 @@
     }
   },
   "scarecrow": {
-    "numId": 13,
+    "numId": "13",
     "place": "farm",
     "price": 400,
     "payment": "money",
@@ -145,7 +145,7 @@
     "emoji": "<:scarecrow:767104876013944883>"
   },
   "fence": {
-    "numId": 14,
+    "numId": "14",
     "place": "farm",
     "price": 400,
     "payment": "money",
@@ -155,7 +155,7 @@
     "emoji": "<:fence:767105687959371776>"
   },
   "small_energetic": {
-    "numId": 15,
+    "numId": "15",
     "price": 10,
     "payment": "lilistars",
     "type": "energy",
@@ -165,7 +165,7 @@
     "energy": 15
   },
   "medium_energetic": {
-    "numId": 16,
+    "numId": "16",
     "price": 30,
     "payment": "lilistars",
     "type": "energy",
@@ -174,7 +174,7 @@
     "energy": 60
   },
   "large_energetic": {
-    "numId": 17,
+    "numId": "17",
     "price": 40,
     "payment": "lilistars",
     "type": "energy",
@@ -184,7 +184,7 @@
     "energy": 100
   },
   "axe": {
-    "numId": 18,
+    "numId": "18",
     "place": "farm",
     "price": 100,
     "payment": "money",
@@ -197,7 +197,7 @@
     "max": 20
   },
   "copper_axe": {
-    "numId": 19,
+    "numId": "19",
     "place": "farm",
     "price": 20,
     "payment": "lilistars",
@@ -215,7 +215,7 @@
     }
   },
   "iron_axe": {
-    "numId": 20,
+    "numId": "20",
     "place": "farm",
     "price": 30,
     "payment": "lilistars",
@@ -233,7 +233,7 @@
     }
   },
   "gold_axe": {
-    "numId": 21,
+    "numId": "21",
     "place": "farm",
     "price": 40,
     "payment": "lilistars",
@@ -251,7 +251,7 @@
     }
   },
   "cobalt_axe": {
-    "numId": 22,
+    "numId": "22",
     "place": "farm",
     "price": 50,
     "payment": "lilistars",
@@ -269,7 +269,7 @@
     }
   },
   "basic_baits": {
-    "numId": 23,
+    "numId": "23",
     "place": "fishing",
     "price": 5,
     "payment": "lilistars",
@@ -296,7 +296,7 @@
     }
   },
   "medium_baits": {
-    "numId": 24,
+    "numId": "24",
     "place": "fishing",
     "price": 10,
     "payment": "lilistars",
@@ -323,7 +323,7 @@
     }
   },
   "premium_baits": {
-    "numId": 25,
+    "numId": "25",
     "place": "fishing",
     "price": 15,
     "sale": 2,
@@ -351,7 +351,7 @@
     }
   },
   "pickaxe": {
-    "numId": 26,
+    "numId": "26",
     "place": "mining",
     "price": 800,
     "payment": "money",
@@ -400,7 +400,7 @@
     }
   },
   "copper_pickaxe": {
-    "numId": 27,
+    "numId": "27",
     "place": "mining",
     "price": 20,
     "payment": "lilistars",
@@ -454,7 +454,7 @@
     }
   },
   "iron_pickaxe": {
-    "numId": 28,
+    "numId": "28",
     "place": "mining",
     "price": 30,
     "payment": "lilistars",
@@ -508,7 +508,7 @@
     }
   },
   "gold_pickaxe": {
-    "numId": 29,
+    "numId": "29",
     "place": "mining",
     "price": 40,
     "payment": "lilistars",
@@ -562,7 +562,7 @@
     }
   },
   "cobalt_pickaxe": {
-    "numId": 30,
+    "numId": "30",
     "place": "mining",
     "price": 50,
     "payment": "lilistars",
@@ -616,10 +616,10 @@
     }
   },
   "basic_box": {
-    "numId": 31,
+    "numId": "31",
     "price": 5,
     "payment": "lilistars",
-    "type": "reward",
+    "type": "box",
     "value": 1,
     "emoji": "<:box_basic:764557366648635404>",
     "rewards": {
@@ -654,10 +654,10 @@
     }
   },
   "common_box": {
-    "numId": 32,
+    "numId": "32",
     "price": 15,
     "payment": "lilistars",
-    "type": "reward",
+    "type": "box",
     "value": 1,
     "emoji": "<:box_common:764557391340896266>",
     "item": {
@@ -692,10 +692,10 @@
     }
   },
   "uncommon_box": {
-    "numId": 33,
+    "numId": "33",
     "price": 25,
     "payment": "lilistars",
-    "type": "reward",
+    "type": "box",
     "value": 1,
     "emoji": "<:box_uncommon:764557412953882654>",
     "rewards": {
@@ -730,10 +730,10 @@
     }
   },
   "rare_box": {
-    "numId": 34,
+    "numId": "34",
     "price": 35,
     "payment": "lilistars",
-    "type": "reward",
+    "type": "box",
     "value": 1,
     "emoji": "<:box_rare:764557430007922718>",
     "rewards": {
@@ -768,10 +768,10 @@
     }
   },
   "epic_box": {
-    "numId": 35,
+    "numId": "35",
     "price": 45,
     "payment": "lilistars",
-    "type": "reward",
+    "type": "box",
     "value": 1,
     "emoji": "<:box_epic:764557444524539924>",
     "rewards": {
@@ -806,7 +806,7 @@
     }
   },
   "basic_fertilizer": {
-    "numId": 36,
+    "numId": "36",
     "place": "farm",
     "price": 10,
     "payment": "lilistars",
@@ -819,7 +819,7 @@
     "max": 25
   },
   "medium_fertilizer": {
-    "numId": 37,
+    "numId": "37",
     "place": "farm",
     "price": 20,
     "payment": "lilistars",
@@ -832,7 +832,7 @@
     "max": 35
   },
   "premium_fertilizer": {
-    "numId": 38,
+    "numId": "38",
     "place": "farm",
     "price": 30,
     "payment": "lilistars",
@@ -845,7 +845,7 @@
     "max": 50
   },
   "small_fishing-net": {
-    "numId": 39,
+    "numId": "39",
     "place": "fishing",
     "price": 10,
     "payment": "lilistars",
@@ -858,7 +858,7 @@
     "max": 10
   },
   "medium_fishing-net": {
-    "numId": 40,
+    "numId": "40",
     "place": "fishing",
     "price": 20,
     "payment": "lilistars",
@@ -871,7 +871,7 @@
     "max": 20
   },
   "large_fishing-net": {
-    "numId": 41,
+    "numId": "41",
     "place": "fishing",
     "price": 30,
     "payment": "lilistars",
@@ -884,7 +884,7 @@
     "max": 30
   },
   "small_bomb": {
-    "numId": 42,
+    "numId": "42",
     "place": "mining",
     "price": 10,
     "payment": "lilistars",
@@ -897,7 +897,7 @@
     "max": 10
   },
   "medium_bomb": {
-    "numId": 43,
+    "numId": "43",
     "place": "mining",
     "price": 20,
     "payment": "lilistars",
@@ -910,7 +910,7 @@
     "max": 15
   },
   "large_bomb": {
-    "numId": 44,
+    "numId": "44",
     "place": "mining",
     "price": 30,
     "payment": "lilistars",

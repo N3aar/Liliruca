@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { getItemById, getToolInInventory, removeItem, addItemInInventory } = require('@utils/items')
+const { getToolInInventory, removeItem, addItemInInventory } = require('@utils/items')
 const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST, EMOJIS } = require('@constants')
 
 class Fish extends LilirucaCommand {
@@ -16,14 +16,14 @@ class Fish extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: 'itemId'
+          id: 'item',
+          type: 'item'
         }
       ]
     })
   }
 
-  async exec ({ t, ct, util, db, author }, { itemId }) {
+  async exec ({ t, ct, util, db, author }, { item }) {
     const data = await db.users.get(author.id)
     const dataPlace = data.fishing
 
@@ -35,15 +35,16 @@ class Fish extends LilirucaCommand {
       return util.send(t('errors:noEnergy'))
     }
 
-    const baits = (data.items[itemId] && getItemById(itemId)) || getToolInInventory(data, 'baits')
+    if (item && !data.items[item.id]) {
+      return ct('noBaits')
+    }
+
+    const baits = item || getToolInInventory(data, 'baits')
     if (!baits) {
       return util.send(ct('noBaits'))
     }
 
-    const baitsId = itemId || baits.id
-    const baitsItem = itemId ? baits : baits.item
-
-    const catched = randomChances(baitsItem.chances)
+    const catched = randomChances(baits.chances)
     const weight = random(WEIGHTS[catched].max, WEIGHTS[catched].min, true)
     const emojis = EMOJIS[catched]
 
@@ -69,7 +70,7 @@ class Fish extends LilirucaCommand {
       }
     ]
 
-    removeItem(data, 'items', baitsId)
+    removeItem(data, 'items', baits.id)
 
     const embed = new LilirucaEmbed()
       .addFields(fields)

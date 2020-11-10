@@ -1,16 +1,19 @@
 const items = require('../Items.json')
+const numIds = new Map()
 
 function hasItem (itemId) {
-  return (itemId in items)
+  return (itemId in items) || numIds.has(itemId)
 }
 
-function getItemById (itemId) {
-  return items[itemId]
+function getItem (itemId) {
+  const id = numIds.get(itemId) || itemId
+  const item = items[id]
+  return item && { id, ...item }
 }
 
 function getToolInInventory (data, tool) {
   const toolId = (data.tools[tool] in data.items) && data.tools[tool]
-  return toolId && { id: toolId, item: getItemById(toolId) }
+  return toolId && getItem(toolId)
 }
 
 function getItemsByMaterialId (materialId) {
@@ -40,11 +43,11 @@ function addItemInInventory (data, inventory, itemId, amount = 1) {
 
   data[inventory][itemId] += amount
 
-  data.markModified('items')
+  data.markModified(inventory)
 }
 
 function removeItem (data, inventory, itemId, uses = 1) {
-  data.markModified('items')
+  data.markModified(inventory)
 
   if ((data[inventory][itemId] - uses) < 1) {
     return delete data.items[itemId]
@@ -67,10 +70,19 @@ function loadTypes () {
   return types
 }
 
+function loadNumIds () {
+  for (const item in items) {
+    numIds.set(items[item].numId, item)
+  }
+}
+
+loadNumIds()
+
 module.exports = {
   items,
+  numIds,
+  getItem,
   hasItem,
-  getItemById,
   getToolInInventory,
   getItemsByMaterialId,
   getItemName,

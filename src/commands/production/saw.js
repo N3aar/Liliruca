@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemById, addItemInInventory, removeItem } = require('@utils/items')
+const { getItemName, getItem, addItemInInventory, removeItem } = require('@utils/items')
 const { EMOJIS: { gear, money } } = require('@constants')
 
 class Saw extends LilirucaCommand {
@@ -38,8 +38,8 @@ class Saw extends LilirucaCommand {
       return util.send(ct('noMoney', { missing: price - data.money }))
     }
 
-    const { emoji: wood } = getItemById('wood')
-    const { emoji: plank } = getItemById('wooden-plank')
+    const { emoji: wood } = getItem('wood')
+    const { emoji: plank } = getItem('wooden-plank')
 
     const fields = [
       {

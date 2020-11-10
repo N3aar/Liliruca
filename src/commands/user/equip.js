@@ -1,5 +1,4 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { getItemById } = require('@utils/items')
 const { EMOJIS: { hammerwrench } } = require('@constants')
 
 class Equip extends LilirucaCommand {
@@ -14,23 +13,22 @@ class Equip extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: 'itemId',
+          id: 'item',
+          type: 'item',
           otherwise: message => message.t('errors:noItem')
         }
       ]
     })
   }
 
-  async exec ({ db, ct, author, util }, { itemId }) {
-    const item = getItemById(itemId)
+  async exec ({ db, ct, author, util }, { item }) {
     if (!item.tool) {
       return util.send(ct('noTool'))
     }
 
     const data = await db.users.get(author.id)
 
-    data.tools[item.tool] = itemId
+    data.tools[item.tool] = item.id
     data.markModified('tools')
 
     db.users.update(data, {})

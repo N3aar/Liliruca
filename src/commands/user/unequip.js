@@ -1,5 +1,4 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { getItemById } = require('@utils/items')
 const { EMOJIS: { nut } } = require('@constants')
 
 class Unequip extends LilirucaCommand {
@@ -14,19 +13,18 @@ class Unequip extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: 'itemId',
+          id: 'item',
+          type: 'item',
           otherwise: message => message.t('errors:noItem')
         }
       ]
     })
   }
 
-  async exec ({ db, ct, author, util }, { itemId }) {
+  async exec ({ db, ct, author, util }, { item }) {
     const data = await db.users.get(author.id)
 
-    const item = getItemById(itemId)
-    if (data.tools[item.tool] !== itemId) {
+    if (data.tools[item.tool] !== item.id) {
       return util.send(ct('noEquipped'))
     }
 

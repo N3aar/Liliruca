@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemById, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemName, removeItem, addItemInInventory } = require('@utils/items')
 const { EMOJIS: { hammerwrench, items, money } } = require('@constants')
 
 class Craft extends LilirucaCommand {
@@ -16,14 +16,8 @@ class Craft extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: (_, phrase) => {
-            const item = getItemById(phrase)
-            if (item && item.craftable) {
-              return phrase
-            }
-            return null
-          },
+          id: 'item',
+          type: Argument.validate('item', (m, p, value) => value.craftable),
           otherwise: message => message.ct('noCraftable')
         },
         {
@@ -35,15 +29,13 @@ class Craft extends LilirucaCommand {
     })
   }
 
-  async exec ({ t, ct, util, db, author }, { itemId, amount }) {
+  async exec ({ t, ct, util, db, author }, { item, amount }) {
     const data = await db.users.get(author.id)
     const price = 50 * amount
 
     if (data.money < price) {
       return util.send(ct('noMoney', { missing: price - data.money }))
     }
-
-    const item = getItemById(itemId)
 
     if (item.required && data[item.place].level < item.required) {
       return util.send(t('errors:locked'))
@@ -62,7 +54,7 @@ class Craft extends LilirucaCommand {
     const fields = [
       {
         name: `${item.emoji} ${t('commons:created')}`,
-        value: `**x${item.value * amount} ${getItemName(itemId, t)}**`,
+        value: `**x${item.value * amount} ${getItemName(item.id, t)}**`,
         inline: true
       },
       {
@@ -77,7 +69,7 @@ class Craft extends LilirucaCommand {
       }
     ]
 
-    addItemInInventory(data, 'items', itemId, item.value * amount)
+    addItemInInventory(data, 'items', item.id, item.value * amount)
 
     for (const material in item.materials) {
       removeItem(data, 'items', material, item.materials[material] * amount)

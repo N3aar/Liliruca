@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemById, addItemInInventory } = require('@utils/items')
+const { getItemName, addItemInInventory } = require('@utils/items')
 const { EMOJIS: { bank, pack, money } } = require('@constants')
 
 class Buy extends LilirucaCommand {
@@ -16,8 +16,8 @@ class Buy extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: 'itemId',
+          id: 'item',
+          type: 'item',
           otherwise: message => message.t('errors:noItem')
         },
         {
@@ -29,8 +29,7 @@ class Buy extends LilirucaCommand {
     })
   }
 
-  async exec ({ ct, t, db, member, util }, { itemId, amount, active }) {
-    const item = getItemById(itemId)
+  async exec ({ ct, t, db, member, util }, { item, amount, active }) {
     const data = await db.users.get(member.id)
 
     if (item.required && data[item.place].level < item.required) {
@@ -41,7 +40,7 @@ class Buy extends LilirucaCommand {
       return util.send(ct('noMoney'))
     }
 
-    addItemInInventory(data, 'items', itemId, item.value * amount)
+    addItemInInventory(data, 'items', item.id, item.value * amount)
 
     const price = item.price * amount
     const values = {
@@ -53,7 +52,7 @@ class Buy extends LilirucaCommand {
     const buy = [
       {
         name: `\\${pack} ${t('commons:item')}`,
-        value: `**${item.emoji} ${amount}x ${getItemName(itemId, t)}**`,
+        value: `**${item.emoji} ${amount}x ${getItemName(item.id, t)}**`,
         inline: true
       },
       {

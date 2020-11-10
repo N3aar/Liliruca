@@ -5,7 +5,7 @@ const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = requ
 const Database = require('@database/Database')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { logger, locales } = require('@utils')
-const { hasItem } = require('@utils/items')
+const { getItem } = require('@utils/items')
 const { OWNER_IDS, DEFAULT_PREFIX, DEFAULT_LANGUAGE, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
 const { Intents } = require('discord.js')
 const joinPath = path => join(__dirname, '..', path)
@@ -92,13 +92,13 @@ class LilirucaClient extends AkairoClient {
       return null
     })
 
-    this.commandHandler.resolver.addType('itemId', (message, phrase) => {
+    this.commandHandler.resolver.addType('item', (message, phrase) => {
       if (!phrase) {
         return null
       }
 
-      const item = phrase.toLowerCase()
-      if (hasItem(item)) {
+      const item = getItem(phrase.toLowerCase())
+      if (item) {
         return item
       }
 

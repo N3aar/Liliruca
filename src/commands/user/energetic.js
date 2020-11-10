@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemById, getToolInInventory, removeItem } = require('@utils/items')
+const { getItemName, getToolInInventory, removeItem } = require('@utils/items')
 const { EMOJIS: { drink, voltage } } = require('@constants')
 
 class Energetic extends LilirucaCommand {
@@ -12,43 +12,44 @@ class Energetic extends LilirucaCommand {
       clientPermissions: 'EMBED_LINKS',
       args: [
         {
-          id: 'itemId',
-          type: 'itemId'
+          id: 'item',
+          type: 'item'
         }
       ]
     })
   }
 
-  async exec ({ t, ct, author, db, util }, { itemId }) {
+  async exec ({ t, ct, author, db, util }, { item }) {
     const data = await db.users.get(author.id)
 
-    const energetic = (data.items[itemId] && getItemById(itemId)) || getToolInInventory(data, 'energetic')
+    if (item && !data.items[item.id]) {
+      return ct('noEnergetic')
+    }
+
+    const energetic = item || getToolInInventory(data, 'energetic')
     if (!energetic) {
       return util.send(ct('noEnergetic'))
     }
 
-    const energeticId = itemId || energetic.id
-    const energeticItem = itemId ? energetic : energetic.item
-
     const fields = [
       {
         name: `\\${drink} ${t('commons:drink')}`,
-        value: `**${getItemName(energeticId, t)}**`,
+        value: `**${getItemName(energetic.id, t)}**`,
         inline: true
       },
       {
         name: ct('recoveredEnergy'),
-        value: `**${voltage} ${energeticItem.energy}**`,
+        value: `**${voltage} ${energetic.energy}**`,
         inline: true
       }
     ]
 
-    const energy = data.energy + energeticItem.energy
+    const energy = data.energy + energetic.energy
     const values = {
       energy: Math.min(energy, 100)
     }
 
-    removeItem(data, 'items', energeticId)
+    removeItem(data, 'items', energetic.id)
 
     db.users.update(data, values)
 

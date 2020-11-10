@@ -85,6 +85,7 @@
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
         "itemId": "ID",
+        "itemNum": "Number ID",
         "itemType": "Type",
         "itemPrice": "Price",
         "itemUtility": "Utility",
