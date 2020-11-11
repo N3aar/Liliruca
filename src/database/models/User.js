@@ -10,8 +10,8 @@ const UserSchema = new Schema({
   dailyStreak: { type: Number, default: 0, min: 0 },
 
   // [ITEM_NAME]: ITEM_COUNT
-  tools: { type: Object, default: {} },
   items: { type: Object, default: {} },
+  tools: { type: Object, default: { autoequip: true } },
   statistics: { type: Object, default: {} },
 
   // COOLDOWN'S

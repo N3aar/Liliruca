@@ -9,7 +9,10 @@ class Tools extends LilirucaCommand {
       aliases: ['tl'],
       emoji: items,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ]
     })
   }
 
@@ -55,8 +58,10 @@ class Tools extends LilirucaCommand {
       })
     }
 
+    const autoEquip = data.tools.autoequip ? 'enable' : 'disable'
     const embed = new LilirucaEmbed()
       .addFields(tools)
+      .setFooter(`${ct('autoequip')}: ${t(`commons:${autoEquip}`)}`)
 
     util.send(`\\${items} ${ct('success')}`, embed)
   }

@@ -80,7 +80,7 @@ class Mine extends LilirucaCommand {
     removeItem(data, 'items', pickaxe.id)
     addItemInInventory(data, 'items', itemReward, amount)
     addItemInInventory(data, 'statistics', itemReward, amount)
-    addItemInInventory(data, 'statistics', pickaxeId, 1)
+    addItemInInventory(data, 'statistics', pickaxe.id)
 
     const values = {
       energy: data.energy - ENERGY_COST

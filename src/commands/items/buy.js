@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, addItemInInventory } = require('@utils/items')
+const { getItemName, addItemInInventory, autoEquipItem } = require('@utils/items')
 const { EMOJIS: { bank, pack, money } } = require('@constants')
 
 class Buy extends LilirucaCommand {
@@ -29,7 +29,7 @@ class Buy extends LilirucaCommand {
     })
   }
 
-  async exec ({ ct, t, db, member, util }, { item, amount, active }) {
+  async exec ({ ct, t, db, member, util }, { item, amount }) {
     const data = await db.users.get(member.id)
 
     if (item.required && data[item.place].level < item.required) {
@@ -41,6 +41,10 @@ class Buy extends LilirucaCommand {
     }
 
     addItemInInventory(data, 'items', item.id, item.value * amount)
+
+    if (item.tool && data.tools.autoequip) {
+      autoEquipItem(data, item)
+    }
 
     const price = item.price * amount
     const values = {

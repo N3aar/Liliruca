@@ -83,12 +83,12 @@ class Fish extends LilirucaCommand {
       const fish = t(`commons:rares.${fished.fish}`)
       const newEmoji = fished.new ? `\\${EMOJIS.news} ` : ''
 
-      addItemInInventory(data, 'statistics', fished.fish, 1)
+      addItemInInventory(data, 'statistics', fished.fish)
 
       embed.setDescription(newEmoji + ct('fishRare', { fish }))
     }
 
-    addItemInInventory(data, 'statistics', catched, 1)
+    addItemInInventory(data, 'statistics', catched)
 
     const values = {
       energy: data.energy - ENERGY_COST,

@@ -230,7 +230,7 @@
         "success": "\\👍 successfully voted, thanks for your support!"
     },
     "days": {
-        "description": "See the effects of the weathers they will cause in your production.",
+        "description": "See the effects of the weathers they will cause in your production",
         "note": "`Note:` **The weather forecasts are `fictitious`, created to be used inside the Bot.**",
         "current": "{{ emoji }} Current Weather: {{ weather }}",
         "increase": "will increase {{- value }}% in your production.",
@@ -239,7 +239,7 @@
         "success": "All weather effects!"
     },
     "months": {
-        "description": "Look duration of the seasons and the effects it has on your production.",
+        "description": "Look duration of the seasons and the effects it has on your production",
         "title": "__**SEASONS**__",
         "current": "{{ emoji }} Current Season: {{ season }}",
         "duration": "**January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, created to be used inside the Bot.**",
@@ -254,10 +254,14 @@
         "success": "Seasons!"
     },
     "weather": {
-        "description": "Weather forecasts for today and tomorrow.",
+        "description": "Weather forecasts for today and tomorrow",
         "current": "Current",
         "next": "Next",
         "success": "Weather forecast!"
+    },
+    "autoequip": {
+        "description": "Change automatic equip option",
+        "success": "Automatic equip is now {{ status }}!"
     },
     "backgrounds": {
         "description": "Backgrounds preview to use in profile",
@@ -342,6 +346,21 @@
         "success": "`{{ member }}'s` Stats!",
         "noRares": "Did not catch any rare fish!"
     },
+    "setbackground": {
+        "description": "Defina um fundo para seu perfil",
+        "noFrame": "Você não possui uma moldura para utilizar! Compre com comando `buy`.",
+        "usage": "[número do fundo]",
+        "success": "Fundo definido com sucesso!"
+    },
+    "stats": {
+        "description": "Visualize seus recursos ou de outro usuário.",
+        "usage": "<local> [membro]",
+        "production": "{{- generation }}/hr, máximo {{- max }} horas",
+        "booster": "**Aumento de {{ min }}% a {{ max }}%**",
+        "never": "Nunca coletou.",
+        "last": "Última coleta: {{- time }} atrás.",
+        "success": "Recursos de `{{- name }}`!"
+    },
     "tools": {
         "description": "All your tools equipped to use",
         "notEquipped": "Not equipped.",
@@ -352,6 +371,7 @@
         "fertilizer": "Fertilizer",
         "fishingNet": "Fishing Net",
         "bomb": "Bomb",
+        "autoequip": "Automatic equip",
         "success": "Your items and tools equipped!"
     },
     "unequip": {

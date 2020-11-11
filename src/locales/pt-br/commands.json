@@ -233,7 +233,7 @@
         "success": "\\👍 votado com sucesso, obrigado pelo seu apoio!"
     },
     "days": {
-        "description": "Veja os efeitos dos climas que irão causar em sua produção.",
+        "description": "Veja os efeitos dos climas que irão causar em sua produção",
         "note": "`Nota:` **As previsões de tempo são `fictícias`, criadas para serem usadas dentro do Bot.**",
         "current": "{{ emoji }} Clima Atual: {{ weather }}",
         "increase": "aumentará {{- value }}% em sua produção.",
@@ -242,7 +242,7 @@
         "success": "Todos os efeitos dos climas!"
     },
     "months": {
-        "description": "Veja a duração das estações e os efeitos que ela causa em sua produção.",
+        "description": "Veja a duração das estações e os efeitos que ela causa em sua produção",
         "title": "__**ESTAÇÕES DO ANO**__",
         "current": "{{ emoji }} Estação Atual: {{ season }}",
         "duration": "**Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são `fictícias`, criadas para serem usadas dentro do Bot.**",
@@ -251,16 +251,20 @@
         "success": "Todas as durações e efeitos das estações!"
     },
     "season": {
-        "description": "Mostra a Estação atual.",
+        "description": "Mostra a Estação atual",
         "current": "Estação Atual",
         "next": "Próxima Estação",
         "success": "Estações do Ano!"
     },
     "weather": {
-        "description": "Previsões do tempo para hoje e amanhã.",
+        "description": "Previsões do tempo para hoje e amanhã",
         "current": "Atual",
         "next": "Próxima",
         "success": "Previsão do Tempo!"
+    },
+    "autoequip": {
+        "description": "Alterar opção de equipar automático",
+        "success": "Equipar automático agora está {{ status }}!"
     },
     "backgrounds": {
         "description": "Prévia de fundos para utilizar no perfil",
@@ -345,19 +349,19 @@
         "noRares": "Não pescou nenhum peixe raro!"
     },
     "setbackground": {
-        "description": "Defina um fundo para seu perfil",
-        "noFrame": "Você não possui uma moldura para utilizar! Compre com comando `buy`.",
-        "usage": "[número do fundo]",
-        "success": "Fundo definido com sucesso!"
+        "description": "Set a background for your profile",
+        "noFrame": "You don't have a frame to use! Buy with `buy` command.",
+        "usage": "[background number]",
+        "success": "Background set successfully!"
     },
     "stats": {
-        "description": "Visualize seus recursos ou de outro usuário.",
-        "usage": "<local> [membro]",
-        "production": "{{- generation }}/hr, máximo {{- max }} horas",
-        "booster": "**Aumento de {{ min }}% a {{ max }}%**",
-        "never": "Nunca coletou.",
-        "last": "Última coleta: {{- time }} atrás.",
-        "success": "Recursos de `{{- name }}`!"
+        "description": "View how your resources are doing",
+        "usage": "<place> [member]",
+        "production": "{{- generation }}/hr, maximum {{- max }} hours",
+        "booster": "Increased {{ min }}% to {{ max }}%",
+        "never": "Never collected.",
+        "last": "Last collected: {{- time }} ago.",
+        "success": "Resources of `{{- name }}`"
     },
     "tools": {
         "description": "Todas suas ferramentas equipadas para utilizar",
@@ -369,6 +373,7 @@
         "fertilizer": "Fertilizante",
         "fishingNet": "Rede de Pesca",
         "bomb": "Bomba",
+        "autoequip": "Equipar automático",
         "success": "Seus itens e ferramentas equipados!"
     },
     "unequip": {

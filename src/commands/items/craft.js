@@ -1,7 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemName, removeItem, addItemInInventory, autoEquipItem } = require('@utils/items')
 const { EMOJIS: { hammerwrench, items, money } } = require('@constants')
 
 class Craft extends LilirucaCommand {
@@ -73,6 +73,10 @@ class Craft extends LilirucaCommand {
 
     for (const material in item.materials) {
       removeItem(data, 'items', material, item.materials[material] * amount)
+    }
+
+    if (item.tool && data.tools.autoequip) {
+      autoEquipItem(data, item)
     }
 
     const values = {

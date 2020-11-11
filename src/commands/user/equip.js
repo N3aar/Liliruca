@@ -7,10 +7,6 @@ class Equip extends LilirucaCommand {
       aliases: ['ep'],
       emoji: hammerwrench,
       editable: true,
-      clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
-      ],
       args: [
         {
           id: 'item',

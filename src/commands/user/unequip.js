@@ -7,10 +7,6 @@ class Unequip extends LilirucaCommand {
       aliases: ['uq'],
       emoji: nut,
       editable: true,
-      clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
-      ],
       args: [
         {
           id: 'item',

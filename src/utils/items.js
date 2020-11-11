@@ -56,6 +56,18 @@ function removeItem (data, inventory, itemId, uses = 1) {
   data[inventory][itemId] -= uses
 }
 
+function autoEquipItem (data, item) {
+  const tool = data.tools[item.tool]
+  const current = getItem(tool)
+
+  if (tool && current.tier > item.tier) {
+    return
+  }
+
+  data.tools[item.tool] = item.id
+  data.markModified('tools')
+}
+
 function loadTypes () {
   const types = []
 
@@ -91,5 +103,6 @@ module.exports = {
   normalizeItemPrice,
   addItemInInventory,
   removeItem,
+  autoEquipItem,
   loadTypes
 }
