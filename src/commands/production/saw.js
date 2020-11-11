@@ -17,8 +17,8 @@ class Saw extends LilirucaCommand {
       args: [
         {
           id: 'amount',
-          type: Argument.range('integer', 1, Infinity),
-          default: 1
+          type: Argument.range('integer', 2, Infinity),
+          default: 2
         }
       ]
     })
@@ -26,17 +26,19 @@ class Saw extends LilirucaCommand {
 
   async exec ({ t, ct, db, author, util }, { amount }) {
     const data = await db.users.get(author.id)
-    const woods = data.items.wood || 0
-    const required = amount * 2
 
-    if (woods < required) {
-      return util.send(ct('noWood', { missing: required - woods }))
+    const woods = data.items.wood || 0
+    if (woods < amount) {
+      return util.send(ct('noWood', { missing: amount - woods }))
     }
 
     const price = amount * 20
     if (data.money < price) {
       return util.send(ct('noMoney', { missing: price - data.money }))
     }
+
+    const required = (amount % 2) === 0 ? amount : amount - 1
+    const result = required / 2
 
     const { emoji: wood } = getItem('wood')
     const { emoji: plank } = getItem('wooden-plank')
@@ -49,7 +51,7 @@ class Saw extends LilirucaCommand {
       },
       {
         name: `${plank} ${t('commons:result')}`,
-        value: `**x${amount} ${getItemName('wooden-plank', t)}**`,
+        value: `**x${result} ${getItemName('wooden-plank', t)}**`,
         inline: true
       },
       {
