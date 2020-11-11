@@ -106,7 +106,7 @@ class Table extends LilirucaCommand {
 
     const { material, amount } = UPGRADE_MATERIALS[place]
     const { emoji } = getItem(material)
-    const materials = Math.floor(amount / 3)
+    const materials = Math.floor(amount / UPGRADE_MATERIALS.storage)
 
     return [
       {

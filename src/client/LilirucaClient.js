@@ -17,7 +17,7 @@ class LilirucaClient extends AkairoClient {
         ownerID: OWNER_IDS
       }, {
         disableMentions: 'everyone',
-        messageCacheMaxSize: 0,
+        messageCacheMaxSize: 10,
         ws: {
           intents: [
             Intents.FLAGS.GUILDS,

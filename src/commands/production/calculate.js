@@ -41,7 +41,7 @@ class Calculate extends LilirucaCommand {
 
     const { material, amount } = UPGRADE_MATERIALS[place]
     const { emoji } = getItem(material)
-    const materials = getStoragePrice(Math.floor(amount / 3), lower, highest)
+    const materials = getStoragePrice(Math.floor(amount / UPGRADE_MATERIALS.storage), lower, highest)
 
     const fields = [
       {

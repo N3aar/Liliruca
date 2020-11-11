@@ -177,7 +177,7 @@
         "usage": "<local> [levels]",
         "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
         "noMaterials": "Você não tem material suficiente para fazer essa melhoria! `Faltando: x{{ missing }} {{ material }}`.",
-        "success": "Armazenamento melhorado para `level {{ level }}`!"
+        "success": "level {{ level }}, melhorado com sucesso!"
     },
     "table": {
         "description": "Visualizar uma tabela dos preços de recursos e melhorias",
@@ -204,7 +204,7 @@
         "maxLevel": "Você já esta no level máximo neste local",
         "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
         "noMaterial": "Você não possui os materiais necessários para construção! `Faltando: x{{ missing }} {{ material }}`",
-        "success": "Level {{- level }}, melhorado com sucesso!",
+        "success": "level {{ level }}, melhorado com sucesso!",
         "protection": "Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``buy``, os preços estão no comando ``list``",
         "unlock": {
             "fishing": "Parabéns, você desbloqueou um novo local! Agora pegue sua vara de pesca e vamos pescar! \\⛵",
@@ -270,6 +270,13 @@
         "description": "Prévia de fundos para utilizar no perfil",
         "usage": "[número]",
         "success": "Fundo `{{ id }}°`!"
+    },
+    "cooldowns": {
+        "description": "Visualize todos os intervalos para utilizar comandos",
+        "wait": "Aguarde `{{ time }}` para utilizar novamente!",
+        "min": "Aguarde `{{ min }} minutos` para utilizar novamente!",
+        "available": "Já disponivel para ser utilizado!",
+        "success": "Todos os seus intervalos!"
     },
     "energetic": {
         "description": "Beber energético para recuperar energia",

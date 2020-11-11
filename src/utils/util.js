@@ -74,7 +74,7 @@ function calculateProduction (data, generate, place, booster) {
   const time = getDuration(Math.min(Date.now() - data.collectedAt, parsed))
 
   const produced = (time.hours * generate) + (time.minutes * (generate / 60))
-  const percentage = booster && random(booster.item.max, booster.item.min, true)
+  const percentage = booster && random(booster.max, booster.min, true)
   const boosted = percentage && produced + (produced * percentage / 100)
   const season = getPercentageFromSeason(boosted || produced, place)
 

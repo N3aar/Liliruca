@@ -183,16 +183,17 @@ module.exports = {
   UPGRADE_MATERIALS: {
     [PLACE_NAMES.FARM]: {
       material: 'wooden-plank',
-      amount: 10
+      amount: 3
     },
     [PLACE_NAMES.FISHING]: {
       material: 'wooden-plank',
-      amount: 30
+      amount: 4
     },
     [PLACE_NAMES.MINING]: {
       material: 'iron-bar',
-      amount: 10
-    }
+      amount: 2
+    },
+    storage: 2
   },
   PRODUCTION_LIMIT: {
     [PLACE_NAMES.FARM]: 6,
@@ -318,6 +319,7 @@ module.exports = {
     key: '🔑',
     papyrus: '📜',
     clipboard: '📋',
+    clock: '⏰',
     pencil: '✏️',
     picture: '🖼️',
     books: '📚',

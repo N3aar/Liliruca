@@ -174,7 +174,7 @@
         "usage": "<place> [levels]",
         "noMoney": "You enough money to buy this upgrade! `Missing: {{ missing }}`.",
         "noMaterials": "You enough material to make this upgrade! `Missing: x{{ missing }} {{ material }}`.",
-        "success": "Storage upgraded to `level {{ level}}`!"
+        "success": "Level {{ level }}, upgraded successfully!"
     },
     "table": {
         "description": "View a complete table of resource prices and upgrades",
@@ -201,7 +201,7 @@
         "maxLevel": "You already at the maximum level at this place",
         "noMoney": "you enough money to buy this upgrade! Missing: {{ missing }}",
         "noMaterial": "You do not have the necessary materials for construction! `Missing: x{{ missing }} {{ material }}`",
-        "success": "Level {{ level}}, upgraded successfully!",
+        "success": "Level {{ level }}, upgraded successfully!",
         "protection": "Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``buy``, prices are in command ``list``",
         "unlock": {
             "fishing": "Congratulations, you have unlocked a new location! Now get your fishing rod and let's go fishing! \\⛵",
@@ -267,6 +267,13 @@
         "description": "Backgrounds preview to use in profile",
         "usage": "[number]",
         "success": "Background `{{ id }}°`!"
+    },
+    "cooldowns": {
+        "description": "View all cooldowns to use commands",
+        "wait": "Wait `{{ time }}` to use again!",
+        "min": "Wait `{{ min }} minutes` to use again!",
+        "available": "Now available for use!",
+        "success": "All your cooldowns!"
     },
     "energetic": {
         "description": "Energy drink to recover energy",
