@@ -143,10 +143,10 @@ module.exports = {
     lilistars: { min: 1, max: 30 }
   },
   WEIGHTS: {
-    rare: { min: 5, max: 50 },
-    fish: { min: 1, max: 20 },
-    treasure: { min: 10, max: 40 },
-    trash: { min: 1, max: 5 }
+    rare: { min: 5, max: 50, price: 25 },
+    fish: { min: 1, max: 20, price: 20 },
+    trash: { min: 1, max: 5, price: 2 },
+    treasure: { min: 10, max: 40 }
   },
   PLACES_ALIASES: {
     [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],

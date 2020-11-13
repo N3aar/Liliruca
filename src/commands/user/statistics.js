@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemById, getItemName } = require('@utils/items')
-const { RARE_FISHES, STATISTICS_EMOJIS, STATISTICS_TYPES, EMOJIS: { graph, blowfish, rare } } = require('@constants')
+const { getItem, getItemName } = require('@utils/items')
+const { RARE_FISHES, STATISTICS_EMOJIS, STATISTICS_TYPES, EMOJIS: { graph, blowfish, fishs: { rare } } } = require('@constants')
 
 class Statistics extends LilirucaCommand {
   constructor () {
@@ -37,7 +37,7 @@ class Statistics extends LilirucaCommand {
       array.map(id => {
         const name = `${getItemName(id, t)}`
         const count = `__\`${values[id]?.toLocaleString() ?? 0}\`__`
-        const emoji = getItemById(id).emoji
+        const emoji = getItem(id).emoji
 
         return `${emoji} **${values[id] ? ct(type, { name, count }) : ct(`no${type}`, { name })}**`
       })
@@ -74,6 +74,7 @@ class Statistics extends LilirucaCommand {
 
     const embed = new LilirucaEmbed()
       .addFields(fields)
+      .setFooter(ct('purchased'))
 
     util.send(`\\${graph} ${ct('success', { member: member.displayName })}`, embed)
   }
