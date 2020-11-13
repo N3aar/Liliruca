@@ -25,14 +25,19 @@
         "supportGuild": "Suporte",
         "success": "Informações do bot!"
     },
-    "help": {
+    "commands": {
         "description": "Todas as informações sobre os Comandos!",
         "usage": "<comando | categoria | número | --all>",
         "notFind": "Categoria ou Comando não foi encontrado!",
-        "success": "Páginas de ajuda!",
+        "success": "Páginas das categorias!",
         "all": "Todos os Comandos!",
         "category": "Categoria `{{- category }}`!",
         "command": "Comando `{{- command }}`!"
+    },
+    "help": {
+        "description": "",
+        "usage": "",
+        "success": "Páginas de ajuda!"
     },
     "ping": {
         "description": "Dados de conexão do bot com os servidores.",
@@ -137,12 +142,13 @@
         "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas",
         "usage": "[id do item]",
         "noBaits": "Você não possui iscas suficientes!",
+        "insufficient": "Você não possui iscas suficientes para isso!",
         "recycle": "**Lixo encontrado foi reciclado!**",
         "rare": "Peixe Raro",
         "treasure": "Tesouro",
         "trash": "Lixo",
         "fish": "Peixe",
-        "fishRare": "**Parábens você pescou um(a) {{ fish }}!**",
+        "fishRare": "Parábens você pescou:\n{{ fish }}",
         "success": "Você conseguiu pescar algo!"
     },
     "forge": {
@@ -158,6 +164,7 @@
         "description": "Coletar mínérios com sua picareta",
         "usage": "[id do item]",
         "noPickaxe": "Você não possui essa picareta para minerar.",
+        "insufficient": "Sua ferramenta não possui usos suficientes para isso!",
         "success": "Coletou minérios com sucesso!"
     },
     "saw": {
@@ -352,6 +359,7 @@
         "treasure": "{{ count }} Tesouros pescados.",
         "no_treasure": "Nenhum Tesouro pescado.",
         "rareFishs": "Peixes Raros pescados por `{{ member }}`!",
+        "purchased": "Materiais comprados não são contabilizados!",
         "success": "Estatísticas de `{{ member }}`!",
         "noRares": "Não pescou nenhum peixe raro!"
     },

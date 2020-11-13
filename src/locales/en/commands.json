@@ -25,14 +25,19 @@
         "supportGuild": "Support",
         "success": "Bot information!"
     },
-    "help": {
+    "commands": {
         "description": "All information about the Commands!",
         "usage": "<command | category | number | --all>",
         "notFind": "category or command was not found!",
-        "success": "Pages of help!",
+        "success": "Category pages!",
         "all": "All commands!",
         "category": "`{{- category }}` Category!",
         "command": "Command `{{- command }}`!"
+    },
+    "help": {
+        "description": "",
+        "usage": "",
+        "success": "Pages of help!"
     },
     "ping": {
         "description": "Bot connection data with the servers.",
@@ -134,12 +139,13 @@
         "description": "Catch fish or treasures with your fishing rod and some baits",
         "usage": "[item id]",
         "noBaits": "You don't have enough bait!",
+        "insufficient": "You don't have enough bait for that!",
         "recycle": "**Trash found has been recycled!**",
         "rare": "Rare Fish",
         "treasure": "Treasure",
         "trash": "Trash",
         "fish": "Fish",
-        "fishRare": "**Congratulations you caught a {{ fish }}!**",
+        "fishRare": "Congratulations you caught:\n{{ fish }}",
         "success": "You managed to catch something!"
     },
     "forge": {
@@ -155,6 +161,7 @@
         "description": "Collect ores with your pickaxe",
         "usage": "[item id]",
         "noPickaxe": "You don't have that pickaxe to mine.",
+        "insufficient": "Your tool does not have enough uses for this!",
         "success": "Collect ores successfully!"
     },
     "saw": {
@@ -212,7 +219,7 @@
         "description": "Chopping wood with your axe",
         "usage": "[amount of uses] [item id]",
         "noAxe": "You don't have this tool for cutting wood.",
-        "insufficient": "Your tool does not have enough uses for this!!",
+        "insufficient": "Your tool does not have enough uses for this!",
         "success": "Successfully collected wood!"
     },
     "daily": {
@@ -343,13 +350,14 @@
         "nomaterial": "{{ name }} was not acquired.",
         "rare": "{{ count }} rare fish fished.",
         "no_rare": "No rare fish caught.",
-        "fish": "{{ count }} Fish caught.",
+        "fish": "{{ count }} common fish caught.",
         "no_fish": "No fish caught.",
         "trash": "{{ count }} Trash caught.",
         "no_trash": "No trash caught.",
         "treasure": "{{ count }} Treasure caught.",
         "no_treasure": "No treasure caught.",
         "rareFishs": "Rare fish fished by `{{ member }}`!",
+        "purchased": "Purchased materials are not counted!",
         "success": "`{{ member }}'s` Stats!",
         "noRares": "Did not catch any rare fish!"
     },
