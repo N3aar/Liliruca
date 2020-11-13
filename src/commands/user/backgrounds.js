@@ -13,7 +13,7 @@ class Backgrounds extends LilirucaCommand {
       args: [
         {
           id: 'id',
-          type: Argument.range('integer', 1, backgrounds.length),
+          type: Argument.range('integer', 1, backgrounds.length, true),
           default: 1
         }
       ]

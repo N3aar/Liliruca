@@ -364,19 +364,21 @@
         "noRares": "Não pescou nenhum peixe raro!"
     },
     "setbackground": {
-        "description": "Set a background for your profile",
-        "noFrame": "You don't have a frame to use! Buy with `buy` command.",
-        "usage": "[background number]",
-        "success": "Background set successfully!"
+        "description": "Defina um fundo para seu perfil",
+        "usage": "[número do fundo]",
+        "invalidNumber": "Digite um número válido! Para visualizar os planos de fundo use o comando `backgrounds`.",
+        "already": "Este já é seu plano de fundo atual!",
+        "noFrame": "Você não possui uma moldura para utilizar! Compre com comando `buy`.",
+        "success": "Fundo definido com sucesso!"
     },
     "stats": {
-        "description": "View how your resources are doing",
-        "usage": "<place> [member]",
-        "production": "{{- generation }}/hr, maximum {{- max }} hours",
-        "booster": "Increased {{ min }}% to {{ max }}%",
-        "never": "Never collected.",
-        "last": "Last collected: {{- time }} ago.",
-        "success": "Resources of `{{- name }}`"
+        "description": "Visualize seus recursos ou de outro usuário.",
+        "usage": "<local> [membro]",
+        "production": "{{- generation }}/hr, máximo {{- max }} horas",
+        "booster": "**Aumento de {{ min }}% a {{ max }}%**",
+        "never": "Nunca coletou.",
+        "last": "Última coleta: {{- time }} atrás.",
+        "success": "Recursos de `{{- name }}`!"
     },
     "tools": {
         "description": "Todas suas ferramentas equipadas para utilizar",
