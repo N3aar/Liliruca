@@ -23,7 +23,7 @@ class Energetic extends LilirucaCommand {
     const data = await db.users.get(author.id)
 
     if (item && !data.items[item.id]) {
-      return ct('noEnergetic')
+      return util.send(ct('noEnergetic'))
     }
 
     const energetic = item || getToolInInventory(data, 'energetic')

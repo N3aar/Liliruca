@@ -1,7 +1,8 @@
+const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { randomChances, random } = require('@utils/util')
-const { getItemName, getItem, getToolInInventory, removeItem, addItemInInventory } = require('@utils/items')
+const { getItemName, getItem, getToolInInventory, removeItem, addMultipleItemsInInventory } = require('@utils/items')
 const { ENERGY_COST, EMOJIS: { mining } } = require('@constants')
 
 class Mine extends LilirucaCommand {
@@ -16,26 +17,41 @@ class Mine extends LilirucaCommand {
       ],
       args: [
         {
+          id: 'uses',
+          type: Argument.range('integer', 1, 10, true),
+          default: 1
+        },
+        {
           id: 'item',
           type: 'item'
+        },
+        {
+          id: 'all',
+          match: 'flag',
+          flag: '--all'
         }
       ]
     })
   }
 
-  async exec ({ t, ct, util, db, author }, { item }) {
+  async exec ({ t, ct, util, db, author }, { uses, item, all }) {
     const data = await db.users.get(author.id)
 
     if (!data.mining.level) {
       return util.send(t('errors:locked'))
     }
 
-    if (data.energy < ENERGY_COST) {
+    if (all) {
+      uses = Math.floor(data.energy / 10)
+    }
+
+    const energyCost = ENERGY_COST * uses
+    if (!energyCost || data.energy < energyCost) {
       return util.send(t('errors:noEnergy'))
     }
 
     if (item && !data.items[item.id]) {
-      return ct('noPickaxe')
+      return util.send(ct('noPickaxe'))
     }
 
     const pickaxe = item || getToolInInventory(data, 'pickaxe')
@@ -43,47 +59,53 @@ class Mine extends LilirucaCommand {
       return util.send(ct('noPickaxe'))
     }
 
-    const itemReward = randomChances(pickaxe.chances)
-    const ore = pickaxe.rewards[itemReward]
-    const amount = random(ore.max, ore.min, true)
-    const { emoji } = getItem(itemReward)
+    if (data.items[pickaxe.id] < uses) {
+      return util.send(ct('insufficient'))
+    }
 
+    const ores = {}
+
+    for (let i = 0; i < uses; i++) {
+      Mine.randomOres(ores, pickaxe)
+    }
+
+    const oresMined = Object.keys(ores).slice(1)
+    const parsed = oresMined.reduce((value, ore) => {
+      const name = getItemName(ore, t)
+      const amount = ores[ore]
+      return value + `x${amount} ${name}\n`
+    }, '')
+
+    const { emoji } = getItem(oresMined[0])
     const fields = [
       {
         name: `${pickaxe.emoji} ${t('commons:tool')}`,
-        value: `**${getItemName(pickaxe.id, t)}**`,
+        value: `**x${uses} ${getItemName(pickaxe.id, t)}**`,
         inline: true
       },
       {
         name: `${emoji} ${t('commons:ore')}`,
-        value: `**x${amount} ${getItemName(itemReward, t)}**`,
+        value: `**${parsed}**`,
         inline: true
       }
     ]
 
-    const limit = pickaxe.rewards.coal
-    const coal = random(3)
-    const coalItem = coal && getItem('coal')
-    const coalAmount = coal && random(limit.min, limit.max, true)
-
-    if (coal) {
-      addItemInInventory(data, 'items', 'coal', coalAmount)
-      addItemInInventory(data, 'statistics', 'coal', coalAmount)
+    if (ores.coal) {
+      const coal = getItem('coal')
 
       fields.push({
-        name: `${coalItem.emoji} ${t('commons:bonus')}`,
-        value: `**x${coalAmount} ${getItemName('coal', t)}**`,
+        name: `${coal.emoji} ${t('commons:bonus')}`,
+        value: `**x${ores.coal} ${getItemName('coal', t)}**`,
         inline: true
       })
     }
 
-    removeItem(data, 'items', pickaxe.id)
-    addItemInInventory(data, 'items', itemReward, amount)
-    addItemInInventory(data, 'statistics', itemReward, amount)
-    addItemInInventory(data, 'statistics', pickaxe.id)
+    addMultipleItemsInInventory(data, 'items', ores)
+    addMultipleItemsInInventory(data, 'statistics', { ...ores, [pickaxe.id]: uses })
+    removeItem(data, 'items', pickaxe.id, uses)
 
     const values = {
-      energy: data.energy - ENERGY_COST
+      energy: data.energy - energyCost
     }
 
     db.users.update(data, values)
@@ -93,6 +115,30 @@ class Mine extends LilirucaCommand {
       .setFooter(t('commons:currentEnergy', { energy: values.energy }))
 
     util.send(`\\${mining} ${ct('success')}`, embed)
+  }
+
+  static randomOres (ores, pickaxe) {
+    const itemReward = randomChances(pickaxe.chances)
+    const ore = pickaxe.rewards[itemReward]
+    const amount = random(ore.max, ore.min, true)
+    const coal = random(3)
+
+    if (coal) {
+      const limit = pickaxe.rewards.coal
+      const coalAmount = random(limit.min, limit.max, true)
+
+      if (!ores.coal) {
+        ores.coal = 0
+      }
+
+      ores.coal += coalAmount
+    }
+
+    if (!ores[itemReward]) {
+      ores[itemReward] = 0
+    }
+
+    ores[itemReward] += amount
   }
 }
 
