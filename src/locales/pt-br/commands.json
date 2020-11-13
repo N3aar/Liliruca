@@ -25,14 +25,19 @@
         "supportGuild": "Suporte",
         "success": "Informações do bot!"
     },
-    "help": {
+    "commands": {
         "description": "Todas as informações sobre os Comandos!",
         "usage": "<comando | categoria | número | --all>",
         "notFind": "Categoria ou Comando não foi encontrado!",
-        "success": "Páginas de ajuda!",
+        "success": "Páginas das categorias!",
         "all": "Todos os Comandos!",
         "category": "Categoria `{{- category }}`!",
         "command": "Comando `{{- command }}`!"
+    },
+    "help": {
+        "description": "",
+        "usage": "",
+        "success": "Páginas de ajuda!"
     },
     "ping": {
         "description": "Dados de conexão do bot com os servidores.",
@@ -87,6 +92,7 @@
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
         "itemId": "ID",
+        "itemNum": "Número ID",
         "itemType": "Tipo",
         "itemPrice": "Preço",
         "itemUtility": "Utilidade",
@@ -136,12 +142,13 @@
         "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas",
         "usage": "[id do item]",
         "noBaits": "Você não possui iscas suficientes!",
+        "insufficient": "Você não possui iscas suficientes para isso!",
         "recycle": "**Lixo encontrado foi reciclado!**",
         "rare": "Peixe Raro",
         "treasure": "Tesouro",
         "trash": "Lixo",
-        "fishs": "Peixe",
-        "fishRare": "**Parábens você pescou um(a) {{ fish }}!**",
+        "fish": "Peixe",
+        "fishRare": "Parábens você pescou:\n{{ fish }}",
         "success": "Você conseguiu pescar algo!"
     },
     "forge": {
@@ -157,6 +164,7 @@
         "description": "Coletar mínérios com sua picareta",
         "usage": "[id do item]",
         "noPickaxe": "Você não possui essa picareta para minerar.",
+        "insufficient": "Sua ferramenta não possui usos suficientes para isso!",
         "success": "Coletou minérios com sucesso!"
     },
     "saw": {
@@ -176,7 +184,7 @@
         "usage": "<local> [levels]",
         "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
         "noMaterials": "Você não tem material suficiente para fazer essa melhoria! `Faltando: x{{ missing }} {{ material }}`.",
-        "success": "Armazenamento melhorado para `level {{ level }}`!"
+        "success": "level {{ level }}, melhorado com sucesso!"
     },
     "table": {
         "description": "Visualizar uma tabela dos preços de recursos e melhorias",
@@ -203,7 +211,7 @@
         "maxLevel": "Você já esta no level máximo neste local",
         "noMoney": "Você não tem dinheiro suficiente para fazer esta melhoria! `Faltando: ${{ missing }}`.",
         "noMaterial": "Você não possui os materiais necessários para construção! `Faltando: x{{ missing }} {{ material }}`",
-        "success": "Level {{- level }}, melhorado com sucesso!",
+        "success": "level {{ level }}, melhorado com sucesso!",
         "protection": "Parábens sua Fazenda esta crescendo, mas isso atrai atenção de animais indesejados, sua plantação pode sofrer ataques enquanto estiver fora!\n\nCompre proteção usando o comando ``buy``, os preços estão no comando ``list``",
         "unlock": {
             "fishing": "Parabéns, você desbloqueou um novo local! Agora pegue sua vara de pesca e vamos pescar! \\⛵",
@@ -232,7 +240,7 @@
         "success": "\\👍 votado com sucesso, obrigado pelo seu apoio!"
     },
     "days": {
-        "description": "Veja os efeitos dos climas que irão causar em sua produção.",
+        "description": "Veja os efeitos dos climas que irão causar em sua produção",
         "note": "`Nota:` **As previsões de tempo são `fictícias`, criadas para serem usadas dentro do Bot.**",
         "current": "{{ emoji }} Clima Atual: {{ weather }}",
         "increase": "aumentará {{- value }}% em sua produção.",
@@ -241,7 +249,7 @@
         "success": "Todos os efeitos dos climas!"
     },
     "months": {
-        "description": "Veja a duração das estações e os efeitos que ela causa em sua produção.",
+        "description": "Veja a duração das estações e os efeitos que ela causa em sua produção",
         "title": "__**ESTAÇÕES DO ANO**__",
         "current": "{{ emoji }} Estação Atual: {{ season }}",
         "duration": "**Janeiro, Maio e Setembro, é ``Primavera``.\nFevereiro, Junho e Outubro, é ``Verão``.\nMarço, Julho e Novembro, é ``Outono``.\nAbril, Agosto e Dezembro, é ``Inverno``.\n\nTodas datas de estações são `fictícias`, criadas para serem usadas dentro do Bot.**",
@@ -250,21 +258,32 @@
         "success": "Todas as durações e efeitos das estações!"
     },
     "season": {
-        "description": "Mostra a Estação atual.",
+        "description": "Mostra a Estação atual",
         "current": "Estação Atual",
         "next": "Próxima Estação",
         "success": "Estações do Ano!"
     },
     "weather": {
-        "description": "Previsões do tempo para hoje e amanhã.",
+        "description": "Previsões do tempo para hoje e amanhã",
         "current": "Atual",
         "next": "Próxima",
         "success": "Previsão do Tempo!"
+    },
+    "autoequip": {
+        "description": "Alterar opção de equipar automático",
+        "success": "Equipar automático agora está {{ status }}!"
     },
     "backgrounds": {
         "description": "Prévia de fundos para utilizar no perfil",
         "usage": "[número]",
         "success": "Fundo `{{ id }}°`!"
+    },
+    "cooldowns": {
+        "description": "Visualize todos os intervalos para utilizar comandos",
+        "wait": "Aguarde `{{ time }}` para utilizar novamente!",
+        "min": "Aguarde `{{ min }} minutos` para utilizar novamente!",
+        "available": "Já disponivel para ser utilizado!",
+        "success": "Todos os seus intervalos!"
     },
     "energetic": {
         "description": "Beber energético para recuperar energia",
@@ -320,16 +339,36 @@
         "usage": "[membro]",
         "success": "Perfil de `{{- name }}`!"
     },
-    "rares": {
-        "description": "Lista de peixes raros pescados!",
+    "statistics": {
+        "description": "Estatísticas de um usuário!",
         "usage": "[membro]",
-        "noRares": "Não pescou nenhum peixe raro!",
-        "success": "Peixes Raros pescados por `{{ member }}`!"
+        "axe": "Machados",
+        "pickaxe": "Picaretas",
+        "materials": "Materiais",
+        "fishing" : "Pesca",
+        "tool": "{{ name }} usado {{ count }} vez(es)",
+        "material": "{{ name }} {{ count }} adquirido(s)",
+        "notool": "{{ name }} não foi utilizado.",
+        "nomaterial": "{{ name }} não foi adquirido.",
+        "rare": "{{ count }} Peixes raros pescados.",
+        "no_rare": "Nenhum Peixe raro pescado.",
+        "fish": "{{ count }} Peixes comuns pescados.",
+        "no_fish": "Nenhum Peixe pescado.",
+        "trash": "{{ count }} Lixos pescados.",
+        "no_trash": "Nenhum Lixo pescado.",
+        "treasure": "{{ count }} Tesouros pescados.",
+        "no_treasure": "Nenhum Tesouro pescado.",
+        "rareFishs": "Peixes Raros pescados por `{{ member }}`!",
+        "purchased": "Materiais comprados não são contabilizados!",
+        "success": "Estatísticas de `{{ member }}`!",
+        "noRares": "Não pescou nenhum peixe raro!"
     },
     "setbackground": {
         "description": "Defina um fundo para seu perfil",
-        "noFrame": "Você não possui uma moldura para utilizar! Compre com comando `buy`.",
         "usage": "[número do fundo]",
+        "invalidNumber": "Digite um número válido! Para visualizar os planos de fundo use o comando `backgrounds`.",
+        "already": "Este já é seu plano de fundo atual!",
+        "noFrame": "Você não possui uma moldura para utilizar! Compre com comando `buy`.",
         "success": "Fundo definido com sucesso!"
     },
     "stats": {
@@ -351,6 +390,7 @@
         "fertilizer": "Fertilizante",
         "fishingNet": "Rede de Pesca",
         "bomb": "Bomba",
+        "autoequip": "Equipar automático",
         "success": "Seus itens e ferramentas equipados!"
     },
     "unequip": {

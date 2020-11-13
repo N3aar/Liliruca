@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { items, getItemName, getItemById, addItemInInventory, removeItem } = require('@utils/items')
+const { items, getItemName, getItem, addItemInInventory, removeItem } = require('@utils/items')
 const { PLACES, STORAGES_SIZE, PLACES_RESOURCES, EMOJIS } = require('@constants')
 
 class Box extends LilirucaCommand {
@@ -17,22 +17,21 @@ class Box extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: Argument.validate('itemId', (m, phrase) => phrase.includes('box')),
+          id: 'box',
+          type: Argument.validate('item', (m, p, value) => value.type === 'box'),
           otherwise: message => message.t('errors:noItem')
         }
       ]
     })
   }
 
-  async exec ({ ct, t, db, author, util }, { itemId }) {
+  async exec ({ ct, t, db, author, util }, { box }) {
     const data = await db.users.get(author.id)
 
-    if (!data.items[itemId]) {
+    if (!data.items[box.id]) {
       return util.send(ct('noBox'))
     }
 
-    const box = getItemById(itemId)
     const itemReward = randomChances(box.chances)
     const packer = this[itemReward]
     const item = box.rewards[itemReward]
@@ -46,14 +45,14 @@ class Box extends LilirucaCommand {
       data[itemReward] += value
     }
 
-    removeItem(data, 'items', itemId)
+    removeItem(data, 'items', box.id)
 
     db.users.update(data, {})
 
     const fields = [
       {
         name: `${box.emoji} ${t('commons:box')}`,
-        value: `**${getItemName(itemId, t)}**`,
+        value: `**${getItemName(box.id, t)}**`,
         inline: true
       },
       {
@@ -72,7 +71,7 @@ class Box extends LilirucaCommand {
   item (_, data, t) {
     const ids = Object.keys(items)
     const itemId = ids[random(ids.length)]
-    const item = getItemById(itemId)
+    const item = getItem(itemId)
 
     addItemInInventory(data, itemId, item.value)
 

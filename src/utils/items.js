@@ -1,16 +1,19 @@
 const items = require('../Items.json')
+const numIds = new Map()
 
 function hasItem (itemId) {
-  return (itemId in items)
+  return (itemId in items) || numIds.has(itemId)
 }
 
-function getItemById (itemId) {
-  return items[itemId]
+function getItem (itemId) {
+  const id = numIds.get(itemId) || itemId
+  const item = items[id]
+  return item && { id, ...item }
 }
 
 function getToolInInventory (data, tool) {
   const toolId = (data.tools[tool] in data.items) && data.tools[tool]
-  return toolId && { id: toolId, item: getItemById(toolId) }
+  return toolId && getItem(toolId)
 }
 
 function getItemsByMaterialId (materialId) {
@@ -18,11 +21,11 @@ function getItemsByMaterialId (materialId) {
 }
 
 function getItemName (itemId, t) {
-  return t(`items:${itemId}.name`)
+  return t && t(`items:${itemId}.name`)
 }
 
 function getItemDescription (itemId, t) {
-  return t(`items:${itemId}.description`)
+  return t && t(`items:${itemId}.description`)
 }
 
 function getItemSale (item) {
@@ -30,7 +33,7 @@ function getItemSale (item) {
 }
 
 function normalizeItemPrice (payment, value, t) {
-  return t(`commons:moneyTypes.${payment}`, { value })
+  return t && t(`commons:moneyTypes.${payment}`, { value })
 }
 
 function addItemInInventory (data, inventory, itemId, amount = 1) {
@@ -40,17 +43,47 @@ function addItemInInventory (data, inventory, itemId, amount = 1) {
 
   data[inventory][itemId] += amount
 
-  data.markModified('items')
+  if (data.markModified) {
+    data.markModified(inventory)
+  }
+}
+
+function addMultipleItemsInInventory (data, inventory, items) {
+  for (const item in items) {
+    if (!data[inventory][item]) {
+      data[inventory][item] = 0
+    }
+
+    data[inventory][item] += items[item]
+  }
+
+  if (data.markModified) {
+    data.markModified(inventory)
+  }
 }
 
 function removeItem (data, inventory, itemId, uses = 1) {
-  data.markModified('items')
+  if (data.markModified) {
+    data.markModified(inventory)
+  }
 
   if ((data[inventory][itemId] - uses) < 1) {
     return delete data.items[itemId]
   }
 
   data[inventory][itemId] -= uses
+}
+
+function autoEquipItem (data, item) {
+  const tool = data.tools[item.tool]
+  const current = getItem(tool)
+
+  if (tool && current.tier > item.tier) {
+    return
+  }
+
+  data.tools[item.tool] = item.id
+  data.markModified('tools')
 }
 
 function loadTypes () {
@@ -67,10 +100,19 @@ function loadTypes () {
   return types
 }
 
+function loadNumIds () {
+  for (const item in items) {
+    numIds.set(items[item].numId, item)
+  }
+}
+
+loadNumIds()
+
 module.exports = {
   items,
+  numIds,
+  getItem,
   hasItem,
-  getItemById,
   getToolInInventory,
   getItemsByMaterialId,
   getItemName,
@@ -78,6 +120,8 @@ module.exports = {
   getItemSale,
   normalizeItemPrice,
   addItemInInventory,
+  addMultipleItemsInInventory,
   removeItem,
+  autoEquipItem,
   loadTypes
 }

@@ -33,10 +33,10 @@ class Botinfo extends LilirucaCommand {
     const botInviteUrl = Botinfo.getBotInvite(client.user.id, Botinfo.getBotPermissions())
     const avatar = client.user.displayAvatarURL({ format: 'png', size: 4096 })
 
-    const abount = {
-      guildCount: client.guilds.cache.size,
-      usersCount: client.users.cache.size,
-      commands: client.commands.size,
+    const about = {
+      guildCount: client.guilds.cache.size.toLocaleString(),
+      usersCount: client.users.cache.size.toLocaleString(),
+      commands: client.commands.size.toLocaleString(),
       uptime: parseDuration(client.uptime, language),
       createdAt: displayDate(client.user.createdAt, language),
       joinedAt: displayDate(guild.joinedAt, language)
@@ -63,7 +63,7 @@ class Botinfo extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .setAuthor(ct('success'), avatar)
       .setThumbnail(avatar)
-      .setDescription(ct('about', abount))
+      .setDescription(ct('about', about))
       .addFields(fields)
 
     util.send(embed)

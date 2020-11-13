@@ -66,7 +66,7 @@ class Collect extends LilirucaCommand {
 
       return {
         name: `\\${EMOJIS[place]} ${t(`commons:${place}`)}`,
-        value: `**${t('commons:amount')}: ${attacked}**` + percentage,
+        value: `**${t('commons:amount')}: ${attacked.toLocaleString()}**` + percentage,
         inline: true
       }
     })

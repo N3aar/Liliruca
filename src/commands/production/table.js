@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemById } = require('@utils/items')
+const { getItemName, getItem } = require('@utils/items')
 const { PLACE_NAMES, PLACES_RESOURCES, PLACE_MAX_LEVEL, UPGRADE_PRICE, STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS } = require('@constants')
 
 const table = {
@@ -72,7 +72,7 @@ class Table extends LilirucaCommand {
     const prices = table.list(upgrade)
 
     const { material, amount } = UPGRADE_MATERIALS[place]
-    const { emoji } = getItemById(material)
+    const { emoji } = getItem(material)
 
     sell.operation = ct(sell.operation)
     sell.emoji = emojis[Math.floor(Math.random() * emojis.length)]
@@ -105,8 +105,8 @@ class Table extends LilirucaCommand {
     const storage = STORAGE_PRICES[place]
 
     const { material, amount } = UPGRADE_MATERIALS[place]
-    const { emoji } = getItemById(material)
-    const materials = Math.floor(amount / 3)
+    const { emoji } = getItem(material)
+    const materials = Math.floor(amount / UPGRADE_MATERIALS.storage)
 
     return [
       {

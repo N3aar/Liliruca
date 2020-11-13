@@ -25,14 +25,19 @@
         "supportGuild": "Support",
         "success": "Bot information!"
     },
-    "help": {
+    "commands": {
         "description": "All information about the Commands!",
         "usage": "<command | category | number | --all>",
         "notFind": "category or command was not found!",
-        "success": "Pages of help!",
+        "success": "Category pages!",
         "all": "All commands!",
         "category": "`{{- category }}` Category!",
         "command": "Command `{{- command }}`!"
+    },
+    "help": {
+        "description": "",
+        "usage": "",
+        "success": "Pages of help!"
     },
     "ping": {
         "description": "Bot connection data with the servers.",
@@ -85,6 +90,7 @@
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars",
         "itemId": "ID",
+        "itemNum": "Number ID",
         "itemType": "Type",
         "itemPrice": "Price",
         "itemUtility": "Utility",
@@ -133,12 +139,13 @@
         "description": "Catch fish or treasures with your fishing rod and some baits",
         "usage": "[item id]",
         "noBaits": "You don't have enough bait!",
+        "insufficient": "You don't have enough bait for that!",
         "recycle": "**Trash found has been recycled!**",
         "rare": "Rare Fish",
         "treasure": "Treasure",
         "trash": "Trash",
-        "fishs": "Fish",
-        "fishRare": "**Congratulations you caught a {{ fish }}!**",
+        "fish": "Fish",
+        "fishRare": "Congratulations you caught:\n{{ fish }}",
         "success": "You managed to catch something!"
     },
     "forge": {
@@ -154,6 +161,7 @@
         "description": "Collect ores with your pickaxe",
         "usage": "[item id]",
         "noPickaxe": "You don't have that pickaxe to mine.",
+        "insufficient": "Your tool does not have enough uses for this!",
         "success": "Collect ores successfully!"
     },
     "saw": {
@@ -173,7 +181,7 @@
         "usage": "<place> [levels]",
         "noMoney": "You enough money to buy this upgrade! `Missing: {{ missing }}`.",
         "noMaterials": "You enough material to make this upgrade! `Missing: x{{ missing }} {{ material }}`.",
-        "success": "Storage upgraded to `level {{ level}}`!"
+        "success": "Level {{ level }}, upgraded successfully!"
     },
     "table": {
         "description": "View a complete table of resource prices and upgrades",
@@ -200,7 +208,7 @@
         "maxLevel": "You already at the maximum level at this place",
         "noMoney": "you enough money to buy this upgrade! Missing: {{ missing }}",
         "noMaterial": "You do not have the necessary materials for construction! `Missing: x{{ missing }} {{ material }}`",
-        "success": "Level {{ level}}, upgraded successfully!",
+        "success": "Level {{ level }}, upgraded successfully!",
         "protection": "Congratulations your Farm is growing, but it attracts attention from unwanted animals, your plantation can be attacked while you are away! \n\nBuy protection using command ``buy``, prices are in command ``list``",
         "unlock": {
             "fishing": "Congratulations, you have unlocked a new location! Now get your fishing rod and let's go fishing! \\⛵",
@@ -211,7 +219,7 @@
         "description": "Chopping wood with your axe",
         "usage": "[amount of uses] [item id]",
         "noAxe": "You don't have this tool for cutting wood.",
-        "insufficient": "Your tool does not have enough uses for this!!",
+        "insufficient": "Your tool does not have enough uses for this!",
         "success": "Successfully collected wood!"
     },
     "daily": {
@@ -229,7 +237,7 @@
         "success": "\\👍 successfully voted, thanks for your support!"
     },
     "days": {
-        "description": "See the effects of the weathers they will cause in your production.",
+        "description": "See the effects of the weathers they will cause in your production",
         "note": "`Note:` **The weather forecasts are `fictitious`, created to be used inside the Bot.**",
         "current": "{{ emoji }} Current Weather: {{ weather }}",
         "increase": "will increase {{- value }}% in your production.",
@@ -238,7 +246,7 @@
         "success": "All weather effects!"
     },
     "months": {
-        "description": "Look duration of the seasons and the effects it has on your production.",
+        "description": "Look duration of the seasons and the effects it has on your production",
         "title": "__**SEASONS**__",
         "current": "{{ emoji }} Current Season: {{ season }}",
         "duration": "**January, May and September, it's ``Spring``.\nFebruary, June and October, it's ``Summer``.\nMarch, June and November, it's ``Autumn``.\nApril, August and December, it's ``Winter``.\n\nAll season dates are ``fictitious``, created to be used inside the Bot.**",
@@ -253,15 +261,26 @@
         "success": "Seasons!"
     },
     "weather": {
-        "description": "Weather forecasts for today and tomorrow.",
+        "description": "Weather forecasts for today and tomorrow",
         "current": "Current",
         "next": "Next",
         "success": "Weather forecast!"
+    },
+    "autoequip": {
+        "description": "Change automatic equip option",
+        "success": "Automatic equip is now {{ status }}!"
     },
     "backgrounds": {
         "description": "Backgrounds preview to use in profile",
         "usage": "[number]",
         "success": "Background `{{ id }}°`!"
+    },
+    "cooldowns": {
+        "description": "View all cooldowns to use commands",
+        "wait": "Wait `{{ time }}` to use again!",
+        "min": "Wait `{{ min }} minutes` to use again!",
+        "available": "Now available for use!",
+        "success": "All your cooldowns!"
     },
     "energetic": {
         "description": "Energy drink to recover energy",
@@ -318,16 +337,36 @@
         "usage": "[member]",
         "success": "Profile of `{{- name }}`!"
     },
-    "rares": {
-        "description": "List of rare fish caught!",
+    "statistics": {
+        "description": "User stats",
         "usage": "[member]",
-        "noRares": "Did not catch any rare fish!",
-        "success": "Rare fish caught by `{{ member }}`!"
+        "axe": "Axes",
+        "pickaxe": "Pickaxes",
+        "materials": "Materials",
+        "fishing" : "Fishing",
+        "tool": "{{ name }} used {{ count }} time(s).",
+        "material": "{{ name }} {{ count }} acquired",
+        "notool": "{{ name }} was not used.",
+        "nomaterial": "{{ name }} was not acquired.",
+        "rare": "{{ count }} rare fish fished.",
+        "no_rare": "No rare fish caught.",
+        "fish": "{{ count }} common fish caught.",
+        "no_fish": "No fish caught.",
+        "trash": "{{ count }} Trash caught.",
+        "no_trash": "No trash caught.",
+        "treasure": "{{ count }} Treasure caught.",
+        "no_treasure": "No treasure caught.",
+        "rareFishs": "Rare fish fished by `{{ member }}`!",
+        "purchased": "Purchased materials are not counted!",
+        "success": "`{{ member }}'s` Stats!",
+        "noRares": "Did not catch any rare fish!"
     },
     "setbackground": {
         "description": "Set a background for your profile",
-        "noFrame": "You don't have a frame to use! Buy with `buy` command.",
         "usage": "[background number]",
+        "invalidNumber": "Please type a valid number! To view the backgrounds use the command `backgrounds`.",
+        "already": "This is already your current background!",
+        "noFrame": "You don't have a frame to use! Buy with `buy` command.",
         "success": "Background set successfully!"
     },
     "stats": {
@@ -349,6 +388,7 @@
         "fertilizer": "Fertilizer",
         "fishingNet": "Fishing Net",
         "bomb": "Bomb",
+        "autoequip": "Automatic equip",
         "success": "Your items and tools equipped!"
     },
     "unequip": {

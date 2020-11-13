@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { capitalize } = require('@utils/util')
-const { items, getItemById, getItemDescription, normalizeItemPrice, getItemSale, getItemsByMaterialId, getItemName } = require('@utils/items')
+const { items, getItem, getItemDescription, normalizeItemPrice, getItemSale, getItemsByMaterialId, getItemName } = require('@utils/items')
 const { ITEMS_TYPES, EMOJIS: { pagecurl } } = require('@constants')
 
 class List extends LilirucaCommand {
@@ -17,8 +17,8 @@ class List extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: 'itemId'
+          id: 'item',
+          type: 'item'
         },
         {
           id: 'filter',
@@ -37,9 +37,9 @@ class List extends LilirucaCommand {
     })
   }
 
-  exec ({ ct, t, util }, { itemId, page, filter }) {
-    if (itemId) {
-      return this.runItemProfile(itemId, { ct, t, util })
+  exec ({ ct, t, util }, { item, page, filter }) {
+    if (item) {
+      return this.runItemProfile(item, { ct, t, util })
     }
 
     const ids = Object.keys(items)
@@ -53,7 +53,8 @@ class List extends LilirucaCommand {
     }
 
     const fields = itemsIds.map(id => {
-      const { item, fields } = List.getItemInfo(id, t, ct)
+      const item = getItem(id)
+      const fields = List.getItemInfo(item, t, ct)
       const parseValue = value => /`/g.test(value) ? value : `\`${value}\``
       return {
         name: `${item.emoji} ${getItemName(id, t)}`,
@@ -67,16 +68,16 @@ class List extends LilirucaCommand {
     util.send(`\\${pagecurl} ${ct('success', { page })}`, embed)
   }
 
-  runItemProfile (itemId, { ct, t, util }) {
-    const { item, fields } = List.getItemInfo(itemId, t, ct, false)
-    const itemName = getItemName(itemId, t)
+  runItemProfile (item, { ct, t, util }) {
+    const fields = List.getItemInfo(item, t, ct, false)
+    const itemName = getItemName(item.id, t)
 
     const embed = new LilirucaEmbed()
       .setTitle(`${item.emoji} ${itemName}`)
-      .setDescription(`**${getItemDescription(itemId, t)}**`)
+      .setDescription(`**${getItemDescription(item.id, t)}**`)
       .addFields(fields.map(f => ({ ...f, name: `${f.emoji} ${f.name}`, value: `**${f.value}**` })))
 
-    const items = getItemsByMaterialId(itemId)
+    const items = getItemsByMaterialId(item.id)
     if (items.length) {
       embed.addField(ct('usedIn'), items.map(([id, i]) => `**${i.emoji} ${getItemName(id, t)}** \`[${id}]\``), true)
     }
@@ -84,11 +85,10 @@ class List extends LilirucaCommand {
     util.send(`\\📃 ${ct('itemProfile', { itemName })}`, embed)
   }
 
-  static getItemInfo (itemId, t, ct, blankspace = true) {
-    const item = getItemById(itemId)
-
+  static getItemInfo (item, t, ct, blankspace = true) {
     const fields = [
-      { name: ct('itemId'), value: itemId, inline: true, emoji: '\\📌' },
+      { name: ct('itemId'), value: item.id, inline: true, emoji: '\\📌' },
+      { name: ct('itemNum'), value: item.numId, inline: true, emoji: '\\📎' },
       { name: ct('itemType'), value: capitalize(item.type), inline: true, emoji: '\\🏷️' },
       { name: t('commons:price'), value: normalizeItemPrice(item.payment, item.price, t), inline: true, emoji: '\\🏦' },
       { name: ct('itemUtility'), value: ct('itemUses', { value: item.value }), inline: true, emoji: '\\⚙️' },
@@ -105,13 +105,13 @@ class List extends LilirucaCommand {
 
     if (item.materials) {
       const materials = Object.keys(item.materials)
-        .map(material => `${getItemById(material).emoji} \`x${item.materials[material]} ${getItemName(material, t)}\``)
+        .map(material => `${getItem(material).emoji} \`x${item.materials[material]} ${getItemName(material, t)}\``)
         .join('\n')
 
       fields.push({ name: t('commons:materials'), value: (blankspace ? '\n' : '') + materials, inline: true, emoji: '\\🧰' })
     }
 
-    return { item, fields }
+    return fields
   }
 }
 

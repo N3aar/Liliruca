@@ -36,8 +36,8 @@ class Storage extends LilirucaCommand {
     const level = dataPlace.storage
     const upgrade = level + levels
 
-    const storage = STORAGE_PRICES[place]
-    const price = getStoragePrice(storage, level, upgrade)
+    const storagePrice = STORAGE_PRICES[place]
+    const price = getStoragePrice(storagePrice, level, upgrade)
 
     if (data.money < price) {
       const missing = price - data.money
@@ -46,7 +46,7 @@ class Storage extends LilirucaCommand {
 
     const { material, amount } = UPGRADE_MATERIALS[place]
     const items = data.items[material] || 0
-    const required = Math.floor(amount / 3)
+    const required = Math.floor(amount / UPGRADE_MATERIALS.storage)
     const materials = getStoragePrice(required, level, upgrade)
 
     if (items < materials) {

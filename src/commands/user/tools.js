@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getItemName, getItemById } = require('@utils/items')
+const { getItemName, getItem } = require('@utils/items')
 const { EMOJIS: { items } } = require('@constants')
 
 class Tools extends LilirucaCommand {
@@ -9,7 +9,10 @@ class Tools extends LilirucaCommand {
       aliases: ['tl'],
       emoji: items,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: [
+        'EMBED_LINKS',
+        'USE_EXTERNAL_EMOJIS'
+      ]
     })
   }
 
@@ -55,15 +58,17 @@ class Tools extends LilirucaCommand {
       })
     }
 
+    const autoEquip = data.tools.autoequip ? 'enable' : 'disable'
     const embed = new LilirucaEmbed()
       .addFields(tools)
+      .setFooter(`${ct('autoequip')}: ${t(`commons:${autoEquip}`)}`)
 
     util.send(`\\${items} ${ct('success')}`, embed)
   }
 
   getItemInformation (t, data, name) {
     const item = data.tools[name]
-    return item && `${getItemById(item).emoji} **${getItemName(item, t)}**`
+    return item && `${getItem(item).emoji} **${getItemName(item, t)}**`
   }
 }
 

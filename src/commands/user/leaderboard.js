@@ -33,8 +33,9 @@ class Leaderboard extends LilirucaCommand {
   }
 
   async exec ({ t, ct, client, guild, util, db }, { type, page, guildOnly }) {
+    const parsedType = this.parseTypes(type)
     const ids = guildOnly && guild.members.cache.map(member => member.id)
-    const data = await db.users.ranking(type, ids, 5, 5 * (page - 1))
+    const data = await db.users.ranking(parsedType, ids, 5, 5 * (page - 1))
 
     if (data.length < 5) {
       return util.send(ct('noPage'))
@@ -48,18 +49,12 @@ class Leaderboard extends LilirucaCommand {
 
     const template = await loadImage('src/assets/leaderboard/template.png')
 
-    const defaultUser = {
-      username: 'xxxx',
-      discriminator: '0000',
-      defaultAvatar: await loadImage(client.user.displayAvatarURL({ format: 'png', size: 64 }))
-    }
-
-    const users = data.map(doc => client.users.cache.get(doc.id) || defaultUser)
+    const users = await Promise.all(data.map(doc => (client.users.fetch(doc.id))))
 
     let index = 0
 
     for await (const user of users) {
-      const avatar = user.defaultAvatar || await loadImage(user.displayAvatarURL({ format: 'png', size: 64 }))
+      const avatar = await loadImage(user.displayAvatarURL({ format: 'png', size: 64 }))
       ctx.drawImage(avatar, 61, 61 + (54 * index), 44, 44)
       index++
     }
@@ -68,20 +63,18 @@ class Leaderboard extends LilirucaCommand {
 
     ctx.font = '15px thebold'
     ctx.fillStyle = '#1cac50'
-    index = 0
 
-    for (const user of users) {
+    for (const i in users) {
+      const user = users[i]
       const username = `${user.username.slice(0, 10)}#${user.discriminator}`
-      const value = this.getValue(data[index], type)
+      const value = this.getValue(data[i], type)
 
       const parsed = ct(`types.${type}`, { value })
       const position = 363 - ctx.measureText(parsed).width
-      const espace = index * 54
+      const espace = i * 54
 
       ctx.fillText(username, 109, 89 + espace)
       ctx.fillText(parsed, position, 89 + espace)
-
-      index++
     }
 
     const attach = new MessageAttachment(canvas.toBuffer(), 'leaderboard.png')
@@ -90,16 +83,28 @@ class Leaderboard extends LilirucaCommand {
     util.send(`\\${trophy} ${ct('success', { type: parsed, page })}`, attach)
   }
 
+  parseTypes (type) {
+    if (PLACES.includes(type)) {
+      return `${type}.storage`
+    }
+
+    if (type === 'fishs') {
+      return 'statistics.rare'
+    }
+
+    return type
+  }
+
   getValue (data, type) {
     if (PLACES.includes(type)) {
       return data[type].storage
     }
 
     if (type === 'fishs') {
-      return data.raresFishs.total
+      return data.statistics.rare || 0
     }
 
-    return data[type]
+    return data[type].toLocaleString()
   }
 }
 

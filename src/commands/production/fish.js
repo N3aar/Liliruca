@@ -1,14 +1,15 @@
+const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { getItemById, getToolInInventory, removeItem, addItemInInventory } = require('@utils/items')
-const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST, EMOJIS } = require('@constants')
+const { removeItem, getToolInInventory, addItemInInventory, addMultipleItemsInInventory } = require('@utils/items')
+const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST, EMOJIS: { fishs, money, balance, fishingpole } } = require('@constants')
 
 class Fish extends LilirucaCommand {
   constructor () {
     super('fish', {
       aliases: ['fh'],
-      emoji: EMOJIS.fishingpole,
+      emoji: fishingpole,
       editable: true,
       clientPermissions: [
         'EMBED_LINKS',
@@ -16,14 +17,24 @@ class Fish extends LilirucaCommand {
       ],
       args: [
         {
-          id: 'itemId',
-          type: 'itemId'
+          id: 'uses',
+          type: Argument.range('integer', 1, 10, true),
+          default: 1
+        },
+        {
+          id: 'item',
+          type: 'item'
+        },
+        {
+          id: 'all',
+          match: 'flag',
+          flag: '--all'
         }
       ]
     })
   }
 
-  async exec ({ t, ct, util, db, author }, { itemId }) {
+  async exec ({ t, ct, util, db, author }, { item, uses, all }) {
     const data = await db.users.get(author.id)
     const dataPlace = data.fishing
 
@@ -31,115 +42,137 @@ class Fish extends LilirucaCommand {
       return util.send(t('errors:locked'))
     }
 
-    if (data.energy < ENERGY_COST) {
+    if (all) {
+      uses = Math.floor(data.energy / 10)
+    }
+
+    const energyCost = ENERGY_COST * uses
+    if (!energyCost || data.energy < energyCost) {
       return util.send(t('errors:noEnergy'))
     }
 
-    const baits = (data.items[itemId] && getItemById(itemId)) || getToolInInventory(data, 'baits')
+    if (item && !data.items[item.id]) {
+      return util.send(ct('noBaits'))
+    }
+
+    const baits = item || getToolInInventory(data, 'baits')
     if (!baits) {
       return util.send(ct('noBaits'))
     }
 
-    const baitsId = itemId || baits.id
-    const baitsItem = itemId ? baits : baits.item
+    if (data.items[baits.id] < uses) {
+      return util.send(ct('insufficient'))
+    }
 
-    const catched = randomChances(baitsItem.chances)
-    const weight = random(WEIGHTS[catched].max, WEIGHTS[catched].min, true)
-    const emojis = EMOJIS[catched]
+    const fished = {
+      weight: 0,
+      fishs: {},
+      rares: {},
+      reward: {}
+    }
 
-    const hook = this[catched]
-    const fished = hook(emojis, weight, data.raresFishs)
-    const emoji = fished.emoji || emojis[random(emojis.length)]
-    const reward = catched === 'treasure' ? 'reward' : 'price'
+    for (let i = 0; i < uses; i++) {
+      Fish.randomFishs(fished, baits)
+    }
+
+    const fishing = Object.keys(fished.fishs)
+    const rares = Object.keys(fished.rares)
+
+    const stars = fished.reward.stars ? `\n${fished.reward.stars} Lilistars` : ''
+    const parsed = fishing.reduce((value, fish) => value + `x${fished.fishs[fish]} ${ct(fish)}\n`, '')
+    const emoji = Fish.getEmoji(fishing[0], rares[0])
+
     const fields = [
       {
         name: `${emoji} ${t('commons:fished')}`,
-        value: `**${ct(catched)}**`,
+        value: `**${parsed}**`,
         inline: true
       },
       {
-        name: `\\${EMOJIS.balance} ${t('commons:weight')}`,
-        value: `**${weight}kg**`,
+        name: `\\${balance} ${t('commons:weight')}`,
+        value: `**${fished.weight}kg**`,
         inline: true
       },
       {
-        name: `\\${EMOJIS.money} ${t(`commons:${reward}`)}`,
-        value: `**${fished.reward}**`,
+        name: `\\${money} ${t('commons:price')}`,
+        value: `**$${fished.reward.money}${stars}**`,
         inline: true
       }
     ]
 
-    removeItem(data, 'items', baitsId)
-
-    const embed = new LilirucaEmbed()
-      .addFields(fields)
-
-    if (catched === 'trash') {
-      embed.setDescription(`\\♻️ ${ct('recycle')}`)
-    }
-
-    if (catched === 'rare') {
-      const fish = t(`commons:rares.${fished.fish}`)
-      const newEmoji = fished.new ? `\\${EMOJIS.news} ` : ''
-
-      addItemInInventory(data, 'raresFishs', fished.fish)
-
-      data.raresFishs.total += 1
-
-      data.markModified('raresFishs')
-      embed.setDescription(newEmoji + ct('fishRare', { fish }))
-    }
+    removeItem(data, 'items', baits.id, uses)
+    addMultipleItemsInInventory(data, 'statistics', { ...fished.fishs, ...fished.rares })
 
     const values = {
-      energy: data.energy - ENERGY_COST,
-      money: data.money + (fished.money || 0),
-      lilistars: data.lilistars + (fished.stars || 0)
+      energy: data.energy - energyCost,
+      money: data.money + fished.reward.money,
+      lilistars: data.lilistars + (fished.reward.stars || 0)
     }
-
-    embed.setFooter(t('commons:currentEnergy', { energy: values.energy }))
 
     db.users.update(data, values)
 
-    util.send(`\\${EMOJIS.fishingpole} ${ct('success')}`, embed)
+    let description = ''
+
+    if (fished.fishs.rare) {
+      const fish = rares.reduce((vl, fs) => {
+        const emoji = this.getEmoji('rare', fs)
+        const amount = fished.rares[fs]
+        const name = t(`commons:rares.${fs}`)
+
+        return vl + `${emoji} x${amount} ${name}\n`
+      }, '')
+
+      description += `**${ct('fishRare', { fish })}**\n`
+    }
+
+    if (fished.fishs.trash) {
+      description += `\\♻️ ${ct('recycle')}`
+    }
+
+    const embed = new LilirucaEmbed()
+      .addFields(fields)
+      .setFooter(t('commons:currentEnergy', { energy: values.energy }))
+
+    if (description.length) {
+      embed.setDescription(description)
+    }
+
+    util.send(`\\${fishingpole} ${ct('success')}`, embed)
   }
 
-  rare (emojis, weight, rares) {
-    const fish = RARE_FISHES[random(RARE_FISHES.length)]
-    const money = weight * 25
+  static randomFishs (fishs, baits) {
+    const { money, lilistars } = TREASURE
+    const catched = randomChances(baits.chances)
+    const weight = WEIGHTS[catched]
+    const balance = random(weight.max, weight.min, true)
+    const price = catched === 'treasure' ? random(money.max, money.min, true) : balance * weight.price
 
-    return {
-      fish,
-      money,
-      emoji: emojis[fish],
-      new: !rares[fish],
-      reward: `$${money}`
+    fishs.weight += balance
+
+    addItemInInventory(fishs, 'fishs', catched)
+    addItemInInventory(fishs, 'reward', 'money', price)
+
+    if (catched === 'rare') {
+      return addItemInInventory(fishs, 'rares', RARE_FISHES[random(RARE_FISHES.length)])
+    }
+
+    if (catched === 'treasure') {
+      addItemInInventory(fishs, 'reward', 'stars', random(lilistars.max, lilistars.min, true))
     }
   }
 
-  treasure () {
-    const money = random(TREASURE.money.max, TREASURE.money.min, true)
-    const stars = random(TREASURE.lilistars.max, TREASURE.lilistars.min, true)
-    return {
-      reward: `$${money} + ${stars} Lilistars`,
-      money,
-      stars
-    }
-  }
+  static getEmoji (fish, rare) {
+    const emojis = fishs[fish]
 
-  trash (_, weight) {
-    const money = weight * 2
-    return {
-      reward: `$${money}`,
-      money
+    if (Array.isArray(emojis)) {
+      return emojis[random(emojis.length)]
     }
-  }
 
-  fishs (_, weight) {
-    const money = weight * 20
-    return {
-      reward: `$${money}`,
-      money
+    if (typeof emojis === 'object') {
+      return emojis[rare]
     }
+
+    return emojis
   }
 }
 

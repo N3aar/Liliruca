@@ -12,8 +12,8 @@ class Setbackground extends LilirucaCommand {
       args: [
         {
           id: 'id',
-          type: Argument.range('integer', 1, backgrounds.length),
-          default: 1
+          type: Argument.range('integer', 1, backgrounds.length, true),
+          otherwise: message => message.ct('invalidNumber')
         }
       ]
     })
@@ -21,6 +21,10 @@ class Setbackground extends LilirucaCommand {
 
   async exec ({ ct, db, member, util }, { id }) {
     const data = await db.users.get(member.id)
+
+    if (data.background === id) {
+      return util.send(ct('already'))
+    }
 
     if (!data.items.frame) {
       return util.send(ct('noFrame'))

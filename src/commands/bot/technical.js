@@ -35,7 +35,7 @@ class Technical extends LilirucaCommand {
       },
       {
         name: `\\📇 ${ct('events')}`,
-        value: `**${ct('eventCount', { count: client.eventCount })}**`,
+        value: `**${ct('eventCount', { count: client.eventCount.toLocaleString() })}**`,
         inline: true
       },
       {

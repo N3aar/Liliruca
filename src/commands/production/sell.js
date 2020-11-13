@@ -33,7 +33,7 @@ class Sell extends LilirucaCommand {
       total += price
 
       const name = `\\${EMOJIS[place]} ${t(`commons:${place}`)}`
-      const value = `**${t('commons:price')}: $${price}**`
+      const value = `**${t('commons:price')}: $${price.toLocaleString()}**`
 
       return {
         name,
@@ -45,7 +45,7 @@ class Sell extends LilirucaCommand {
     const current = data.money + total
     const embed = new LilirucaEmbed()
       .addFields(sell)
-      .setFooter(`Total: $${total} / ${t('commons:current')}: $${current}`)
+      .setFooter(`Total: $${total.toLocaleString()} / ${t('commons:current')}: $${current.toLocaleString()}`)
 
     const values = {
       money: current
