@@ -23,7 +23,7 @@ class Mine extends LilirucaCommand {
         },
         {
           id: 'item',
-          type: 'item'
+          type: Argument.validate('item', (m, p, value) => value.tool === 'pickaxe')
         },
         {
           id: 'all',

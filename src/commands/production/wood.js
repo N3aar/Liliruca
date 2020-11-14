@@ -23,7 +23,7 @@ class Wood extends LilirucaCommand {
         },
         {
           id: 'item',
-          type: 'item'
+          type: Argument.validate('item', (m, p, value) => value.tool === 'axe')
         },
         {
           id: 'all',
