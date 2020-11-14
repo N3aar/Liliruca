@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem, removeItem, addItemInInventory } = require('@utils/items')
-const { ORES, EMOJIS: { fire, money } } = require('@constants')
+const { EMOJIS: { fire, money } } = require('@constants')
 
 class Forge extends LilirucaCommand {
   constructor () {
@@ -17,7 +17,7 @@ class Forge extends LilirucaCommand {
       args: [
         {
           id: 'ore',
-          type: ORES,
+          type: Argument.validate('item', (m, p, value) => value.forge),
           otherwise: message => message.ct('noOre')
         },
         {
@@ -37,30 +37,29 @@ class Forge extends LilirucaCommand {
       return util.send(ct('noCoal'))
     }
 
-    const ores = data.items[ore] || 0
+    const ores = data.items[ore.id] || 0
 
     if (ores < amount) {
       return util.send(ct('missing'))
     }
 
-    const item = getItem(ore)
-    const price = (item.rarity * 50) * amount
-    const barAmount = item.amount * amount
+    const price = (ore.rarity * 50) * amount
+    const barAmount = ore.amount * amount
 
     if (data.money < price) {
       return util.send(ct('noMoney', { missing: price - data.money }))
     }
 
-    const bar = getItem(item.forge)
+    const bar = getItem(ore.forge)
     const fields = [
       {
-        name: `${item.emoji} ${t('commons:ore')}`,
-        value: `**x${amount} ${getItemName(ore, t)}**`,
+        name: `${ore.emoji} ${t('commons:ore')}`,
+        value: `**x${amount} ${getItemName(ore.id, t)}**`,
         inline: true
       },
       {
         name: `${bar.emoji} ${t('commons:forged')}`,
-        value: `**x${barAmount} ${getItemName(item.forge, t)}**`,
+        value: `**x${barAmount} ${getItemName(ore.forge, t)}**`,
         inline: true
       },
       {
@@ -70,9 +69,9 @@ class Forge extends LilirucaCommand {
       }
     ]
 
-    removeItem(data, 'items', ore, amount)
+    removeItem(data, 'items', ore.id, amount)
     removeItem(data, 'items', 'coal', amount)
-    addItemInInventory(data, 'items', item.forge, barAmount)
+    addItemInInventory(data, 'items', ore.forge, barAmount)
 
     const values = {
       money: data.money - price

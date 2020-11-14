@@ -127,7 +127,6 @@ module.exports = {
   PLACE_NAMES,
   RESOURCE_NAMES,
   ITEMS_TYPES: loadTypes(),
-  ORES: ['copper-ore', 'iron-ore', 'gold-ore', 'cobalt-ore'],
   RARE_FISHES: [
     'anglerfish',
     'eel',
