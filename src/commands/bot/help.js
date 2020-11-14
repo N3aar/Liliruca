@@ -48,7 +48,7 @@ class Help extends LilirucaCommand {
 
     const embed = new LilirucaEmbed()
       .setDescription(categories)
-      .setFooter(`${prefix}help ${t('commands:help.usage')}`)
+      .setFooter(`${prefix}help ${ct('usage')}`)
 
     util.send(`\\📚 ${ct('success')}`, embed)
   }

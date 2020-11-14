@@ -25,7 +25,7 @@
         "supportGuild": "Suporte",
         "success": "Informações do bot!"
     },
-    "commands": {
+    "help": {
         "description": "Todas as informações sobre os Comandos!",
         "usage": "<comando | categoria | número | --all>",
         "notFind": "Categoria ou Comando não foi encontrado!",
@@ -33,11 +33,6 @@
         "all": "Todos os Comandos!",
         "category": "Categoria `{{- category }}`!",
         "command": "Comando `{{- command }}`!"
-    },
-    "help": {
-        "description": "",
-        "usage": "",
-        "success": "Páginas de ajuda!"
     },
     "ping": {
         "description": "Dados de conexão do bot com os servidores.",

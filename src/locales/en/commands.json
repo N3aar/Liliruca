@@ -25,7 +25,7 @@
         "supportGuild": "Support",
         "success": "Bot information!"
     },
-    "commands": {
+    "help": {
         "description": "All information about the Commands!",
         "usage": "<command | category | number | --all>",
         "notFind": "category or command was not found!",
@@ -33,11 +33,6 @@
         "all": "All commands!",
         "category": "`{{- category }}` Category!",
         "command": "Command `{{- command }}`!"
-    },
-    "help": {
-        "description": "",
-        "usage": "",
-        "success": "Pages of help!"
     },
     "ping": {
         "description": "Bot connection data with the servers.",
