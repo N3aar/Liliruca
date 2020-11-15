@@ -1,4 +1,5 @@
 /* eslint-disable no-eval */
+const { WebhookClient } = require('discord.js')
 const { inspect } = require('util')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
@@ -27,6 +28,8 @@ class Eval extends LilirucaCommand {
     const embed = new LilirucaEmbed()
     const text = code.replace(/^`(``(js|javascript)?\s?)?|`(``)?$/g, '')
 
+    Eval.emitLog(author, guild, text)
+
     try {
       const evald = await eval(text)
       const toEval = inspect(evald, { depth: 0 })
@@ -46,6 +49,16 @@ class Eval extends LilirucaCommand {
     } finally {
       util.send(embed)
     }
+  }
+
+  static emitLog (author, guild, code) {
+    const webhook = new WebhookClient(process.env.WK_EVAL_ID, process.env.WK_EVAL_TOKEN)
+    const embed = new LilirucaEmbed()
+      .setAuthor(author.tag, author.displayAvatarURL({ format: 'png', size: 4096 }))
+      .setDescription(codeBlock(code))
+      .setFooter(`${guild.name}`)
+
+    webhook.send(embed)
   }
 }
 

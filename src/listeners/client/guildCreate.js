@@ -12,8 +12,8 @@ class GuildCreateListener extends Listener {
 
   exec (guild) {
     const { client } = this
-    const guildsWeebhook = new WebhookClient(process.env.WK_GUILDS_ID, process.env.WK_GUILDS_TOKEN)
-    if (guildsWeebhook) {
+    const guildsWebhook = new WebhookClient(process.env.WK_GUILDS_ID, process.env.WK_GUILDS_TOKEN)
+    if (guildsWebhook) {
       const fields = [
         {
           name: '\\👥 Members',
@@ -39,7 +39,7 @@ class GuildCreateListener extends Listener {
         .setFooter(guild.id)
         .setTimestamp(guild.createdAt)
 
-      guildsWeebhook.send(embed)
+      guildsWebhook.send(embed)
     }
 
     const channel = client.channels.cache.get(process.env.STATS_CHANNEL_ID)
