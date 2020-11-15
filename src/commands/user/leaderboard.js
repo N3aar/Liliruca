@@ -20,6 +20,8 @@ class Leaderboard extends LilirucaCommand {
         },
         {
           id: 'page',
+          match: 'option',
+          flag: ['--page', '--p'],
           type: Argument.range('integer', 1, 50, true),
           default: 1
         },

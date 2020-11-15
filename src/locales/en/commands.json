@@ -132,7 +132,7 @@
     },
     "fish": {
         "description": "Catch fish or treasures with your fishing rod and some baits",
-        "usage": "[item id]",
+        "usage": "[amount of uses] [item id]",
         "noBaits": "You don't have enough bait!",
         "insufficient": "You don't have enough bait for that!",
         "recycle": "**Trash found has been recycled!**",
@@ -154,7 +154,7 @@
     },
     "mine": {
         "description": "Collect ores with your pickaxe",
-        "usage": "[item id]",
+        "usage": "[amount of uses] [item id]",
         "noPickaxe": "You don't have that pickaxe to mine.",
         "insufficient": "Your tool does not have enough uses for this!",
         "success": "Collect ores successfully!"
@@ -315,7 +315,7 @@
     "leaderboard": {
         "description": "Leaderboard from the best users!",
         "error": "Type the resource correctly! \n`Resources: {{ types }}`",
-        "usage": "<resource | place> [page] --guild",
+        "usage": "<resource | place> [--page | --p <page>] --guild",
         "noPage": "Could not find enough users to create this page!",
         "sucess": "Top 5 ranking for `{{ resource }}`! Page: `{{ page }}/50`",
         "types": {

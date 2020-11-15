@@ -135,7 +135,7 @@
     },
     "fish": {
         "description": "Pesque peixes ou tesouros com sua vara de pesca e algumas iscas",
-        "usage": "[id do item]",
+        "usage": "[quantia de usos] [id do item]",
         "noBaits": "Você não possui iscas suficientes!",
         "insufficient": "Você não possui iscas suficientes para isso!",
         "recycle": "**Lixo encontrado foi reciclado!**",
@@ -157,7 +157,7 @@
     },
     "mine": {
         "description": "Coletar mínérios com sua picareta",
-        "usage": "[id do item]",
+        "usage": "[quantia de usos] [id do item]",
         "noPickaxe": "Você não possui essa picareta para minerar.",
         "insufficient": "Sua ferramenta não possui usos suficientes para isso!",
         "success": "Coletou minérios com sucesso!"
@@ -317,7 +317,7 @@
     "leaderboard": {
         "description": "Classificações dos melhores usuários!",
         "error": "Digite o recurso corretamente! \n`Recursos: {{ types }}`",
-        "usage": "<recurso | local> [página] --guild",
+        "usage": "<recurso | local> [--page | --p <página>] [--guild]",
         "noPage": "Não foi possível encontrar usuários suficientes para criar esta página!",
         "success": "Classificação dos 5 melhores por `{{- type }}`! Página: `{{ page }}/50`",
         "types": {
