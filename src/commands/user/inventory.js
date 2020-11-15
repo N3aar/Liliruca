@@ -44,8 +44,8 @@ class Inventory extends LilirucaCommand {
     }
 
     const items = itemsIds.map(id => {
-      const { emoji } = getItem(id)
-      const showId = ids ? `\`[${id}]\`` : ''
+      const { numId, emoji } = getItem(id)
+      const showId = ids ? `\`[${numId}|${id}]\`` : ''
       return `${emoji} **x${data.items[id]} ${getItemName(id, t)}** ${showId}`
     }, '')
 

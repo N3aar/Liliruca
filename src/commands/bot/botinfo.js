@@ -44,11 +44,6 @@ class Botinfo extends LilirucaCommand {
 
     const fields = [
       {
-        name: `\\🎓 ${ct('version')}`,
-        value: `**${version}**`,
-        inline: true
-      },
-      {
         name: `\\📌 ${ct('supportGuild')}`,
         value: `[Clique Aqui](${SUPPORT_GUILD})`,
         inline: true
@@ -56,6 +51,16 @@ class Botinfo extends LilirucaCommand {
       {
         name: `\\📎 ${ct('inviteMe')}`,
         value: `[Clique Aqui](${botInviteUrl})`,
+        inline: true
+      },
+      {
+        name: '\\💾 Github',
+        value: '[Clique Aqui](https://github.com/vNear/Liliruca)',
+        inline: true
+      },
+      {
+        name: `\\🎓 ${ct('version')}`,
+        value: `**${version}**`,
         inline: true
       }
     ]
