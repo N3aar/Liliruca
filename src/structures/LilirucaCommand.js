@@ -1,39 +1,37 @@
-const { Command } = require('discord-akairo')
-const { DEFAULT_PREFIX, DEFAULT_LANGUAGE } = require('../Constants')
+const { createOptions } = require('@utils')
 
-/**
- * @property {import('@LilirucaClient')} client
- */
-class LilirucaCommand extends Command {
-  /**
-   * @param {string} id command id
-   * @param {import('discord-akairo').CommandOptions} options command options
-   */
-  constructor (id, options) {
-    options.aliases = [...(options.aliases || []), id]
-    super(id, options)
+class LilirucaCommand {
+  constructor (opts) {
+    const options = createOptions('Command', opts)
 
-    this.channel = 'guild'
-    this.emoji = options.emoji
-    this.usage = !!options.args
+    this.name = options.required('name')
+    this.emoji = options.required('emoji')
+    this.editable = options.optional('editable', true)
+    this.args = options.optional('args', [])
+    this.userPermissions = options.optional('userPermissions', [])
+    this.clientPermissions = options.optional('clientPermissions', [])
+    this.aliases = options.optional('aliases', [])
+    this.category = options.optional('category', 'General')
+    this.devOnly = options.optional('devOnly', false)
+    this.cooldownTime = 0
+
+    // TODO: seta o cliente no loader
+    this.client = null
   }
 
-  async before (message) {
-    const guildData = await this.client.db.guilds.get(message.guild.id)
-    const language = guildData.language || DEFAULT_LANGUAGE
-    const t = this.client.locales.getT(language)
-    const ct = (tPath, tOptions) => t(`commands:${this.id}.${tPath}`, tOptions)
+  preLoad (ctx) {
+    if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
+      return ctx.util.send('Este comando se encontra disponível apenas para meus donos.')
+    }
 
-    message.guildData = guildData
-    message.t = t
-    message.ct = ct
-    message.language = language
-    message.locales = this.client.locales
-    message.db = this.client.db
-    message.prefix = guildData.prefix || DEFAULT_PREFIX
-
-    return message
+    try {
+      this.run(ctx)
+    } catch (error) {
+      console.error(error)
+    }
   }
+
+  run () {}
 }
 
 module.exports = LilirucaCommand
