@@ -7,7 +7,7 @@
 <a href="https://github.com/vNear/Liliruca/issues"><img src="https://img.shields.io/github/issues/vNear/Liliruca"></a>
 <img src="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg">
 <img src="https://img.shields.io/badge/contributions-welcome-orange.svg">
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/vNear/Liliruca"></a>
+<a href="https://opensource.org/licenses/BSD-3-Clause"><img src="https://img.shields.io/github/license/vNear/Liliruca"></a>
 </p>
 
 <p align="center"><a href="https://discord.com/oauth2/authorize?client_id=548862902078275605&permissions=379912&scope=bot"><strong>ADD LILIRUCA TO YOUR SERVER »</strong></a></p>
