@@ -12,7 +12,7 @@ class LilirucaCommand {
     this.clientPermissions = options.optional('clientPermissions', [])
     this.aliases = options.optional('aliases', [])
     this.category = options.optional('category', 'General')
-    this.devOnly = options.optional('devOnly', false)
+    this.ownerOnly = options.optional('ownerOnly', false)
     this.cooldownTime = 0
 
     // TODO: seta o cliente no loader
@@ -20,7 +20,7 @@ class LilirucaCommand {
   }
 
   preLoad (ctx) {
-    if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
+    if (this.ownerOnly && !this.client.config.owners.includes(ctx.author.id)) {
       return ctx.util.send('Este comando se encontra disponível apenas para meus donos.')
     }
 
