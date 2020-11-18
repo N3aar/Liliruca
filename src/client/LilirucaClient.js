@@ -4,6 +4,7 @@ const Database = require('@database/Database')
 const { logger, locales } = require('@utils')
 const { Client, Constants } = require('eris')
 const CommandHandler = require('../structures/CommandHandler')
+const ListenerHandler = require('../structures/ListenerHandler')
 
 class LilirucaClient extends Client {
   constructor () {
@@ -11,6 +12,7 @@ class LilirucaClient extends Client {
       allowedMentions: {
         everyone: false
       },
+      maxShards: 'auto',
       messageLimit: 10,
       defaultImageSize: 2048,
       intents: [
@@ -26,6 +28,9 @@ class LilirucaClient extends Client {
     this.locales = locales
 
     this.commandHandler = new CommandHandler(this, 'src/commands', true)
+    this.listenerHandler = new ListenerHandler(this, 'src/listeners', true)
+
+    this.on('raw', () => this.client.eventCount++)
   }
 
   loadAllFonts () {
@@ -45,9 +50,10 @@ class LilirucaClient extends Client {
   // }
 
   async init () {
-    this.commandHandler.loadAll()
-    await this.db.connect()
+    // this.commandHandler.loadAll()
+    this.listenerHandler.loadAll()
     await this.locales.loadAll()
+    await this.db.connect()
     this.loadAllFonts()
     return this
   }

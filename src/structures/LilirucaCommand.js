@@ -4,7 +4,7 @@ const BaseModule = require('./base/BaseModule')
 class LilirucaCommand extends BaseModule {
   constructor (name, opts) {
     super(name, opts.category)
-    const options = createOptions('Command', opts)
+    const options = createOptions('LilirucaCommand', opts)
 
     this.emoji = options.required('emoji')
     this.editable = options.optional('editable', true)
@@ -29,7 +29,9 @@ class LilirucaCommand extends BaseModule {
     }
   }
 
-  run () {}
+  exec () {
+    throw new Error(`${this.constructor.name} doesn't have a exec() method.`)
+  }
 }
 
 module.exports = LilirucaCommand

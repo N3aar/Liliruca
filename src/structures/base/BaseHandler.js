@@ -43,6 +43,7 @@ class BaseHandler extends EventEmitter {
     try {
       Mod = require(filepath)
     } catch (err) {
+      // TEMPORARIO
       return console.log(`arquivo '${filepath}' falhou. ${err}`)
       // return this.emit('LOAD_ERROR', filepath, err)
     }
