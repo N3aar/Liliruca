@@ -29,7 +29,7 @@ class LilirucaClient extends Client {
     this.commandHandler = new CommandHandler(this, 'src/commands', true)
     this.listenerHandler = new ListenerHandler(this, 'src/listeners', true)
 
-    this.on('raw', () => this.client.eventCount++)
+    this.on('rawWS', () => this.eventCount++)
   }
 
   loadAllFonts () {
