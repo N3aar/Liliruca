@@ -18,7 +18,6 @@ class LilirucaClient extends Client {
       intents:
         Constants.Intents.guilds |
         Constants.Intents.guildMessages
-
     }
     )
 
@@ -50,7 +49,7 @@ class LilirucaClient extends Client {
   // }
 
   async init () {
-    // this.commandHandler.loadAll()
+    this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
     await this.locales.loadAll()
     await this.db.connect()

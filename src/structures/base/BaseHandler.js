@@ -43,9 +43,7 @@ class BaseHandler extends EventEmitter {
     try {
       Mod = require(filepath)
     } catch (err) {
-      // TEMPORARIO
-      return console.log(`arquivo '${filepath}' falhou. ${err}`)
-      // return this.emit('LOAD_ERROR', filepath, err)
+      return this.emit('LOAD_ERROR', filepath, err)
     }
 
     const mod = new Mod()
@@ -59,8 +57,7 @@ class BaseHandler extends EventEmitter {
     }
 
     this.register(mod)
-    // TEMPORARIO
-    return console.log(`arquivo ${mod.id} carregado.`)
+    return this.emit('LOAD', mod)
   }
 
   loadAll (directory = this.directory) {
@@ -69,7 +66,6 @@ class BaseHandler extends EventEmitter {
       filepath = path.resolve(filepath)
       this.load(filepath)
     }
-
     return this
   }
 

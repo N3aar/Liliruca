@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { dependencies } = require('@package')
+// const LilirucaEmbed = require('@structures/LilirucaEmbed')
+const { VERSION } = require('eris')
 const { EMOJIS: { wrench } } = require('@constants')
 
 class Technical extends LilirucaCommand {
@@ -14,8 +14,6 @@ class Technical extends LilirucaCommand {
   }
 
   exec ({ ct, client, util }) {
-    const djs = dependencies['discord.js']
-    const akairo = dependencies['discord-akairo']
     const memoryUsage = (process.memoryUsage().heapUsed / 1048576).toFixed(2)
     const fields = [
       {
@@ -40,20 +38,15 @@ class Technical extends LilirucaCommand {
       },
       {
         name: `\\📚 ${ct('library')}`,
-        value: `**Discord.js v${djs.replace('^', '')}**`,
-        inline: true
-      },
-      {
-        name: '\\📦 Framework',
-        value: `**Discord Akairo v${akairo.replace('^', '')}**`,
+        value: `**Eris v${VERSION}**`,
         inline: true
       }
     ]
+    // TEMPORARIO
+    // const embed = new LilirucaEmbed()
+    //   .addFields(fields)
 
-    const embed = new LilirucaEmbed()
-      .addFields(fields)
-
-    util.send(`\\${wrench} ${ct('success')}`, embed)
+    util.send(`\\${wrench} ${ct('success')}`, { embed: { fields } })
   }
 }
 
