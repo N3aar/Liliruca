@@ -3,6 +3,7 @@ const { registerFont } = require('canvas')
 const Database = require('@database/Database')
 const { logger, locales } = require('@utils')
 const { Client, Constants } = require('eris')
+const CommandHandler = require('../structures/CommandHandler')
 
 class LilirucaClient extends Client {
   constructor () {
@@ -23,6 +24,8 @@ class LilirucaClient extends Client {
     this.db = Database
     this.logger = logger
     this.locales = locales
+
+    this.commandHandler = new CommandHandler(this, 'src/commands', true)
   }
 
   loadAllFonts () {
@@ -42,6 +45,7 @@ class LilirucaClient extends Client {
   // }
 
   async init () {
+    this.commandHandler.loadAll()
     await this.db.connect()
     await this.locales.loadAll()
     this.loadAllFonts()

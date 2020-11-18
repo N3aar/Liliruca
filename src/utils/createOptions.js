@@ -13,7 +13,6 @@ module.exports = (structureName, structureOptions, options = {}) => {
 
     required (name) {
       const value = structureOptions[name]
-
       if (typeof value === 'undefined') {
         throw new Error(`The option "${name}" of structure "${structureName}" is required.`)
       }

@@ -1,10 +1,11 @@
-const { createOptions } = require('@utils')
+const createOptions = require('@utils/createOptions')
+const BaseModule = require('./base/BaseModule')
 
-class LilirucaCommand {
-  constructor (opts) {
+class LilirucaCommand extends BaseModule {
+  constructor (name, opts) {
+    super(name, opts.category)
     const options = createOptions('Command', opts)
 
-    this.name = options.required('name')
     this.emoji = options.required('emoji')
     this.editable = options.optional('editable', true)
     this.args = options.optional('args', [])
@@ -14,9 +15,6 @@ class LilirucaCommand {
     this.category = options.optional('category', 'General')
     this.ownerOnly = options.optional('ownerOnly', false)
     this.cooldownTime = 0
-
-    // TODO: seta o cliente no loader
-    this.client = null
   }
 
   preLoad (ctx) {
