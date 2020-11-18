@@ -1,4 +1,4 @@
-const { Permissions } = require('discord.js')
+const ClientUtil = require('@utils/ClientUtil')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { version } = require('@package')
@@ -15,22 +15,8 @@ class Botinfo extends LilirucaCommand {
     })
   }
 
-  static getBotPermissions () {
-    return Permissions.FLAGS.ADMINISTRATOR |
-      Permissions.FLAGS.VIEW_CHANNEL |
-      Permissions.FLAGS.SEND_MESSAGES |
-      Permissions.FLAGS.EMBED_LINKS |
-      Permissions.FLAGS.ATTACH_FILES |
-      Permissions.FLAGS.READ_MESSAGE_HISTORY |
-      Permissions.FLAGS.USE_EXTERNAL_EMOJIS
-  }
-
-  static getBotInvite (clientId, permissions) {
-    return `https://discord.com/oauth2/authorize?client_id=${clientId}&permissions=${permissions}&scope=bot`
-  }
-
   async exec ({ t, ct, language, util, guild, client }) {
-    const botInviteUrl = Botinfo.getBotInvite(client.user.id, Botinfo.getBotPermissions())
+    const botInviteUrl = ClientUtil.getBotInvite(client.user.id, ClientUtil.getBotPermissions())
     const avatar = client.user.displayAvatarURL({ format: 'png', size: 4096 })
 
     const about = {
