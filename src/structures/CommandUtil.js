@@ -7,12 +7,12 @@ class CommandUtil {
     this.client = client
     this.channelId = channelId
     this.messageId = messageId
-    this.lastUsedAt = new Date()
+    this.lastUsedAt = Date.now()
     this.sentMessageId = null
   }
 
   async send (content, opts) {
-    this.lastUsedAt = new Date()
+    this.lastUsedAt = Date.now()
 
     const options = CommandUtil.parseOptions(content, opts)
 
@@ -28,7 +28,7 @@ class CommandUtil {
 
   async createMessage (options) {
     const newMsg = await this.client.createMessage(this.channelId, options)
-    this.sentMessageId = newMsg
+    this.sentMessageId = newMsg.id
     return newMsg
   }
 

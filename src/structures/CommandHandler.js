@@ -3,6 +3,8 @@ const BaseHandler = require('./base/BaseHandler')
 const LilirucaCommand = require('./LilirucaCommand')
 const CommandUtil = require('./CommandUtil')
 
+const COMMAND_UTIL_LIFETIME = 1.2e+6
+const COMMAND_UTIL_SWEEP_INTERVAL = 1.8e+6
 class CommandHandler extends BaseHandler {
   constructor (client, directory, automateCategories = true) {
     super(client, {
@@ -11,19 +13,23 @@ class CommandHandler extends BaseHandler {
       automateCategories
     })
 
-    // TODO: deleta o commandUtil dps de 10/20min do ultimo uso
     this.commandUtils = new Collection()
     this.aliases = new Collection()
     this.client.on('messageCreate', (message) => this.handle(message))
     this.client.on('messageUpdate', (message) => this.handle(message))
-    this.client.on('messageDelete', (message) => this.onMessageDelete(message))
-    this.client.on('messageDeleteBulk', (messages) => this.onMessageDelete(messages))
+    this.client.on('messageDelete', (message) => this.onMessagesDelete([message]))
+    this.client.on('messageDeleteBulk', (messages) => this.onMessagesDelete(messages))
+
+    setInterval(() => {
+      this.commandUtils.each((util, id) => {
+        if (util.lastUsedAt - Date.now() >= COMMAND_UTIL_LIFETIME) {
+          this.commandUtils.delete(id)
+        }
+      })
+    }, COMMAND_UTIL_SWEEP_INTERVAL)
   }
 
-  onMessageDelete (messages) {
-    if (!Array.isArray(messages)) {
-      return this.onMessageDelete([messages])
-    }
+  onMessagesDelete (messages) {
     messages.forEach(message => {
       if (this.commandUtils.has(message.id)) {
         return this.commandUtils.delete(message.id)
