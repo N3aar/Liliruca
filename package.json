@@ -7,7 +7,7 @@
   "repository": "github:vNear/Liliruca",
   "license": "GPL-3.0",
   "scripts": {
-    "start": "node -r dotenv/config -r module-alias/register .",
+    "start": "node -r module-alias/register .",
     "start:dev": "nodemon",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",

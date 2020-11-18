@@ -1,22 +1,16 @@
-// const { join } = require('path')
 const { readdirSync } = require('fs')
 const { registerFont } = require('canvas')
-// const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo')
 const Database = require('@database/Database')
-// const LilirucaCommand = require('@structures/LilirucaCommand')
 const { logger, locales } = require('@utils')
-// const { getItem } = require('@utils/items')
-// const { OWNER_IDS, DEFAULT_PREFIX, DEFAULT_LANGUAGE, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
-// // const { Intents } = require('discord.js')
-// const joinPath = path => join(__dirname, '..', path)
 const { Client, Constants } = require('eris')
+
 class LilirucaClient extends Client {
   constructor () {
     super(process.env.DISCORD_TOKEN, {
       allowedMentions: {
         everyone: false
       },
-      messageCacheMaxSize: 10,
+      messageLimit: 10,
       defaultImageSize: 2048,
       intents: [
         Constants.Intents.guilds,
@@ -26,83 +20,10 @@ class LilirucaClient extends Client {
     )
 
     this.eventCount = 0
-
-    // const getPrefix = async ({ guild }) => {
-    //   const guildData = guild && await this.db.guilds.get(guild.id)
-    //   const prefix = guildData && guildData.prefix
-    //   return prefix || DEFAULT_PREFIX
-    // }
-
-    // const commandOptions = {
-    //   classToHandle: LilirucaCommand,
-    //   directory: joinPath('commands'),
-    //   prefix: getPrefix,
-    //   automateCategories: true,
-    //   allowMention: true,
-    //   commandUtil: true,
-    //   handleEdits: true,
-    //   blockBots: true
-    // }
-
-    // const listenerOptions = {
-    //   directory: joinPath('listeners')
-    // }
-
-    // const inhibitorOptions = {
-    //   directory: joinPath('inhibitors')
-    // }
-
-    // this.commandHandler = new CommandHandler(this, commandOptions)
-    // this.listenerHandler = new ListenerHandler(this, listenerOptions)
-    // this.inhibitorHandler = new InhibitorHandler(this, inhibitorOptions)
     this.db = Database
     this.logger = logger
     this.locales = locales
   }
-
-  // loadCustomArgumentTypes () {
-  //   this.commandHandler.resolver.addType('place', (message, phrase) => {
-  //     if (!phrase) {
-  //       return null
-  //     }
-
-  //     const resolved = phrase.toLowerCase()
-  //     for (const place of PLACES) {
-  //       if (PLACES_ALIASES[place].includes(resolved)) {
-  //         return place
-  //       }
-  //     }
-
-  //     return null
-  //   })
-
-  //   this.commandHandler.resolver.addType('realMember', (message, phrase) => {
-  //     if (!phrase) {
-  //       return null
-  //     }
-
-  //     const memberType = this.commandHandler.resolver.type('member')
-  //     const member = memberType(message, phrase)
-  //     if (member && !member.user.bot) {
-  //       return member
-  //     }
-
-  //     return null
-  //   })
-
-  //   this.commandHandler.resolver.addType('item', (message, phrase) => {
-  //     if (!phrase) {
-  //       return null
-  //     }
-
-  //     const item = getItem(phrase.toLowerCase())
-  //     if (item) {
-  //       return item
-  //     }
-
-  //     return null
-  //   })
-  // }
 
   loadAllFonts () {
     const folder = 'src/assets/fonts/'
@@ -123,20 +44,7 @@ class LilirucaClient extends Client {
   async init () {
     await this.db.connect()
     await this.locales.loadAll()
-
-    // this.commandHandler.useListenerHandler(this.listenerHandler)
-    // this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
-
-    // this.commandHandler.loadAll()
-    // this.listenerHandler.loadAll()
-    // this.inhibitorHandler.loadAll()
-
-    // this.loadCustomArgumentTypes()
-    // this.loadCategories()
     this.loadAllFonts()
-
-    // this.commandHandler.on('missingPermissions', this.permissionHandler)
-
     return this
   }
 
@@ -154,10 +62,6 @@ class LilirucaClient extends Client {
     await this.init()
     return this.connect()
   }
-
-  // get commands () {
-  //   return this.commandHandler.modules
-  // }
 }
 
 module.exports = LilirucaClient
