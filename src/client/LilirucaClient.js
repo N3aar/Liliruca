@@ -15,10 +15,10 @@ class LilirucaClient extends Client {
       maxShards: 'auto',
       messageLimit: 10,
       defaultImageSize: 2048,
-      intents: [
-        Constants.Intents.guilds,
+      intents:
+        Constants.Intents.guilds |
         Constants.Intents.guildMessages
-      ]
+
     }
     )
 
