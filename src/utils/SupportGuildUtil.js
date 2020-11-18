@@ -63,7 +63,7 @@ class SupportGuildUtil {
 
   static rebootChannel (client, messge) {
     if (!process.env.REBOOT_CHANNEL) return
-    client.sendMessage(process.env.REBOOT_CHANNEL, messge)
+    client.createMessage(process.env.REBOOT_CHANNEL, messge)
   }
 }
 
