@@ -17,7 +17,7 @@ class Collect extends LilirucaCommand {
   }
 
   async exec ({ t, ct, util, language, db, author }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     const timestamp = Date.now()
     const oneHour = 3600000

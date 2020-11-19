@@ -1,5 +1,5 @@
-const LilirucaEmbed = require('./LilirucaEmbed')
-const LilirucaAttachment = require('./LilirucaAttachment')
+const LilirucaEmbed = require('../LilirucaEmbed')
+const LilirucaAttachment = require('../LilirucaAttachment')
 
 // TODO: fazer o edit, comandos como ping usa
 class CommandUtil {

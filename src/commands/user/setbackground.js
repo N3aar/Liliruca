@@ -21,7 +21,7 @@ class Setbackground extends LilirucaCommand {
   }
 
   async exec ({ ct, db, member, util }, { id }) {
-    const data = await db.users.get(member.id)
+    const data = await db.users.ensure(member.id)
 
     if (data.background === id) {
       return util.send(ct('already'))

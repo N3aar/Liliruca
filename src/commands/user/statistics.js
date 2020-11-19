@@ -27,7 +27,7 @@ class Statistics extends LilirucaCommand {
   }
 
   async exec ({ ct, t, db, util }, { member, showOnlyFish }) {
-    const data = await db.users.get(member.id)
+    const data = await db.users.ensure(member.id)
     const values = data.statistics
 
     if (showOnlyFish) {

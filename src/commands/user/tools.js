@@ -17,7 +17,7 @@ class Tools extends LilirucaCommand {
   }
 
   async exec ({ db, t, ct, author, util }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const notEquipped = `\\❌ **${ct('notEquipped')}**`
     const tools = [
       {

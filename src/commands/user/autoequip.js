@@ -11,7 +11,7 @@ class Autoequip extends LilirucaCommand {
   }
 
   async exec ({ db, ct, t, author, util }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const autoEquip = !data.tools.autoequip
     const status = autoEquip ? 'enable' : 'disable'
     const parsed = t(`commons:${status}`).toLowerCase()

@@ -34,7 +34,7 @@ class Stats extends LilirucaCommand {
   }
 
   async exec ({ t, ct, language, db, util }, { place, member }) {
-    const data = await db.users.get(member.id)
+    const data = await db.users.ensure(member.id)
     const dataPlace = data[place]
 
     if (!dataPlace.level) {

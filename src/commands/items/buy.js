@@ -30,7 +30,7 @@ class Buy extends LilirucaCommand {
   }
 
   async exec ({ ct, t, db, member, util }, { item, amount }) {
-    const data = await db.users.get(member.id)
+    const data = await db.users.ensure(member.id)
 
     if (item.required && data[item.place].level < item.required) {
       return util.send(t('errors:locked'))

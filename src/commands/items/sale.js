@@ -30,7 +30,7 @@ class Sale extends LilirucaCommand {
   }
 
   async exec ({ t, ct, util, db, author }, { item, amount }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const value = data.items[item.id]
 
     if (!value || value < amount) {

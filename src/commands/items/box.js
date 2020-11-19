@@ -28,7 +28,7 @@ class Box extends LilirucaCommand {
   }
 
   async exec ({ ct, t, db, author, util }, { box }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     if (!data.items[box.id]) {
       return util.send(ct('noBox'))

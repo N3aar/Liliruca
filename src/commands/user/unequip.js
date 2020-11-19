@@ -18,7 +18,7 @@ class Unequip extends LilirucaCommand {
   }
 
   async exec ({ db, ct, author, util }, { item }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     if (data.tools[item.tool] !== item.id) {
       return util.send(ct('noEquipped'))

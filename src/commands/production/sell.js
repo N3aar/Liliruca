@@ -15,7 +15,7 @@ class Sell extends LilirucaCommand {
   }
 
   async exec ({ ct, t, util, db, author }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const places = PLACES.filter(place => data[place].level >= 1 && data[place].amount >= 10)
 
     if (!places.length) {

@@ -22,7 +22,7 @@ class Profile extends LilirucaCommand {
   }
 
   async exec ({ ct, db, util }, { member }) {
-    const data = await db.users.get(member.id)
+    const data = await db.users.ensure(member.id)
     const width = 590
     const height = 230
 

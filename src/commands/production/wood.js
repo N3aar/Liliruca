@@ -36,7 +36,7 @@ class Wood extends LilirucaCommand {
   }
 
   async exec ({ t, ct, util, db, author }, { uses, item, all }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     if (all) {
       uses = Math.floor(data.energy / 10)
