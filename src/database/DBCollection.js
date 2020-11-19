@@ -15,7 +15,7 @@ class DBCollection extends LilirucaCollection {
     return this.model.find(find || {}, null, { limit, skip, sort: { [field]: -1 } })
   }
 
-  async updateOne (id, value, key) {
+  async updateOne (id, key, value) {
     const data = await this.get(id)
 
     data[key] = value

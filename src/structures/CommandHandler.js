@@ -5,6 +5,7 @@ const CommandUtil = require('./CommandUtil')
 
 const COMMAND_UTIL_LIFETIME = 1.2e+6
 const COMMAND_UTIL_SWEEP_INTERVAL = 1.8e+6
+
 class CommandHandler extends BaseHandler {
   constructor (client, directory, automateCategories = true) {
     super(client, {

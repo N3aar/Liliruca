@@ -11,7 +11,6 @@ class ListenerHandler extends BaseHandler {
     })
 
     this.emitters = new Collection()
-
     this.emitters.set('client', this.client)
   }
 

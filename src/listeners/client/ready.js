@@ -12,7 +12,6 @@ class ReadyListener extends LilirucaListener {
 
   exec () {
     const { client } = this
-
     const readyMessage = `Bot started successfully! (${client.users.size} users & ${client.guilds.size} servers)`
 
     client.logger.success(readyMessage)
