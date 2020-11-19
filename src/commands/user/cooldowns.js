@@ -14,7 +14,7 @@ class Cooldowns extends LilirucaCommand {
   }
 
   async exec ({ author, db, ct, language, util }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const available = ct('available')
 
     const getCooldown = (cooldown, defaultCd) => {

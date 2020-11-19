@@ -31,7 +31,7 @@ class Give extends LilirucaCommand {
       return util.send(ct('yourself'))
     }
 
-    const data = await db.users.get(member.id)
+    const data = await db.users.ensure(member.id)
     const timestamp = Date.now() - data.givedAt || 0
 
     if (timestamp < GIVE_COOLDOWN && data.givedAt) {
@@ -44,7 +44,7 @@ class Give extends LilirucaCommand {
       return util.send(ct('noMoney'))
     }
 
-    const receiverData = await db.users.get(mentionMember.id)
+    const receiverData = await db.users.ensure(mentionMember.id)
     const donate = Math.floor(amount * GIVE_TAX)
     const tax = Math.floor((1 - GIVE_TAX) * 100)
 

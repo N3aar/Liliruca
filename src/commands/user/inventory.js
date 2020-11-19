@@ -34,7 +34,7 @@ class Inventory extends LilirucaCommand {
   }
 
   async exec ({ ct, t, db, util }, { member, page, ids }) {
-    const data = await db.users.get(member.id)
+    const data = await db.users.ensure(member.id)
 
     const pageIndex = (page - 1) * 15
     const itemsIds = Object.keys(data.items).slice(pageIndex, pageIndex + 15)

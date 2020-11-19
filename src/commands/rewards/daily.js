@@ -14,7 +14,7 @@ class Daily extends LilirucaCommand {
   }
 
   async exec ({ ct, t, db, language, author, util }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const timestamp = data.dailyAt ? Date.now() - data.dailyAt : DAILY_COOLDOWN
 
     if (timestamp < DAILY_COOLDOWN) {

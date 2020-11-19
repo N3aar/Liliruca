@@ -22,7 +22,7 @@ class Equip extends LilirucaCommand {
       return util.send(ct('noTool'))
     }
 
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     data.tools[item.tool] = item.id
     data.markModified('tools')

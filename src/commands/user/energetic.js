@@ -21,7 +21,7 @@ class Energetic extends LilirucaCommand {
   }
 
   async exec ({ t, ct, author, db, util }, { item }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     if (item && !data.items[item.id]) {
       return util.send(ct('noEnergetic'))
