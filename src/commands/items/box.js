@@ -15,7 +15,7 @@ class Box extends LilirucaCommand {
       editable: true,
       clientPermissions: [
         'EMBED_LINKS',
-        'USE_EXTERNAL_emojis'
+        'USE_EXTERNAL_EMOJIS'
       ],
       args: [
         {

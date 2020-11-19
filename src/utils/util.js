@@ -1,5 +1,5 @@
 const { getDuration } = require('./date')
-const { SEASONS, SEASONS_PERCENTAGE, WEATHERS, WEATHER_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES } = require('../Constants')
+const { SEASONS, SEASONS_PERCENTAGE, WEATHERS, WEATHER_PERCENTAGE, PRODUCTION_LIMIT, RESOURCE_NAMES } = require('./constants/constant')
 
 class Util {
   static getSeasonByMonth (month) {
