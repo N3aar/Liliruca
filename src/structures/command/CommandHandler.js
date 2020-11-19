@@ -77,7 +77,7 @@ class CommandHandler extends BaseHandler {
 
     if (!command) return
 
-    const guildData = await this.client.db.guilds.get(message.guildID)
+    const guildData = await this.client.db.guilds.ensure(message.guildID)
     const language = guildData.language || 'pt-br'
     const t = this.client.locales.getT(language)
     const ct = (tPath, tOptions) => t(`commands:${command.id}.${tPath}`, tOptions)
