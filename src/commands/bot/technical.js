@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 // const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { VERSION } = require('eris')
-const { EMOJIS: { wrench } } = require('@constants')
+const { wrench } = require('@constants/emojis')
 
 class Technical extends LilirucaCommand {
   constructor () {

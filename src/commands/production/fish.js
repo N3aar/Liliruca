@@ -3,7 +3,8 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
 const { removeItem, getToolInInventory, addItemInInventory, addMultipleItemsInInventory } = require('@utils/items')
-const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST, EMOJIS: { fishs, money, balance, fishingpole } } = require('@constants')
+const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST } = require('@constants/constant')
+const { fishs, money, balance, fishingpole } = require('@constants/emojis')
 
 class Fish extends LilirucaCommand {
   constructor () {

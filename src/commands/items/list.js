@@ -2,8 +2,10 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { capitalize } = require('@utils/util')
-const { items, getItem, getItemDescription, normalizeItemPrice, getItemSale, getItemsByMaterialId, getItemName } = require('@utils/items')
-const { ITEMS_TYPES, EMOJIS: { pagecurl } } = require('@constants')
+const { getItem, getItemDescription, normalizeItemPrice, getItemSale, getItemsByMaterialId, getItemName } = require('@utils/items')
+const { ITEMS_TYPES } = require('@constants/constant')
+const { pagecurl } = require('@constants/emojis')
+const items = require('@items')
 
 class List extends LilirucaCommand {
   constructor () {

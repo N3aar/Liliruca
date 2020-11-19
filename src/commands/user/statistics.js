@@ -1,7 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItem, getItemName } = require('@utils/items')
-const { RARE_FISHES, STATISTICS_EMOJIS, STATISTICS_TYPES, EMOJIS: { graph, blowfish, fishs: { rare } } } = require('@constants')
+const { RARE_FISHES, STATISTICS_TYPES, STATISTICS_EMOJIS } = require('@constants/constant')
+const { graph, blowfish, fishs: { rare } } = require('@constants/emojis')
 
 class Statistics extends LilirucaCommand {
   constructor () {

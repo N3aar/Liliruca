@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { EMOJIS: { antenna, lamp, beatingHeart } } = require('@constants')
+const { antenna, lamp, beatingHeart } = require('@constants/emojis')
 
 class Ping extends LilirucaCommand {
   constructor () {

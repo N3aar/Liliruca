@@ -3,7 +3,8 @@ const { WebhookClient } = require('discord.js')
 const { inspect } = require('util')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { EMBED_COLORS, EMOJIS: { wrench } } = require('@constants')
+const { EMBED_COLORS } = require('@constants/constant')
+const { wrench } = require('@constants/emojis')
 
 const codeBlock = (code, language) => `\`\`\`${language}\n${code}\n\`\`\``
 

@@ -1,4 +1,4 @@
-const items = require('../Items.json')
+const items = require('./constants/Items.json')
 const numIds = new Map()
 
 class Items {

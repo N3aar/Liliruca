@@ -1,7 +1,8 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { backgrounds, EMOJIS: { card } } = require('@constants')
+const backgrounds = require('@constants/backgrounds')
+const { card } = require('@constants/emojis')
 
 class Backgrounds extends LilirucaCommand {
   constructor () {

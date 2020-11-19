@@ -1,9 +1,10 @@
-const ClientUtil = require('@utils/ClientUtil')
+const ClientUtil = require('@utils/clientUtil')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { version } = require('@package')
 const { parseDuration, displayDate } = require('@utils/date')
-const { SUPPORT_GUILD, EMOJIS: { bookmark } } = require('@constants')
+const { SUPPORT_GUILD } = require('@constants/constant')
+const { bookmark } = require('@constants/emojis')
 
 class Botinfo extends LilirucaCommand {
   constructor () {

@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { languages } = require('@utils/locales')
-const { EMOJIS: { books } } = require('@constants')
+const { books } = require('@constants/emojis')
 
 class SetLanguage extends LilirucaCommand {
   constructor () {

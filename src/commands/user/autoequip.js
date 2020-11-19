@@ -1,5 +1,5 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { EMOJIS: { wrench } } = require('@constants')
+const { wrench } = require('@constants/emojis')
 
 class Autoequip extends LilirucaCommand {
   constructor () {
