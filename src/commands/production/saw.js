@@ -25,7 +25,7 @@ class Saw extends LilirucaCommand {
   }
 
   async exec ({ t, ct, db, author, util }, { amount }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     const woods = data.items.wood || 0
     if (woods < amount) {

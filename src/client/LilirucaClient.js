@@ -30,7 +30,7 @@ class LilirucaClient extends AkairoClient {
     this.eventCount = 0
 
     const getPrefix = async ({ guild }) => {
-      const guildData = guild && await this.db.guilds.get(guild.id)
+      const guildData = guild && await this.db.guilds.ensure(guild.id)
       const prefix = guildData && guildData.prefix
       return prefix || DEFAULT_PREFIX
     }
@@ -143,7 +143,7 @@ class LilirucaClient extends AkairoClient {
   }
 
   async permissionHandler ({ guild, channel }, command, type, missing) {
-    const guildData = await Database.guilds.get(guild.id)
+    const guildData = await Database.guilds.ensure(guild.id)
     const language = guildData.language || DEFAULT_LANGUAGE
     const t = locales.getT(language)
 
