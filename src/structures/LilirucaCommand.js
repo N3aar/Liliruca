@@ -19,7 +19,7 @@ class LilirucaCommand extends Command {
   }
 
   async before (message) {
-    const guildData = await this.client.db.guilds.get(message.guild.id)
+    const guildData = await this.client.db.guilds.ensure(message.guild.id)
     const language = guildData.language || DEFAULT_LANGUAGE
     const t = this.client.locales.getT(language)
     const ct = (tPath, tOptions) => t(`commands:${this.id}.${tPath}`, tOptions)

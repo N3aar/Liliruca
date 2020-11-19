@@ -30,7 +30,7 @@ class Forge extends LilirucaCommand {
   }
 
   async exec ({ t, ct, util, db, author }, { ore, amount }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const coal = data.items.coal || 0
 
     if (coal < amount) {

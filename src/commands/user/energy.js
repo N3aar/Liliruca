@@ -12,7 +12,7 @@ class Energy extends LilirucaCommand {
   }
 
   async exec ({ ct, author, language, db, util }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const timestamp = data.energizedAt ? Date.now() - data.energizedAt : ENERGY_COOLDOWN
 
     if (timestamp < ENERGY_COOLDOWN) {

@@ -35,7 +35,7 @@ class Mine extends LilirucaCommand {
   }
 
   async exec ({ t, ct, util, db, author }, { uses, item, all }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
 
     if (!data.mining.level) {
       return util.send(t('errors:locked'))

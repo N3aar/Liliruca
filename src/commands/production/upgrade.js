@@ -20,7 +20,7 @@ class Upgrade extends LilirucaCommand {
   }
 
   async exec ({ ct, t, util, db, author }, { place }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const dataPlace = data[place]
 
     if (!dataPlace.level) {

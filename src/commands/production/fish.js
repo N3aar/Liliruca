@@ -35,7 +35,7 @@ class Fish extends LilirucaCommand {
   }
 
   async exec ({ t, ct, util, db, author }, { item, uses, all }) {
-    const data = await db.users.get(author.id)
+    const data = await db.users.ensure(author.id)
     const dataPlace = data.fishing
 
     if (!dataPlace.level) {
