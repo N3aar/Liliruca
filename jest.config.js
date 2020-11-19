@@ -83,8 +83,7 @@ module.exports = {
     '@package': '<rootDir>/package.json',
     '@utils/(.*)': '<rootDir>/src/utils',
     '@database/(.*)': '<rootDir>/src/database',
-    '@constants': '<rootDir>/src/Constants.js',
-    '@items': '<rootDir>/src/Items.json',
+    '@constants': '<rootDir>/src/utils/constants',
     '@structures/(.*)': '<rootDir>/src/structures/$1'
   },
 

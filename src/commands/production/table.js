@@ -1,7 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem } = require('@utils/items')
-const { PLACE_NAMES, PLACES_RESOURCES, PLACE_MAX_LEVEL, UPGRADE_PRICE, STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS } = require('@constants')
+const { PLACE_NAMES, PLACES_RESOURCES, PLACE_MAX_LEVEL, UPGRADE_PRICE, STORAGE_PRICES, UPGRADE_MATERIALS } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 const table = {
   [PLACE_NAMES.FARM]: {
@@ -34,7 +35,7 @@ class Table extends LilirucaCommand {
   constructor () {
     super('table', {
       aliases: ['tb'],
-      emoji: EMOJIS.clipboard,
+      emoji: emojis.clipboard,
       editable: true,
       clientPermissions: [
         'EMBED_LINKS',
@@ -62,12 +63,13 @@ class Table extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(`\\${EMOJIS.clipboard} ${ct(type, { place: t(`commons:${place}`) })}`, embed)
+    util.send(`\\${emojis.clipboard} ${ct(type, { place: t(`commons:${place}`) })}`, embed)
   }
 
   table ({ t, ct, place }) {
     const upgrade = UPGRADE_PRICE[place]
-    const emojis = EMOJIS[PLACES_RESOURCES[place]]
+    const resource = PLACES_RESOURCES[place]
+    const emojisResource = emojis[resource]
     const sell = table[place]
     const prices = table.list(upgrade)
 
@@ -75,19 +77,19 @@ class Table extends LilirucaCommand {
     const { emoji } = getItem(material)
 
     sell.operation = ct(sell.operation)
-    sell.emoji = emojis[Math.floor(Math.random() * emojis.length)]
+    sell.emoji = emojisResource[Math.floor(Math.random() * emojisResource.length)]
 
     return [
       {
-        name: `\\${EMOJIS.gear} ${t('commons:upgrade')}`,
+        name: `\\${emojis.gear} ${t('commons:upgrade')}`,
         value: ct(`upgrade.${place}`, { prices })
       },
       {
-        name: `\\${EMOJIS[place]} ${ct('maxUpgrade')}`,
+        name: `\\${emojis[place]} ${ct('maxUpgrade')}`,
         value: `Level ${PLACE_MAX_LEVEL}`
       },
       {
-        name: `\\${EMOJIS.abacus} ${t('commons:formula')}`,
+        name: `\\${emojis.abacus} ${t('commons:formula')}`,
         value: ct('formula', { price: upgrade })
       },
       {
@@ -95,7 +97,7 @@ class Table extends LilirucaCommand {
         value: ct('materials', { material: getItemName(material, t), amount })
       },
       {
-        name: `\\${EMOJIS.pack} ${t('commons:sell')}`,
+        name: `\\${emojis.pack} ${t('commons:sell')}`,
         value: ct('sell', sell)
       }
     ]
@@ -110,11 +112,11 @@ class Table extends LilirucaCommand {
 
     return [
       {
-        name: `\\${EMOJIS.gear} ${t('commons:upgrade')}`,
+        name: `\\${emojis.gear} ${t('commons:upgrade')}`,
         value: `Level 1: **$0**\n${table.list(storage)}\n...`
       },
       {
-        name: `\\${EMOJIS.abacus} ${t('commons:formula')}`,
+        name: `\\${emojis.abacus} ${t('commons:formula')}`,
         value: ct('formula', { price: storage })
       },
       {
@@ -122,7 +124,7 @@ class Table extends LilirucaCommand {
         value: ct('materials', { material: getItemName(material, t), amount: materials })
       },
       {
-        name: `\\${EMOJIS.lamp} ${t('commons:tip')}`,
+        name: `\\${emojis.lamp} ${t('commons:tip')}`,
         value: ct('calculate', { prefix })
       }
     ]

@@ -2,13 +2,13 @@ const { Category, Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { findCategory } = require('@utils/util')
-const { EMOJIS } = require('@constants')
+const emojis = require('@constants/emojis')
 
 class Help extends LilirucaCommand {
   constructor () {
     super('help', {
       aliases: ['hp', 'cmds', 'commands'],
-      emoji: EMOJIS.papyrus,
+      emoji: emojis.papyrus,
       editable: true,
       clientPermissions: 'EMBED_LINKS',
       args: [
@@ -44,7 +44,7 @@ class Help extends LilirucaCommand {
   handleDefault ({ client, prefix, util, ct, t }) {
     let i = 1
     const categories = client.categories
-      .reduce((desc, ctgy) => desc + `\`${i++}:\` \\${EMOJIS[ctgy.id]} ** » ${t(`categories:${ctgy.id}`)}**\n`, '')
+      .reduce((desc, ctgy) => desc + `\`${i++}:\` \\${emojis[ctgy.id]} ** » ${t(`categories:${ctgy.id}`)}**\n`, '')
 
     const embed = new LilirucaEmbed()
       .setDescription(categories)
@@ -56,7 +56,7 @@ class Help extends LilirucaCommand {
   handleShowAll ({ client, util, ct, t }) {
     const categories = client.categories.map(category => (
       {
-        name: `\\${EMOJIS[category.id]} » ${t(`categories:${category.id}`)}`,
+        name: `\\${emojis[category.id]} » ${t(`categories:${category.id}`)}`,
         value: `${category.map(({ id }) => `\`${id}\``).join(', ')}`
       }
     ))
@@ -79,7 +79,7 @@ class Help extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(commands)
 
-    const emoji = EMOJIS[category]
+    const emoji = emojis[category]
     const categoryName = t(`categories:${category}`)
 
     util.send(`\\${emoji} ${ct('category', { category: categoryName })}`, embed)

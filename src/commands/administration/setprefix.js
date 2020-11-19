@@ -1,6 +1,7 @@
 const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { PREFIX_MAX_LIMIT, EMOJIS: { pencil } } = require('@constants')
+const { PREFIX_MAX_LIMIT } = require('@constants/constant')
+const { pencil } = require('@constants/emojis')
 
 class SetPrefix extends LilirucaCommand {
   constructor () {

@@ -2,7 +2,7 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem } = require('@utils/items')
-const { EMOJIS: { backpack } } = require('@constants')
+const { backpack } = require('@constants/emojis')
 
 class Inventory extends LilirucaCommand {
   constructor () {

@@ -1,4 +1,4 @@
-const SupportGuildUtil = require('@utils/SupportGuildUtil')
+const SupportGuildUtil = require('@utils/supportGuildUtil')
 const LilirucaListener = require('@structures/LilirucaListener')
 
 class GuildCreateListener extends LilirucaListener {

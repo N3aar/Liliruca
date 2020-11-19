@@ -3,13 +3,14 @@ const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
 const { calculateProduction, random } = require('@utils/util')
 const { getToolInInventory, removeItem } = require('@utils/items')
-const { STORAGES_SIZE, PLACE_GENERATE, PLACES, PLACES_BOOSTERS, EMOJIS } = require('@constants')
+const { STORAGES_SIZE, PLACE_GENERATE, PLACES, PLACES_BOOSTERS } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Collect extends LilirucaCommand {
   constructor () {
     super('collect', {
       aliases: ['ct'],
-      emoji: EMOJIS.produced,
+      emoji: emojis.produced,
       editable: true,
       clientPermissions: 'EMBED_LINKS'
     })
@@ -65,7 +66,7 @@ class Collect extends LilirucaCommand {
       dataPlace.amount += attacked
 
       return {
-        name: `\\${EMOJIS[place]} ${t(`commons:${place}`)}`,
+        name: `\\${emojis[place]} ${t(`commons:${place}`)}`,
         value: `**${t('commons:amount')}: ${attacked.toLocaleString()}**` + percentage,
         inline: true
       }
@@ -93,7 +94,7 @@ class Collect extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\${EMOJIS.produced} ${ct('success')}`, embed)
+    util.send(`\\${emojis.produced} ${ct('success')}`, embed)
   }
 
   farmAttack (items) {

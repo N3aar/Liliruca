@@ -1,7 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { DAILY_COOLDOWN, ENERGY_COOLDOWN, GIVE_COOLDOWN, EMOJIS: { clock, star, battery, produced, handshake } } = require('@constants')
+const { DAILY_COOLDOWN, ENERGY_COOLDOWN, GIVE_COOLDOWN } = require('@constants/constant')
+const { clock, star, battery, produced, handshake } = require('@constants/emojis')
 
 class Cooldowns extends LilirucaCommand {
   constructor () {

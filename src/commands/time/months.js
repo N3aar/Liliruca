@@ -1,13 +1,14 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LIlirucaEmbed = require('@structures/LilirucaEmbed')
 const { getSeasonByMonth } = require('@utils/util')
-const { PLACES, SEASONS_PERCENTAGE, SEASONS, EMOJIS } = require('@constants')
+const { PLACES, SEASONS_PERCENTAGE, SEASONS } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Months extends LilirucaCommand {
   constructor () {
     super('months', {
       aliases: ['mh'],
-      emoji: EMOJIS.month,
+      emoji: emojis.month,
       editable: true,
       clientPermissions: 'EMBED_LINKS'
     })
@@ -32,18 +33,18 @@ class Months extends LilirucaCommand {
       })
 
       return {
-        name: `**${EMOJIS[season]} » ${seasonName}**`,
+        name: `**${emojis[season]} » ${seasonName}**`,
         value: info.join('\n')
       }
     })
 
     fields.unshift({
-      name: `\\${EMOJIS.month} » ${t('commons:date.months')}`,
+      name: `\\${emojis.month} » ${t('commons:date.months')}`,
       value: ct('duration')
     })
 
     const season = getSeasonByMonth()
-    const emoji = EMOJIS[season]
+    const emoji = emojis[season]
     const seasonName = t(`commons:seasons.${season}`)
     const current = ct('current', { emoji, season: seasonName })
 
@@ -51,7 +52,7 @@ class Months extends LilirucaCommand {
       .addFields(fields)
       .setFooter(current)
 
-    util.send(`\\${EMOJIS.month} ${ct('success')}`, embed)
+    util.send(`\\${emojis.month} ${ct('success')}`, embed)
   }
 }
 

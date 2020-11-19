@@ -1,4 +1,4 @@
-const items = require('../Items.json')
+const items = require('../utils/constants/Items.json')
 
 describe('Test Items', () => {
   test('test if has an item duplicated', () => {

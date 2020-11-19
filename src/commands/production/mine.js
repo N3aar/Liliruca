@@ -3,7 +3,8 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { randomChances, random } = require('@utils/util')
 const { getItemName, getItem, getToolInInventory, removeItem, addMultipleItemsInInventory } = require('@utils/items')
-const { ENERGY_COST, EMOJIS: { mining } } = require('@constants')
+const { ENERGY_COST } = require('@constants/constant')
+const { mining } = require('@constants/emojis')
 
 class Mine extends LilirucaCommand {
   constructor () {

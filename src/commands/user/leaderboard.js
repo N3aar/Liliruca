@@ -2,7 +2,8 @@ const { MessageAttachment } = require('discord.js')
 const { Argument } = require('discord-akairo')
 const { createCanvas, loadImage } = require('canvas')
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { PLACES, LEADERBOARD_TYPES, EMOJIS: { trophy } } = require('@constants')
+const { PLACES, LEADERBOARD_TYPES } = require('@constants/constant')
+const { trophy } = require('@constants/emojis')
 
 class Leaderboard extends LilirucaCommand {
   constructor () {

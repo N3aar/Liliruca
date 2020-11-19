@@ -2,7 +2,8 @@ const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { GIVE_COOLDOWN, GIVE_TAX, GIVE_MIN, EMOJIS: { handshake, money, bank } } = require('@constants')
+const { GIVE_COOLDOWN, GIVE_TAX, GIVE_MIN } = require('@constants/constant')
+const { handshake, money, bank } = require('@constants/emojis')
 
 class Give extends LilirucaCommand {
   constructor () {

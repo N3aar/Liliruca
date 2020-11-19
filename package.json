@@ -44,9 +44,9 @@
   "_moduleAliases": {
     "@package": "package.json",
     "@utils": "src/utils",
+    "@constants": "src/utils/constants",
+    "@items": "src/utils/constants/Items.json",
     "@database": "src/database",
-    "@constants": "src/Constants.js",
-    "@items": "src/Items.json",
     "@structures": "src/structures"
   },
   "husky": {

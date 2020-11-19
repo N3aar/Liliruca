@@ -3,7 +3,8 @@ const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random } = require('@utils/util')
 const { getItemName, getItem, getToolInInventory, removeItem, addItemInInventory, addMultipleItemsInInventory } = require('@utils/items')
-const { ENERGY_COST, EMOJIS: { axe } } = require('@constants')
+const { ENERGY_COST } = require('@constants/constant')
+const { axe } = require('@constants/emojis')
 
 class Wood extends LilirucaCommand {
   constructor () {
