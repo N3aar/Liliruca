@@ -1,5 +1,5 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-// const LilirucaEmbed = require('@structures/LilirucaEmbed')
+const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { VERSION } = require('eris')
 const { wrench } = require('@constants/emojis')
 
@@ -47,11 +47,11 @@ class Technical extends LilirucaCommand {
         inline: true
       }
     ]
-    // TEMPORARIO
-    // const embed = new LilirucaEmbed()
-    //   .addFields(fields)
 
-    util.send(`\\${wrench} ${ct('success')}`, { embed: { fields } })
+    const embed = new LilirucaEmbed()
+      .addFields(fields)
+
+    util.send(`\\${wrench} ${ct('success')}`, embed)
   }
 }
 

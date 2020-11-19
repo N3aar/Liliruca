@@ -53,12 +53,12 @@ class SupportGuildUtil {
 
   static clientJoinGuild (client, guild) {
     SupportGuildUtil.updateStatsChannel(client)
-    return SupportGuildUtil.guildIntegration(guild, client, 0, '#47d350')
+    return SupportGuildUtil.guildIntegration(guild, client, 0, 0x47d350)
   }
 
   static clientLeaveGuild (client, guild) {
     SupportGuildUtil.updateStatsChannel(client)
-    return SupportGuildUtil.guildIntegration(guild, client, 1, '#db3939')
+    return SupportGuildUtil.guildIntegration(guild, client, 1, 0xdb3939)
   }
 
   static rebootChannel (client, messge) {

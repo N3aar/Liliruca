@@ -50,10 +50,10 @@ module.exports = {
   PREFIX_MAX_LIMIT: 5,
   DEFAULT_LANGUAGE: 'pt-br',
   EMBED_COLORS: {
-    default: '#ff9900',
-    success: '#0aa329',
-    error: '#db3939',
-    warn: '#ebe728'
+    default: 0xff9900,
+    success: 0x0aa329,
+    error: 0xdb3939,
+    warn: 0xebe728
   },
   OWNER_IDS: [
     '158001949415833600',
@@ -232,10 +232,10 @@ module.exports = {
     }
   },
   WEATHERS_COLORS: {
-    [WEATHER_NAMES.SUNNY]: '#FFD335',
-    [WEATHER_NAMES.RAINY]: '#00B2FF',
-    [WEATHER_NAMES.CLOUDY]: '#F2FFFF',
-    [WEATHER_NAMES.STORM]: '#00007A'
+    [WEATHER_NAMES.SUNNY]: 0xFFD335,
+    [WEATHER_NAMES.RAINY]: 0x00B2FF,
+    [WEATHER_NAMES.CLOUDY]: 0xF2FFFF,
+    [WEATHER_NAMES.STORM]: 0x00007A
   },
   SEASONS_PERCENTAGE: {
     [SEASON_NAMES.SPRING]: {
@@ -260,10 +260,10 @@ module.exports = {
     }
   },
   SEASONS_COLORS: {
-    [SEASON_NAMES.SPRING]: '#fe8afa',
-    [SEASON_NAMES.SUMMER]: '#fbce18',
-    [SEASON_NAMES.AUTUMN]: '#ab7f4f',
-    [SEASON_NAMES.WINTER]: '#00ccff'
+    [SEASON_NAMES.SPRING]: 0xfe8afa,
+    [SEASON_NAMES.SUMMER]: 0xfbce18,
+    [SEASON_NAMES.AUTUMN]: 0xab7f4f,
+    [SEASON_NAMES.WINTER]: 0x00ccff
   },
   STATISTICS_TYPES: {
     axe: [
