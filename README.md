@@ -29,4 +29,3 @@ You can get all the support about Liliruca in our community, [clicking here!](ht
 * Class names should always be capitalized
 * Function names should always be camelcase
 * Always use keys. (conditions, loopings and etc...)
-* Try not to make lines too long

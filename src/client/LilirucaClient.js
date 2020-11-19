@@ -18,8 +18,7 @@ class LilirucaClient extends Client {
       intents:
         Constants.Intents.guilds |
         Constants.Intents.guildMessages
-    }
-    )
+    })
 
     this.eventCount = 0
     this.db = Database
