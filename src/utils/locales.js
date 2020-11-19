@@ -28,6 +28,10 @@ class Locales {
     return i18n.getFixedT(language, ns)
   }
 
+  static getCt (t, command) {
+    return (tPath, tOptions) => t(`commands:${command.id}.${tPath}`, tOptions)
+  }
+
   static get languages () {
     return Object.keys(i18n.store.data)
   }

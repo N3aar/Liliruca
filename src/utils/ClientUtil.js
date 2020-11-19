@@ -1,14 +1,14 @@
-const { Permissions } = require('discord.js')
+const { Constants } = require('eris')
 
 class ClientUtil {
   static getBotPermissions () {
-    return Permissions.FLAGS.ADMINISTRATOR |
-      Permissions.FLAGS.VIEW_CHANNEL |
-      Permissions.FLAGS.SEND_MESSAGES |
-      Permissions.FLAGS.EMBED_LINKS |
-      Permissions.FLAGS.ATTACH_FILES |
-      Permissions.FLAGS.READ_MESSAGE_HISTORY |
-      Permissions.FLAGS.USE_EXTERNAL_EMOJIS
+    return Constants.Permissions.administrator |
+      Constants.Permissions.readMessages |
+      Constants.Permissions.sendMessages |
+      Constants.Permissions.embedLinks |
+      Constants.Permissions.attachFiles |
+      Constants.Permissions.readMessageHistory |
+      Constants.Permissions.externalEmojis
   }
 
   static getBotInvite (clientId, permissions) {

@@ -23,7 +23,7 @@ class CommandHandler extends BaseHandler {
 
     setInterval(() => {
       this.commandUtils.each((util, id) => {
-        if (util.lastUsedAt - Date.now() >= COMMAND_UTIL_LIFETIME) {
+        if (Date.now() - util.lastUsedAt <= COMMAND_UTIL_LIFETIME) {
           this.commandUtils.delete(id)
         }
       })
@@ -80,7 +80,7 @@ class CommandHandler extends BaseHandler {
     const guildData = await this.client.db.guilds.ensure(message.guildID)
     const language = guildData.language || 'pt-br'
     const t = this.client.locales.getT(language)
-    const ct = (tPath, tOptions) => t(`commands:${command.id}.${tPath}`, tOptions)
+    const ct = this.client.locales.getCt(t, command)
 
     if (this.commandUtils.has(message.id)) {
       message.util = this.commandUtils.get(message.id)
@@ -97,12 +97,20 @@ class CommandHandler extends BaseHandler {
     message.db = this.client.db
     message.prefix = prefix
     message.client = this.client
-    command.exec(message)
+    this.runCommand(message, command)
   }
 
   isInvalidMessage (message) {
     return message.author.bot ||
    message.channel.type !== 0
+  //  PROBLEMS: Liliruca não está no cache de permissions do canal
+  //  || (!message.channel
+  //    .permissionsOf(this.client.user.id)
+  //    .has(Constants.Permissions.sendMessages))
+  }
+
+  runCommand (message, command) {
+    return command.exec(message)
   }
 }
 
