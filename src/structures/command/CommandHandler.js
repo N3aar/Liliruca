@@ -1,6 +1,6 @@
 const Collection = require('@discordjs/collection')
-const BaseHandler = require('./base/BaseHandler')
-const LilirucaCommand = require('./LilirucaCommand')
+const BaseHandler = require('../base/BaseHandler')
+const LilirucaCommand = require('../LilirucaCommand')
 const CommandUtil = require('./CommandUtil')
 
 const COMMAND_UTIL_LIFETIME = 1.2e+6

@@ -3,8 +3,8 @@ const { registerFont } = require('canvas')
 const Database = require('@database/Database')
 const { logger, locales } = require('@utils')
 const { Client, Constants } = require('eris')
-const CommandHandler = require('../structures/CommandHandler')
-const ListenerHandler = require('../structures/ListenerHandler')
+const CommandHandler = require('@structures/command/CommandHandler')
+const ListenerHandler = require('@structures/ListenerHandler')
 
 class LilirucaClient extends Client {
   constructor () {
