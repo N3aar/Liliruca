@@ -21,6 +21,7 @@ class LilirucaClient extends Client {
     })
 
     this.eventCount = 0
+    this.requestCount = 0
     this.db = Database
     this.logger = logger
     this.locales = locales
@@ -29,6 +30,7 @@ class LilirucaClient extends Client {
     this.listenerHandler = new ListenerHandler(this, 'src/listeners', true)
 
     this.on('rawWS', () => this.eventCount++)
+    this.on('rawREST', () => this.requestCount++)
   }
 
   loadAllFonts () {

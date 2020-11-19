@@ -37,6 +37,11 @@ class Technical extends LilirucaCommand {
         inline: true
       },
       {
+        name: `\\📡 ${ct('requests')}`,
+        value: `**${ct('requestCount', { count: client.requestCount.toLocaleString() })}**`,
+        inline: true
+      },
+      {
         name: `\\📚 ${ct('library')}`,
         value: `**Eris v${VERSION}**`,
         inline: true

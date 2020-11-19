@@ -46,7 +46,9 @@
     "technical": {
         "description": "Informações técnicas sobre o bot",
         "events": "Eventos",
-        "eventCount": "{{ count }} Eventos Executados",
+        "requests": "Requisições",
+        "eventCount": "{{ count }} Eventos recebidos",
+        "requestCount": "{{ count }} Requisições executados",
         "library": "Biblioteca",
         "database": "Banco de Dados",
         "memoryUsage": "Memória Usada",
