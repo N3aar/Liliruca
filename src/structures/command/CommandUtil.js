@@ -1,19 +1,16 @@
 const LilirucaEmbed = require('../LilirucaEmbed')
 const LilirucaAttachment = require('../LilirucaAttachment')
 
-// TODO: fazer o edit, comandos como ping usa
 class CommandUtil {
   constructor (client, messageId, channelId) {
     this.client = client
     this.channelId = channelId
     this.messageId = messageId
-    this.lastUsedAt = Date.now()
+    this.createdAt = Date.now()
     this.sentMessageId = null
   }
 
   async send (content, opts) {
-    this.lastUsedAt = Date.now()
-
     const options = CommandUtil.parseOptions(content, opts)
 
     if (this.sentMessageId) {
@@ -23,6 +20,7 @@ class CommandUtil {
         return this.createMessage(options)
       }
     }
+
     return this.createMessage(options)
   }
 
@@ -30,6 +28,10 @@ class CommandUtil {
     const newMsg = await this.client.createMessage(this.channelId, options)
     this.sentMessageId = newMsg.id
     return newMsg
+  }
+
+  edit (content, opts) {
+    return this.send(content, opts)
   }
 
   static parseOptions (content, options) {

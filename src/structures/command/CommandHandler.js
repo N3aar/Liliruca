@@ -24,7 +24,7 @@ class CommandHandler extends BaseHandler {
 
     setInterval(() => {
       this.commandUtils.each((util, id) => {
-        if (Date.now() - util.lastUsedAt <= COMMAND_UTIL_LIFETIME) {
+        if (Date.now() - util.createdAt <= COMMAND_UTIL_LIFETIME) {
           this.commandUtils.delete(id)
         }
       })

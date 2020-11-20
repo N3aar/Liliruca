@@ -12,12 +12,12 @@ class Ping extends LilirucaCommand {
     })
   }
 
-  async exec ({ util, ct, guild, createdTimestamp }) {
-    const hearbeat = Math.round(Date.now() - createdTimestamp)
+  async exec ({ util, ct, guild, timestamp }) {
+    const hearbeat = Math.round(Date.now() - timestamp)
     const APIlatency = Math.round(guild.shard.latency)
 
     const sent = await util.send(ct('calc'))
-    const latency = Math.round(sent.createdTimestamp - createdTimestamp)
+    const latency = Math.round(sent.timestamp - timestamp)
 
     const ping = [
       {
@@ -40,7 +40,7 @@ class Ping extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(ping)
 
-    sent.edit(`\\🔌 ${ct('success')}`, embed)
+    util.edit(`\\🔌 ${ct('success')}`, embed)
   }
 }
 

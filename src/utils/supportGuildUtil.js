@@ -66,12 +66,12 @@ class SupportGuildUtil {
     return SupportGuildUtil.guildIntegration(guild, client, 1, 0xdb3939)
   }
 
-  static rebootChannel (client, messge) {
+  static rebootChannel (client, message) {
     if (!process.env.REBOOT_CHANNEL) {
       return
     }
 
-    client.createMessage(process.env.REBOOT_CHANNEL, messge)
+    client.createMessage(process.env.REBOOT_CHANNEL, message)
   }
 }
 
