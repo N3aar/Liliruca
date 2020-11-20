@@ -36,7 +36,9 @@ class SupportGuildUtil {
   }
 
   static guildIntegration (guild, client, type, embedColor) {
-    if (!process.env.WK_GUILDS_ID || !process.env.WK_GUILDS_TOKEN) return
+    if (!process.env.WK_GUILDS_ID || !process.env.WK_GUILDS_TOKEN) {
+      return
+    }
 
     client.executeWebhook(
       process.env.WK_GUILDS_ID, process.env.WK_GUILDS_TOKEN,
@@ -45,7 +47,10 @@ class SupportGuildUtil {
   }
 
   static updateStatsChannel (client) {
-    if (!process.env.STATS_CHANNEL_ID) return
+    if (!process.env.STATS_CHANNEL_ID) {
+      return
+    }
+
     client.editChannel(process.env.STATS_CHANNEL_ID, {
       name: `📌 ${client.guilds.size} Guilds`
     })
@@ -62,7 +67,10 @@ class SupportGuildUtil {
   }
 
   static rebootChannel (client, messge) {
-    if (!process.env.REBOOT_CHANNEL) return
+    if (!process.env.REBOOT_CHANNEL) {
+      return
+    }
+
     client.createMessage(process.env.REBOOT_CHANNEL, messge)
   }
 }

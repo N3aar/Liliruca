@@ -12,7 +12,7 @@ class Leaderboard extends LilirucaCommand {
       emoji: trophy,
       editable: true,
       typing: true,
-      clientPermissions: 'ATTACH_FILES',
+      clientPermissions: 'attachFiles',
       args: [
         {
           id: 'type',
@@ -37,7 +37,7 @@ class Leaderboard extends LilirucaCommand {
 
   async exec ({ t, ct, client, guild, util, db }, { type, page, guildOnly }) {
     const parsedType = this.parseTypes(type)
-    const ids = guildOnly && guild.members.cache.map(member => member.id)
+    const ids = guildOnly && guild.members.map(member => member.id)
     const data = await db.users.ranking(parsedType, ids, 5, 5 * (page - 1))
 
     if (data.length < 5) {
@@ -57,7 +57,7 @@ class Leaderboard extends LilirucaCommand {
     let index = 0
 
     for await (const user of users) {
-      const avatar = await loadImage(user.displayAvatarURL({ format: 'png', size: 64 }))
+      const avatar = await loadImage(user.dynamicAvatarURL('png', 64))
       ctx.drawImage(avatar, 61, 61 + (54 * index), 44, 44)
       index++
     }

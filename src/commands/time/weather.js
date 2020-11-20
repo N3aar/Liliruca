@@ -10,7 +10,7 @@ class Weather extends LilirucaCommand {
       aliases: ['wr'],
       emoji: emojis.umbrella,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 

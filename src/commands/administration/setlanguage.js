@@ -7,7 +7,7 @@ class SetLanguage extends LilirucaCommand {
     super('setlanguage', {
       aliases: ['language', 'lang', 'setlang'],
       emoji: books,
-      userPermissions: 'MANAGE_GUILD',
+      userPermissions: 'manageGuild',
       editable: true,
       args: [
         {

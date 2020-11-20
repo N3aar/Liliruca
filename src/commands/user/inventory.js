@@ -10,7 +10,7 @@ class Inventory extends LilirucaCommand {
       aliases: ['inv'],
       emoji: backpack,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'member',

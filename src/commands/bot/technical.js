@@ -9,12 +9,12 @@ class Technical extends LilirucaCommand {
       aliases: ['tech'],
       emoji: wrench,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 
   exec ({ ct, client, util }) {
-    const memoryUsage = (process.memoryUsage().heapUsed / 1048576).toFixed(2)
+    const memoryUsage = (process.memoryUsage().rss / 1048576).toFixed(2)
     const fields = [
       {
         name: '\\⚙️ Engine',

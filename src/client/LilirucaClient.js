@@ -20,6 +20,7 @@ class LilirucaClient extends Client {
         Constants.Intents.guildMessages
     })
 
+    this.owners = process.env.OWNER_IDS ?? []
     this.eventCount = 0
     this.requestCount = 0
     this.db = Database

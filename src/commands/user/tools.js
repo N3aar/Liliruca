@@ -10,8 +10,8 @@ class Tools extends LilirucaCommand {
       emoji: items,
       editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ]
     })
   }

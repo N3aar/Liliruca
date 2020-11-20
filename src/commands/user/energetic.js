@@ -10,7 +10,7 @@ class Energetic extends LilirucaCommand {
       aliases: ['et'],
       emoji: drink,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'item',

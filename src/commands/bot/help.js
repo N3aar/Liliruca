@@ -10,7 +10,7 @@ class Help extends LilirucaCommand {
       aliases: ['hp', 'cmds', 'commands'],
       emoji: emojis.papyrus,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'resolve',

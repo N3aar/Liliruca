@@ -13,8 +13,8 @@ class Fish extends LilirucaCommand {
       emoji: fishingpole,
       editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {

@@ -8,7 +8,7 @@ class SetPrefix extends LilirucaCommand {
     super('setprefix', {
       aliases: ['prefix', 'pfx'],
       emoji: pencil,
-      userPermissions: 'MANAGE_GUILD',
+      userPermissions: 'manageGuild',
       editable: true,
       args: [
         {

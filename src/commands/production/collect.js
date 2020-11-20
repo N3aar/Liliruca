@@ -12,7 +12,7 @@ class Collect extends LilirucaCommand {
       aliases: ['ct'],
       emoji: emojis.produced,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 

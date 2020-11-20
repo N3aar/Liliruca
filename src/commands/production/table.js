@@ -38,8 +38,8 @@ class Table extends LilirucaCommand {
       emoji: emojis.clipboard,
       editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {

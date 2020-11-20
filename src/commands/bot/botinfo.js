@@ -12,18 +12,19 @@ class Botinfo extends LilirucaCommand {
       aliases: ['info'],
       emoji: bookmark,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 
   async exec ({ t, ct, language, util, guild, client }) {
     const botInviteUrl = ClientUtil.getBotInvite(client.user.id, ClientUtil.getBotPermissions())
-    const avatar = client.user.displayAvatarURL({ format: 'png', size: 4096 })
+    const avatar = client.user.dynamicAvatarURL('png', 4096)
+    const clickHere = t('commons:clickHere')
 
     const about = {
-      guildCount: client.guilds.cache.size.toLocaleString(),
-      usersCount: client.users.cache.size.toLocaleString(),
-      commands: client.commands.size.toLocaleString(),
+      guildCount: client.guilds.size.toLocaleString(),
+      usersCount: client.users.size.toLocaleString(),
+      commands: client.commandHandler.modules.size,
       uptime: parseDuration(client.uptime, language),
       createdAt: displayDate(client.user.createdAt, language),
       joinedAt: displayDate(guild.joinedAt, language)
@@ -32,17 +33,17 @@ class Botinfo extends LilirucaCommand {
     const fields = [
       {
         name: `\\📌 ${ct('supportGuild')}`,
-        value: `[Clique Aqui](${SUPPORT_GUILD})`,
+        value: `[${clickHere}](${SUPPORT_GUILD})`,
         inline: true
       },
       {
         name: `\\📎 ${ct('inviteMe')}`,
-        value: `[Clique Aqui](${botInviteUrl})`,
+        value: `[${clickHere}](${botInviteUrl})`,
         inline: true
       },
       {
         name: '\\💾 Github',
-        value: '[Clique Aqui](https://github.com/vNear/Liliruca)',
+        value: `[${clickHere}](https://github.com/vNear/Liliruca)`,
         inline: true
       },
       {

@@ -10,7 +10,7 @@ class Days extends LilirucaCommand {
       aliases: ['dy'],
       emoji: emojis.cloudrain,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 

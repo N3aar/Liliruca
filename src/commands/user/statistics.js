@@ -10,7 +10,7 @@ class Statistics extends LilirucaCommand {
       aliases: ['sc'],
       emoji: graph,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'member',

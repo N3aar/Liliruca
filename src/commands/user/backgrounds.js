@@ -10,7 +10,7 @@ class Backgrounds extends LilirucaCommand {
       aliases: ['bs'],
       emoji: card,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'id',

@@ -10,7 +10,7 @@ class Profile extends LilirucaCommand {
       emoji: picture,
       editable: true,
       typing: true,
-      clientPermissions: 'ATTACH_FILES',
+      clientPermissions: 'attachFiles',
       args: [
         {
           id: 'member',
@@ -30,7 +30,7 @@ class Profile extends LilirucaCommand {
     const ctx = canvas.getContext('2d')
 
     const name = member.displayName
-    const avatarUrl = member.user.displayAvatarURL({ format: 'png', size: 256 })
+    const avatarUrl = member.user.dynamicAvatarURL('png', 256)
     const bkg = data.background || 1
 
     const folder = 'src/assets/profile/'

@@ -10,7 +10,7 @@ class Sell extends LilirucaCommand {
       aliases: ['sl'],
       emoji: emojis.money,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 

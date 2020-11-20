@@ -13,8 +13,8 @@ class Mine extends LilirucaCommand {
       emoji: mining,
       editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {

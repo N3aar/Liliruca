@@ -8,13 +8,13 @@ class Ping extends LilirucaCommand {
       aliases: ['pg'],
       emoji: antenna,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 
-  async exec ({ util, ct, client, createdTimestamp }) {
+  async exec ({ util, ct, guild, createdTimestamp }) {
     const hearbeat = Math.round(Date.now() - createdTimestamp)
-    const APIlatency = Math.round(client.ws.ping)
+    const APIlatency = Math.round(guild.shard.latency)
 
     const sent = await util.send(ct('calc'))
     const latency = Math.round(sent.createdTimestamp - createdTimestamp)

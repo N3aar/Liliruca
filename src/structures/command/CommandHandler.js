@@ -2,6 +2,7 @@ const Collection = require('@discordjs/collection')
 const BaseHandler = require('../base/BaseHandler')
 const LilirucaCommand = require('../LilirucaCommand')
 const CommandUtil = require('./CommandUtil')
+const { DEFAULT_PREFIX, DEFAULT_LANGUAGE } = require('../../utils/constants/constant')
 
 const COMMAND_UTIL_LIFETIME = 1.2e+6
 const COMMAND_UTIL_SWEEP_INTERVAL = 1.8e+6
@@ -65,8 +66,10 @@ class CommandHandler extends BaseHandler {
     if (this.isInvalidMessage(message)) {
       return
     }
-    // TEMPORARIO
-    const prefix = '!'
+
+    const guildData = await this.client.db.guilds.ensure(message.guildID)
+    const prefix = guildData.prefix || DEFAULT_PREFIX
+
     if (!message.content.toLowerCase().startsWith(prefix)) {
       return
     }
@@ -75,12 +78,9 @@ class CommandHandler extends BaseHandler {
     const cmd = args.shift().toLowerCase()
     const command = this.findCommand(cmd)
 
-    if (!command) return
-
-    const guildData = await this.client.db.guilds.ensure(message.guildID)
-    const language = guildData.language || 'pt-br'
-    const t = this.client.locales.getT(language)
-    const ct = this.client.locales.getCt(t, command)
+    if (!command) {
+      return
+    }
 
     if (this.commandUtils.has(message.id)) {
       message.util = this.commandUtils.get(message.id)
@@ -89,28 +89,59 @@ class CommandHandler extends BaseHandler {
       this.commandUtils.set(message.id, message.util)
     }
 
+    if (command.ownerOnly && !this.client.owners.includes(message.author.id)) {
+      return message.util.send('Este comando é disponível apenas para desenvolvedores.')
+    }
+
+    const language = guildData.language || DEFAULT_LANGUAGE
+    const t = this.client.locales.getT(language)
+
+    const missingPerms = this.runPermissionChecks(message, command)
+    if (missingPerms) {
+      const permissions = missingPerms.missing.map(perm => t(`permissions:${perm}`)).join(', ')
+      return message.util.send(t(`permissions:${missingPerms.type}`, { permissions }))
+    }
+
+    message.guild = this.client.guilds.get(message.guildID)
     message.guildData = guildData
     message.t = t
-    message.ct = ct
+    message.ct = this.client.locales.getCt(t, command)
     message.language = language
     message.locales = this.client.locales
     message.db = this.client.db
     message.prefix = prefix
     message.client = this.client
-    this.runCommand(message, command)
+
+    command.exec(message)
+  }
+
+  runPermissionChecks (message, command) {
+    const users = {
+      client: this.client.user.id,
+      user: message.author.id
+    }
+
+    for (const type in users) {
+      const required = command[`${type}Permissions`]
+
+      if (required) {
+        const permissions = message.channel.permissionsOf(users[type])
+        const parsed = Array.isArray(required) ? required : [required]
+        const missing = parsed.filter(perm => !permissions.has(perm))
+
+        if (missing.length) {
+          return { type, missing }
+        }
+      }
+    }
+
+    return false
   }
 
   isInvalidMessage (message) {
     return message.author.bot ||
-   message.channel.type !== 0
-  //  PROBLEMS: Liliruca não está no cache de permissions do canal
-  //  || (!message.channel
-  //    .permissionsOf(this.client.user.id)
-  //    .has(Constants.Permissions.sendMessages))
-  }
-
-  runCommand (message, command) {
-    return command.exec(message)
+      !message.guildID ||
+      !message.channel.permissionsOf(this.client.user.id).has('sendMessages')
   }
 }
 

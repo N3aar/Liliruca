@@ -1,5 +1,6 @@
 {
     "botMention": "{{- author }} use ``{{- prefix }}help`` para ver minhas funções!",
+    "clickHere": "Clique Aqui",
     "usage": "Use:",
     "uses": "Usos",
     "howUse": "Como usar",

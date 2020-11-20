@@ -11,8 +11,8 @@ class Forge extends LilirucaCommand {
       emoji: fire,
       editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {

@@ -17,18 +17,6 @@ class LilirucaCommand extends BaseModule {
     this.cooldownTime = 0
   }
 
-  preLoad (ctx) {
-    if (this.ownerOnly && !this.client.config.owners.includes(ctx.author.id)) {
-      return ctx.util.send('Este comando se encontra disponível apenas para meus donos.')
-    }
-
-    try {
-      this.run(ctx)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   exec () {
     throw new Error(`${this.constructor.name} doesn't have a exec() method.`)
   }

@@ -13,8 +13,8 @@ class Wood extends LilirucaCommand {
       emoji: axe,
       editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {

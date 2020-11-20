@@ -10,7 +10,7 @@ class Cooldowns extends LilirucaCommand {
       aliases: ['cd'],
       emoji: clock,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 

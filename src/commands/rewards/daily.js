@@ -10,7 +10,7 @@ class Daily extends LilirucaCommand {
       aliases: ['dl'],
       emoji: star,
       editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 

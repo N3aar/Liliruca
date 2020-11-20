@@ -11,7 +11,7 @@ class Give extends LilirucaCommand {
       aliases: ['gv'],
       emoji: handshake,
       editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'mentionMember',
