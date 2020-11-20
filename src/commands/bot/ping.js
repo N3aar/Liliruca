@@ -7,7 +7,6 @@ class Ping extends LilirucaCommand {
     super('ping', {
       aliases: ['pg'],
       emoji: antenna,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

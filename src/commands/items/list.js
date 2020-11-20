@@ -12,7 +12,6 @@ class List extends LilirucaCommand {
     super('list', {
       aliases: ['lt', 'catalog', 'items'],
       emoji: pagecurl,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

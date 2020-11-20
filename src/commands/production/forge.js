@@ -9,7 +9,6 @@ class Forge extends LilirucaCommand {
     super('forge', {
       aliases: ['fg'],
       emoji: fire,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

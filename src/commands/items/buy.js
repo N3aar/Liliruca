@@ -9,7 +9,6 @@ class Buy extends LilirucaCommand {
     super('buy', {
       aliases: ['by'],
       emoji: bank,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

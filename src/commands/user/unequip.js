@@ -6,7 +6,6 @@ class Unequip extends LilirucaCommand {
     super('unequip', {
       aliases: ['uq'],
       emoji: nut,
-      editable: true,
       args: [
         {
           id: 'item',

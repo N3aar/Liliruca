@@ -2,6 +2,7 @@
 const { inspect } = require('util')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
+const SupportGuildUtil = require('@utils/supportGuildUtil')
 const { EMBED_COLORS } = require('@constants/constant')
 const { wrench } = require('@constants/emojis')
 
@@ -11,7 +12,6 @@ class Eval extends LilirucaCommand {
   constructor () {
     super('eval', {
       emoji: wrench,
-      editable: true,
       ownerOnly: true,
       clientPermissions: 'embedLinks',
       args: [
@@ -28,7 +28,7 @@ class Eval extends LilirucaCommand {
     const embed = new LilirucaEmbed()
     const text = code.replace(/^`(``(js|javascript)?\s?)?|`(``)?$/g, '')
 
-    Eval.emitLog(author, guild, text)
+    SupportGuildUtil.evalIntegration(client, author, guild.name, codeBlock(code))
 
     try {
       const evald = await eval(text)
@@ -50,18 +50,6 @@ class Eval extends LilirucaCommand {
       util.send(embed)
     }
   }
-
-  /*
-  static emitLog (author, guild, code) {
-    const webhook = new WebhookClient(process.env.WK_EVAL_ID, process.env.WK_EVAL_TOKEN)
-    const embed = new LilirucaEmbed()
-      .setAuthor(author.tag, author.dynamicAvatarURL('png', 4096))
-      .setDescription(codeBlock(code))
-      .setFooter(`${guild.name}`)
-
-    webhook.send(embed)
-  }
-  */
 }
 
 module.exports = Eval

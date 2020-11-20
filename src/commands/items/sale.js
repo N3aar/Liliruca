@@ -9,7 +9,6 @@ class Sale extends LilirucaCommand {
     super('sale', {
       aliases: ['se'],
       emoji: shopcart,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

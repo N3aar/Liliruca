@@ -9,7 +9,6 @@ class Setbackground extends LilirucaCommand {
     super('setbackground', {
       aliases: ['sb'],
       emoji: paintbrush,
-      editable: true,
       args: [
         {
           id: 'id',

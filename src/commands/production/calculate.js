@@ -11,7 +11,6 @@ class Calculate extends LilirucaCommand {
     super('calculate', {
       aliases: ['calc', 'cl'],
       emoji: emojis.abacus,
-      editable: true,
       clientPermissions: 'embedLinks',
       args: [
         {

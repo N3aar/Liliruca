@@ -10,7 +10,6 @@ class Give extends LilirucaCommand {
     super('give', {
       aliases: ['gv'],
       emoji: handshake,
-      editable: true,
       clientPermissions: 'embedLinks',
       args: [
         {

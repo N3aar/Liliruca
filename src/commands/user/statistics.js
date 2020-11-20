@@ -9,7 +9,6 @@ class Statistics extends LilirucaCommand {
     super('statistics', {
       aliases: ['sc'],
       emoji: graph,
-      editable: true,
       clientPermissions: 'embedLinks',
       args: [
         {

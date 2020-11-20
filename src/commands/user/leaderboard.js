@@ -10,7 +10,7 @@ class Leaderboard extends LilirucaCommand {
     super('leaderboard', {
       aliases: ['lb', 'ranking', 'rank'],
       emoji: trophy,
-      editable: true,
+      editable: false,
       typing: true,
       clientPermissions: 'attachFiles',
       args: [

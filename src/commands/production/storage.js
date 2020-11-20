@@ -10,7 +10,6 @@ class Storage extends LilirucaCommand {
     super('storage', {
       aliases: ['sg'],
       emoji: storage,
-      editable: true,
       args: [
         {
           id: 'place',

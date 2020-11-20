@@ -9,7 +9,6 @@ class Energetic extends LilirucaCommand {
     super('energetic', {
       aliases: ['et'],
       emoji: drink,
-      editable: true,
       clientPermissions: 'embedLinks',
       args: [
         {

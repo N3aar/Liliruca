@@ -9,7 +9,6 @@ class Sell extends LilirucaCommand {
     super('sell', {
       aliases: ['sl'],
       emoji: emojis.money,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

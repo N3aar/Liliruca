@@ -11,7 +11,6 @@ class Stats extends LilirucaCommand {
     super('stats', {
       aliases: ['st'],
       emoji: emojis.graph,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

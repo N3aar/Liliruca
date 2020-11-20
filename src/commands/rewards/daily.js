@@ -9,7 +9,6 @@ class Daily extends LilirucaCommand {
     super('daily', {
       aliases: ['dl'],
       emoji: star,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

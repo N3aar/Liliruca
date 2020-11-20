@@ -8,7 +8,6 @@ class Technical extends LilirucaCommand {
     super('technical', {
       aliases: ['tech'],
       emoji: wrench,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

@@ -8,7 +8,7 @@ class Profile extends LilirucaCommand {
     super('profile', {
       aliases: ['pf', 'perfil'],
       emoji: picture,
-      editable: true,
+      editable: false,
       typing: true,
       clientPermissions: 'attachFiles',
       args: [

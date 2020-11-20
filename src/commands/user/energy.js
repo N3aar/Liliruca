@@ -7,8 +7,7 @@ class Energy extends LilirucaCommand {
   constructor () {
     super('energy', {
       aliases: ['eg'],
-      emoji: battery,
-      editable: true
+      emoji: battery
     })
   }
 

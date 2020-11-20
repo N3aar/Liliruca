@@ -36,7 +36,6 @@ class Table extends LilirucaCommand {
     super('table', {
       aliases: ['tb'],
       emoji: emojis.clipboard,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

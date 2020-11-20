@@ -11,7 +11,6 @@ class Fish extends LilirucaCommand {
     super('fish', {
       aliases: ['fh'],
       emoji: fishingpole,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

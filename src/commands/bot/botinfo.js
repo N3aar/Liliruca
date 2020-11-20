@@ -11,7 +11,6 @@ class Botinfo extends LilirucaCommand {
     super('botinfo', {
       aliases: ['info'],
       emoji: bookmark,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

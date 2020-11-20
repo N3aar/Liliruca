@@ -11,7 +11,6 @@ class Mine extends LilirucaCommand {
     super('mine', {
       aliases: ['mn'],
       emoji: mining,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

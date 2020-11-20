@@ -9,7 +9,6 @@ class Inventory extends LilirucaCommand {
     super('inventory', {
       aliases: ['inv'],
       emoji: backpack,
-      editable: true,
       clientPermissions: 'embedLinks',
       args: [
         {

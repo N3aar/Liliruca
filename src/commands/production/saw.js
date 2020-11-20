@@ -9,7 +9,6 @@ class Saw extends LilirucaCommand {
     super('saw', {
       aliases: ['sw'],
       emoji: gear,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

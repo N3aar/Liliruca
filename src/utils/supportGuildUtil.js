@@ -73,6 +73,29 @@ class SupportGuildUtil {
 
     client.createMessage(process.env.REBOOT_CHANNEL, message)
   }
+
+  static evalIntegrationOptions (author, guildName, code) {
+    const tag = author.username + author.discriminator
+    return [
+      {
+        color: 0xff9900,
+        author: { name: tag, icon_url: author.avatarURL },
+        description: code,
+        footer: { text: guildName }
+      }
+    ]
+  }
+
+  static evalIntegration (client, author, guildName, code) {
+    if (!process.env.WK_EVAL_ID || !process.env.WK_EVAL_TOKEN) {
+      return
+    }
+
+    client.executeWebhook(
+      process.env.WK_EVAL_ID, process.env.WK_EVAL_TOKEN,
+      SupportGuildUtil.evalIntegrationOptions(author, guildName, code)
+    )
+  }
 }
 
 module.exports = SupportGuildUtil

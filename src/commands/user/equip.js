@@ -6,7 +6,6 @@ class Equip extends LilirucaCommand {
     super('equip', {
       aliases: ['ep'],
       emoji: hammerwrench,
-      editable: true,
       args: [
         {
           id: 'item',

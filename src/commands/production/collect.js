@@ -11,7 +11,6 @@ class Collect extends LilirucaCommand {
     super('collect', {
       aliases: ['ct'],
       emoji: emojis.produced,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

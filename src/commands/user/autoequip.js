@@ -5,8 +5,7 @@ class Autoequip extends LilirucaCommand {
   constructor () {
     super('autoequip', {
       aliases: ['ae'],
-      emoji: wrench,
-      editable: true
+      emoji: wrench
     })
   }
 

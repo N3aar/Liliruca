@@ -9,7 +9,6 @@ class Weather extends LilirucaCommand {
     super('weather', {
       aliases: ['wr'],
       emoji: emojis.umbrella,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

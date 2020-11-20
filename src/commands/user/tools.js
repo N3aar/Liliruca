@@ -8,7 +8,6 @@ class Tools extends LilirucaCommand {
     super('tools', {
       aliases: ['tl'],
       emoji: items,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

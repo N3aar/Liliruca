@@ -9,7 +9,6 @@ class Team extends LilirucaCommand {
     super('team', {
       aliases: ['tm'],
       emoji: key,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

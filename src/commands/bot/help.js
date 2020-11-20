@@ -9,7 +9,6 @@ class Help extends LilirucaCommand {
     super('help', {
       aliases: ['hp', 'cmds', 'commands'],
       emoji: emojis.papyrus,
-      editable: true,
       clientPermissions: 'embedLinks',
       args: [
         {

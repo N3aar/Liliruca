@@ -9,7 +9,6 @@ class Upgrade extends LilirucaCommand {
     super('upgrade', {
       aliases: ['up'],
       emoji: gear,
-      editable: true,
       args: [
         {
           id: 'place',

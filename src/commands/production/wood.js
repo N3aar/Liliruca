@@ -11,7 +11,6 @@ class Wood extends LilirucaCommand {
     super('wood', {
       aliases: ['wd'],
       emoji: axe,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

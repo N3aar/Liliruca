@@ -9,7 +9,6 @@ class Craft extends LilirucaCommand {
     super('craft', {
       aliases: ['cf'],
       emoji: hammerwrench,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

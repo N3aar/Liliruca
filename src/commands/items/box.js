@@ -12,7 +12,6 @@ class Box extends LilirucaCommand {
     super('box', {
       aliases: ['bx'],
       emoji: emojis.gift,
-      editable: true,
       clientPermissions: [
         'embedLinks',
         'externalEmojis'

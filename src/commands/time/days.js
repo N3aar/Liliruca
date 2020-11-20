@@ -9,7 +9,6 @@ class Days extends LilirucaCommand {
     super('days', {
       aliases: ['dy'],
       emoji: emojis.cloudrain,
-      editable: true,
       clientPermissions: 'embedLinks'
     })
   }

@@ -18,13 +18,13 @@ class CommandHandler extends BaseHandler {
     this.commandUtils = new Collection()
     this.aliases = new Collection()
     this.client.on('messageCreate', (message) => this.handle(message))
-    this.client.on('messageUpdate', (message) => this.handle(message))
+    this.client.on('messageUpdate', (message) => this.handle(message, true))
     this.client.on('messageDelete', (message) => this.onMessagesDelete([message]))
     this.client.on('messageDeleteBulk', (messages) => this.onMessagesDelete(messages))
 
     setInterval(() => {
       this.commandUtils.each((util, id) => {
-        if (Date.now() - util.createdAt <= COMMAND_UTIL_LIFETIME) {
+        if ((Date.now() - util.createdAt) <= COMMAND_UTIL_LIFETIME) {
           this.commandUtils.delete(id)
         }
       })
@@ -62,7 +62,7 @@ class CommandHandler extends BaseHandler {
     return this.modules.get(this.aliases.get(str))
   }
 
-  async handle (message) {
+  async handle (message, editing) {
     if (this.isInvalidMessage(message)) {
       return
     }
@@ -78,7 +78,7 @@ class CommandHandler extends BaseHandler {
     const cmd = args.shift().toLowerCase()
     const command = this.findCommand(cmd)
 
-    if (!command) {
+    if (!command || (editing && !command.editable)) {
       return
     }
 
@@ -86,7 +86,9 @@ class CommandHandler extends BaseHandler {
       message.util = this.commandUtils.get(message.id)
     } else {
       message.util = new CommandUtil(this.client, message.id, message.channel.id)
-      this.commandUtils.set(message.id, message.util)
+      if (command.editable) {
+        this.commandUtils.set(message.id, message.util)
+      }
     }
 
     if (command.ownerOnly && !this.client.owners.includes(message.author.id)) {
