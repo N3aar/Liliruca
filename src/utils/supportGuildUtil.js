@@ -18,21 +18,21 @@ class SupportGuildUtil {
         inline: true
       },
       {
-        name: '\\🥇 Premium Tier',
+        name: '\\🟣 Boost Tier',
         value: `**Tier ${guild.premiumTier}**`,
         inline: true
       }
     ]
 
-    return [
-      {
+    return {
+      embeds: [{
         color: embedColor,
         author: { name: guild.name, icon_url: guild.dynamicIconURL() },
         footer: { text: guild.id },
         timestamp: guild.createdAt,
         fields
-      }
-    ]
+      }]
+    }
   }
 
   static guildIntegration (guild, client, type, embedColor) {
@@ -76,14 +76,14 @@ class SupportGuildUtil {
 
   static evalIntegrationOptions (author, guildName, code) {
     const tag = author.username + author.discriminator
-    return [
-      {
+    return {
+      embeds: [{
         color: 0xff9900,
         author: { name: tag, icon_url: author.avatarURL },
         description: code,
         footer: { text: guildName }
-      }
-    ]
+      }]
+    }
   }
 
   static evalIntegration (client, author, guildName, code) {
