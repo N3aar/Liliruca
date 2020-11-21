@@ -26,9 +26,9 @@ class BaseHandler extends EventEmitter {
 
     this.modules.set(mod.id, mod)
 
-    if (mod.categoryID === 'General' && this.automateCategories) {
+    if (mod.category === 'General' && this.automateCategories) {
       const dirs = path.dirname(filepath).split(path.sep)
-      mod.categoryID = dirs[dirs.length - 1]
+      mod.category = dirs[dirs.length - 1]
     }
 
     if (!this.categories.includes(mod.category)) {
@@ -56,7 +56,7 @@ class BaseHandler extends EventEmitter {
       throw new Error(`The ${mod.id} already is registered on ${this.constructor.name}.`)
     }
 
-    this.register(mod)
+    this.register(mod, filepath)
     return this.emit('LOAD', mod)
   }
 
