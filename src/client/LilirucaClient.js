@@ -44,12 +44,6 @@ class LilirucaClient extends Client {
     }
   }
 
-  // loadCategories () {
-  //   this.categories = this.commandHandler.categories
-  //     .filter(category => category.id !== 'dev')
-  //     .sorted((a, b) => CATEGORIES.indexOf(a.id) - CATEGORIES.indexOf(b.id))
-  // }
-
   async init () {
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
@@ -58,16 +52,6 @@ class LilirucaClient extends Client {
     this.loadAllFonts()
     return this
   }
-
-  // async permissionHandler ({ guild, channel }, command, type, missing) {
-  //   const guildData = await Database.guilds.get(guild.id)
-  //   const language = guildData.language || DEFAULT_LANGUAGE
-  //   const t = locales.getT(language)
-
-  //   const permissions = missing.map(perm => t(`permissions:${perm}`)).join(', ')
-
-  //   channel.send(t(`permissions:${type}`, { permissions }))
-  // }
 
   async login () {
     await this.init()

@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node -r dotenv/config -r module-alias/register .",
     "start:dev": "nodemon",
+    "start:debug": "nodemon --inspect",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "test": "jest"
@@ -25,6 +26,7 @@
     "eris": "^0.14.0",
     "i18next": "^19.8.4",
     "i18next-node-fs-backend": "^2.1.3",
+    "lexure": "^0.17.0",
     "module-alias": "^2.2.2",
     "mongoose": "^5.10.15",
     "signale": "^1.4.0"

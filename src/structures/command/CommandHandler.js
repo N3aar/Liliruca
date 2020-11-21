@@ -3,7 +3,7 @@ const BaseHandler = require('../base/BaseHandler')
 const LilirucaCommand = require('../LilirucaCommand')
 const CommandUtil = require('./CommandUtil')
 const SupportGuildUtil = require('../../utils/supportGuildUtil')
-const { DEFAULT_PREFIX, DEFAULT_LANGUAGE } = require('../../utils/constants/constant')
+const { DEFAULT_PREFIX, DEFAULT_LANGUAGE, CATEGORIES } = require('../../utils/constants/constant')
 
 const COMMAND_UTIL_LIFETIME = 1.2e+6
 const COMMAND_UTIL_SWEEP_INTERVAL = 1.8e+6
@@ -59,8 +59,23 @@ class CommandHandler extends BaseHandler {
     this.aliases.set(alias, commandId)
   }
 
+  loadAll (...args) {
+    super.loadAll(...args)
+    this.argumentHandler.loadAll()
+    this.categories = this.categories
+      .filter(category => category !== 'dev')
+      .sort((a, b) => CATEGORIES.indexOf(a) - CATEGORIES.indexOf(b))
+  }
+
   findCommand (str) {
     return this.modules.get(this.aliases.get(str))
+  }
+
+  getUsedPrefix (prefix, clientMention, content) {
+    return [
+      prefix?.toLowerCase() ?? DEFAULT_PREFIX,
+      ...clientMention.map(m => m + ' ')
+    ].find(p => content.startsWith(p))
   }
 
   async handle (message, editing) {
@@ -68,11 +83,17 @@ class CommandHandler extends BaseHandler {
       return
     }
 
+    const clientMention = [`<@!${this.client.user.id}>`, `<@${this.client.user.id}>`]
     const guildData = await this.client.db.guilds.ensure(message.guildID)
-    const prefix = guildData.prefix || DEFAULT_PREFIX
+    const language = guildData.language || DEFAULT_LANGUAGE
+    const t = this.client.locales.getT(language)
+    const prefix = this.getUsedPrefix(guildData.prefix, clientMention, message.content)
 
-    if (!message.content.toLowerCase().startsWith(prefix)) {
+    if (!prefix) {
       return
+    } else if (clientMention.some(p => message.content === p)) {
+      const author = `**${message.author.username}**`
+      return message.channel.createMessage(t('commons:botMention', { prefix, author }))
     }
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
@@ -95,9 +116,6 @@ class CommandHandler extends BaseHandler {
     if (command.ownerOnly && !this.client.owners.includes(message.author.id)) {
       return message.util.send('Este comando é disponível apenas para desenvolvedores.')
     }
-
-    const language = guildData.language || DEFAULT_LANGUAGE
-    const t = this.client.locales.getT(language)
 
     const missingPerms = this.runPermissionChecks(message, command)
     if (missingPerms) {
