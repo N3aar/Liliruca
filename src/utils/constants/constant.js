@@ -305,5 +305,6 @@ module.exports = {
     fish: '🐟',
     trash: '🗑️',
     treasure: '💰'
-  }
+  },
+  ARGUMENT_MATCH_TYPES: ['phrase', 'option', 'flag', 'rest']
 }
