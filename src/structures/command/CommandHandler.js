@@ -2,6 +2,7 @@ const Collection = require('@discordjs/collection')
 const BaseHandler = require('../base/BaseHandler')
 const LilirucaCommand = require('../LilirucaCommand')
 const CommandUtil = require('./CommandUtil')
+const SupportGuildUtil = require('../../utils/supportGuildUtil')
 const { DEFAULT_PREFIX, DEFAULT_LANGUAGE } = require('../../utils/constants/constant')
 
 const COMMAND_UTIL_LIFETIME = 1.2e+6
@@ -114,7 +115,11 @@ class CommandHandler extends BaseHandler {
     message.prefix = prefix
     message.client = this.client
 
-    command.exec(message)
+    try {
+      command.exec(message)
+    } catch (e) {
+      SupportGuildUtil.errorChannel(this.client, message.guild, message.content, e.stack)
+    }
   }
 
   runPermissionChecks (message, command) {

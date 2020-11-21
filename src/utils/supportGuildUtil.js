@@ -46,34 +46,6 @@ class SupportGuildUtil {
     )
   }
 
-  static updateStatsChannel (client) {
-    if (!process.env.STATS_CHANNEL_ID) {
-      return
-    }
-
-    client.editChannel(process.env.STATS_CHANNEL_ID, {
-      name: `📌 ${client.guilds.size} Guilds`
-    })
-  }
-
-  static clientJoinGuild (client, guild) {
-    SupportGuildUtil.updateStatsChannel(client)
-    return SupportGuildUtil.guildIntegration(guild, client, 0, 0x47d350)
-  }
-
-  static clientLeaveGuild (client, guild) {
-    SupportGuildUtil.updateStatsChannel(client)
-    return SupportGuildUtil.guildIntegration(guild, client, 1, 0xdb3939)
-  }
-
-  static rebootChannel (client, message) {
-    if (!process.env.REBOOT_CHANNEL) {
-      return
-    }
-
-    client.createMessage(process.env.REBOOT_CHANNEL, message)
-  }
-
   static evalIntegrationOptions (author, guildName, code) {
     const tag = author.username + author.discriminator
     return {
@@ -95,6 +67,52 @@ class SupportGuildUtil {
       process.env.WK_EVAL_ID, process.env.WK_EVAL_TOKEN,
       SupportGuildUtil.evalIntegrationOptions(author, guildName, code)
     )
+  }
+
+  static updateStatsChannel (client) {
+    if (!process.env.STATS_CHANNEL_ID) {
+      return
+    }
+
+    client.editChannel(process.env.STATS_CHANNEL_ID, {
+      name: `📌 ${client.guilds.size} Guilds`
+    })
+  }
+
+  static clientJoinGuild (client, guild) {
+    SupportGuildUtil.updateStatsChannel(client)
+    return SupportGuildUtil.guildIntegration(guild, client, 0, 0x47d350)
+  }
+
+  static clientLeaveGuild (client, guild) {
+    SupportGuildUtil.updateStatsChannel(client)
+    return SupportGuildUtil.guildIntegration(guild, client, 1, 0xdb3939)
+  }
+
+  static errorChannel (client, guild, content, err) {
+    if (!process.env.ERROR_CHANNEL) {
+      return
+    }
+
+    const embed = {
+      color: 0xdb3939,
+      footer: { text: guild.name, icon_url: guild.iconURL },
+      timestamp: new Date(),
+      fields: [
+        { name: '\\📄 Message', value: `\`\`\`${content}\`\`\`` },
+        { name: '\\❌ Error', value: `\`\`\`${err}\`\`\`` }
+      ]
+    }
+
+    client.createMessage(process.env.ERROR_CHANNEL, { embed })
+  }
+
+  static rebootChannel (client, message) {
+    if (!process.env.REBOOT_CHANNEL) {
+      return
+    }
+
+    client.createMessage(process.env.REBOOT_CHANNEL, message)
   }
 }
 
