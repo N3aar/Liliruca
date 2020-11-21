@@ -112,7 +112,7 @@ class SupportGuildUtil {
       return
     }
 
-    client.createMessage(process.env.REBOOT_CHANNEL, message)
+    client.createMessage(process.env.REBOOT_CHANNEL, { content: message })
   }
 }
 
