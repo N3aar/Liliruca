@@ -1,22 +1,35 @@
-module.exports = class CommandArgument {
-  static async getFlagOptionArgs (flagOptionArgs, flagContent, handle) {
-    const args = flagContent
-    const result = {}
 
-    for (const f of flagOptionArgs) {
-      const index = args.findIndex(arg => f.flags.some(flag => arg.startsWith(`${flag} `)))
-      if (index !== -1) {
-        const lastIndex = f.match === 'rest' ? args.length : 1
-        const query = args[index].split(' ').slice(1)
-        const arg = query.slice(0, lastIndex)
-        result[f.id] = await handle(arg.join(' '))
-        args.splice(index, 1, arg.length ? query.join('').replace(arg.join(' '), '') : null)
-      } else {
-        result[f.id] = await handle(null)
-      }
+const REST_FLAG_OPTION_REGEX = flags => new RegExp(`\\s--(${flags})\\s(.{1,})(--)?`, 'i')
+const PHRASE_FLAG_OPTION_REGEX = flags => new RegExp(`\\s--(${flags})\\s(\\w{1,})(\\s)`, 'i')
+// const FLAG_REGEX = flags => new RegExp(`\\s(--${flags})\\s`, 'gi')
+
+module.exports = class CommandArgument {
+  static getFlagOption (content, flagOptionArg) {
+    const regex = flagOptionArg.match === 'rest' ? REST_FLAG_OPTION_REGEX : PHRASE_FLAG_OPTION_REGEX
+    const result = content.match(regex(flagOptionArg.flags.join('|')))
+
+    if (!result || !result.length) {
+      return null
     }
 
-    return { args: args, result }
+    const [, flag, res] = result
+    const full = ` --${flag} ${res}`
+    const newContent = content.replace(full, '')
+    return { newContent, res }
+  }
+
+  static async getFlagOptionArgs (flagOptionArgs, content, handle) {
+    let currentContent = content
+    const result = {}
+
+    for (const flagArg of flagOptionArgs) {
+      const res = CommandArgument.getFlagOption(currentContent, flagArg)
+
+      result[flagArg.id] = await handle(res?.res ?? null)
+      currentContent = res?.newContent ?? currentContent
+    }
+
+    return { newContent: currentContent, result }
   }
 
   // runArguments (commandArgs, messageArgs, message) {
