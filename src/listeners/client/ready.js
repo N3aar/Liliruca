@@ -12,7 +12,7 @@ class ReadyListener extends LilirucaListener {
 
   exec () {
     const { client } = this
-    const readyMessage = `Bot started successfully! (${client.users.size} users & ${client.guilds.size} servers)`
+    const readyMessage = `Bot started successfully! (**${client.users.size} users** & **${client.guilds.size} servers**)`
 
     client.logger.success(readyMessage)
     SupportGuildUtil.rebootChannel(client, readyMessage)
