@@ -1,9 +1,18 @@
+const { resolve } = require('path')
+const { readdirSync } = require('fs')
 
 const REST_FLAG_OPTION_REGEX = flags => new RegExp(`\\s--(${flags})\\s(.{1,})(--)?`, 'i')
 const PHRASE_FLAG_OPTION_REGEX = flags => new RegExp(`\\s--(${flags})\\s(\\w{1,})(\\s)`, 'i')
 const FLAG_REGEX = flags => new RegExp(`\\s?--(${flags})`, 'i')
 
-module.exports = class CommandArgument {
+const Arguments = readdirSync(resolve('./arguments'))
+  .reduce((args, filepath) => {
+    const argumentName = filepath.replace('Argument', '').toLowerCase()
+    args[argumentName] = require(filepath)
+    return args
+  }, {})
+
+class CommandArgument {
   static getFlagOption (content, flagOptionArg) {
     const regex = flagOptionArg.match === 'rest' ? REST_FLAG_OPTION_REGEX : PHRASE_FLAG_OPTION_REGEX
     const result = content.match(regex(flagOptionArg.flags.join('|')))
@@ -28,10 +37,11 @@ module.exports = class CommandArgument {
     const newContent = content.replace(regex, '')
     return { newContent, res: true }
   }
+  // string, number, item, place
 
   // HANDLE PARA BUSCA O HANDLE E OPTIONS DO ARGUMENTO
-  static getArgRunner () {
-    return null
+  static getArgRunner (arg) {
+    return Arguments[arg.type]
   }
 
   // HANDLE PARA EXECUTA UM ARGUMENT INDIVITUAL
@@ -71,11 +81,17 @@ module.exports = class CommandArgument {
   }
 
   static async runParameters (contentArgs, commandFlags, commandArgs) {
+    const exec = CommandArgument.execArg
     const {
       newContent,
       res
-    } = await CommandArgument.runFlags(contentArgs.join(' '), commandFlags, CommandArgument.execArg)
+    } = await CommandArgument.runFlags(contentArgs.join(' '), commandFlags, exec)
 
-    return { ...res, ...CommandArgument.runArgs(newContent.split(' '), commandArgs, CommandArgument.execArg) }
+    return {
+      ...res,
+      ...CommandArgument.runArgs(newContent.split(' '), commandArgs, exec)
+    }
   }
 }
+
+module.exports = CommandArgument
