@@ -1,25 +1,62 @@
 const { resolve } = require('path')
 const { readdirSync } = require('fs')
 const ContentParser = require('./ContentParser')
+const ArgumentError = require('./ArgumentError')
 
-const typesPath = resolve(__dirname, 'types')
-const Arguments = readdirSync(typesPath)
-  .reduce((args, filename) => {
-    const argumentName = filename.replace(/Argument|.js/gi, '').toLowerCase()
-    args[argumentName] = require(resolve(typesPath, filename))
-    return args
-  }, {})
+const func = (fn, ...args) => typeof fn === 'function' ? fn(...args) : fn
 
 class ArgumentRunner {
-  // HANDLE PARA BUSCA O HANDLE E OPTIONS DO ARGUMENTO
-  static getArgRunner (arg) {
-    return Arguments[arg.type]
+  static readdirArguments () {
+    const typesPath = resolve(__dirname, 'types')
+    return readdirSync(typesPath)
+      .reduce((args, filename) => {
+        const argumentName = filename.replace(/Argument|.js/gi, '').toLowerCase()
+        args[argumentName] = require(resolve(typesPath, filename))
+        return args
+      }, {})
   }
 
-  // HANDLE PARA EXECUTA UM ARGUMENT INDIVITUAL
-  // EXECUÇÃO DIRENTE CASO O ARG.TYPE SEJA UMA ARRAY
-  static execArg (res, arg) {
-    return null
+  static getTypes () {
+    if (!this.types) {
+      this.types = ArgumentRunner.readdirArguments()
+    }
+
+    return this.types
+  }
+
+  static async runParameter (message, res, arg) {
+    if (!res) {
+      if (arg.default) {
+        return func(arg.default, message)
+      }
+
+      if (!arg.otherwise) {
+        return res
+      }
+
+      const otherwise = await func(arg.otherwise, message)
+      throw new ArgumentError(otherwise)
+    }
+
+    if (Array.isArray(arg.type)) {
+      for (const entry of arg.type) {
+        if (Array.isArray(entry)) {
+          if (entry.some(t => t.toLowerCase() === res.toLowerCase())) {
+            return entry[0]
+          }
+        } else if (entry.toLowerCase() === res.toLowerCase()) {
+          return entry
+        }
+      }
+    }
+
+    const handler = ArgumentRunner.getTypes()[arg.type]
+
+    if (!handler) {
+      throw new Error(`${arg.type} is invalid.`)
+    }
+
+    return handler.exec(res, message, handler.parseOptions(arg))
   }
 
   static async runFlags (content, flags, handle) {
@@ -39,7 +76,7 @@ class ArgumentRunner {
   }
 
   static async runArgs (content, args, handle) {
-    const contentArgs = content.trim().split(' ')
+    const contentArgs = content?.trim()?.split(' ') ?? []
     const result = {}
 
     for (const arg of args) {
@@ -52,8 +89,9 @@ class ArgumentRunner {
     return result
   }
 
-  static async runParameters (contentArgs, commandFlags, commandArgs) {
-    const exec = ArgumentRunner.execArg
+  static async runParameters (contentArgs, message, commandFlags, commandArgs) {
+    const exec = (res, arg) => ArgumentRunner.runParameter(message, res, arg)
+
     const {
       newContent,
       res
@@ -61,7 +99,7 @@ class ArgumentRunner {
 
     return {
       ...res,
-      ...ArgumentRunner.runArgs(newContent.split(' '), commandArgs, exec)
+      ...(await ArgumentRunner.runArgs(newContent, commandArgs, exec))
     }
   }
 }

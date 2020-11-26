@@ -1,9 +1,11 @@
 const Collection = require('@discordjs/collection')
 const BaseHandler = require('../base/BaseHandler')
 const LilirucaCommand = require('../LilirucaCommand')
+const ArgumenrRunner = require('./arguments/ArgumentRunner')
 const CommandUtil = require('./CommandUtil')
 const SupportGuildUtil = require('../../utils/supportGuildUtil')
 const { DEFAULT_PREFIX, DEFAULT_LANGUAGE, CATEGORIES } = require('../../utils/constants/constant')
+const ArgumentError = require('./arguments/ArgumentError')
 
 const COMMAND_UTIL_LIFETIME = 1.2e+6
 const COMMAND_UTIL_SWEEP_INTERVAL = 1.8e+6
@@ -61,7 +63,6 @@ class CommandHandler extends BaseHandler {
 
   loadAll (...args) {
     super.loadAll(...args)
-    this.argumentHandler.loadAll()
     this.categories = this.categories
       .filter(category => category !== 'dev')
       .sort((a, b) => CATEGORIES.indexOf(a) - CATEGORIES.indexOf(b))
@@ -134,9 +135,16 @@ class CommandHandler extends BaseHandler {
     message.client = this.client
 
     try {
-      command.exec(message)
+      const ctx = await ArgumenrRunner.runParameters(args, message, command.flags, command.args)
+      command.exec(message, ctx)
     } catch (e) {
-      SupportGuildUtil.errorChannel(this.client, message.guild, message.content, e.stack)
+      if (e instanceof ArgumentError) {
+        message.util.send(e.errorMessage)
+      } else {
+        this.client.logger.error(e)
+        message.util.send('iih deu erro crl')
+        SupportGuildUtil.errorChannel(this.client, message.guild, message.content, e.stack)
+      }
     }
   }
 
