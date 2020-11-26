@@ -24,18 +24,22 @@ class ArgumentRunner {
     return this.types
   }
 
+  static async runOtherwise (message, arg) {
+    if (!arg.otherwise) {
+      return null
+    }
+
+    const otherwise = await func(arg.otherwise, message)
+    throw new ArgumentError(otherwise)
+  }
+
   static async runParameter (message, res, arg) {
     if (!res) {
       if (arg.default) {
         return func(arg.default, message)
       }
 
-      if (!arg.otherwise) {
-        return res
-      }
-
-      const otherwise = await func(arg.otherwise, message)
-      throw new ArgumentError(otherwise)
+      return ArgumentRunner.runOtherwise(arg, message)
     }
 
     if (Array.isArray(arg.type)) {
@@ -56,7 +60,8 @@ class ArgumentRunner {
       throw new Error(`${arg.type} is invalid.`)
     }
 
-    return handler.exec(res, message, handler.parseOptions(arg))
+    const parsed = await handler.exec(res, message, handler.parseOptions(arg))
+    return parsed || ArgumentRunner.runOtherwise(message, arg)
   }
 
   static async runFlags (content, flags, handle) {
