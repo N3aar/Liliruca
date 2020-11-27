@@ -33,34 +33,35 @@ class ArgumentRunner {
     throw new ArgumentError(otherwise)
   }
 
+  static runParameterType (type, message, res, arg) {
+    const parameter = ArgumentRunner.getTypes()[type]
+    if (!parameter) {
+      throw new Error(`${type} is invalid.`)
+    }
+
+    return parameter.exec(res, message, parameter.parseOptions(arg))
+  }
+
+  static async runParameterTypes (message, res, arg) {
+    if (Array.isArray(arg.type)) {
+      for (const type of arg.type) {
+        const result = await ArgumentRunner.runParameterType(type, message, res, arg)
+        if (result) return result
+      }
+      return null
+    }
+    return ArgumentRunner.runParameterType(arg.tpe, message, res, arg)
+  }
+
   static async runParameter (message, res, arg) {
     if (!res) {
       if (arg.default) {
         return func(arg.default, message)
       }
-
       return ArgumentRunner.runOtherwise(arg, message)
     }
 
-    if (Array.isArray(arg.type)) {
-      for (const entry of arg.type) {
-        if (Array.isArray(entry)) {
-          if (entry.some(t => t.toLowerCase() === res.toLowerCase())) {
-            return entry[0]
-          }
-        } else if (entry.toLowerCase() === res.toLowerCase()) {
-          return entry
-        }
-      }
-    }
-
-    const handler = ArgumentRunner.getTypes()[arg.type]
-
-    if (!handler) {
-      throw new Error(`${arg.type} is invalid.`)
-    }
-
-    const parsed = await handler.exec(res, message, handler.parseOptions(arg))
+    const parsed = await ArgumentRunner.runParameterTypes(message, res, arg)
     return parsed || ArgumentRunner.runOtherwise(message, arg)
   }
 
