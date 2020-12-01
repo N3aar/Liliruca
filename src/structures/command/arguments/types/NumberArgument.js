@@ -20,11 +20,11 @@ class NumberArgument extends BaseArgument {
       return null
     }
 
-    if (number < opts.min) {
+    if (opts.min && number < opts.min) {
       throw new ArgumentError(ctx.t('errors:min', { count: opts.min }))
     }
 
-    if (number > opts.max) {
+    if (opts.max && number > opts.max) {
       throw new ArgumentError(ctx.t('errors:max', { count: opts.max }))
     }
 

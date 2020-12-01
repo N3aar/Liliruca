@@ -17,7 +17,7 @@ class Help extends LilirucaCommand {
       flags: [
         {
           id: 'showAll',
-          flags: ['--all', '--a']
+          flags: ['all', 'a']
         }
       ]
     })

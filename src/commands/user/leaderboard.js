@@ -21,7 +21,7 @@ class Leaderboard extends LilirucaCommand {
         },
         {
           id: 'page',
-          flags: ['--page', '--p'],
+          flags: ['page', 'p'],
           flagType: 'option',
           type: 'number',
           forceMin: 1,
@@ -30,7 +30,7 @@ class Leaderboard extends LilirucaCommand {
         },
         {
           id: 'guildOnly',
-          flag: ['--guild']
+          flag: ['guild']
         }
       ]
     })

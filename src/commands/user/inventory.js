@@ -19,7 +19,7 @@ class Inventory extends LilirucaCommand {
       flags: [
         {
           id: 'page',
-          flags: ['--page', '--p'],
+          flags: ['page', 'p'],
           flagType: 'option',
           type: 'number',
           forceMin: 1,
@@ -27,7 +27,7 @@ class Inventory extends LilirucaCommand {
         },
         {
           id: 'ids',
-          flags: ['--id']
+          flags: ['id']
         }
       ]
     })

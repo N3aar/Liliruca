@@ -50,7 +50,7 @@ class Table extends LilirucaCommand {
       flags: [
         {
           id: 'storage',
-          flags: ['--storage']
+          flags: ['storage']
         }
       ]
     })

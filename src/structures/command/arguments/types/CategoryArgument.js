@@ -4,10 +4,9 @@ class CategoryArgument extends BaseArgument {
   static exec (arg, ctx) {
     const resolved = arg.toLowerCase()
     const number = Number(arg)
-    let i = 1
 
-    return ctx.handler.categories.find(category => {
-      if (number === i || category === resolved) {
+    return ctx.handler.categories.find((category, i) => {
+      if (number === (i + 1) || category === resolved) {
         return true
       }
 
@@ -16,7 +15,6 @@ class CategoryArgument extends BaseArgument {
         return true
       }
 
-      i++
       return false
     })
   }

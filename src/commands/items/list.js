@@ -24,14 +24,14 @@ class List extends LilirucaCommand {
       flags: [
         {
           id: 'filter',
-          flags: ['--type', '--t'],
+          flags: ['type', 't'],
           flagType: 'option',
           type: 'option',
           options: ITEMS_TYPES
         },
         {
           id: 'page',
-          flags: ['--page', '--p'],
+          flags: ['page', 'p'],
           flagType: 'option',
           type: 'number',
           forceMin: 1,

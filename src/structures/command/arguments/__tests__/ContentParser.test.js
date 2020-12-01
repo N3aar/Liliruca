@@ -49,6 +49,8 @@ describe('ContentParser#getFlag', () => {
   it('should return true', () => {
     expect(ContentParser.getFlag('aw dfe --a ww d', flag))
       .toEqual({ newContent: 'aw dfe ww d', res: true })
+    expect(ContentParser.getFlag('--a', flag))
+      .toEqual({ newContent: '', res: true })
     expect(ContentParser.getFlag('--a aw dfe ww d', flag))
       .toEqual({ newContent: ' aw dfe ww d', res: true })
     expect(ContentParser.getFlag('aw dfe ww d --a', flag))

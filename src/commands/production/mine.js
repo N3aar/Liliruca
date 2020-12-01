@@ -31,7 +31,7 @@ class Mine extends LilirucaCommand {
       flags: [
         {
           id: 'all',
-          flags: ['--all', '--a']
+          flags: ['all', 'a']
         }
       ]
     })

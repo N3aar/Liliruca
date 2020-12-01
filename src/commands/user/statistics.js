@@ -20,7 +20,7 @@ class Statistics extends LilirucaCommand {
       flags: [
         {
           id: 'showOnlyFish',
-          flags: '--rares'
+          flags: ['rares']
         }
       ]
     })
