@@ -50,7 +50,7 @@ class ArgumentRunner {
       }
       return null
     }
-    return ArgumentRunner.runParameterType(arg.tpe, message, res, arg)
+    return ArgumentRunner.runParameterType(arg.type, message, res, arg)
   }
 
   static async runParameter (message, res, arg) {
@@ -58,7 +58,7 @@ class ArgumentRunner {
       if (arg.default) {
         return func(arg.default, message)
       }
-      return ArgumentRunner.runOtherwise(arg, message)
+      return ArgumentRunner.runOtherwise(message, arg)
     }
 
     const parsed = await ArgumentRunner.runParameterTypes(message, res, arg)
@@ -91,7 +91,6 @@ class ArgumentRunner {
       result[arg.id] = await handle(text, arg)
       contentArgs.splice(0, lastIndex)
     }
-
     return result
   }
 
