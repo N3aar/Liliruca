@@ -90,7 +90,7 @@ class SupportGuildUtil {
   }
 
   static errorChannel (client, guild, content, err) {
-    if (!process.env.ERROR_CHANNEL) {
+    if (!process.env.ERROR_CHANNEL_ID) {
       return
     }
 
@@ -104,15 +104,15 @@ class SupportGuildUtil {
       ]
     }
 
-    client.createMessage(process.env.ERROR_CHANNEL, { embed })
+    client.createMessage(process.env.ERROR_CHANNEL_ID, { embed })
   }
 
   static rebootChannel (client, message) {
-    if (!process.env.REBOOT_CHANNEL) {
+    if (!process.env.REBOOT_CHANNEL_ID) {
       return
     }
 
-    client.createMessage(process.env.REBOOT_CHANNEL, { content: message })
+    client.createMessage(process.env.REBOOT_CHANNEL_ID, { content: message })
   }
 }
 
