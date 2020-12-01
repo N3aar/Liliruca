@@ -147,11 +147,6 @@ module.exports = {
     trash: { min: 1, max: 5, price: 2 },
     treasure: { min: 10, max: 40 }
   },
-  PLACES_ALIASES: {
-    [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],
-    [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
-    [PLACE_NAMES.MINING]: ['mining', 'mn', 'mineradora']
-  },
   PLACES_RESOURCES: {
     [PLACE_NAMES.FARM]: RESOURCE_NAMES.FOOD,
     [PLACE_NAMES.FISHING]: RESOURCE_NAMES.FISH,

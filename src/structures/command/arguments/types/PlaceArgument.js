@@ -1,18 +1,15 @@
-const BaseArgument = require('@structures/base/BaseArgument')
-const { PLACES_ALIASES } = require('@constants/constant')
+const { PLACE_NAMES } = require('@constants/constant')
+const OptionArgument = require('./OptionArgument')
 
-class PlaceArgument extends BaseArgument {
+class PlaceArgument extends OptionArgument {
   static parseOptions (opts) {
-    return super.parseOptions(opts)
-  }
-
-  static exec (arg) {
-    const resolved = arg.toLowerCase()
-
-    for (const place in PLACES_ALIASES) {
-      if (PLACES_ALIASES[place].includes(resolved)) {
-        return place
-      }
+    return {
+      ...super.parseOptions(opts),
+      options: [
+        [PLACE_NAMES.FARM, 'farm', 'fm', 'fazenda'],
+        [PLACE_NAMES.FISHING, 'fishing', 'fs', 'pescaria'],
+        [PLACE_NAMES.MINING, 'mining', 'mn', 'mineradora']
+      ]
     }
   }
 }
