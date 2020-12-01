@@ -1,5 +1,4 @@
 const { MessageAttachment } = require('discord.js')
-const { Argument } = require('discord-akairo')
 const { createCanvas, loadImage } = require('canvas')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { PLACES, LEADERBOARD_TYPES } = require('@constants/constant')
@@ -16,20 +15,22 @@ class Leaderboard extends LilirucaCommand {
       args: [
         {
           id: 'type',
-          type: Argument.union(LEADERBOARD_TYPES, 'place'),
+          type: ['option', 'place'],
+          options: LEADERBOARD_TYPES,
           otherwise: message => message.ct('error', { types: LEADERBOARD_TYPES.join(' | ') })
         },
         {
           id: 'page',
-          match: 'option',
-          flag: ['--page', '--p'],
-          type: Argument.range('integer', 1, 50, true),
+          flags: ['--page', '--p'],
+          flagType: 'option',
+          type: 'number',
+          forceMin: 1,
+          forceMax: 50,
           default: 1
         },
         {
           id: 'guildOnly',
-          match: 'flag',
-          flag: '--guild'
+          flag: ['--guild']
         }
       ]
     })

@@ -11,7 +11,8 @@ class SetLanguage extends LilirucaCommand {
       args: [
         {
           id: 'language',
-          type: languages,
+          type: 'option',
+          options: languages,
           otherwise: message => message.ct('error', { languages: languages.map(l => `\`${l}\``).join(', ') })
         }
       ]

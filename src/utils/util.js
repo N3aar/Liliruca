@@ -84,30 +84,6 @@ class Util {
       boosted: percentage
     }
   }
-
-  static findCategory ({ client, t }, phrase) {
-    if (!phrase) {
-      return null
-    }
-
-    let i = 1
-    const arg = phrase.toLowerCase()
-    const number = Number(phrase)
-
-    return client.categories.find(category => {
-      if (number === i || category.id === arg) {
-        return true
-      }
-
-      const categoryName = t(`categories:${category.id}`).toLowerCase()
-      if (categoryName === arg) {
-        return true
-      }
-
-      i++
-      return false
-    })
-  }
 }
 
 module.exports = Util

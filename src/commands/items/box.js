@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
@@ -19,7 +18,8 @@ class Box extends LilirucaCommand {
       args: [
         {
           id: 'box',
-          type: Argument.validate('item', (m, p, value) => value.type === 'box'),
+          type: 'item',
+          itemType: 'box',
           otherwise: message => message.t('errors:noItem')
         }
       ]

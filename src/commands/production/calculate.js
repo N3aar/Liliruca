@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getStoragePrice } = require('@utils/util')
@@ -20,12 +19,16 @@ class Calculate extends LilirucaCommand {
         },
         {
           id: 'firstValue',
-          type: Argument.range('integer', 1, 1000000),
+          type: 'number',
+          forceMax: 99999999,
+          forceMin: 1,
           default: 1
         },
         {
           id: 'secondValue',
-          type: Argument.range('integer', 1, 1000000),
+          type: 'number',
+          forceMax: 99999999,
+          forceMin: 1,
           default: 1
         }
       ]

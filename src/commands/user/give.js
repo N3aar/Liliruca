@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
@@ -14,12 +13,13 @@ class Give extends LilirucaCommand {
       args: [
         {
           id: 'mentionMember',
-          type: 'realMember',
+          type: 'member',
           otherwise: message => message.ct('noUser')
         },
         {
           id: 'amount',
-          type: Argument.range('integer', GIVE_MIN, Infinity),
+          type: 'number',
+          min: GIVE_MIN,
           otherwise: message => message.ct('noValue', { min: GIVE_MIN })
         }
       ]

@@ -17,7 +17,7 @@ class Eval extends LilirucaCommand {
       args: [
         {
           id: 'code',
-          match: 'content',
+          match: 'rest',
           otherwise: 'Digite um código a ser executado!'
         }
       ]

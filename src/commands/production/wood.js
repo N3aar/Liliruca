@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random } = require('@utils/util')
@@ -18,17 +17,21 @@ class Wood extends LilirucaCommand {
       args: [
         {
           id: 'uses',
-          type: Argument.range('integer', 1, 10, true),
+          type: 'number',
+          forceMax: 10,
+          forceMin: 1,
           default: 1
         },
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.tool === 'axe')
-        },
+          type: 'item',
+          itemTool: 'axe'
+        }
+      ],
+      flags: [
         {
           id: 'all',
-          match: 'flag',
-          flag: '--all'
+          flags: ['--all', '--a']
         }
       ]
     })

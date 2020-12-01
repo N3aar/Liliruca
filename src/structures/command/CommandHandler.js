@@ -133,18 +133,29 @@ class CommandHandler extends BaseHandler {
     message.db = this.client.db
     message.prefix = prefix
     message.client = this.client
+    message.handler = this
+
+    this.updateTyping(command, message.channel)
 
     try {
       const ctx = await ArgumenrRunner.runParameters(args, message, command.flags, command.args)
       command.exec(message, ctx)
     } catch (e) {
       if (e instanceof ArgumentError) {
-        message.util.send(e.errorMessage)
+        return message.util.send(e.errorMessage)
       } else {
         this.client.logger.error(e)
         message.util.send('iih deu erro crl')
         SupportGuildUtil.errorChannel(this.client, message.guild, message.content, e.stack)
       }
+    }
+
+    this.updateTyping(command, message.channel)
+  }
+
+  updateTyping (command, channel) {
+    if (command.typing) {
+      channel.sendTyping()
     }
   }
 

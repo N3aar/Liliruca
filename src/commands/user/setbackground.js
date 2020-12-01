@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { removeItem } = require('@utils/items')
 const { length } = require('@constants/backgrounds')
@@ -12,7 +11,9 @@ class Setbackground extends LilirucaCommand {
       args: [
         {
           id: 'id',
-          type: Argument.range('integer', 1, length, true),
+          type: 'number',
+          min: 1,
+          max: length,
           otherwise: message => message.ct('invalidNumber')
         }
       ]

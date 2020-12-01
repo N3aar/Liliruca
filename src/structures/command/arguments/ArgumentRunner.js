@@ -74,7 +74,7 @@ class ArgumentRunner {
         ? ContentParser.getFlagOption(currentContent, flag)
         : ContentParser.getFlag(currentContent, flag)
 
-      result[flag.id] = await handle(res?.res ?? res, flag)
+      result[flag.id] = flag.flagType === 'option' ? await handle(res?.res ?? res, flag) : res
       currentContent = res?.newContent ?? currentContent
     }
 
@@ -100,11 +100,11 @@ class ArgumentRunner {
 
     const {
       newContent,
-      res
+      result
     } = await ArgumentRunner.runFlags(contentArgs.join(' '), commandFlags, exec)
 
     return {
-      ...res,
+      ...result,
       ...(await ArgumentRunner.runArgs(newContent, commandArgs, exec))
     }
   }

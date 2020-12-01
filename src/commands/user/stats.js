@@ -19,13 +19,11 @@ class Stats extends LilirucaCommand {
         {
           id: 'place',
           type: 'place',
-          default: 'farm',
-          unordered: true
+          default: 'farm'
         },
         {
           id: 'member',
-          type: 'realMember',
-          unordered: true,
+          type: 'member',
           default: message => message.member
         }
       ]

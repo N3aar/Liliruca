@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { randomChances, random } = require('@utils/util')
@@ -18,17 +17,21 @@ class Mine extends LilirucaCommand {
       args: [
         {
           id: 'uses',
-          type: Argument.range('integer', 1, 10, true),
+          type: 'number',
+          forceMax: 10,
+          forceMin: 1,
           default: 1
         },
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.tool === 'pickaxe')
-        },
+          type: 'item',
+          itemTool: 'pickaxe'
+        }
+      ],
+      flags: [
         {
           id: 'all',
-          match: 'flag',
-          flag: '--all'
+          flags: ['--all', '--a']
         }
       ]
     })
@@ -69,7 +72,7 @@ class Mine extends LilirucaCommand {
       Mine.randomOres(ores, pickaxe)
     }
 
-    const oresMined = Object.keys(ores).slice(1)
+    const oresMined = Object.keys(ores).filter(ore => ore !== 'coal')
     const parsed = oresMined.reduce((value, ore) => {
       const name = getItemName(ore, t)
       const amount = ores[ore]
