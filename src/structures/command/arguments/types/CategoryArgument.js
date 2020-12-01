@@ -1,10 +1,6 @@
 const BaseArgument = require('@structures/base/BaseArgument')
 
 class CategoryArgument extends BaseArgument {
-  static parseOptions (opts) {
-    return super.parseOptions(opts)
-  }
-
   static exec (arg, ctx) {
     const resolved = arg.toLowerCase()
     const number = Number(arg)
