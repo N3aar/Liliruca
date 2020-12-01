@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem, removeItem, addItemInInventory } = require('@utils/items')
@@ -16,12 +15,14 @@ class Forge extends LilirucaCommand {
       args: [
         {
           id: 'ore',
-          type: Argument.validate('item', (m, p, value) => value.forge),
+          type: 'item',
+          forgeable: true,
           otherwise: message => message.ct('noOre')
         },
         {
           id: 'amount',
-          type: Argument.range('integer', 1, Infinity),
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]

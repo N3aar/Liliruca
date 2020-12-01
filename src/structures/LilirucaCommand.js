@@ -8,7 +8,9 @@ class LilirucaCommand extends BaseModule {
 
     this.emoji = options.required('emoji')
     this.editable = options.optional('editable', true)
+    this.typing = options.optional('typing')
     this.args = options.optional('args', [])
+    this.flags = options.optional('flags', [])
     this.userPermissions = options.optional('userPermissions')
     this.clientPermissions = options.optional('clientPermissions')
     this.aliases = options.optional('aliases', [])

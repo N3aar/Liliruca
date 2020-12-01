@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, removeItem } = require('@utils/items')
@@ -21,7 +20,8 @@ class Sale extends LilirucaCommand {
         },
         {
           id: 'amount',
-          type: Argument.range('integer', 1, Infinity),
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]

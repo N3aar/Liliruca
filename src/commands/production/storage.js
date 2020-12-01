@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { getStoragePrice } = require('@utils/util')
 const { getItemName, removeItem } = require('@utils/items')
@@ -18,7 +17,8 @@ class Storage extends LilirucaCommand {
         },
         {
           id: 'levels',
-          type: Argument.range('integer', 1, 1000000),
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]

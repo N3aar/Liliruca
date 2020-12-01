@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getToolInInventory, removeItem } = require('@utils/items')
@@ -13,7 +12,8 @@ class Energetic extends LilirucaCommand {
       args: [
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.tool === 'energetic')
+          type: 'item',
+          itemTool: 'energetic'
         }
       ]
     })

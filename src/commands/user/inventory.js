@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem } = require('@utils/items')
@@ -13,20 +12,22 @@ class Inventory extends LilirucaCommand {
       args: [
         {
           id: 'member',
-          type: 'realMember',
+          type: 'member',
           default: message => message.member
-        },
+        }
+      ],
+      flags: [
         {
           id: 'page',
-          match: 'option',
-          flag: ['--page', '--p'],
-          type: Argument.range('integer', 1, Infinity),
+          flags: ['page', 'p'],
+          flagType: 'option',
+          type: 'number',
+          forceMin: 1,
           default: 1
         },
         {
           id: 'ids',
-          match: 'flag',
-          flag: '--id'
+          flags: ['id']
         }
       ]
     })

@@ -1,5 +1,4 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { languages } = require('@utils/locales')
 const { books } = require('@constants/emojis')
 
 class SetLanguage extends LilirucaCommand {
@@ -11,8 +10,9 @@ class SetLanguage extends LilirucaCommand {
       args: [
         {
           id: 'language',
-          type: languages,
-          otherwise: message => message.ct('error', { languages: languages.map(l => `\`${l}\``).join(', ') })
+          type: 'option',
+          options: ({ client }) => client.locales.languages,
+          otherwise: message => message.ct('error', { languages: message.client.locales.languages.map(l => `\`${l}\``).join(', ') })
         }
       ]
     })

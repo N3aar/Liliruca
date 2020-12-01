@@ -14,7 +14,7 @@ class Profile extends LilirucaCommand {
       args: [
         {
           id: 'member',
-          type: 'realMember',
+          type: 'member',
           default: message => message.member
         }
       ]

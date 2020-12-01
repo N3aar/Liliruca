@@ -45,11 +45,12 @@ class Table extends LilirucaCommand {
           id: 'place',
           type: 'place',
           otherwise: message => message.ct('noPlace')
-        },
+        }
+      ],
+      flags: [
         {
           id: 'storage',
-          match: 'flag',
-          flag: '--storage'
+          flags: ['storage']
         }
       ]
     })

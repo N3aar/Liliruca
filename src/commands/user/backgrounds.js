@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const backgrounds = require('@constants/backgrounds')
@@ -13,7 +12,9 @@ class Backgrounds extends LilirucaCommand {
       args: [
         {
           id: 'id',
-          type: Argument.range('integer', 1, backgrounds.length, true),
+          type: 'number',
+          forceMin: 1,
+          forceMax: backgrounds.length,
           default: 1
         }
       ]

@@ -16,7 +16,8 @@ class Craft extends LilirucaCommand {
       args: [
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.craftable),
+          type: 'item',
+          craftable: true,
           otherwise: message => message.ct('noCraftable')
         },
         {

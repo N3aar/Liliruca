@@ -13,13 +13,14 @@ class Statistics extends LilirucaCommand {
       args: [
         {
           id: 'member',
-          type: 'realMember',
+          type: 'member',
           default: message => message.member
-        },
+        }
+      ],
+      flags: [
         {
           id: 'showOnlyFish',
-          match: 'flag',
-          flag: '--rares'
+          flags: ['rares']
         }
       ]
     })

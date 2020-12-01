@@ -1,7 +1,5 @@
-const { Category, Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { findCategory } = require('@utils/util')
 const emojis = require('@constants/emojis')
 
 class Help extends LilirucaCommand {
@@ -13,12 +11,13 @@ class Help extends LilirucaCommand {
       args: [
         {
           id: 'resolve',
-          type: Argument.union('commandAlias', findCategory)
-        },
+          type: ['category', 'command']
+        }
+      ],
+      flags: [
         {
           id: 'showAll',
-          match: 'flag',
-          flag: '--all'
+          flags: ['all', 'a']
         }
       ]
     })
@@ -29,21 +28,21 @@ class Help extends LilirucaCommand {
       return this.handleShowAll(message)
     }
 
-    if (resolve instanceof Category) {
-      return this.handleCategory(message, resolve)
-    }
-
     if (resolve instanceof LilirucaCommand) {
       return this.handleCommand(message, resolve)
+    }
+
+    if (message.handler.categories.includes(resolve)) {
+      return this.handleCategory(message, resolve)
     }
 
     return this.handleDefault(message)
   }
 
-  handleDefault ({ client, prefix, util, ct, t }) {
+  handleDefault ({ handler, prefix, util, ct, t }) {
     let i = 1
-    const categories = client.categories
-      .reduce((desc, ctgy) => desc + `\`${i++}:\` \\${emojis[ctgy.id]} ** » ${t(`categories:${ctgy.id}`)}**\n`, '')
+    const categories = handler.categories
+      .reduce((desc, ctgy) => desc + `\`${i++}:\` \\${emojis[ctgy]} ** » ${t(`categories:${ctgy}`)}**\n`, '')
 
     const embed = new LilirucaEmbed()
       .setDescription(categories)
@@ -52,13 +51,15 @@ class Help extends LilirucaCommand {
     util.send(`\\📚 ${ct('success')}`, embed)
   }
 
-  handleShowAll ({ client, util, ct, t }) {
-    const categories = client.categories.map(category => (
-      {
-        name: `\\${emojis[category.id]} » ${t(`categories:${category.id}`)}`,
-        value: `${category.map(({ id }) => `\`${id}\``).join(', ')}`
-      }
-    ))
+  handleShowAll ({ handler, util, ct, t }) {
+    const categories = handler.categories
+      .map(category => {
+        const commands = handler.modules.filter(cmd => cmd.category === category)
+        return {
+          name: `\\${emojis[category]} » ${t(`categories:${category}`)}`,
+          value: `${commands.map(({ id }) => `\`${id}\``).join(', ')}`
+        }
+      })
 
     const embed = new LilirucaEmbed()
       .addFields(categories)
@@ -66,8 +67,9 @@ class Help extends LilirucaCommand {
     util.send(`\\📚 ${ct('all')}`, embed)
   }
 
-  handleCategory ({ t, util, prefix, ct }, category) {
-    const commands = category.map(command => {
+  handleCategory ({ handler, t, util, prefix, ct }, category) {
+    const filtered = handler.modules.filter(cmd => cmd.category === category)
+    const commands = filtered.map(command => {
       const usage = command.usage ? ` ${t(`commands:${command.id}.usage`)}` : ''
       return {
         name: `\\${command.emoji} » ${command.id[0].toUpperCase() + command.id.slice(1)}`,

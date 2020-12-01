@@ -1,4 +1,3 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { capitalize } = require('@utils/util')
@@ -20,18 +19,22 @@ class List extends LilirucaCommand {
         {
           id: 'item',
           type: 'item'
-        },
+        }
+      ],
+      flags: [
         {
           id: 'filter',
-          match: 'option',
-          flag: ['--type', '--t'],
-          type: ITEMS_TYPES
+          flags: ['type', 't'],
+          flagType: 'option',
+          type: 'option',
+          options: ITEMS_TYPES
         },
         {
           id: 'page',
-          match: 'option',
-          flag: ['--page', '--p'],
-          type: Argument.range('integer', 1, Infinity),
+          flags: ['page', 'p'],
+          flagType: 'option',
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]
