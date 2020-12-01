@@ -13,11 +13,11 @@ class StringArgument extends BaseArgument {
   }
 
   static exec (arg, ctx, opts) {
-    if (arg.length < opts.minLength) {
+    if (opts.minLength && arg.length < opts.minLength) {
       throw new ArgumentError(ctx.t('errors:minlength', { count: opts.minLength }))
     }
 
-    if (arg.length > opts.maxLength) {
+    if (opts.maxLength && arg.length > opts.maxLength) {
       throw new ArgumentError(ctx.t('errors:maxLength', { count: opts.maxLength }))
     }
 
