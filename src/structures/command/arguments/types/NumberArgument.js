@@ -16,6 +16,10 @@ class NumberArgument extends BaseArgument {
   static exec (arg, ctx, opts) {
     const number = opts.fixed ? Number(arg) : parseInt(arg)
 
+    if (isNaN(number)) {
+      return null
+    }
+
     if (number < opts.min) {
       throw new ArgumentError(ctx.t('errors:min', { count: opts.min }))
     }

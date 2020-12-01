@@ -16,6 +16,10 @@ class ItemArgument extends BaseArgument {
   static exec (arg, ctx, opts) {
     const item = getItem(arg.toLowerCase())
 
+    if (!item) {
+      return null
+    }
+
     if (opts.itemType && item?.type !== opts.itemType) {
       throw new ArgumentError(ctx.t('errors:itemTypeInvalid'))
     }
