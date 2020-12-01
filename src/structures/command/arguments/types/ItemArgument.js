@@ -8,6 +8,7 @@ class ItemArgument extends BaseArgument {
       ...super.parseOptions(opts),
       itemType: opts?.itemType ?? null,
       itemTool: opts?.itemTool ?? null,
+      craftable: opts?.craftable ?? null,
       forgeable: opts?.forgeable ?? null
     }
   }
