@@ -24,8 +24,13 @@ class CommandHandler extends BaseHandler {
     this.client.on('messageUpdate', (message) => this.handle(message, true))
     this.client.on('messageDelete', (message) => this.onMessagesDelete([message]))
     this.client.on('messageDeleteBulk', (messages) => this.onMessagesDelete(messages))
+  }
 
-    setInterval(() => {
+  sweepCommandUtils () {
+    if (this.intervalSweepCommandUtil) {
+      clearInterval(this.intervalSweepCommandUtil)
+    }
+    this.intervalSweepCommandUtil = setInterval(() => {
       this.commandUtils.each((util, id) => {
         if ((Date.now() - util.createdAt) <= COMMAND_UTIL_LIFETIME) {
           this.commandUtils.delete(id)

@@ -46,8 +46,9 @@ class LilirucaClient extends Client {
 
   async init () {
     await this.locales.loadAll()
-    this.commandHandler.loadAll()
-    this.listenerHandler.loadAll()
+    await this.commandHandler.loadAll()
+    await this.listenerHandler.loadAll()
+    await this.commandHandler.sweepCommandUtils()
     await this.db.connect()
     this.loadAllFonts()
     return this
