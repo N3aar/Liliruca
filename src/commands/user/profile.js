@@ -1,5 +1,6 @@
 const { createCanvas, loadImage } = require('canvas')
-const { MessageAttachment } = require('discord.js')
+const { createAttachment } = require('@utils/discordUtil')
+
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { picture } = require('@constants/emojis')
 
@@ -66,7 +67,7 @@ class Profile extends LilirucaCommand {
     ctx.drawImage(nameIcon, 515, 55, nameIcon.width, nameIcon.height)
     ctx.drawImage(energyIcon, 544, 162, energyIcon.width, energyIcon.height)
 
-    const profile = new MessageAttachment(canvas.toBuffer(), 'profile.png')
+    const profile = createAttachment(canvas.toBuffer(), 'profile.png')
 
     util.send(`\\${picture} ${ct('success', { name })}`, profile)
   }

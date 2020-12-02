@@ -33,7 +33,7 @@ class Eval extends LilirucaCommand {
 
     try {
       const evald = await eval(text)
-      const toEval = inspect(evald, { depth: 0 })
+      const toEval = inspect(evald, { depth: 0 }).substring(0, 2000)
       embed
         .setDescription(codeBlock(toEval, 'js'))
         .setColor(EMBED_COLORS.success)

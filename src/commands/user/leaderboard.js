@@ -1,4 +1,4 @@
-const { MessageAttachment } = require('discord.js')
+const { createAttachment } = require('@utils/discordUtil')
 const { createCanvas, loadImage } = require('canvas')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { PLACES, LEADERBOARD_TYPES } = require('@constants/constant')
@@ -81,7 +81,7 @@ class Leaderboard extends LilirucaCommand {
       ctx.fillText(parsed, position, 89 + espace)
     }
 
-    const attach = new MessageAttachment(canvas.toBuffer(), 'leaderboard.png')
+    const attach = createAttachment(canvas.toBuffer(), 'leaderboard.png')
     const parsed = t(`commons:${PLACES.includes(type) ? 'storages.' : ''}${type}`)
 
     util.send(`\\${trophy} ${ct('success', { type: parsed, page })}`, attach)
