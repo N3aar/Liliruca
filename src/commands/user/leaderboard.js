@@ -18,20 +18,21 @@ class Leaderboard extends LilirucaCommand {
           type: ['option', 'place'],
           options: LEADERBOARD_TYPES,
           otherwise: message => message.ct('error', { types: LEADERBOARD_TYPES.join(' | ') })
-        },
-        {
-          id: 'page',
-          flags: ['page', 'p'],
-          flagType: 'option',
-          type: 'number',
-          forceMin: 1,
-          forceMax: 50,
-          default: 1
-        },
-        {
-          id: 'guildOnly',
-          flag: ['guild']
         }
+      ],
+      flags: [{
+        id: 'page',
+        flags: ['page', 'p'],
+        flagType: 'option',
+        type: 'number',
+        forceMin: 1,
+        forceMax: 50,
+        default: 1
+      },
+      {
+        id: 'guildOnly',
+        flags: ['guild']
+      }
       ]
     })
   }

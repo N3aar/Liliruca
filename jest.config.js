@@ -81,9 +81,11 @@ module.exports = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '@package': '<rootDir>/package.json',
-    '@utils/(.*)': '<rootDir>/src/utils',
-    '@database/(.*)': '<rootDir>/src/database',
-    '@constants': '<rootDir>/src/utils/constants',
+    '@utils/(.*)': '<rootDir>/src/utils/$1',
+    '@utils': '<rootDir>/src/utils',
+    '@items': '<rootDir>/src/utils/constants/Items.json',
+    '@database/(.*)': '<rootDir>/src/database/$1',
+    '@constants/(.*)': '<rootDir>/src/utils/constants/$1',
     '@structures/(.*)': '<rootDir>/src/structures/$1'
   },
 

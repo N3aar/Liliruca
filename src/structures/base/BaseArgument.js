@@ -2,7 +2,7 @@ class BaseArgument {
   static parseOptions (opts) {
     return {
       match: opts?.match ?? 'phrase',
-      flag: opts?.flag ?? [],
+      flags: opts?.flags ?? [],
       default: opts?.default ?? null,
       otherwise: opts?.otherwise ?? null
     }
