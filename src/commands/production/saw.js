@@ -32,7 +32,7 @@ class Saw extends LilirucaCommand {
       return util.send(ct('noWood', { missing: amount - woods }))
     }
 
-    const price = amount * 20
+    const price = (amount / 2) * 20
     if (data.money < price) {
       return util.send(ct('noMoney', { missing: price - data.money }))
     }
@@ -62,8 +62,8 @@ class Saw extends LilirucaCommand {
     ]
 
     removeItem(data, 'items', 'wood', required)
-    addItemInInventory(data, 'items', 'wooden-plank', amount)
-    addItemInInventory(data, 'statistics', 'wooden-plank', amount)
+    addItemInInventory(data, 'items', 'wooden-plank', result)
+    addItemInInventory(data, 'statistics', 'wooden-plank', result)
 
     const values = {
       money: data.money - price
