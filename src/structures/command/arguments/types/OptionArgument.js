@@ -1,6 +1,7 @@
 const BaseArgument = require('@structures/base/BaseArgument')
 
-const Fn = (fn, ...args) => typeof fn === 'function' ? fn(...args) : fn
+const runFn = (fn, ...args) => typeof fn === 'function' ? fn(...args) : fn
+
 class OptionArgument extends BaseArgument {
   static parseOptions (opts) {
     return {
@@ -10,7 +11,7 @@ class OptionArgument extends BaseArgument {
   }
 
   static async exec (arg, ctx, opts) {
-    const options = await Fn(opts.options, arg, ctx)
+    const options = await runFn(opts.options, ctx, arg)
 
     if (Array.isArray(options)) {
       for (const entry of options) {
@@ -23,6 +24,7 @@ class OptionArgument extends BaseArgument {
         }
       }
     }
+
     return null
   }
 }
