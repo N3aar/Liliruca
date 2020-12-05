@@ -92,8 +92,8 @@ class Stats extends LilirucaCommand {
 
     if (booster) {
       stats.push({
-        name: `${booster.item.emoji} ${getItemName(booster.id, t)}`,
-        value: ct('booster', { min: booster.item.min, max: booster.item.max }),
+        name: `${booster.emoji} ${getItemName(booster.id, t)}`,
+        value: ct('booster', { min: booster.min, max: booster.max }),
         inline: true
       })
     }
