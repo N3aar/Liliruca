@@ -2,16 +2,20 @@ const LilirucaEmbed = require('../LilirucaEmbed')
 const LilirucaAttachment = require('../LilirucaAttachment')
 
 class CommandUtil {
-  constructor (client, messageId, channelId) {
+  constructor (client, message) {
     this.client = client
-    this.channelId = channelId
-    this.messageId = messageId
+    this.channelId = message.channel.id
+    this.reference = {
+      channel_id: this.channelId,
+      guild_id: message.guildID,
+      message_id: message.id
+    }
     this.createdAt = Date.now()
     this.sentMessageId = null
   }
 
   async send (content, opts) {
-    const options = CommandUtil.parseOptions(content, opts)
+    const options = CommandUtil.parseOptions(content, opts, this.reference)
 
     if (this.sentMessageId) {
       try {
@@ -34,7 +38,7 @@ class CommandUtil {
     return this.send(content, opts)
   }
 
-  static parseOptions (content, options) {
+  static parseOptions (content, options, reference) {
     if (!options && typeof content === 'object' && !Array.isArray(content)) {
       options = content
       content = undefined
@@ -43,12 +47,12 @@ class CommandUtil {
     if (!options) {
       options = {}
     } else if (options instanceof LilirucaEmbed) {
-      return { content, embed: options }
+      return { content, embed: options, message_reference: reference }
     } else if (options instanceof LilirucaAttachment) {
-      return { content, files: [options] }
+      return { content, files: [options], message_reference: reference }
     }
 
-    return { content, ...options }
+    return { content, ...options, message_reference: reference }
   }
 }
 

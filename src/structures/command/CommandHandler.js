@@ -113,7 +113,7 @@ class CommandHandler extends BaseHandler {
     if (this.commandUtils.has(message.id)) {
       message.util = this.commandUtils.get(message.id)
     } else {
-      message.util = new CommandUtil(this.client, message.id, message.channel.id)
+      message.util = new CommandUtil(this.client, message)
       if (command.editable) {
         this.commandUtils.set(message.id, message.util)
       }
