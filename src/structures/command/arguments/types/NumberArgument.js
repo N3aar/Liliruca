@@ -8,8 +8,8 @@ class NumberArgument extends BaseArgument {
       fixed: opts?.fixed ?? false,
       min: opts?.min ?? null,
       max: opts?.min ?? null,
-      forceMin: opts?.min ?? null,
-      forceMax: opts?.min ?? null
+      forceMin: opts?.forceMin ?? null,
+      forceMax: opts?.forceMax ?? null
     }
   }
 
@@ -28,12 +28,12 @@ class NumberArgument extends BaseArgument {
       throw new ArgumentError(ctx.t('errors:max', { count: opts.max }))
     }
 
-    if (opts.forceMax) {
-      return Math.min(number, opts.forceMax)
+    if (opts.forceMin && number < opts.forceMin) {
+      return opts.forceMin
     }
 
-    if (opts.forceMin) {
-      return Math.max(number, opts.forceMin)
+    if (opts.forceMax && number > opts.forceMax) {
+      return opts.forceMax
     }
 
     return number

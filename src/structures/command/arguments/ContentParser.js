@@ -1,7 +1,7 @@
 
-const REST_FLAG_OPTION_REGEX = flags => new RegExp(`\\s--(${flags})\\s(.{1,})(--)?`, 'i')
-const PHRASE_FLAG_OPTION_REGEX = flags => new RegExp(`\\s--(${flags})\\s(\\w{1,})(\\s)`, 'i')
 const FLAG_REGEX = flags => new RegExp(`\\s?--(${flags})`, 'i')
+const REST_FLAG_OPTION_REGEX = flags => new RegExp(`\\s?--(?:${flags})\\s(.{1,})`, 'i')
+const PHRASE_FLAG_OPTION_REGEX = flags => new RegExp(`\\s?--(?:${flags})\\s(\\w{1,})`, 'i')
 
 class ContentParser {
   static getFlagOption (content, flagOptionArg) {
@@ -12,8 +12,7 @@ class ContentParser {
       return null
     }
 
-    const [, flag, res] = result
-    const full = ` --${flag} ${res}`
+    const [full, res] = result
     const newContent = content.replace(full, '')
     return { newContent, res }
   }
