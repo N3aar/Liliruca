@@ -126,7 +126,7 @@ class CommandHandler extends BaseHandler {
     const missingPerms = this.runPermissionChecks(message, command)
     if (missingPerms) {
       const permissions = missingPerms.missing.map(perm => t(`permissions:${perm}`)).join(', ')
-      return message.util.send(t(`permissions:${missingPerms.type}`, { permissions }))
+      return message.util.send(`\\❌ | ${t(`permissions:${missingPerms.type}`, { permissions })}`)
     }
 
     message.guild = this.client.guilds.get(message.guildID)

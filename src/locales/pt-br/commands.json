@@ -295,7 +295,7 @@
         "success": "Energia foi restaurada com sucesso!"
     },
     "equip": {
-        "description": "Equipe suas ferramentas ou items",
+        "description": "Equipe suas ferramentas ou itens",
         "usage": "<id do item>",
         "noTool": "Este item não precisa ser equipado!",
         "success": "Ferramenta foi equipada com sucesso!"

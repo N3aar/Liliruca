@@ -6,7 +6,7 @@ class StringArgument extends BaseArgument {
     return {
       ...super.parseOptions(opts),
       minLength: opts?.minLength ?? null,
-      maxLength: opts?.minLength ?? null,
+      maxLength: opts?.maxLength ?? null,
       lowercase: !!opts?.lowercase,
       uppercase: !!opts?.uppercase
     }

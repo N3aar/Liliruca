@@ -1,5 +1,5 @@
 {
-    "userPermissions": "você não possui permissão de {{ userPermissions }}",
+    "userPermissions": "Você não possui permissão de {{ userPermissions }}",
     "clientPermissions":"Não possuo permissão de {{ clientPermissions }}",
     "devolperOnly": "Este comando é restrito apenas aos desenvolvedores!",
     "noPlace": "Me informe o local correto que você quer fazer esta melhoria!",
@@ -7,5 +7,14 @@
     "guildPermission": "Você não possui permissão nesta Guilda para isto.",
     "notFound": "Não encontrei",
     "noItem": "Digite o id do item corretamente!",
-    "noEnergy": "Você não tem energia suficiente para isso!"
+    "noEnergy": "Você não tem energia suficiente para isso!",
+    "itemTypeInvalid": "Item precisa ser do tipo correto!",
+    "itemToolInvalid": "Este item não é uma ferramenta!",
+    "itemNotCraftable": "Este item não pode ser criado!",
+    "itemNotForgeable": "Este item não pode ser forjado!",
+    "nothuman": "Membro não pode ser um robô!",
+    "min": "Digite valor mínimo de {{ count }} ou acima!",
+    "max": "Digite valor de até no máximo {{ count }}.",
+    "minLength": "Digite o texto com minimo de {{ count }} caracteres!",
+    "maxLength": "Digite o texto com no máximo {{ count }} caracteres!"
 }

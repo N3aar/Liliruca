@@ -7,5 +7,14 @@
     "guildPermission": "You do not have permission in this guild for this.",
     "notFound": "Not found",
     "noItem": "Type the item id correctly!",
-    "noEnergy": "You don't have enough energy for that!"
+    "noEnergy": "You don't have enough energy for that!",
+    "itemTypeInvalid": "Item must be of the correct type!",
+    "itemToolInvalid": "This item is not a tool!",
+    "itemNotCraftable": "This item cannot be created!",
+    "itemNotForgeable": "This item cannot be forged!",
+    "nothuman": "Member cannot be a bot!",
+    "min": "Type a minimum value of {{ count }} or above!",
+    "max": "Type a value of up to a maximum of {{ count }}!",
+    "minLength": "Type the text with a minimum of {{ count }} characters!",
+    "maxLength": "Type text with a maximum of {{ count }} characters!"
 }

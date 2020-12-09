@@ -1,6 +1,6 @@
 {
-  "client": "\\❌ Eu preciso de permissões para executar este comando! Faltando: `{{ permissions }}`",
-  "user": "\\❌ Você precisa de permissões para executar este comando! Faltando: `{{ permissions }}`",
+  "client": "Eu preciso de permissões para executar este comando! Faltando: `{{ permissions }}`",
+  "user": "Você precisa de permissões para executar este comando! Faltando: `{{ permissions }}`",
   "manageGuild": "Gerenciar Servidor",
   "embedLinks": "Inserir Links",
   "addReactions": "Adicionar Reações",
