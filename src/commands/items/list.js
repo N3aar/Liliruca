@@ -56,18 +56,18 @@ class List extends LilirucaCommand {
       return util.send(ct('noPage'))
     }
 
-    const fields = itemsIds.map(id => {
+    const list = itemsIds.map(id => {
       const item = getItem(id)
       const fields = List.getItemInfo(item, t, ct)
       const parseValue = value => /`/g.test(value) ? value : `\`${value}\``
       return {
         name: `${item.emoji} ${getItemName(id, t)}`,
-        value: fields.map(field => `**${field.name}**: ${parseValue(field.value)}`)
+        value: fields.map(field => `**${field.name}**: ${parseValue(field.value)}`).join('\n')
       }
     })
 
     const embed = new LilirucaEmbed()
-      .addFields(fields)
+      .addFields(list)
 
     util.send(`\\${pagecurl} ${ct('success', { page })}`, embed)
   }
@@ -83,7 +83,7 @@ class List extends LilirucaCommand {
 
     const items = getItemsByMaterialId(item.id)
     if (items.length) {
-      embed.addField(ct('usedIn'), items.map(([id, i]) => `**${i.emoji} ${getItemName(id, t)}** \`[${id}]\``), true)
+      embed.addField(ct('usedIn'), items.map(([id, i]) => `**${i.emoji} ${getItemName(id, t)}** \`[${id}]\``).join('\n'), true)
     }
 
     util.send(`\\📃 ${ct('itemProfile', { itemName })}`, embed)

@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
+const { getNickname, getPercentageFromSeason, calculateProduction } = require('@utils/util')
 const { getToolInInventory, getItemName } = require('@utils/items')
 const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, PLACES_BOOSTERS } = require('@constants/constant')
 const emojis = require('@constants/emojis')
@@ -106,7 +106,7 @@ class Stats extends LilirucaCommand {
       .addFields(stats)
       .setFooter(last)
 
-    util.send(`\\${emojis.graph} ${ct('success', { name: member.displayName })}`, embed)
+    util.send(`\\${emojis.graph} ${ct('success', { name: getNickname(member) })}`, embed)
   }
 }
 

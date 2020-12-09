@@ -1,6 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem } = require('@utils/items')
+const { getNickname } = require('@utils/util')
 const { backpack } = require('@constants/emojis')
 
 class Inventory extends LilirucaCommand {
@@ -52,7 +53,7 @@ class Inventory extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .setDescription(items.join('\n'))
 
-    util.send(`\\${backpack} ${ct('success', { member: member.displayName, page })}`, embed)
+    util.send(`\\${backpack} ${ct('success', { member: getNickname(member), page })}`, embed)
   }
 }
 

@@ -96,6 +96,13 @@ module.exports = {
       tags: [TEAM_MEMBER_TAGS.BACK_END],
       joined: 1599419160000,
       status: TEAM_MEMBER_STATUS.ACTIVE
+    },
+    {
+      name: 'Seraphim',
+      emoji: '<:seraphim:786091387530903572>',
+      tags: [TEAM_MEMBER_TAGS.DESIGNER],
+      joined: 1607313600000,
+      status: TEAM_MEMBER_STATUS.ACTIVE
     }
   ],
   CATEGORIES: [

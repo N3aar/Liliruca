@@ -20,14 +20,14 @@ class Calculate extends LilirucaCommand {
         {
           id: 'firstValue',
           type: 'number',
-          forceMax: 99999999,
+          forceMax: 99999,
           forceMin: 1,
           default: 1
         },
         {
           id: 'secondValue',
           type: 'number',
-          forceMax: 99999999,
+          forceMax: 99999,
           forceMin: 1,
           default: 1
         }

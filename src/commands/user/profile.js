@@ -2,6 +2,7 @@ const { createCanvas, loadImage } = require('canvas')
 const { createAttachment } = require('@utils/discordUtil')
 
 const LilirucaCommand = require('@structures/LilirucaCommand')
+const { getNickname } = require('@utils/util')
 const { picture } = require('@constants/emojis')
 
 class Profile extends LilirucaCommand {
@@ -30,7 +31,7 @@ class Profile extends LilirucaCommand {
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
-    const name = member.displayName
+    const name = getNickname(member)
     const avatarUrl = member.user.dynamicAvatarURL('png', 256)
     const bkg = data.background || 1
 
