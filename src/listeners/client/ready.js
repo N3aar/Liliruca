@@ -18,10 +18,8 @@ class ReadyListener extends LilirucaListener {
     SupportGuildUtil.rebootChannel(client, readyMessage)
 
     client.editStatus('online', {
-      game: {
-        name: `@${client.user.username} help`,
-        type: 0
-      }
+      name: `@${client.user.username} help`,
+      type: 0
     })
   }
 }
