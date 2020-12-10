@@ -48,10 +48,6 @@ class Util {
     return str[0].toUpperCase() + str.slice(1)
   }
 
-  static getNickname (member) {
-    return member && (member.nick || member.username)
-  }
-
   static random (max, min = 0, inclusive = false) {
     return Math.floor(Math.random() * (max - min + inclusive)) + min
   }

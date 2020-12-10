@@ -44,7 +44,7 @@ class Table extends LilirucaCommand {
         {
           id: 'place',
           type: 'place',
-          otherwise: message => message.ct('noPlace')
+          otherwise: message => message.t('errors:noPlace')
         }
       ],
       flags: [

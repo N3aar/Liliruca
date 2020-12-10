@@ -1,7 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { getNickname, getPercentageFromSeason, calculateProduction } = require('@utils/util')
+const { getNickname } = require('@utils/discordUtil')
+const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
 const { getToolInInventory, getItemName } = require('@utils/items')
 const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, PLACES_BOOSTERS } = require('@constants/constant')
 const emojis = require('@constants/emojis')
@@ -19,7 +20,8 @@ class Stats extends LilirucaCommand {
         {
           id: 'place',
           type: 'place',
-          default: 'farm'
+          default: 'farm',
+          otherwise: message => message.t('errors:noPlace')
         },
         {
           id: 'member',

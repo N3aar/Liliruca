@@ -7,7 +7,7 @@ class NumberArgument extends BaseArgument {
       ...super.parseOptions(opts),
       fixed: opts?.fixed ?? false,
       min: opts?.min ?? null,
-      max: opts?.min ?? null,
+      max: opts?.max ?? null,
       forceMin: opts?.forceMin ?? null,
       forceMax: opts?.forceMax ?? null
     }

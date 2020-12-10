@@ -303,6 +303,7 @@
     "give": {
         "description": "Dê dinheiro a outros usuários!",
         "usage": "<membro> <valor>",
+        "maxDonate": "{{ mention }} só pode receber no máximo {{ max }} em uma doação!",
         "noValue": "Digite um valor correto, acima de `${{- min }}`!",
         "noUser": "Mencione o usuário a que quer dar o dinheiro!",
         "noMoney": "Você não possui esta quantia de dinheiro!",

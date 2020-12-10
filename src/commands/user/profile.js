@@ -2,7 +2,7 @@ const { createCanvas, loadImage } = require('canvas')
 const { createAttachment } = require('@utils/discordUtil')
 
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { getNickname } = require('@utils/util')
+const { getNickname } = require('@utils/discordUtil')
 const { picture } = require('@constants/emojis')
 
 class Profile extends LilirucaCommand {

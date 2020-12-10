@@ -1,7 +1,7 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem } = require('@utils/items')
-const { getNickname } = require('@utils/util')
+const { getNickname } = require('@utils/discordUtil')
 const { backpack } = require('@constants/emojis')
 
 class Inventory extends LilirucaCommand {

@@ -1,6 +1,6 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { getNickname } = require('@utils/util')
+const { getNickname } = require('@utils/discordUtil')
 const { getItem, getItemName } = require('@utils/items')
 const { RARE_FISHES, STATISTICS_TYPES, STATISTICS_EMOJIS } = require('@constants/constant')
 const { graph, blowfish, fishs: { rare } } = require('@constants/emojis')

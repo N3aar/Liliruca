@@ -1,7 +1,8 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { GIVE_COOLDOWN, GIVE_TAX, GIVE_MIN } = require('@constants/constant')
+const { normalizeMention } = require('@utils/discordUtil')
+const { GIVE_COOLDOWN, GIVE_TAX, GIVE_MIN, PLACES } = require('@constants/constant')
 const { handshake, money, bank } = require('@constants/emojis')
 
 class Give extends LilirucaCommand {
@@ -45,9 +46,15 @@ class Give extends LilirucaCommand {
     }
 
     const receiverData = await db.users.ensure(mentionMember.id)
+    const level = PLACES.reduce((lv, pl) => lv + receiverData[pl].level, 0)
+    const max = 300 * level
     const donate = Math.floor(amount * GIVE_TAX)
-    const tax = Math.floor((1 - GIVE_TAX) * 100)
 
+    if (donate > max) {
+      return util.send(ct('maxDonate', { max: `\`$${max}\``, mention: normalizeMention(mentionMember) }))
+    }
+
+    const tax = Math.floor((1 - GIVE_TAX) * 100)
     const profile = [
       {
         name: `\\${money} ${t('commons:money')}`,
@@ -76,8 +83,8 @@ class Give extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(profile)
 
-    const giver = member.toString()
-    const receiver = mentionMember.toString()
+    const giver = normalizeMention(member)
+    const receiver = normalizeMention(mentionMember)
 
     util.send(`\\${handshake} ${ct('success', { giver, receiver, donate })}`, embed)
   }

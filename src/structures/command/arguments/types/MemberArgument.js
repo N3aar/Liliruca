@@ -1,6 +1,6 @@
 const BaseArgument = require('@structures/base/BaseArgument')
 const ArgumentError = require('../ArgumentError')
-const USER_ID_REGEX = /(\\d{17,19})/
+const USER_ID_REGEX = /(\d{17,19})/
 
 class MemberArgument extends BaseArgument {
   static parseOptions (opts) {
@@ -11,7 +11,8 @@ class MemberArgument extends BaseArgument {
   }
 
   static exec (arg, ctx, opts) {
-    const member = ctx.guild.members.get(arg.match(USER_ID_REGEX))
+    const memberId = USER_ID_REGEX.exec(arg)?.[0]
+    const member = ctx.guild.members.get(memberId)
 
     if (!member) {
       return null

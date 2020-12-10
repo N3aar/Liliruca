@@ -121,7 +121,7 @@ class CommandHandler extends BaseHandler {
     }
 
     if (command.ownerOnly && !this.client.owners.includes(message.author.id)) {
-      return message.util.send('Este comando é disponível apenas para desenvolvedores.')
+      return message.util.send(t('errors:devolperOnly'))
     }
 
     const missingPerms = this.runPermissionChecks(message, command)
@@ -152,7 +152,7 @@ class CommandHandler extends BaseHandler {
         return message.util.send(e.errorMessage)
       } else {
         this.client.logger.error(e)
-        message.util.send('iih deu erro crl')
+        message.util.send(`\\⚠️ ${t('errors:command_error')} \\😅`)
         SupportGuildUtil.errorChannel(this.client, message.guild, message.content, e.stack)
       }
     }
