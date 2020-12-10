@@ -1,28 +1,28 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, removeItem, addItemInInventory, autoEquipItem } = require('@utils/items')
-const { EMOJIS: { hammerwrench, items, money } } = require('@constants')
+const { hammerwrench, items, money } = require('@constants/emojis')
 
 class Craft extends LilirucaCommand {
   constructor () {
     super('craft', {
       aliases: ['cf'],
       emoji: hammerwrench,
-      editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.craftable),
+          type: 'item',
+          craftable: true,
           otherwise: message => message.ct('noCraftable')
         },
         {
           id: 'amount',
-          type: Argument.range('integer', 1, Infinity),
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]

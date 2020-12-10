@@ -1,19 +1,19 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getWeatherByDay } = require('@utils/util')
-const { WEATHERS, WEATHER_PERCENTAGE, PLACES, EMOJIS } = require('@constants')
+const { WEATHERS, WEATHER_PERCENTAGE, PLACES } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Days extends LilirucaCommand {
   constructor () {
     super('days', {
       aliases: ['dy'],
-      emoji: EMOJIS.cloudrain,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      emoji: emojis.cloudrain,
+      clientPermissions: 'embedLinks'
     })
   }
 
-  exec ({ client, t, ct, util }) {
+  exec ({ t, ct, util }) {
     const places = {
       farm: t('commons:farm'),
       fishing: t('commons:fishing'),
@@ -35,13 +35,13 @@ class Days extends LilirucaCommand {
       })
 
       return {
-        name: `**${EMOJIS[weather]} » ${weatherName}**`,
+        name: `**${emojis[weather]} » ${weatherName}**`,
         value: info.join('\n')
       }
     })
 
     const weather = getWeatherByDay()
-    const emoji = EMOJIS[weather]
+    const emoji = emojis[weather]
     const name = t(`commons:weathers.${weather}`)
     const current = ct('current', { emoji, weather: name })
 

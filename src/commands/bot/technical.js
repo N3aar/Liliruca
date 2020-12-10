@@ -1,22 +1,19 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { dependencies } = require('@package')
-const { EMOJIS: { wrench } } = require('@constants')
+const { VERSION } = require('eris')
+const { wrench } = require('@constants/emojis')
 
 class Technical extends LilirucaCommand {
   constructor () {
     super('technical', {
       aliases: ['tech'],
       emoji: wrench,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 
   exec ({ ct, client, util }) {
-    const djs = dependencies['discord.js']
-    const akairo = dependencies['discord-akairo']
-    const memoryUsage = (process.memoryUsage().heapUsed / 1048576).toFixed(2)
+    const memoryUsage = (process.memoryUsage().rss / 1048576).toFixed(2)
     const fields = [
       {
         name: '\\⚙️ Engine',
@@ -39,13 +36,13 @@ class Technical extends LilirucaCommand {
         inline: true
       },
       {
-        name: `\\📚 ${ct('library')}`,
-        value: `**Discord.js v${djs.replace('^', '')}**`,
+        name: `\\📡 ${ct('requests')}`,
+        value: `**${ct('requestCount', { count: client.requestCount.toLocaleString() })}**`,
         inline: true
       },
       {
-        name: '\\📦 Framework',
-        value: `**Discord Akairo v${akairo.replace('^', '')}**`,
+        name: `\\📚 ${ct('library')}`,
+        value: `**Eris v${VERSION}**`,
         inline: true
       }
     ]

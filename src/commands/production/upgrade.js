@@ -1,14 +1,14 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, removeItem } = require('@utils/items')
-const { PLACES, UPGRADE_PRICE, UPGRADE_MATERIALS, PLACE_MAX_LEVEL, EMOJIS: { gear } } = require('@constants')
+const { PLACES, UPGRADE_PRICE, UPGRADE_MATERIALS, PLACE_MAX_LEVEL } = require('@constants/constant')
+const { gear } = require('@constants/emojis')
 
 class Upgrade extends LilirucaCommand {
   constructor () {
     super('upgrade', {
       aliases: ['up'],
       emoji: gear,
-      editable: true,
       args: [
         {
           id: 'place',

@@ -1,9 +1,10 @@
 /* eslint-disable no-eval */
-const { WebhookClient } = require('discord.js')
 const { inspect } = require('util')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { EMBED_COLORS, EMOJIS: { wrench } } = require('@constants')
+const SupportGuildUtil = require('@utils/supportGuildUtil')
+const { EMBED_COLORS } = require('@constants/constant')
+const { wrench } = require('@constants/emojis')
 
 const codeBlock = (code, language) => `\`\`\`${language}\n${code}\n\`\`\``
 
@@ -11,13 +12,13 @@ class Eval extends LilirucaCommand {
   constructor () {
     super('eval', {
       emoji: wrench,
-      editable: true,
       ownerOnly: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'code',
-          match: 'content',
+          type: 'string',
+          match: 'rest',
           otherwise: 'Digite um código a ser executado!'
         }
       ]
@@ -28,11 +29,11 @@ class Eval extends LilirucaCommand {
     const embed = new LilirucaEmbed()
     const text = code.replace(/^`(``(js|javascript)?\s?)?|`(``)?$/g, '')
 
-    Eval.emitLog(author, guild, text)
+    SupportGuildUtil.evalIntegration(client, author, guild.name, codeBlock(code))
 
     try {
       const evald = await eval(text)
-      const toEval = inspect(evald, { depth: 0 })
+      const toEval = inspect(evald, { depth: 0 }).substring(0, 2000)
       embed
         .setDescription(codeBlock(toEval, 'js'))
         .setColor(EMBED_COLORS.success)
@@ -49,16 +50,6 @@ class Eval extends LilirucaCommand {
     } finally {
       util.send(embed)
     }
-  }
-
-  static emitLog (author, guild, code) {
-    const webhook = new WebhookClient(process.env.WK_EVAL_ID, process.env.WK_EVAL_TOKEN)
-    const embed = new LilirucaEmbed()
-      .setAuthor(author.tag, author.displayAvatarURL({ format: 'png', size: 4096 }))
-      .setDescription(codeBlock(code))
-      .setFooter(`${guild.name}`)
-
-    webhook.send(embed)
   }
 }
 

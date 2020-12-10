@@ -2,7 +2,7 @@ const i18n = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const { readdirSync } = require('fs')
 const logger = require('@utils/logger')
-const { DEFAULT_LANGUAGE } = require('@constants')
+const { DEFAULT_LANGUAGE } = require('@constants/constant')
 
 class Locales {
   static loadAll () {
@@ -26,6 +26,10 @@ class Locales {
 
   static getT (language, ns) {
     return i18n.getFixedT(language, ns)
+  }
+
+  static getCt (t, command) {
+    return (tPath, tOptions) => t(`commands:${command.id}.${tPath}`, tOptions)
   }
 
   static get languages () {

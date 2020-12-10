@@ -1,19 +1,20 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { backgrounds, EMOJIS: { card } } = require('@constants')
+const backgrounds = require('@constants/backgrounds')
+const { card } = require('@constants/emojis')
 
 class Backgrounds extends LilirucaCommand {
   constructor () {
     super('backgrounds', {
       aliases: ['bs'],
       emoji: card,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'id',
-          type: Argument.range('integer', 1, backgrounds.length, true),
+          type: 'number',
+          forceMin: 1,
+          forceMax: backgrounds.length,
           default: 1
         }
       ]

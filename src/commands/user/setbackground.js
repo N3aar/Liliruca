@@ -1,18 +1,19 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { removeItem } = require('@utils/items')
-const { backgrounds, EMOJIS: { paintbrush } } = require('@constants')
+const { length } = require('@constants/backgrounds')
+const { paintbrush } = require('@constants/emojis')
 
 class Setbackground extends LilirucaCommand {
   constructor () {
     super('setbackground', {
       aliases: ['sb'],
       emoji: paintbrush,
-      editable: true,
       args: [
         {
           id: 'id',
-          type: Argument.range('integer', 1, backgrounds.length, true),
+          type: 'number',
+          min: 1,
+          max: length,
           otherwise: message => message.ct('invalidNumber')
         }
       ]
@@ -22,7 +23,7 @@ class Setbackground extends LilirucaCommand {
   async exec ({ ct, db, member, util }, { id }) {
     const data = await db.users.ensure(member.id)
 
-    if (data.background === id) {
+    if (data.background === id || (!data.background && id === 1)) {
       return util.send(ct('already'))
     }
 

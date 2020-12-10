@@ -1,15 +1,14 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { getStoragePrice } = require('@utils/util')
 const { getItemName, removeItem } = require('@utils/items')
-const { STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS: { storage } } = require('@constants')
+const { STORAGE_PRICES, UPGRADE_MATERIALS } = require('@constants/constant')
+const { storage } = require('@constants/emojis')
 
 class Storage extends LilirucaCommand {
   constructor () {
     super('storage', {
       aliases: ['sg'],
       emoji: storage,
-      editable: true,
       args: [
         {
           id: 'place',
@@ -18,7 +17,8 @@ class Storage extends LilirucaCommand {
         },
         {
           id: 'levels',
-          type: Argument.range('integer', 1, 1000000),
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]

@@ -1,42 +1,45 @@
-const { MessageAttachment } = require('discord.js')
-const { Argument } = require('discord-akairo')
 const { createCanvas, loadImage } = require('canvas')
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { PLACES, LEADERBOARD_TYPES, EMOJIS: { trophy } } = require('@constants')
+const { createAttachment, fetchUser } = require('@utils/discordUtil')
+const { PLACES, LEADERBOARD_TYPES } = require('@constants/constant')
+const { trophy } = require('@constants/emojis')
 
 class Leaderboard extends LilirucaCommand {
   constructor () {
     super('leaderboard', {
       aliases: ['lb', 'ranking', 'rank'],
       emoji: trophy,
-      editable: true,
+      editable: false,
       typing: true,
-      clientPermissions: 'ATTACH_FILES',
+      clientPermissions: 'attachFiles',
       args: [
         {
           id: 'type',
-          type: Argument.union(LEADERBOARD_TYPES, 'place'),
+          type: ['option', 'place'],
+          options: LEADERBOARD_TYPES,
           otherwise: message => message.ct('error', { types: LEADERBOARD_TYPES.join(' | ') })
-        },
-        {
-          id: 'page',
-          match: 'option',
-          flag: ['--page', '--p'],
-          type: Argument.range('integer', 1, 50, true),
-          default: 1
-        },
-        {
-          id: 'guildOnly',
-          match: 'flag',
-          flag: '--guild'
         }
+      ],
+      flags: [{
+        id: 'page',
+        flags: ['page', 'p'],
+        flagType: 'option',
+        type: 'number',
+        forceMin: 1,
+        forceMax: 50,
+        default: 1
+      },
+      {
+        id: 'guildOnly',
+        flags: ['guild']
+      }
       ]
     })
   }
 
   async exec ({ t, ct, client, guild, util, db }, { type, page, guildOnly }) {
     const parsedType = this.parseTypes(type)
-    const ids = guildOnly && guild.members.cache.map(member => member.id)
+    const ids = guildOnly && guild.members.map(member => member.id)
     const data = await db.users.ranking(parsedType, ids, 5, 5 * (page - 1))
 
     if (data.length < 5) {
@@ -50,13 +53,12 @@ class Leaderboard extends LilirucaCommand {
     const ctx = canvas.getContext('2d')
 
     const template = await loadImage('src/assets/leaderboard/template.png')
-
-    const users = await Promise.all(data.map(doc => (client.users.fetch(doc.id))))
+    const users = await Promise.all(data.map(doc => fetchUser(client, doc.id)))
 
     let index = 0
 
     for await (const user of users) {
-      const avatar = await loadImage(user.displayAvatarURL({ format: 'png', size: 64 }))
+      const avatar = await loadImage(user.dynamicAvatarURL('png', 64))
       ctx.drawImage(avatar, 61, 61 + (54 * index), 44, 44)
       index++
     }
@@ -79,7 +81,7 @@ class Leaderboard extends LilirucaCommand {
       ctx.fillText(parsed, position, 89 + espace)
     }
 
-    const attach = new MessageAttachment(canvas.toBuffer(), 'leaderboard.png')
+    const attach = createAttachment(canvas.toBuffer(), 'leaderboard.png')
     const parsed = t(`commons:${PLACES.includes(type) ? 'storages.' : ''}${type}`)
 
     util.send(`\\${trophy} ${ct('success', { type: parsed, page })}`, attach)

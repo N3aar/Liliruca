@@ -1,31 +1,29 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { parseDuration } = require('@utils/date')
-const { getPercentageFromSeason, calculateProduction } = require('@utils/util')
+const { getNickname, getPercentageFromSeason, calculateProduction } = require('@utils/util')
 const { getToolInInventory, getItemName } = require('@utils/items')
-const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, PLACES_BOOSTERS, EMOJIS } = require('@constants')
+const { PLACES_RESOURCES, PLACE_GENERATE, STORAGES_SIZE, PRODUCTION_LIMIT, PLACES_BOOSTERS } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Stats extends LilirucaCommand {
   constructor () {
     super('stats', {
       aliases: ['st'],
-      emoji: EMOJIS.graph,
-      editable: true,
+      emoji: emojis.graph,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {
           id: 'place',
           type: 'place',
-          default: 'farm',
-          unordered: true
+          default: 'farm'
         },
         {
           id: 'member',
-          type: 'realMember',
-          unordered: true,
+          type: 'member',
           default: message => message.member
         }
       ]
@@ -56,22 +54,22 @@ class Stats extends LilirucaCommand {
     const percentage = Math.floor((produced / limit) * 100)
 
     const resource = PLACES_RESOURCES[place]
-    const emojis = EMOJIS[resource]
-    const resourceEmoji = emojis[Math.floor(Math.random() * emojis.length)]
+    const emojisResource = emojis[resource]
+    const resourceEmoji = emojisResource[Math.floor(Math.random() * emojisResource.length)]
 
     const stats = [
       {
-        name: `\\${EMOJIS.money} ${t('commons:money')}`,
+        name: `\\${emojis.money} ${t('commons:money')}`,
         value: `**$${data.money.toLocaleString()}**`,
         inline: true
       },
       {
-        name: `\\${EMOJIS[place]} ${t(`commons:${place}`)}`,
+        name: `\\${emojis[place]} ${t(`commons:${place}`)}`,
         value: `**${t('commons:level', { level: dataPlace.level })}**`,
         inline: true
       },
       {
-        name: `\\${EMOJIS.storage} ${t('commons:storage')}`,
+        name: `\\${emojis.storage} ${t('commons:storage')}`,
         value: `**${t('commons:level', { level: dataPlace.storage })}**`,
         inline: true
       },
@@ -81,12 +79,12 @@ class Stats extends LilirucaCommand {
         inline: true
       },
       {
-        name: `\\${EMOJIS.produced} ${t('commons:produced')}`,
+        name: `\\${emojis.produced} ${t('commons:produced')}`,
         value: `**${produced.toLocaleString()}/${limit.toLocaleString()} (${percentage}%)**`,
         inline: true
       },
       {
-        name: `\\${EMOJIS.production} ${t('commons:production')}`,
+        name: `\\${emojis.production} ${t('commons:production')}`,
         value: `**${ct('production', { generation, max: productionLimit })}**`,
         inline: true
       }
@@ -108,7 +106,7 @@ class Stats extends LilirucaCommand {
       .addFields(stats)
       .setFooter(last)
 
-    util.send(`\\${EMOJIS.graph} ${ct('success', { name: member.displayName })}`, embed)
+    util.send(`\\${emojis.graph} ${ct('success', { name: getNickname(member) })}`, embed)
   }
 }
 

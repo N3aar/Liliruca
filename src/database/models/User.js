@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose')
-const { PLACE_START_LEVEL, PLACE_MAX_LEVEL, PLACE_MIN_LEVEL } = require('@constants')
+const { PLACE_START_LEVEL, PLACE_MAX_LEVEL, PLACE_MIN_LEVEL } = require('@constants/constant')
 
 const UserSchema = new Schema({
   _id: { type: String, required: true },

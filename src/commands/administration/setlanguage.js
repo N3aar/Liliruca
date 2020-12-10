@@ -1,26 +1,25 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { languages } = require('@utils/locales')
-const { EMOJIS: { books } } = require('@constants')
+const { books } = require('@constants/emojis')
 
 class SetLanguage extends LilirucaCommand {
   constructor () {
     super('setlanguage', {
       aliases: ['language', 'lang', 'setlang'],
       emoji: books,
-      userPermissions: 'MANAGE_GUILD',
-      editable: true,
+      userPermissions: 'manageGuild',
       args: [
         {
           id: 'language',
-          type: languages,
-          otherwise: message => message.ct('error', { languages: languages.map(l => `\`${l}\``).join(', ') })
+          type: 'option',
+          options: ({ client }) => client.locales.languages,
+          otherwise: message => message.ct('error', { languages: message.client.locales.languages.map(l => `\`${l}\``).join(', ') })
         }
       ]
     })
   }
 
   async exec ({ client, db, guild, util }, { language }) {
-    await db.guilds.updateOne(guild.id, language, 'language')
+    await db.guilds.updateOne(guild.id, 'language', language)
     const t = client.locales.getT(language)
     util.send(`\\💬 ${t('commands:setlanguage.success', { language })}`)
   }

@@ -1,4 +1,4 @@
-const { loadTypes } = require('./utils/items')
+const { loadTypes } = require('./../items')
 
 const TEAM_MEMBER_STATUS = {
   ACTIVE: 'active',
@@ -7,7 +7,7 @@ const TEAM_MEMBER_STATUS = {
 
 const TEAM_MEMBER_TAGS = {
   OWNER: '\\👑 Owner',
-  BACK_END: '\\📕 Back-end',
+  BACK_END: '\\📙 Back-end',
   FRONT_END: '\\📘 Front-end',
   DESIGNER: '\\🎨 Designer'
 }
@@ -50,10 +50,10 @@ module.exports = {
   PREFIX_MAX_LIMIT: 5,
   DEFAULT_LANGUAGE: 'pt-br',
   EMBED_COLORS: {
-    default: '#ff9900',
-    success: '#0aa329',
-    error: '#db3939',
-    warn: '#ebe728'
+    default: 0xff9900,
+    success: 0x0aa329,
+    error: 0xdb3939,
+    warn: 0xebe728
   },
   OWNER_IDS: [
     '158001949415833600',
@@ -95,6 +95,13 @@ module.exports = {
       emoji: '<:psyka:758075415607640124>',
       tags: [TEAM_MEMBER_TAGS.BACK_END],
       joined: 1599419160000,
+      status: TEAM_MEMBER_STATUS.ACTIVE
+    },
+    {
+      name: 'Seraphim',
+      emoji: '<:seraphim:786091387530903572>',
+      tags: [TEAM_MEMBER_TAGS.DESIGNER],
+      joined: 1607313600000,
       status: TEAM_MEMBER_STATUS.ACTIVE
     }
   ],
@@ -146,11 +153,6 @@ module.exports = {
     fish: { min: 1, max: 20, price: 20 },
     trash: { min: 1, max: 5, price: 2 },
     treasure: { min: 10, max: 40 }
-  },
-  PLACES_ALIASES: {
-    [PLACE_NAMES.FARM]: ['farm', 'fm', 'fazenda'],
-    [PLACE_NAMES.FISHING]: ['fishing', 'fs', 'pescaria'],
-    [PLACE_NAMES.MINING]: ['mining', 'mn', 'mineradora']
   },
   PLACES_RESOURCES: {
     [PLACE_NAMES.FARM]: RESOURCE_NAMES.FOOD,
@@ -232,10 +234,10 @@ module.exports = {
     }
   },
   WEATHERS_COLORS: {
-    [WEATHER_NAMES.SUNNY]: '#FFD335',
-    [WEATHER_NAMES.RAINY]: '#00B2FF',
-    [WEATHER_NAMES.CLOUDY]: '#F2FFFF',
-    [WEATHER_NAMES.STORM]: '#00007A'
+    [WEATHER_NAMES.SUNNY]: 0xFFD335,
+    [WEATHER_NAMES.RAINY]: 0x00B2FF,
+    [WEATHER_NAMES.CLOUDY]: 0xF2FFFF,
+    [WEATHER_NAMES.STORM]: 0x00007A
   },
   SEASONS_PERCENTAGE: {
     [SEASON_NAMES.SPRING]: {
@@ -260,10 +262,10 @@ module.exports = {
     }
   },
   SEASONS_COLORS: {
-    [SEASON_NAMES.SPRING]: '#fe8afa',
-    [SEASON_NAMES.SUMMER]: '#fbce18',
-    [SEASON_NAMES.AUTUMN]: '#ab7f4f',
-    [SEASON_NAMES.WINTER]: '#00ccff'
+    [SEASON_NAMES.SPRING]: 0xfe8afa,
+    [SEASON_NAMES.SUMMER]: 0xfbce18,
+    [SEASON_NAMES.AUTUMN]: 0xab7f4f,
+    [SEASON_NAMES.WINTER]: 0x00ccff
   },
   STATISTICS_TYPES: {
     axe: [
@@ -306,188 +308,5 @@ module.exports = {
     trash: '🗑️',
     treasure: '💰'
   },
-  EMOJIS: {
-    money: '💰',
-    lilistars: '⭐',
-    month: '📅',
-    cloud: '☁️',
-    spring: '🌺',
-    summer: '☀️',
-    autumn: '🍂',
-    winter: '❄️',
-    key: '🔑',
-    papyrus: '📜',
-    clipboard: '📋',
-    clock: '⏰',
-    pencil: '✏️',
-    picture: '🖼️',
-    books: '📚',
-    backpack: '🎒',
-    gift: '🎁',
-    graph: '📊',
-    handshake: '🤝',
-    bank: '🏦',
-    shopcart: '🛒',
-    antenna: '📡',
-    lamp: '💡',
-    beatingHeart: '💓',
-    abacus: '🧮',
-    bookmark: '🔖',
-    trophy: '🏆',
-    axe: '🪓',
-    fire: '🔥',
-    pack: '📦',
-    nut: '🔩',
-    wrench: '🔧',
-    hammerwrench: '🛠️',
-    gear: '⚙️',
-    battery: '🔋',
-    voltage: '⚡',
-    drink: '🥤',
-    locked: '🔒',
-    open: '🔓',
-    news: '🆕',
-    pagecurl: '📃',
-    card: '🎴',
-    paintbrush: '🖌️',
-    blowfish: '🐡',
-    star: '⭐',
-    glowingstar: '🌟',
-    farm: '🌳',
-    fishing: '⛵',
-    mining: '⛏',
-    food: ['🥕', '🌽', '🍅', '🍍', '🍆', '🥔', '🥒', '🥦'],
-    fish: ['🐟', '🐠', '🦐', '🐡', '🦀', '🦑', '🐙'],
-    metal: ['💎'],
-    storage: '📥',
-    fishingpole: '🎣',
-    balance: '⚖️',
-    umbrella: '☂️',
-    cloudrain: '⛅',
-    cloudy: '☁️',
-    storm: '⛈️',
-    rainy: '🌧️',
-    sunny: '🌤️',
-    produced: '📬',
-    production: '🏭',
-    user: '🎓',
-    rewards: '🎁',
-    items: '🧰',
-    time: '🌦️',
-    administration: '🔧',
-    bot: '🤖',
-    others: '🔍',
-    fishs: {
-      fish: [
-        '<:fish_1:763957178523451453>',
-        '<:fish_2:763957215556010055>',
-        '<:fish_3:763957241711689738>',
-        '<:fish_4:763957268009320478>',
-        '<:fish_5:763957649313628171>'
-      ],
-      treasure: [
-        '<:treasure_chest_2:763957075914653797>',
-        '<:treasure_chest:763957075776241684>',
-        '<:treasure:763957075926843442>'
-      ],
-      trash: [
-        '<:trashbanana:763957773020823552>',
-        '<:trashboot:763957773229621288>',
-        '<:brokenglasses:763957773549436998>',
-        '<:brokenbottle:763957773431603210>'
-      ],
-      rare: {
-        anglerfish: '<:anglerfish:763957907430703135>',
-        eel: '<:eel:763957907838468096>',
-        goldenfish: '<:goldenfish:763957908190265394>',
-        mantaray: '<:mantaray:763957909272788992>',
-        marlin: '<:marlin:763957909821718549>',
-        octopus: '<:octopus:763957910681419796>',
-        pufferfish: '<:pufferfish:763957909972320277>',
-        squid: '<:squid:763957908970668034>'
-      }
-    }
-  },
-  backgrounds: [
-    '776939404417171466/1.png',
-    '776939411383779368/2.png',
-    '776939417323569162/3.png',
-    '776939423823691806/4.png',
-    '776939430622658600/5.png',
-    '776939435090509845/6.png',
-    '776939438491566080/7.png',
-    '776939444191756308/8.png',
-    '776939448776654858/9.png',
-    '776939456585269289/10.png',
-    '776939460469325844/11.png',
-    '776939465116745738/12.png',
-    '776939484188246046/13.png',
-    '776939489079066634/14.png',
-    '776939502605303818/15.png',
-    '776939524097310820/16.png',
-    '776939547384348672/17.png',
-    '776939553982251078/18.png',
-    '776939560637693952/19.png',
-    '776939573593899058/20.png',
-    '776939581207085058/21.png',
-    '776939586823651368/22.png',
-    '776939592603533322/23.png',
-    '776939599053717504/24.png',
-    '776939605811396648/25.png',
-    '776939613162962964/26.png',
-    '776939619429515274/27.png',
-    '776939626396123146/28.png',
-    '776940446315970570/29.png',
-    '776940452870881310/30.png',
-    '776940460970344448/31.png',
-    '776940473314050048/32.png',
-    '776940492877201460/33.png',
-    '776940502116990976/34.png',
-    '776940507908538469/35.png',
-    '776940519980400640/36.png',
-    '776940529689690143/37.png',
-    '776940547578527774/38.png',
-    '776940553786621952/39.png',
-    '776940561600086016/40.png',
-    '776940567179296818/41.png',
-    '776940572245753906/42.png',
-    '776940576439926824/43.png',
-    '776940582353371146/44.png',
-    '776940587886182400/45.png',
-    '776940595599507476/46.png',
-    '776940602235027487/47.png',
-    '776940610149023784/48.png',
-    '776940618202611722/49.png',
-    '776940625785520139/50.png',
-    '776940632731418684/51.png',
-    '776940644471013376/52.png',
-    '776940650347888741/53.png',
-    '776940658677252146/54.png',
-    '776940665098469396/55.png',
-    '776940673814495292/56.png',
-    '776940683159142421/57.png',
-    '776940693770993674/58.png',
-    '776940702222516224/59.png',
-    '776940708271095808/60.png',
-    '776940712524644402/61.png',
-    '776940717238910986/62.png',
-    '776940723722256384/63.png',
-    '776940729352060938/64.png',
-    '776940742307348540/65.png',
-    '776940749354172457/66.png',
-    '776940754857361408/67.png',
-    '776940760255168612/68.png',
-    '776940764864708638/69.png',
-    '776940768388186122/70.png',
-    '776940775883669574/71.png',
-    '776940783513108490/72.png',
-    '776940793058426950/73.png',
-    '776940800918814740/74.png',
-    '776940809085780039/75.png',
-    '776940820761673788/76.png',
-    '776940823987879946/77.png',
-    '776940829901062164/78.png',
-    '776940835698376764/79.png',
-    '776940843793776660/80.png'
-  ]
+  ARGUMENT_MATCH_TYPES: ['phrase', 'option', 'flag', 'rest']
 }

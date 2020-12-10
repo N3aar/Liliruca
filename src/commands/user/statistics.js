@@ -1,25 +1,27 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
+const { getNickname } = require('@utils/util')
 const { getItem, getItemName } = require('@utils/items')
-const { RARE_FISHES, STATISTICS_EMOJIS, STATISTICS_TYPES, EMOJIS: { graph, blowfish, fishs: { rare } } } = require('@constants')
+const { RARE_FISHES, STATISTICS_TYPES, STATISTICS_EMOJIS } = require('@constants/constant')
+const { graph, blowfish, fishs: { rare } } = require('@constants/emojis')
 
 class Statistics extends LilirucaCommand {
   constructor () {
     super('statistics', {
       aliases: ['sc'],
       emoji: graph,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'member',
-          type: 'realMember',
+          type: 'member',
           default: message => message.member
-        },
+        }
+      ],
+      flags: [
         {
           id: 'showOnlyFish',
-          match: 'flag',
-          flag: '--rares'
+          flags: ['rares']
         }
       ]
     })
@@ -76,7 +78,7 @@ class Statistics extends LilirucaCommand {
       .addFields(fields)
       .setFooter(ct('purchased'))
 
-    util.send(`\\${graph} ${ct('success', { member: member.displayName })}`, embed)
+    util.send(`\\${graph} ${ct('success', { member: getNickname(member) })}`, embed)
   }
 
   static showRareFishs (values, util, t, ct, member) {
@@ -91,7 +93,7 @@ class Statistics extends LilirucaCommand {
       .setDescription(list)
       .setFooter(`Total: ${values.rare}`)
 
-    util.send(`\\${blowfish} ${ct('rareFishs', { member: member.displayName })}`, embed)
+    util.send(`\\${blowfish} ${ct('rareFishs', { member: getNickname(member) })}`, embed)
   }
 }
 

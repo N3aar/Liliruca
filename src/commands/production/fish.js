@@ -1,34 +1,37 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
 const { removeItem, getToolInInventory, addItemInInventory, addMultipleItemsInInventory } = require('@utils/items')
-const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST, EMOJIS: { fishs, money, balance, fishingpole } } = require('@constants')
+const { RARE_FISHES, WEIGHTS, TREASURE, ENERGY_COST } = require('@constants/constant')
+const { fishs, money, balance, fishingpole } = require('@constants/emojis')
 
 class Fish extends LilirucaCommand {
   constructor () {
     super('fish', {
       aliases: ['fh'],
       emoji: fishingpole,
-      editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {
           id: 'uses',
-          type: Argument.range('integer', 1, 10, true),
+          type: 'number',
+          forceMax: 10,
+          forceMin: 1,
           default: 1
         },
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.tool === 'baits')
-        },
+          type: 'item',
+          itemType: 'baits'
+        }
+      ],
+      flags: [
         {
           id: 'all',
-          match: 'flag',
-          flag: '--all'
+          flags: ['all', 'a']
         }
       ]
     })

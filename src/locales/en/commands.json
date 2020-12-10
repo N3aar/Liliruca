@@ -8,7 +8,7 @@
     "setprefix": {
         "description": "Place a custom prefix for the commands on your server, but be sure to notify your server members about this new prefix! 😉",
         "usage": "<prefix>",
-        "error": "Type a valid prefix! **[{{max}}]** character limit.",
+        "error": "Type the prefix next to the command!",
         "success": "Prefix changed successfully to `{{- prefix }}`!"
     },
     "settimer": {
@@ -46,7 +46,9 @@
     "technical": {
         "description": "Technical information about the bot",
         "events": "Events",
-        "eventCount": "{{ count }} Executed events",
+        "requests": "Requests",
+        "eventCount": "{{ count }} Received events",
+        "requestCount": "{{ count }} Executed requests",
         "library": "Library",
         "database": "Database",
         "memoryUsage": "Memory Usage",

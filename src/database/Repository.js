@@ -31,7 +31,7 @@ class Repository {
     return data
   }
 
-  async updateOne (id, value, key) {
+  async updateOne (id, key, value) {
     const data = await this.get(id)
 
     data[key] = value

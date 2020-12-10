@@ -1,28 +1,28 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem, removeItem, addItemInInventory } = require('@utils/items')
-const { EMOJIS: { fire, money } } = require('@constants')
+const { fire, money } = require('@constants/emojis')
 
 class Forge extends LilirucaCommand {
   constructor () {
     super('forge', {
       aliases: ['fg'],
       emoji: fire,
-      editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {
           id: 'ore',
-          type: Argument.validate('item', (m, p, value) => value.forge),
+          type: 'item',
+          forgeable: true,
           otherwise: message => message.ct('noOre')
         },
         {
           id: 'amount',
-          type: Argument.range('integer', 1, Infinity),
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]

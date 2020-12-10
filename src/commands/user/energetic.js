@@ -1,20 +1,19 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getToolInInventory, removeItem } = require('@utils/items')
-const { EMOJIS: { drink, voltage } } = require('@constants')
+const { drink, voltage } = require('@constants/emojis')
 
 class Energetic extends LilirucaCommand {
   constructor () {
     super('energetic', {
       aliases: ['et'],
       emoji: drink,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.tool === 'energetic')
+          type: 'item',
+          itemTool: 'energetic'
         }
       ]
     })

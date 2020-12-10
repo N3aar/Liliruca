@@ -1,24 +1,25 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random, randomChances } = require('@utils/util')
-const { items, getItemName, getItem, addItemInInventory, removeItem } = require('@utils/items')
-const { PLACES, STORAGES_SIZE, PLACES_RESOURCES, EMOJIS } = require('@constants')
+const { getItemName, getItem, addItemInInventory, removeItem } = require('@utils/items')
+const { PLACES, STORAGES_SIZE, PLACES_RESOURCES } = require('@constants/constant')
+const items = require('@items')
+const emojis = require('@constants/emojis')
 
 class Box extends LilirucaCommand {
   constructor () {
     super('box', {
       aliases: ['bx'],
-      emoji: EMOJIS.gift,
-      editable: true,
+      emoji: emojis.gift,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {
           id: 'box',
-          type: Argument.validate('item', (m, p, value) => value.type === 'box'),
+          type: 'item',
+          itemType: 'box',
           otherwise: message => message.t('errors:noItem')
         }
       ]
@@ -37,7 +38,7 @@ class Box extends LilirucaCommand {
     const item = box.rewards[itemReward]
     const reward = packer ? packer(item, data, t) : {}
 
-    const emoji = reward.emoji || `\\${EMOJIS[itemReward]}`
+    const emoji = reward.emoji || `\\${emojis[itemReward]}`
     const value = reward.value || random(item.max, item.min, true)
     const type = reward.type || t(`commons:${itemReward}`)
 
@@ -65,7 +66,7 @@ class Box extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(fields)
 
-    util.send(`\\${EMOJIS.gift} ${ct('success')}`, embed)
+    util.send(`\\${emojis.gift} ${ct('success')}`, embed)
   }
 
   item (_, data, t) {
@@ -86,7 +87,7 @@ class Box extends LilirucaCommand {
     const filter = PLACES.filter(place => data[place].level)
     const place = filter[random(filter.length)]
     const resource = PLACES_RESOURCES[place]
-    const emojis = EMOJIS[resource]
+    const emoji = emojis[resource]
     const amount = random(item.max, item.min, true)
     const dataPlace = data[place]
     const limit = dataPlace.storage * STORAGES_SIZE[place]
@@ -95,7 +96,7 @@ class Box extends LilirucaCommand {
     dataPlace.amount += total
 
     return {
-      emoji: `\\${emojis[random(emojis.length)]}`,
+      emoji: `\\${emoji[random(emoji.length)]}`,
       value: amount,
       type: t(`commons:${resource}`)
     }

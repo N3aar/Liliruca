@@ -1,17 +1,16 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, getItem } = require('@utils/items')
-const { EMOJIS: { items } } = require('@constants')
+const { items } = require('@constants/emojis')
 
 class Tools extends LilirucaCommand {
   constructor () {
     super('tools', {
       aliases: ['tl'],
       emoji: items,
-      editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ]
     })
   }

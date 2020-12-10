@@ -1,11 +1,28 @@
 const dayjs = require('dayjs')
 
-// Locales
 require('dayjs/locale/en')
 require('dayjs/locale/pt-br')
 
-// Plugins
-function loadAllPlugins () {
+class FormatDate {
+  static parseDuration (time, language) {
+    return dayjs.duration(time).locale(language).humanize()
+  }
+
+  static displayDate (time, language, format = 'L') {
+    return dayjs(time).locale(language).format(format)
+  }
+
+  static getDuration (timestamp) {
+    const date = dayjs.duration(timestamp)
+    return {
+      hours: Math.floor(date.asHours()),
+      minutes: Math.floor(date.minutes())
+    }
+  }
+}
+
+// Load Plugins
+(() => {
   const plugins = [
     'duration',
     'relativeTime',
@@ -16,28 +33,6 @@ function loadAllPlugins () {
     const plugin = require(`dayjs/plugin/${name}`)
     dayjs.extend(plugin)
   }
-}
+})()
 
-function parseDuration (time, language) {
-  return dayjs.duration(time).locale(language).humanize()
-}
-
-function displayDate (time, language, format = 'L') {
-  return dayjs(time).locale(language).format(format)
-}
-
-function getDuration (timestamp) {
-  const date = dayjs.duration(timestamp)
-  return {
-    hours: Math.floor(date.asHours()),
-    minutes: Math.floor(date.minutes())
-  }
-}
-
-loadAllPlugins()
-
-module.exports = {
-  parseDuration,
-  displayDate,
-  getDuration
-}
+module.exports = FormatDate

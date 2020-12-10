@@ -1,15 +1,15 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getWeatherByDay } = require('@utils/util')
-const { EMOJIS, WEATHERS_COLORS } = require('@constants')
+const { WEATHERS_COLORS } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Weather extends LilirucaCommand {
   constructor () {
     super('weather', {
       aliases: ['wr'],
-      emoji: EMOJIS.umbrella,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      emoji: emojis.umbrella,
+      clientPermissions: 'embedLinks'
     })
   }
 
@@ -28,12 +28,12 @@ class Weather extends LilirucaCommand {
     const seasons = [
       {
         name: ct('current'),
-        value: `**${EMOJIS[weather]} ${weatherName}**`,
+        value: `**${emojis[weather]} ${weatherName}**`,
         inline: true
       },
       {
         name: ct('next'),
-        value: `**${EMOJIS[weatherNext]} ${weatherNextName}**`,
+        value: `**${emojis[weatherNext]} ${weatherNextName}**`,
         inline: true
       }
     ]
@@ -42,7 +42,7 @@ class Weather extends LilirucaCommand {
       .setColor(WEATHERS_COLORS[weather])
       .addFields(seasons)
 
-    util.send(`\\${EMOJIS.umbrella} ${ct('success')}`, embed)
+    util.send(`\\${emojis.umbrella} ${ct('success')}`, embed)
   }
 }
 

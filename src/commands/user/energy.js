@@ -1,13 +1,13 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { parseDuration } = require('@utils/date')
-const { ENERGY_COOLDOWN, EMOJIS: { battery } } = require('@constants')
+const { ENERGY_COOLDOWN } = require('@constants/constant')
+const { battery } = require('@constants/emojis')
 
 class Energy extends LilirucaCommand {
   constructor () {
     super('energy', {
       aliases: ['eg'],
-      emoji: battery,
-      editable: true
+      emoji: battery
     })
   }
 

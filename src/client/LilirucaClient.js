@@ -1,109 +1,38 @@
-const { join } = require('path')
 const { readdirSync } = require('fs')
 const { registerFont } = require('canvas')
-const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo')
 const Database = require('@database/Database')
-const LilirucaCommand = require('@structures/LilirucaCommand')
 const { logger, locales } = require('@utils')
-const { getItem } = require('@utils/items')
-const { OWNER_IDS, DEFAULT_PREFIX, DEFAULT_LANGUAGE, PLACES_ALIASES, PLACES, CATEGORIES } = require('@constants')
-const { Intents } = require('discord.js')
-const joinPath = path => join(__dirname, '..', path)
+const { Client, Constants } = require('eris')
+const CommandHandler = require('@structures/command/CommandHandler')
+const ListenerHandler = require('@structures/ListenerHandler')
 
-class LilirucaClient extends AkairoClient {
+class LilirucaClient extends Client {
   constructor () {
-    super(
-      {
-        ownerID: OWNER_IDS
-      }, {
-        disableMentions: 'everyone',
-        messageCacheMaxSize: 10,
-        ws: {
-          intents: [
-            Intents.FLAGS.GUILDS,
-            Intents.FLAGS.GUILD_MESSAGES
-          ]
-        }
-      }
-    )
+    super(process.env.DISCORD_TOKEN, {
+      allowedMentions: {
+        everyone: false
+      },
+      restMode: true,
+      maxShards: 'auto',
+      messageLimit: 20,
+      defaultImageSize: 2048,
+      intents:
+        Constants.Intents.guilds |
+        Constants.Intents.guildMessages
+    })
 
+    this.owners = process.env.OWNER_IDS?.split(' ') ?? []
     this.eventCount = 0
-
-    const getPrefix = async ({ guild }) => {
-      const guildData = guild && await this.db.guilds.ensure(guild.id)
-      const prefix = guildData && guildData.prefix
-      return prefix || DEFAULT_PREFIX
-    }
-
-    const commandOptions = {
-      classToHandle: LilirucaCommand,
-      directory: joinPath('commands'),
-      prefix: getPrefix,
-      automateCategories: true,
-      allowMention: true,
-      commandUtil: true,
-      handleEdits: true,
-      blockBots: true
-    }
-
-    const listenerOptions = {
-      directory: joinPath('listeners')
-    }
-
-    const inhibitorOptions = {
-      directory: joinPath('inhibitors')
-    }
-
-    this.commandHandler = new CommandHandler(this, commandOptions)
-    this.listenerHandler = new ListenerHandler(this, listenerOptions)
-    this.inhibitorHandler = new InhibitorHandler(this, inhibitorOptions)
+    this.requestCount = 0
     this.db = Database
     this.logger = logger
     this.locales = locales
-  }
 
-  loadCustomArgumentTypes () {
-    this.commandHandler.resolver.addType('place', (message, phrase) => {
-      if (!phrase) {
-        return null
-      }
+    this.commandHandler = new CommandHandler(this, 'src/commands', true)
+    this.listenerHandler = new ListenerHandler(this, 'src/listeners', true)
 
-      const resolved = phrase.toLowerCase()
-      for (const place of PLACES) {
-        if (PLACES_ALIASES[place].includes(resolved)) {
-          return place
-        }
-      }
-
-      return null
-    })
-
-    this.commandHandler.resolver.addType('realMember', (message, phrase) => {
-      if (!phrase) {
-        return null
-      }
-
-      const memberType = this.commandHandler.resolver.type('member')
-      const member = memberType(message, phrase)
-      if (member && !member.user.bot) {
-        return member
-      }
-
-      return null
-    })
-
-    this.commandHandler.resolver.addType('item', (message, phrase) => {
-      if (!phrase) {
-        return null
-      }
-
-      const item = getItem(phrase.toLowerCase())
-      if (item) {
-        return item
-      }
-
-      return null
-    })
+    this.on('rawWS', () => this.eventCount++)
+    this.on('rawREST', () => this.requestCount++)
   }
 
   loadAllFonts () {
@@ -116,49 +45,19 @@ class LilirucaClient extends AkairoClient {
     }
   }
 
-  loadCategories () {
-    this.categories = this.commandHandler.categories
-      .filter(category => category.id !== 'dev')
-      .sorted((a, b) => CATEGORIES.indexOf(a.id) - CATEGORIES.indexOf(b.id))
-  }
-
   async init () {
-    await this.db.connect()
     await this.locales.loadAll()
-
-    this.commandHandler.useListenerHandler(this.listenerHandler)
-    this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
-
-    this.commandHandler.loadAll()
-    this.listenerHandler.loadAll()
-    this.inhibitorHandler.loadAll()
-
-    this.loadCustomArgumentTypes()
-    this.loadCategories()
+    await this.commandHandler.loadAll()
+    await this.listenerHandler.loadAll()
+    await this.commandHandler.sweepCommandUtils()
+    await this.db.connect()
     this.loadAllFonts()
-
-    this.commandHandler.on('missingPermissions', this.permissionHandler)
-
     return this
   }
 
-  async permissionHandler ({ guild, channel }, command, type, missing) {
-    const guildData = await Database.guilds.ensure(guild.id)
-    const language = guildData.language || DEFAULT_LANGUAGE
-    const t = locales.getT(language)
-
-    const permissions = missing.map(perm => t(`permissions:${perm}`)).join(', ')
-
-    channel.send(t(`permissions:${type}`, { permissions }))
-  }
-
-  async login (token = process.env.DISCORD_TOKEN) {
+  async login () {
     await this.init()
-    return super.login(token)
-  }
-
-  get commands () {
-    return this.commandHandler.modules
+    return this.connect()
   }
 }
 

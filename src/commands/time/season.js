@@ -1,15 +1,15 @@
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const { getSeasonByMonth } = require('@utils/util')
-const { EMOJIS, SEASONS_COLORS } = require('@constants')
+const { SEASONS_COLORS } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Season extends LilirucaCommand {
   constructor () {
     super('season', {
       aliases: ['sn'],
-      emoji: EMOJIS.cloud,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      emoji: emojis.cloud,
+      clientPermissions: 'embedLinks'
     })
   }
 
@@ -25,12 +25,12 @@ class Season extends LilirucaCommand {
     const seasons = [
       {
         name: ct('current'),
-        value: `**${EMOJIS[season]} ${seasonName}**`,
+        value: `**${emojis[season]} ${seasonName}**`,
         inline: true
       },
       {
         name: ct('next'),
-        value: `**${EMOJIS[seasonNext]} ${seasonNextName}**`,
+        value: `**${emojis[seasonNext]} ${seasonNextName}**`,
         inline: true
       }
     ]
@@ -39,7 +39,7 @@ class Season extends LilirucaCommand {
       .setColor(SEASONS_COLORS[season])
       .addFields(seasons)
 
-    util.send(`\\${EMOJIS.cloud} ${ct('success')}`, embed)
+    util.send(`\\${emojis.cloud} ${ct('success')}`, embed)
   }
 }
 

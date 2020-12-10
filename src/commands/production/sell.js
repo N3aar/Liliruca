@@ -1,15 +1,15 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getPriceResource } = require('@utils/util')
-const { PLACES, PLACES_RESOURCES, EMOJIS } = require('@constants')
+const { PLACES, PLACES_RESOURCES } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Sell extends LilirucaCommand {
   constructor () {
     super('sell', {
       aliases: ['sl'],
-      emoji: EMOJIS.money,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      emoji: emojis.money,
+      clientPermissions: 'embedLinks'
     })
   }
 
@@ -32,7 +32,7 @@ class Sell extends LilirucaCommand {
       data[place].amount = 0
       total += price
 
-      const name = `\\${EMOJIS[place]} ${t(`commons:${place}`)}`
+      const name = `\\${emojis[place]} ${t(`commons:${place}`)}`
       const value = `**${t('commons:price')}: $${price.toLocaleString()}**`
 
       return {
@@ -53,7 +53,7 @@ class Sell extends LilirucaCommand {
 
     db.users.update(data, values)
 
-    util.send(`\\${EMOJIS.money} ${ct('success')}`, embed)
+    util.send(`\\${emojis.money} ${ct('success')}`, embed)
   }
 }
 

@@ -1,23 +1,22 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
-const { EMOJIS: { antenna, lamp, beatingHeart } } = require('@constants')
+const { antenna, lamp, beatingHeart } = require('@constants/emojis')
 
 class Ping extends LilirucaCommand {
   constructor () {
     super('ping', {
       aliases: ['pg'],
       emoji: antenna,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS'
+      clientPermissions: 'embedLinks'
     })
   }
 
-  async exec ({ util, ct, client, createdTimestamp }) {
-    const hearbeat = Math.round(Date.now() - createdTimestamp)
-    const APIlatency = Math.round(client.ws.ping)
+  async exec ({ util, ct, guild, timestamp }) {
+    const hearbeat = Math.round(Date.now() - timestamp)
+    const APIlatency = Math.round(guild.shard.latency)
 
     const sent = await util.send(ct('calc'))
-    const latency = Math.round(sent.createdTimestamp - createdTimestamp)
+    const latency = Math.round(sent.timestamp - timestamp)
 
     const ping = [
       {
@@ -40,7 +39,7 @@ class Ping extends LilirucaCommand {
     const embed = new LilirucaEmbed()
       .addFields(ping)
 
-    sent.edit(`\\🔌 ${ct('success')}`, embed)
+    util.edit(`\\🔌 ${ct('success')}`, embed)
   }
 }
 

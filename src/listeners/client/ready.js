@@ -1,6 +1,7 @@
-const { Listener } = require('discord-akairo')
+const SupportGuildUtil = require('@utils/supportGuildUtil')
+const LilirucaListener = require('@structures/LilirucaListener')
 
-class ReadyListener extends Listener {
+class ReadyListener extends LilirucaListener {
   constructor () {
     super('ready', {
       category: 'client',
@@ -11,19 +12,17 @@ class ReadyListener extends Listener {
 
   exec () {
     const { client } = this
-    const UsersSize = client.users.cache.size
-    const GuildsSize = client.guilds.cache.size
-
-    const readyMessage = `Bot started successfully! (${UsersSize} users & ${GuildsSize} servers)`
-    const rebootChannel = client.channels.cache.get(process.env.REBOOT_CHANNEL)
+    const readyMessage = `Bot started successfully! (**${client.users.size} users** & **${client.guilds.size} servers**)`
 
     client.logger.success(readyMessage)
+    SupportGuildUtil.rebootChannel(client, readyMessage)
 
-    if (rebootChannel) {
-      rebootChannel.send(readyMessage)
-    }
-
-    client.user.setActivity(`@${client.user.username} help`)
+    client.editStatus('online', {
+      game: {
+        name: `@${client.user.username} help`,
+        type: 0
+      }
+    })
   }
 }
 

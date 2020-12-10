@@ -1,18 +1,16 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getItemName, addItemInInventory, autoEquipItem } = require('@utils/items')
-const { EMOJIS: { bank, pack, money } } = require('@constants')
+const { bank, pack, money } = require('@constants/emojis')
 
 class Buy extends LilirucaCommand {
   constructor () {
     super('buy', {
       aliases: ['by'],
       emoji: bank,
-      editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {
@@ -22,7 +20,8 @@ class Buy extends LilirucaCommand {
         },
         {
           id: 'amount',
-          type: Argument.range('integer', 1, Infinity),
+          type: 'number',
+          forceMin: 1,
           default: 1
         }
       ]

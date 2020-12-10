@@ -1,34 +1,37 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { random } = require('@utils/util')
 const { getItemName, getItem, getToolInInventory, removeItem, addItemInInventory, addMultipleItemsInInventory } = require('@utils/items')
-const { ENERGY_COST, EMOJIS: { axe } } = require('@constants')
+const { ENERGY_COST } = require('@constants/constant')
+const { axe } = require('@constants/emojis')
 
 class Wood extends LilirucaCommand {
   constructor () {
     super('wood', {
       aliases: ['wd'],
       emoji: axe,
-      editable: true,
       clientPermissions: [
-        'EMBED_LINKS',
-        'USE_EXTERNAL_EMOJIS'
+        'embedLinks',
+        'externalEmojis'
       ],
       args: [
         {
           id: 'uses',
-          type: Argument.range('integer', 1, 10, true),
+          type: 'number',
+          forceMax: 10,
+          forceMin: 1,
           default: 1
         },
         {
           id: 'item',
-          type: Argument.validate('item', (m, p, value) => value.tool === 'axe')
-        },
+          type: 'item',
+          itemTool: 'axe'
+        }
+      ],
+      flags: [
         {
           id: 'all',
-          match: 'flag',
-          flag: '--all'
+          flags: ['all', 'a']
         }
       ]
     })

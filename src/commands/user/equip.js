@@ -1,12 +1,11 @@
 const LilirucaCommand = require('@structures/LilirucaCommand')
-const { EMOJIS: { hammerwrench } } = require('@constants')
+const { hammerwrench } = require('@constants/emojis')
 
 class Equip extends LilirucaCommand {
   constructor () {
     super('equip', {
       aliases: ['ep'],
       emoji: hammerwrench,
-      editable: true,
       args: [
         {
           id: 'item',

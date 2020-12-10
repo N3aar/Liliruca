@@ -1,9 +1,9 @@
 {
-  "client": "\\❌ Eu preciso de permissões para executar este comando! Faltando: `{{ permissions }}`",
-  "user": "\\❌ Você precisa de permissões para executar este comando! Faltando: `{{ permissions }}`",
-  "MANAGE_GUILD": "Gerenciar Servidor",
-  "EMBED_LINKS": "Inserir Links",
-  "ADD_REACTIONS": "Adicionar Reações",
-  "USE_EXTERNAL_EMOJIS": "Usar Emojis Externos",
-  "ATTACH_FILES": "Anexar Arquivos"
+  "client": "Eu preciso de permissões para executar este comando! Faltando: `{{ permissions }}`",
+  "user": "Você precisa de permissões para executar este comando! Faltando: `{{ permissions }}`",
+  "manageGuild": "Gerenciar Servidor",
+  "embedLinks": "Inserir Links",
+  "addReactions": "Adicionar Reações",
+  "externalEmojis": "Usar Emojis Externos",
+  "attachFiles": "Anexar Arquivos"
 }

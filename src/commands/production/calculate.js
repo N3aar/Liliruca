@@ -1,17 +1,16 @@
-const { Argument } = require('discord-akairo')
 const LilirucaCommand = require('@structures/LilirucaCommand')
 const LilirucaEmbed = require('@structures/LilirucaEmbed')
 const { getStoragePrice } = require('@utils/util')
 const { getItemName, getItem } = require('@utils/items')
-const { STORAGE_PRICES, UPGRADE_MATERIALS, EMOJIS } = require('@constants')
+const { STORAGE_PRICES, UPGRADE_MATERIALS } = require('@constants/constant')
+const emojis = require('@constants/emojis')
 
 class Calculate extends LilirucaCommand {
   constructor () {
     super('calculate', {
       aliases: ['calc', 'cl'],
-      emoji: EMOJIS.abacus,
-      editable: true,
-      clientPermissions: 'EMBED_LINKS',
+      emoji: emojis.abacus,
+      clientPermissions: 'embedLinks',
       args: [
         {
           id: 'place',
@@ -20,12 +19,16 @@ class Calculate extends LilirucaCommand {
         },
         {
           id: 'firstValue',
-          type: Argument.range('integer', 1, 1000000),
+          type: 'number',
+          forceMax: 99999,
+          forceMin: 1,
           default: 1
         },
         {
           id: 'secondValue',
-          type: Argument.range('integer', 1, 1000000),
+          type: 'number',
+          forceMax: 99999,
+          forceMin: 1,
           default: 1
         }
       ]
@@ -60,12 +63,12 @@ class Calculate extends LilirucaCommand {
         inline: true
       }
     ]
-    const storageName = `${EMOJIS[place]} ${t(`commons:storages.${place}`)}`
+    const storageName = `${emojis[place]} ${t(`commons:storages.${place}`)}`
     const embed = new LilirucaEmbed()
       .addFields(fields)
       .setFooter(storageName)
 
-    util.send(`\\${EMOJIS.abacus} ${ct('success')}`, embed)
+    util.send(`\\${emojis.abacus} ${ct('success')}`, embed)
   }
 }
 
