@@ -8,7 +8,7 @@
     "setprefix": {
         "description": "Coloque um prefixo personalizado para os comandos em seu servidor, mas não esqueça de avisar os membros sobre este novo prefixo! 😉",
         "usage": "<prefixo>",
-        "error": "Digite um prefixo válido! limite de **[{{ max }}]** caracteres.",
+        "error": "Digite o prefixo junto ao comando!",
         "success": "Prefixo alterado com sucesso para `{{- prefix }}`!"
     },
     "settimer": {

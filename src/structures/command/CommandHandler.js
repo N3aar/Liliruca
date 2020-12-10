@@ -79,8 +79,8 @@ class CommandHandler extends BaseHandler {
 
   getUsedPrefix (prefix, clientMention, content) {
     return [
-      prefix?.toLowerCase() ?? DEFAULT_PREFIX,
-      ...clientMention.map(m => m + ' ')
+      ...clientMention,
+      prefix?.toLowerCase() ?? DEFAULT_PREFIX
     ].find(p => content.startsWith(p))
   }
 
@@ -94,12 +94,13 @@ class CommandHandler extends BaseHandler {
     const language = guildData.language || DEFAULT_LANGUAGE
     const t = this.client.locales.getT(language)
     const prefix = this.getUsedPrefix(guildData.prefix, clientMention, message.content)
+    const parsedPrefix = clientMention.includes(prefix) ? '@Liliruca ' : prefix
 
     if (!prefix) {
       return
     } else if (clientMention.some(p => message.content === p)) {
       const author = `**${message.author.username}**`
-      return message.channel.createMessage(t('commons:botMention', { prefix, author }))
+      return message.channel.createMessage(t('commons:botMention', { prefix: parsedPrefix, author }))
     }
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
@@ -137,6 +138,7 @@ class CommandHandler extends BaseHandler {
     message.locales = this.client.locales
     message.db = this.client.db
     message.prefix = prefix
+    message.parsedPrefix = parsedPrefix
     message.client = this.client
     message.handler = this
 

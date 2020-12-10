@@ -56,9 +56,9 @@ class Table extends LilirucaCommand {
     })
   }
 
-  exec ({ t, ct, prefix, util }, { place, storage }) {
+  exec ({ t, ct, parsedPrefix, util }, { place, storage }) {
     const type = storage ? 'storage' : 'table'
-    const fields = this[type]({ t, ct, place, prefix })
+    const fields = this[type]({ t, ct, place, prefix: parsedPrefix })
 
     const embed = new LilirucaEmbed()
       .addFields(fields)

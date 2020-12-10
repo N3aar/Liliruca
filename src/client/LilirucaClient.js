@@ -14,7 +14,7 @@ class LilirucaClient extends Client {
       },
       restMode: true,
       maxShards: 'auto',
-      messageLimit: 10,
+      messageLimit: 20,
       defaultImageSize: 2048,
       intents:
         Constants.Intents.guilds |

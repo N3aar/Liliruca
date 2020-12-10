@@ -39,14 +39,14 @@ class Help extends LilirucaCommand {
     return this.handleDefault(message)
   }
 
-  handleDefault ({ handler, prefix, util, ct, t }) {
+  handleDefault ({ handler, parsedPrefix, util, ct, t }) {
     let i = 1
     const categories = handler.categories
       .reduce((desc, ctgy) => desc + `\`${i++}:\` \\${emojis[ctgy]} ** » ${t(`categories:${ctgy}`)}**\n`, '')
 
     const embed = new LilirucaEmbed()
       .setDescription(categories)
-      .setFooter(`${prefix}help ${ct('usage')}`)
+      .setFooter(`${parsedPrefix}help ${ct('usage')}`)
 
     util.send(`\\📚 ${ct('success')}`, embed)
   }
@@ -67,13 +67,13 @@ class Help extends LilirucaCommand {
     util.send(`\\📚 ${ct('all')}`, embed)
   }
 
-  handleCategory ({ handler, t, util, prefix, ct }, category) {
+  handleCategory ({ handler, t, util, parsedPrefix, ct }, category) {
     const filtered = handler.modules.filter(cmd => cmd.category === category)
     const commands = filtered.map(command => {
       const usage = command.usage ? ` ${t(`commands:${command.id}.usage`)}` : ''
       return {
         name: `\\${command.emoji} » ${command.id[0].toUpperCase() + command.id.slice(1)}`,
-        value: `\`${t('commons:usage')} ${prefix + command.id}${usage}\` **- ${t(`commands:${command.id}.description`)}**`
+        value: `\`${t('commons:usage')} ${parsedPrefix + command.id}${usage}\` **- ${t(`commands:${command.id}.description`)}**`
       }
     })
 
@@ -86,7 +86,7 @@ class Help extends LilirucaCommand {
     util.send(`\\${emoji} ${ct('category', { category: categoryName })}`, embed)
   }
 
-  handleCommand ({ t, prefix, util, ct }, command) {
+  handleCommand ({ t, parsedPrefix, util, ct }, command) {
     const usage = command.usage ? t(`commands:${command.id}.usage`) : ''
     const fields = [
       {
@@ -95,7 +95,7 @@ class Help extends LilirucaCommand {
       },
       {
         name: t('commons:howUse'),
-        value: `**${prefix}${command.id} ${usage}**`,
+        value: `**${parsedPrefix}${command.id} ${usage}**`,
         inline: true
       }
     ]

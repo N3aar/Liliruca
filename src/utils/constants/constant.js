@@ -7,7 +7,7 @@ const TEAM_MEMBER_STATUS = {
 
 const TEAM_MEMBER_TAGS = {
   OWNER: '\\👑 Owner',
-  BACK_END: '\\📕 Back-end',
+  BACK_END: '\\📙 Back-end',
   FRONT_END: '\\📘 Front-end',
   DESIGNER: '\\🎨 Designer'
 }
