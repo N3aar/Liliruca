@@ -1,6 +1,6 @@
-const { createAttachment } = require('@utils/discordUtil')
 const { createCanvas, loadImage } = require('canvas')
 const LilirucaCommand = require('@structures/LilirucaCommand')
+const { createAttachment, fetchUser } = require('@utils/discordUtil')
 const { PLACES, LEADERBOARD_TYPES } = require('@constants/constant')
 const { trophy } = require('@constants/emojis')
 
@@ -53,8 +53,7 @@ class Leaderboard extends LilirucaCommand {
     const ctx = canvas.getContext('2d')
 
     const template = await loadImage('src/assets/leaderboard/template.png')
-
-    const users = await Promise.all(data.map(doc => (client.users.fetch(doc.id))))
+    const users = await Promise.all(data.map(doc => fetchUser(client, doc.id)))
 
     let index = 0
 

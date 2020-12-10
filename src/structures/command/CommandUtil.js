@@ -1,5 +1,4 @@
 const LilirucaEmbed = require('../LilirucaEmbed')
-const LilirucaAttachment = require('../LilirucaAttachment')
 
 class CommandUtil {
   constructor (client, message) {
@@ -25,11 +24,12 @@ class CommandUtil {
       }
     }
 
-    return this.createMessage(options)
+    const file = opts?.file && opts
+    return this.createMessage(options, file)
   }
 
-  async createMessage (options) {
-    const newMsg = await this.client.createMessage(this.channelId, options)
+  async createMessage (options, file) {
+    const newMsg = await this.client.createMessage(this.channelId, options, file)
     this.sentMessageId = newMsg.id
     return newMsg
   }
@@ -46,10 +46,10 @@ class CommandUtil {
 
     if (!options) {
       options = {}
+    } else if (options.file) {
+      return { content, message_reference: reference }
     } else if (options instanceof LilirucaEmbed) {
       return { content, embed: options, message_reference: reference }
-    } else if (options instanceof LilirucaAttachment) {
-      return { content, files: [options], message_reference: reference }
     }
 
     return { content, ...options, message_reference: reference }

@@ -12,6 +12,7 @@ class LilirucaClient extends Client {
       allowedMentions: {
         everyone: false
       },
+      restMode: true,
       maxShards: 'auto',
       messageLimit: 10,
       defaultImageSize: 2048,
