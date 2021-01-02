@@ -3,6 +3,7 @@ const { registerFont } = require('canvas')
 const Database = require('@database/Database')
 const { logger, locales } = require('@utils')
 const { Client, Constants } = require('eris')
+const { clientError } = require('@utils/supportGuildUtil')
 const CommandHandler = require('@structures/command/CommandHandler')
 const ListenerHandler = require('@structures/ListenerHandler')
 
@@ -33,6 +34,7 @@ class LilirucaClient extends Client {
 
     this.on('rawWS', () => this.eventCount++)
     this.on('rawREST', () => this.requestCount++)
+    this.on('error', (error, shard) => clientError(this, error, shard))
   }
 
   loadAllFonts () {

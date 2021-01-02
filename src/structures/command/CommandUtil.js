@@ -1,4 +1,5 @@
 const LilirucaEmbed = require('../LilirucaEmbed')
+const { errorChannel } = require('../../utils/supportGuildUtil')
 
 class CommandUtil {
   constructor (client, message) {
@@ -29,9 +30,13 @@ class CommandUtil {
   }
 
   async createMessage (options, file) {
-    const newMsg = await this.client.createMessage(this.channelId, options, file)
-    this.sentMessageId = newMsg.id
-    return newMsg
+    try {
+      const newMsg = await this.client.createMessage(this.channelId, options, file)
+      this.sentMessageId = newMsg.id
+      return newMsg
+    } catch (err) {
+      errorChannel(this.client, this.channelId, this.language, this.content, err.stack)
+    }
   }
 
   edit (content, opts) {

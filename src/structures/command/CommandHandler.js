@@ -114,7 +114,7 @@ class CommandHandler extends BaseHandler {
     if (this.commandUtils.has(message.id)) {
       message.util = this.commandUtils.get(message.id)
     } else {
-      message.util = new CommandUtil(this.client, message)
+      message.util = new CommandUtil(this.client, message, language)
       if (command.editable) {
         this.commandUtils.set(message.id, message.util)
       }
@@ -130,6 +130,8 @@ class CommandHandler extends BaseHandler {
       return message.util.send(`\\❌ | ${t(`permissions:${missingPerms.type}`, { permissions })}`)
     }
 
+    message.util.content = message.content
+    message.util.language = language
     message.guild = this.client.guilds.get(message.guildID)
     message.guildData = guildData
     message.t = t
@@ -147,13 +149,12 @@ class CommandHandler extends BaseHandler {
     try {
       const ctx = await ArgumenrRunner.runParameters(args, message, command.flags, command.args)
       command.exec(message, ctx)
-    } catch (e) {
-      if (e instanceof ArgumentError) {
-        return message.util.send(e.errorMessage)
+      SupportGuildUtil.commandLog(this.client, command)
+    } catch (err) {
+      if (err instanceof ArgumentError) {
+        return message.util.send(err.errorMessage)
       } else {
-        this.client.logger.error(e)
-        message.util.send(`\\⚠️ ${t('errors:command_error')} \\😅`)
-        SupportGuildUtil.errorChannel(this.client, message.guild, message.content, e.stack)
+        SupportGuildUtil.errorChannel(this.client, message.channel.id, language, message.content, err.stack)
       }
     }
 
@@ -190,9 +191,9 @@ class CommandHandler extends BaseHandler {
   }
 
   isInvalidMessage (message) {
-    return message.author.bot ||
-      !message.guildID ||
-      !message.channel.permissionsOf(this.client.user.id).has('sendMessages')
+    return message && (!message.guildID ||
+    (message.author && message.author.bot) ||
+    !message.channel.permissionsOf(this.client.user.id).has('sendMessages'))
   }
 }
 

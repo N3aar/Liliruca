@@ -1,4 +1,5 @@
 const { Guild } = require('eris')
+const { pad } = require('./util')
 
 class SupportGuildUtil {
   static guildIntegrationOptions (guild, type, embedColor) {
@@ -29,7 +30,7 @@ class SupportGuildUtil {
         color: embedColor,
         author: { name: guild.name, icon_url: guild.dynamicIconURL() },
         footer: { text: guild.id },
-        timestamp: guild.createdAt,
+        timestamp: new Date(guild.createdAt),
         fields
       }]
     }
@@ -89,21 +90,52 @@ class SupportGuildUtil {
     return SupportGuildUtil.guildIntegration(guild, client, 1, 0xdb3939)
   }
 
-  static errorChannel (client, guild, content, err) {
+  static commandLog (client, command) {
+    if (!process.env.COMMAND_CHANNEL_ID) {
+      return
+    }
+
+    const date = new Date()
+    const hr = pad(date.getHours())
+    const min = pad(date.getMinutes())
+    const content = `[${hr}:${min}] ${command.id}`
+
+    client.createMessage(process.env.COMMAND_CHANNEL_ID, { content })
+  }
+
+  static clientError (client, error, shard) {
     if (!process.env.ERROR_CHANNEL_ID) {
       return
     }
 
     const embed = {
       color: 0xdb3939,
-      footer: { text: guild.name, icon_url: guild.iconURL },
+      timestamp: new Date(),
+      title: `\\❌ Client Error - Shard #${shard}`,
+      description: `\`\`\`${error}\`\`\``
+    }
+
+    client.createMessage(process.env.ERROR_CHANNEL_ID, { embed })
+  }
+
+  static errorChannel (client, channelId, language, message, err) {
+    if (!process.env.ERROR_CHANNEL_ID) {
+      return
+    }
+
+    const t = client.locales.getT(language)
+    const content = `\\⚠️ **${t('errors:command_error')}**`
+    const embed = {
+      color: 0xdb3939,
       timestamp: new Date(),
       fields: [
-        { name: '\\📄 Message', value: `\`\`\`${content}\`\`\`` },
+        { name: '\\📄 Message', value: `\`\`\`${message}\`\`\`` },
         { name: '\\❌ Error', value: `\`\`\`${err}\`\`\`` }
       ]
     }
 
+    client.logger.error(err)
+    client.createMessage(channelId, { content })
     client.createMessage(process.env.ERROR_CHANNEL_ID, { embed })
   }
 
