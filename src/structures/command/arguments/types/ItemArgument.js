@@ -19,13 +19,13 @@ class ItemArgument extends BaseArgument {
     if (!item) {
       return null
     }
+    if (opts.itemTool && item?.tool !== opts.itemTool) {
+      const tool = ctx.t(`commons:itemTools.${opts.itemTool}`)
+      throw new ArgumentError(ctx.t('errors:itemToolInvalid', { tool }))
+    }
 
     if (opts.itemType && item?.type !== opts.itemType) {
       throw new ArgumentError(ctx.t('errors:itemTypeInvalid'))
-    }
-
-    if (opts.itemTool && item?.tool !== opts.itemTool) {
-      throw new ArgumentError(ctx.t('errors:itemToolInvalid'))
     }
 
     if (opts.craftable && !item?.craftable) {

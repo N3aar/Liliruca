@@ -10,7 +10,7 @@
     "noItem": "Type the item id correctly!",
     "noEnergy": "You don't have enough energy for that!",
     "itemTypeInvalid": "Item must be of the correct type!",
-    "itemToolInvalid": "This item is not a tool!",
+    "itemToolInvalid": "This item is not a {{ tool }}!",
     "itemNotCraftable": "This item cannot be created!",
     "itemNotForgeable": "This item cannot be forged!",
     "nothuman": "Member cannot be a bot!",

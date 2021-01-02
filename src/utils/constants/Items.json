@@ -170,6 +170,7 @@
     "price": 10,
     "payment": "lilistars",
     "type": "energy",
+    "tool": "energetic",
     "tier": 2,
     "value": 1,
     "emoji": "<:energetic_2:769611422350442537>",

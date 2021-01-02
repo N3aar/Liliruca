@@ -76,6 +76,15 @@
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars"
     },
+    "itemTools": {
+        "energetic": "Energetic",
+        "axe": "Axe",
+        "baits": "Baits",
+        "pickaxe": "Pickaxe",
+        "fertilizer": "Fertilizer",
+        "fishingNet": "Fishing Net",
+        "bomb": "Bomb"
+    },
     "storages": {
         "farm": "Storage Farm" ,
         "fishing": "Storage Fishing",

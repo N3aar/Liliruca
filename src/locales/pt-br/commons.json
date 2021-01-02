@@ -69,6 +69,15 @@
         "money": "${{ value }}",
         "lilistars": "{{ value }} Lilistars"
     },
+    "itemTools": {
+        "energetic": "Energético",
+        "axe": "Machado",
+        "baits": "Iscas",
+        "pickaxe": "Picareta",
+        "fertilizer": "Fertilizante",
+        "fishingNet": "Rede de Pesca",
+        "bomb": "Bomba"
+    },
     "storages": {
         "farm": "Armazenamento da Fazenda",
         "fishing": "Armazenamento da Pescaria",
